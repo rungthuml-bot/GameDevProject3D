@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bep0kcjic8xi0"]
+
+[ext_resource type="PackedScene" uid="uid://tk4yl5fukfnj" path="res://Assets/Trap/Bear_trap.glb" id="1_gqnwl"]
+[ext_resource type="Script" uid="uid://da2peo1xb6uy0" path="res://Scripts/bear_trap.gd" id="2_1806f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2vdu"]
+size = Vector3(0.1665039, 1, 1)
+
+[node name="Sketchfab_Scene" unique_id=821306065 instance=ExtResource("1_gqnwl")]
+script = ExtResource("2_1806f")
+
+[node name="Object_2_2" parent="Sketchfab_model/root/GLTF_SceneRootNode/Sketchfab_model_0/aa229a534fce401ba6745ac3f03276e5_fbx_1" parent_id_path=PackedInt32Array(1345433195) index="0" unique_id=1583956501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5377865, -1.6737248e-15)
+
+[node name="BearTrap_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/Sketchfab_model_0/aa229a534fce401ba6745ac3f03276e5_fbx_1/Object_2_2/RootNode_3" parent_id_path=PackedInt32Array(769406044) index="0" unique_id=728434048]
+transform = Transform3D(4.9999995, 0, 0, 0, 4.9999995, 0, 0, 0, 4.9999995, 7.601274, -7.623065, 7.9052763)
+
+[node name="Hsida_7" parent="Sketchfab_model/root/GLTF_SceneRootNode/Sketchfab_model_0/aa229a534fce401ba6745ac3f03276e5_fbx_1/Object_2_2/RootNode_3/BearTrap_4" index="1" unique_id=419644987]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.017679814, 0.12100621, 5.2893494e-09)
+
+[node name="Vsida_9" parent="Sketchfab_model/root/GLTF_SceneRootNode/Sketchfab_model_0/aa229a534fce401ba6745ac3f03276e5_fbx_1/Object_2_2/RootNode_3/BearTrap_4" index="2" unique_id=273186729]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.017679814, 0.12100621, 5.2893494e-09)
+
+[node name="Area3D" type="Area3D" parent="." index="1" unique_id=1047150391]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0" unique_id=328498871]
+transform = Transform3D(0.9006094, 0, 0, 0, 0.0452706, 0, 0, 0, 0.14267427, 0.07603909, 0.006746456, 0.08273332)
+shape = SubResource("BoxShape3D_j2vdu")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dr2mw87jrx4lv"]
+
+[ext_resource type="PackedScene" uid="uid://cvb0dyav71d23" path="res://Assets/Trap/Spike_trap_hide.glb" id="1_m6f37"]
+[ext_resource type="Script" uid="uid://b8wp35y4sxh2f" path="res://Scripts/Spike_trap_hide.gd" id="2_365vg"]
+
+[node name="Sketchfab_Scene" unique_id=730891626 instance=ExtResource("1_m6f37")]
+script = ExtResource("2_365vg")
+
+[node name="Skeleton3D" parent="Sketchfab_model/224c7a753f70488ca623cbcfd856322a_fbx/Object_2/RootNode/Armature/Object_5" parent_id_path=PackedInt32Array(728489225) index="0" unique_id=1452690333]
+bones/2/position = Vector3(0, 0.37437478, 8.6736174e-19)
+bones/4/position = Vector3(0.2647104, 0.19755106, 8.6736174e-19)

@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://hxacw4yqy5fs"]
+
+[ext_resource type="Script" uid="uid://crsudaqdvfjle" path="res://Scripts/Wall_stone_trap.gd" id="1_4wwyo"]
+[ext_resource type="PackedScene" uid="uid://cb1oo6jib8ej8" path="res://Assets/Trap/Wall_base.glb" id="2_413yi"]
+[ext_resource type="PackedScene" uid="uid://bflsvmp36vjus" path="res://Assets/Trap/Wall_block.glb" id="3_xshgu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_knogg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2vdu"]
+size = Vector3(1.5517578, 1, 1)
+
+[sub_resource type="Animation" id="Animation_4wwyo"]
+resource_name = "Push_out"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.104521, 0, 0), Vector3(0.2627039, 0, 0), Vector3(-2.2764175, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sixe5"]
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.99, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.104521, 0, 0), Vector3(0.37226796, 0, 0), Vector3(-2.097273, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yx0mt"]
+_data = {
+&"Push_out": SubResource("Animation_4wwyo"),
+&"RESET": SubResource("Animation_sixe5")
+}
+
+[node name="Wall_stone_trap" type="Node3D" unique_id=347015390]
+script = ExtResource("1_4wwyo")
+
+[node name="Wall_base" type="StaticBody3D" parent="." unique_id=1536682743]
+
+[node name="Wall_mesh" type="Node3D" parent="Wall_base" unique_id=965274544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1887362)
+
+[node name="RootScene" parent="Wall_base/Wall_mesh" unique_id=1500640570 instance=ExtResource("2_413yi")]
+transform = Transform3D(-0.0005205115, 0, 0.9999999, 0, 1, 0, -0.9999999, 0, -0.0005205115, 0.0060994625, 0, 0.30246115)
+
+[node name="Wall_collision" type="CollisionShape3D" parent="Wall_base" unique_id=2128025544]
+transform = Transform3D(0.24226362, 0, 0, 0, 1.9325482, 0, 0, 0, 1.9398047, -0.08995986, 1.0407927, 0.5165448)
+shape = SubResource("BoxShape3D_knogg")
+
+[node name="Pistons" type="Node3D" parent="." unique_id=1260740823]
+
+[node name="Piston" type="AnimatableBody3D" parent="Pistons" unique_id=146769618]
+transform = Transform3D(1, 0, 0, 0, 2.745931, 0, 0, 0, 2.3403003, -2.104521, 0, 0)
+
+[node name="Wall_block" parent="Pistons/Piston" unique_id=737088105 instance=ExtResource("3_xshgu")]
+transform = Transform3D(-0.00050903263, 5.7086406, 0, -4.277061, -0.0006794115, 0, 0, 0, 4.2048182, 0.89900935, 0.25399065, 0.31275916)
+
+[node name="Piston_collision" type="CollisionShape3D" parent="Pistons/Piston" unique_id=1559994953]
+transform = Transform3D(2.218371, 0, 0, 0, 0.54083765, 0, 0, 0, 0.4748292, 0.35783207, 0.38343096, 0.25039792)
+shape = SubResource("BoxShape3D_j2vdu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pistons/Piston" unique_id=1439176853]
+libraries/ = SubResource("AnimationLibrary_yx0mt")

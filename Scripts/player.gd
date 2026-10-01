@@ -11,6 +11,9 @@ extends CharacterBody3D
 @export var acceleration: float = 20.0
 @export var deceleration: float = 20.0
 
+# 🔴 [เพิ่มจุดที่ 1] ตัวแปรเก็บสถานะติดกับดัก
+var is_trapped: bool = false
+
 
 # =========================================================
 # JUMP
@@ -126,6 +129,20 @@ func _unhandled_input(event: InputEvent) -> void:
 # =========================================================
 
 func _physics_process(delta: float) -> void:
+
+	# 🔴 [เพิ่มจุดที่ 2] เช็กว่าถ้าติดกับดัก ให้หยุดเดินทันที
+	if is_trapped:
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		else:
+			velocity.y = 0.0
+			
+		play_animation("CharacterArmature|Idle")
+		move_and_slide()
+		return # ข้ามการรับปุ่มกดและสั่งเดินข้างล่างทั้งหมด
+
 
 	# =====================================================
 	# GRAVITY
@@ -261,11 +278,17 @@ func _physics_process(delta: float) -> void:
 
 func play_animation(animation_name: String) -> void:
 
-	# ถ้า Animation นี้กำลังเล่นอยู่
-	# ไม่ต้องสั่งเล่นซ้ำทุก frame
-
 	if animation_player.current_animation != animation_name:
 
 		animation_player.play(
 			animation_name
 		)
+
+
+# =========================================================
+# TRAP FUNCTION
+# =========================================================
+
+# 🔴 [เพิ่มจุดที่ 3] ฟังก์ชันสั่งติดกับดัก (เรียกใช้โดยกับดัก)
+func get_trapped() -> void:
+	is_trapped = true

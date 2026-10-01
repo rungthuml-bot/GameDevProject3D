@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://p63xb2hqvtyh"]
+
+[ext_resource type="PackedScene" uid="uid://21q1sr018eb0" path="res://Assets/Trap/Spike_pit.glb" id="1_8cca7"]
+[ext_resource type="Script" uid="uid://dch7qbjqdv4ij" path="res://Scripts/Spike_pit.gd" id="2_ivt7q"]
+
+[node name="Root Scene" unique_id=268135573 instance=ExtResource("1_8cca7")]
+script = ExtResource("2_ivt7q")
+
+[node name="Cone_001" parent="RootNode/Cube" parent_id_path=PackedInt32Array(1212977629) index="0" unique_id=80750237]
+transform = Transform3D(0.12907821, -0.9450885, -0.18186024, 1.5302016, 0.17040196, 0.20054275, -0.04820166, -0.092477016, 0.4463713, -0.00084690563, -0.0070310966, 7.801644e-05)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=618431753]
+speed_scale = 0.3

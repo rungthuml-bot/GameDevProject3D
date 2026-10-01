@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c0ogrwwjbmt1d"]
+
+[ext_resource type="PackedScene" uid="uid://dx35d88y0cfhn" path="res://Assets/Trap/Spike_trap.glb" id="1_uh5yh"]
+[ext_resource type="Script" uid="uid://8dfo5tqfmir1" path="res://Scripts/Spike_trap.gd" id="2_oldfb"]
+
+[node name="Root Scene" unique_id=1112543325 instance=ExtResource("1_uh5yh")]
+script = ExtResource("2_oldfb")
+
+[node name="Skeleton3D" parent="RootNode/Hazard_SpikeTrap_Armature" parent_id_path=PackedInt32Array(2141349024) index="0" unique_id=2071184065]
+bones/1/position = Vector3(-3.761581e-39, -2.9802322e-10, -1.5777218e-32)
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=679361944]
+speed_scale = 0.5

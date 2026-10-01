@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cwuqb74afvkc"]
+
+[ext_resource type="PackedScene" uid="uid://cp74svvba4lps" path="res://Assets/Trap/Spike_trunk.glb" id="1_exylh"]
+[ext_resource type="Script" uid="uid://cddadsa7w0s3m" path="res://Scripts/spike_trunk.gd" id="2_eqibq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ijsis"]
+margin = 0.0
+height = 3.667
+
+[node name="Sketchfab_Scene" unique_id=1321213094 instance=ExtResource("1_exylh")]
+script = ExtResource("2_eqibq")
+
+[node name="Object_4" parent="Sketchfab_model/a91ed12f7cfe41a1b437fc9fd788a3fa_fbx/RootNode/Object001" parent_id_path=PackedInt32Array(699911146) index="0" unique_id=2061066282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9344885, 1.6323619, 0.022708774)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1292670845]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1013375066]
+shape = SubResource("CylinderShape3D_ijsis")

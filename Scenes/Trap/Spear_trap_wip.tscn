@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://xx436f802dpt"]
+
+[ext_resource type="PackedScene" uid="uid://h3mnwlli686q" path="res://Assets/Trap/Spear_trap_wip.glb" id="1_x5csv"]
+[ext_resource type="Script" uid="uid://dbunpwlhqqpn1" path="res://Scripts/Spear_trap_wip.gd" id="2_4qq31"]
+
+[sub_resource type="Animation" id="Animation_i14or"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/65267f9b2ed04b40a0e175bdb2c93fc1_fbx/RootNode/Spear_ammo_002:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.0888628e-10, -6.235843e-09, -0.6301553)]
+}
+
+[sub_resource type="Animation" id="Animation_4qq31"]
+resource_name = "shoot"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sketchfab_model/65267f9b2ed04b40a0e175bdb2c93fc1_fbx/RootNode/Spear_ammo_002:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.0888628e-10, -6.235843e-09, -0.6301553), Vector3(-3.0888628e-10, -6.2358416e-09, 5.539261)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntqkn"]
+_data = {
+&"RESET": SubResource("Animation_i14or"),
+&"shoot": SubResource("Animation_4qq31")
+}
+
+[node name="Sketchfab_Scene" unique_id=278116867 instance=ExtResource("1_x5csv")]
+script = ExtResource("2_4qq31")
+
+[node name="Spear_ammo_002" parent="Sketchfab_model/65267f9b2ed04b40a0e175bdb2c93fc1_fbx/RootNode" parent_id_path=PackedInt32Array(1076535335) index="1" unique_id=227142415]
+transform = Transform3D(1, 0, 0, 0, -1.6292068e-07, 1, 0, -1, -1.6292068e-07, -3.0888628e-10, -6.235843e-09, -0.6301553)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1834699787]
+libraries/ = SubResource("AnimationLibrary_ntqkn")
