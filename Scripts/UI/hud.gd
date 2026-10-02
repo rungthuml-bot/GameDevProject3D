@@ -57,8 +57,8 @@ func _process(delta: float) -> void:
 
 
 func _update_timer_display() -> void:
-	var minutes = int(elapsed_time) / 60
-	var seconds = int(elapsed_time) % 60
+	var minutes: int = int(elapsed_time / 60.0)
+	var seconds: int = int(elapsed_time) % 60
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
 
 
@@ -144,8 +144,8 @@ func _show_win_screen() -> void:
 		"CenterContainer/PanelContainer/MarginContainer/VBoxContainer/TimeLabel"
 	)
 	if time_label:
-		var minutes = int(elapsed_time) / 60
-		var seconds = int(elapsed_time) % 60
+		var minutes: int = int(elapsed_time / 60.0)
+		var seconds: int = int(elapsed_time) % 60
 		time_label.text = "Time: %02d:%02d" % [minutes, seconds]
 
 	var next_btn = win_screen.get_node_or_null(
