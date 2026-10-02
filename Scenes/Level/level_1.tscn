@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://d3apw3a58uf1r"]
 
 [ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_b828a"]
+[ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_k541i"]
+[ext_resource type="Script" uid="uid://dmmlwa10auukk" path="res://Scripts/interaction_ui.gd" id="3_m5hwo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
 
@@ -43,3 +45,40 @@ shape = SubResource("BoxShape3D_vk57k")
 
 [node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_b828a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572622, 0)
+
+[node name="Crate" parent="." unique_id=1874232016 instance=ExtResource("2_k541i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.24705666, 3)
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=2002159298 groups=["interaction_ui"]]
+script = ExtResource("3_m5hwo")
+
+[node name="Panel" type="PanelContainer" parent="InteractionUI" unique_id=1006308847]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -198.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="InteractionUI/Panel" unique_id=1473892099]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="InteractionUI/Panel/Margin" unique_id=1806009821]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InteractionUI/Panel/Margin/VBox" unique_id=388336732]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="InteractionUI/Panel/Margin/VBox" unique_id=2088274465]
+layout_mode = 2
+
+[node name="HintContainer" type="HBoxContainer" parent="InteractionUI/Panel/Margin/VBox" unique_id=650306505]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="Hint" type="Label" parent="InteractionUI/Panel/Margin/VBox/HintContainer" unique_id=1865295724]
+layout_mode = 2
+horizontal_alignment = 2

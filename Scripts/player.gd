@@ -29,7 +29,6 @@ extends CharacterBody3D
 @export_category("Camera")
 
 @export var mouse_sensitivity: float = 0.002
-
 @export var camera_min_angle: float = -35.0
 @export var camera_max_angle: float = 45.0
 
@@ -44,6 +43,8 @@ extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $Eric/AnimationPlayer
 
+@onready var interaction_area: Area3D = $InteractionArea
+
 
 # =========================================================
 # READY
@@ -51,10 +52,10 @@ extends CharacterBody3D
 
 func _ready() -> void:
 
-	# ล็อก Mouse ไว้กลางหน้าจอ
+	# ล็อกเมาส์
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-	# เปิดใช้กล้อง
+	# เปิดกล้อง
 	camera.current = true
 
 	# เริ่มต้นด้วย Idle
@@ -78,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			-event.relative.x * mouse_sensitivity
 		)
 
-		# หมุน Gimbal ขึ้น / ลง
+		# หมุนกล้องขึ้น / ลง
 		gimbal.rotate_x(
 			-event.relative.y * mouse_sensitivity
 		)
@@ -170,14 +171,10 @@ func _physics_process(delta: float) -> void:
 	# =====================================================
 
 	var forward := -global_transform.basis.z
-
 	var right := global_transform.basis.x
 
-
-	# ไม่ให้การก้ม/เงยของ Player มีผลกับการเดิน
 	forward.y = 0.0
 	right.y = 0.0
-
 
 	forward = forward.normalized()
 	right = right.normalized()
@@ -193,14 +190,13 @@ func _physics_process(delta: float) -> void:
 	)
 
 
+	# =====================================================
+	# MOVING
+	# =====================================================
+
 	if direction.length() > 0.01:
 
 		direction = direction.normalized()
-
-
-		# =================================================
-		# ACCELERATION
-		# =================================================
 
 		velocity.x = move_toward(
 			velocity.x,
@@ -214,19 +210,15 @@ func _physics_process(delta: float) -> void:
 			acceleration * delta
 		)
 
-
-		# =================================================
-		# WALK ANIMATION
-		# =================================================
-
+		# Walk Animation
 		play_animation("CharacterArmature|Walk")
 
 
-	else:
+	# =====================================================
+	# IDLE
+	# =====================================================
 
-		# =================================================
-		# DECELERATION
-		# =================================================
+	else:
 
 		velocity.x = move_toward(
 			velocity.x,
@@ -240,32 +232,23 @@ func _physics_process(delta: float) -> void:
 			deceleration * delta
 		)
 
-
-		# =================================================
-		# IDLE ANIMATION
-		# =================================================
-
+		# Idle Animation
 		play_animation("CharacterArmature|Idle")
 
 
 	# =====================================================
-	# MOVE PLAYER
+	# MOVE
 	# =====================================================
 
 	move_and_slide()
 
 
 # =========================================================
-# PLAY ANIMATION
+# ANIMATION
 # =========================================================
 
 func play_animation(animation_name: String) -> void:
 
-	# ถ้า Animation นี้กำลังเล่นอยู่
-	# ไม่ต้องสั่งเล่นซ้ำทุก frame
-
 	if animation_player.current_animation != animation_name:
 
-		animation_player.play(
-			animation_name
-		)
+		animation_player.play(animation_name)
