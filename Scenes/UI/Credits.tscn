@@ -1,0 +1,128 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/credits.gd" id="1_credits"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_credits")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.05, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
+theme_override_font_sizes/font_size = 36
+text = "MAZE ESCAPE"
+horizontal_alignment = 1
+
+[node name="Divider1" type="ColorRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(120, 1)
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.2)
+
+[node name="DevelopedByLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.7)
+theme_override_font_sizes/font_size = 13
+text = "DEVELOPED BY"
+horizontal_alignment = 1
+
+[node name="TeamContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Member1" type="Label" parent="CenterContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.66, 1)
+theme_override_font_sizes/font_size = 18
+text = "[Team Member 1]"
+horizontal_alignment = 1
+
+[node name="Member2" type="Label" parent="CenterContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.66, 1)
+theme_override_font_sizes/font_size = 18
+text = "[Team Member 2]"
+horizontal_alignment = 1
+
+[node name="Member3" type="Label" parent="CenterContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.66, 1)
+theme_override_font_sizes/font_size = 18
+text = "[Team Member 3]"
+horizontal_alignment = 1
+
+[node name="Member4" type="Label" parent="CenterContainer/VBoxContainer/TeamContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.74, 0.66, 1)
+theme_override_font_sizes/font_size = 18
+text = "[Team Member 4]"
+horizontal_alignment = 1
+
+[node name="Divider2" type="ColorRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 1)
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.12)
+
+[node name="ThanksLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.7)
+theme_override_font_sizes/font_size = 13
+text = "SPECIAL THANKS"
+horizontal_alignment = 1
+
+[node name="ThanksContent" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.50, 0.43, 1)
+theme_override_font_sizes/font_size = 15
+text = "Godot Engine
+Quaternius"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(160, 40)
+size_flags_horizontal = 4
+text = "Back"
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c8m7cotw5yb7o"]
 
 [ext_resource type="Script" uid="uid://d0ky7u0eehg86" path="res://Scripts/player.gd" id="1_s0eop"]
+[ext_resource type="Script" uid="uid://r6evie2vq6ca" path="res://Scripts/interaction_area.gd" id="2_ft8w5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v5eft"]
 radius = 0.33
@@ -11305,8 +11306,9 @@ _data = {
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_awhhx"]
+radius = 2.5
 
-[node name="Player" type="CharacterBody3D" unique_id=263796391]
+[node name="Player" type="CharacterBody3D" unique_id=263796391 groups=["player"]]
 script = ExtResource("1_s0eop")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1249550849]
@@ -11929,6 +11931,7 @@ transform = Transform3D(0.99999994, 0, -7.450581e-09, 0, 1, 0, 7.450581e-09, 0, 
 fov = 65.0
 
 [node name="InteractionArea" type="Area3D" parent="." unique_id=276797650]
+script = ExtResource("2_ft8w5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" unique_id=1995834617]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98028016, 0)

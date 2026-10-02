@@ -1,0 +1,383 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_hud"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hud")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.67, 0.58, 0.7)
+theme_override_font_sizes/font_size = 15
+text = "LEVEL 1"
+
+[node name="ObjectiveLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.60, 0.56, 0.48, 0.6)
+theme_override_font_sizes/font_size = 14
+text = "Find the exit"
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="MarginContainer/TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.67, 0.58, 0.7)
+theme_override_font_sizes/font_size = 15
+text = "00:00"
+horizontal_alignment = 2
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PausedLabel" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.15)
+
+[node name="Spacer" type="Control" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Restart"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Settings"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Main Menu"
+
+[node name="PauseSettings" type="CenterContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/PauseSettings"]
+layout_mode = 2
+custom_minimum_size = Vector2(360, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseSettings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SettingsTitle" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.15)
+
+[node name="VolumeSection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="VolumeLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.7)
+theme_override_font_sizes/font_size = 12
+text = "MASTER VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection"]
+layout_mode = 2
+value = 80.0
+
+[node name="SensitivitySection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SensitivityLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.7)
+theme_override_font_sizes/font_size = 12
+text = "CAMERA SENSITIVITY"
+
+[node name="SensitivitySlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection"]
+layout_mode = 2
+value = 50.0
+
+[node name="DisplaySection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FullscreenCheck" type="CheckButton" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/DisplaySection"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Spacer" type="Control" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="SettingsBackButton" type="Button" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Back"
+
+[node name="WinScreen" type="Control" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="WinScreen/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(380, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WinLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 1)
+theme_override_font_sizes/font_size = 34
+text = "AREA CLEARED"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.50, 0.43, 1)
+theme_override_font_sizes/font_size = 15
+text = "The way out has been found."
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 1)
+theme_override_font_sizes/font_size = 16
+text = "Time: 00:00"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.1)
+
+[node name="Spacer" type="Control" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NextLevelButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Next Level"
+
+[node name="RetryButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Main Menu"
+
+[node name="LoseScreen" type="Control" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LoseScreen/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(380, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="LoseScreen/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LoseLabel" type="Label" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.22, 0.18, 1)
+theme_override_font_sizes/font_size = 34
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.50, 0.46, 0.40, 1)
+theme_override_font_sizes/font_size = 15
+text = "The maze claims another soul..."
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.65, 0.22, 0.18, 0.2)
+
+[node name="Spacer" type="Control" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RetryButton" type="Button" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Retry"
+
+[node name="MainMenuButton" type="Button" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "Main Menu"
+
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu"]
+[connection signal="pressed" from="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SettingsBackButton" to="." method="_on_settings_back"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/NextLevelButton" to="." method="_on_win_next_level"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/RetryButton" to="." method="_on_win_retry"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_win_main_menu"]
+[connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/RetryButton" to="." method="_on_lose_retry"]
+[connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_lose_main_menu"]

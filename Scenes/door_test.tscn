@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b2g2t6k0fq068"]
+
+[ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="1_gmki5"]
+[ext_resource type="PackedScene" uid="uid://1oij6tc6tn1e" path="res://Assets/Test_Asset/Door by Quaternius - a948jjnuaL.glb" id="2_ref0q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ref0q"]
+size = Vector3(1.8, 3.17724, 0.456604)
+
+[node name="Door" type="Area3D" unique_id=545627889]
+script = ExtResource("1_gmki5")
+
+[node name="Root Scene" parent="." unique_id=2052802379 instance=ExtResource("2_ref0q")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1263806498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5939407, 0.013031006)
+shape = SubResource("BoxShape3D_ref0q")
+
+[node name="InteractionLabel" type="Label3D" parent="." unique_id=1112592741]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0655727, 0.5908489)

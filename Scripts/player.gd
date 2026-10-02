@@ -29,7 +29,6 @@ extends CharacterBody3D
 @export_category("Camera")
 
 @export var mouse_sensitivity: float = 0.002
-
 @export var camera_min_angle: float = -35.0
 @export var camera_max_angle: float = 45.0
 
@@ -44,22 +43,47 @@ extends CharacterBody3D
 
 @onready var animation_player: AnimationPlayer = $Eric/AnimationPlayer
 
+@onready var interaction_area: Area3D = $InteractionArea
+
 
 # =========================================================
 # READY
 # =========================================================
 
 func _ready() -> void:
-
-	# ล็อก Mouse ไว้กลางหน้าจอ
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-	# เปิดใช้กล้อง
 	camera.current = true
-
-	# เริ่มต้นด้วย Idle
 	play_animation("CharacterArmature|Idle")
 
+	if UIManager:
+		mouse_sensitivity = UIManager.mouse_sensitivity
+		if not UIManager.settings_updated.is_connected(_on_settings_updated):
+			UIManager.settings_updated.connect(_on_settings_updated)
+
+	call_deferred("set_spawn_position")
+
+
+func _on_settings_updated() -> void:
+	if UIManager:
+		mouse_sensitivity = UIManager.mouse_sensitivity
+
+
+func set_spawn_position() -> void:
+	var spawn_id := GameManager.get_spawn_point()
+
+	if spawn_id.is_empty():
+		return
+
+	var spawn_point := get_tree().current_scene.get_node_or_null(spawn_id)
+
+	if spawn_point == null:
+		print("ERROR: Spawn point not found: ", spawn_id)
+		return
+
+	global_position = spawn_point.global_position
+	global_rotation = spawn_point.global_rotation
+
+	GameManager.clear_spawn_point()
 
 # =========================================================
 # INPUT
@@ -78,7 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			-event.relative.x * mouse_sensitivity
 		)
 
-		# หมุน Gimbal ขึ้น / ลง
+		# หมุนกล้องขึ้น / ลง
 		gimbal.rotate_x(
 			-event.relative.y * mouse_sensitivity
 		)
@@ -92,20 +116,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 	# =====================================================
-	# ESC
+	# ESC — Pause (handled by HUD via ui_pause action)
 	# =====================================================
 
-	if event is InputEventKey:
-
-		if event.pressed and event.keycode == KEY_ESCAPE:
-
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-			else:
-
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event.is_action_pressed("ui_pause"):
+		if UIManager.is_playing():
+			# Let HUD handle the pause via UIManager
+			return
 
 
 	# =====================================================
@@ -170,14 +187,10 @@ func _physics_process(delta: float) -> void:
 	# =====================================================
 
 	var forward := -global_transform.basis.z
-
 	var right := global_transform.basis.x
 
-
-	# ไม่ให้การก้ม/เงยของ Player มีผลกับการเดิน
 	forward.y = 0.0
 	right.y = 0.0
-
 
 	forward = forward.normalized()
 	right = right.normalized()
@@ -193,14 +206,13 @@ func _physics_process(delta: float) -> void:
 	)
 
 
+	# =====================================================
+	# MOVING
+	# =====================================================
+
 	if direction.length() > 0.01:
 
 		direction = direction.normalized()
-
-
-		# =================================================
-		# ACCELERATION
-		# =================================================
 
 		velocity.x = move_toward(
 			velocity.x,
@@ -214,19 +226,15 @@ func _physics_process(delta: float) -> void:
 			acceleration * delta
 		)
 
-
-		# =================================================
-		# WALK ANIMATION
-		# =================================================
-
+		# Walk Animation
 		play_animation("CharacterArmature|Walk")
 
 
-	else:
+	# =====================================================
+	# IDLE
+	# =====================================================
 
-		# =================================================
-		# DECELERATION
-		# =================================================
+	else:
 
 		velocity.x = move_toward(
 			velocity.x,
@@ -240,32 +248,23 @@ func _physics_process(delta: float) -> void:
 			deceleration * delta
 		)
 
-
-		# =================================================
-		# IDLE ANIMATION
-		# =================================================
-
+		# Idle Animation
 		play_animation("CharacterArmature|Idle")
 
 
 	# =====================================================
-	# MOVE PLAYER
+	# MOVE
 	# =====================================================
 
 	move_and_slide()
 
 
 # =========================================================
-# PLAY ANIMATION
+# ANIMATION
 # =========================================================
 
 func play_animation(animation_name: String) -> void:
 
-	# ถ้า Animation นี้กำลังเล่นอยู่
-	# ไม่ต้องสั่งเล่นซ้ำทุก frame
-
 	if animation_player.current_animation != animation_name:
 
-		animation_player.play(
-			animation_name
-		)
+		animation_player.play(animation_name)

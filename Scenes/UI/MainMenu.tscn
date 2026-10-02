@@ -1,0 +1,132 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_menu"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.03, 0.05, 1)
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+
+[node name="MenuContent" type="VBoxContainer" parent="ContentMargin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 0
+
+[node name="TitleLabel" type="Label" parent="ContentMargin/HBoxContainer/MenuContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
+theme_override_font_sizes/font_size = 48
+text = "MAZE ESCAPE"
+
+[node name="SubtitleLabel" type="Label" parent="ContentMargin/HBoxContainer/MenuContent"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 14
+text = "A Labyrinth Adventure"
+
+[node name="Divider" type="ColorRect" parent="ContentMargin/HBoxContainer/MenuContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(180, 1)
+size_flags_horizontal = 0
+color = Color(0.76, 0.63, 0.36, 0.2)
+
+[node name="ButtonSpacer" type="Control" parent="ContentMargin/HBoxContainer/MenuContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="ContentMargin/HBoxContainer/MenuContent"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="PlayButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 44)
+text = "PLAY"
+alignment = 0
+
+[node name="SettingsButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 44)
+text = "SETTINGS"
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 44)
+text = "CREDITS"
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+custom_minimum_size = Vector2(200, 44)
+theme_override_colors/font_color = Color(0.50, 0.30, 0.28, 1)
+theme_override_colors/font_hover_color = Color(0.72, 0.38, 0.35, 1)
+theme_override_colors/font_pressed_color = Color(0.55, 0.25, 0.22, 1)
+text = "QUIT"
+alignment = 0
+
+[node name="RightSpacer" type="Control" parent="ContentMargin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VersionLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.28, 0.26, 0.23, 1)
+theme_override_font_sizes/font_size = 11
+text = "v0.1 — Prototype"
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
