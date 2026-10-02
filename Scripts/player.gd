@@ -51,16 +51,28 @@ extends CharacterBody3D
 # =========================================================
 
 func _ready() -> void:
-
-	# ล็อกเมาส์
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-	# เปิดกล้อง
 	camera.current = true
-
-	# เริ่มต้นด้วย Idle
 	play_animation("CharacterArmature|Idle")
 
+	call_deferred("set_spawn_position")
+
+func set_spawn_position() -> void:
+	var spawn_id := GameManager.get_spawn_point()
+
+	if spawn_id.is_empty():
+		return
+
+	var spawn_point := get_tree().current_scene.get_node_or_null(spawn_id)
+
+	if spawn_point == null:
+		print("ERROR: Spawn point not found: ", spawn_id)
+		return
+
+	global_position = spawn_point.global_position
+	global_rotation = spawn_point.global_rotation
+
+	GameManager.clear_spawn_point()
 
 # =========================================================
 # INPUT

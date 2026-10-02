@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://d3apw3a58uf1r"]
+[gd_scene format=3 uid="uid://dh6mu8itlwn4s"]
 
-[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_b828a"]
-[ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_k541i"]
-[ext_resource type="Script" uid="uid://dmmlwa10auukk" path="res://Scripts/interaction_ui.gd" id="3_m5hwo"]
-[ext_resource type="PackedScene" uid="uid://b2g2t6k0fq068" path="res://Scenes/door_test.tscn" id="4_wtlyx"]
+[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_udfm6"]
+[ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_a0xoy"]
+[ext_resource type="Script" uid="uid://dmmlwa10auukk" path="res://Scripts/interaction_ui.gd" id="3_lxn2w"]
+[ext_resource type="PackedScene" uid="uid://b2g2t6k0fq068" path="res://Scenes/door_test.tscn" id="4_a0xoy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
 
@@ -17,7 +17,7 @@ ambient_light_source = 3
 ambient_light_energy = 1.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p6j4"]
-albedo_color = Color(0.5084918, 0.6524408, 0.23244649, 1)
+albedo_color = Color(0.3612322, 0.48660153, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qqy1o"]
 material = SubResource("StandardMaterial3D_7p6j4")
@@ -25,7 +25,7 @@ material = SubResource("StandardMaterial3D_7p6j4")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vk57k"]
 size = Vector3(30, 0.5, 30)
 
-[node name="Level_1" type="Node3D" unique_id=1418685217]
+[node name="Level_2" type="Node3D" unique_id=1418685217]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1165985249]
 environment = SubResource("Environment_vk57k")
@@ -44,14 +44,14 @@ mesh = SubResource("BoxMesh_qqy1o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1289807496]
 shape = SubResource("BoxShape3D_vk57k")
 
-[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_b828a")]
+[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_udfm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572622, 0)
 
-[node name="Crate" parent="." unique_id=1874232016 instance=ExtResource("2_k541i")]
+[node name="Crate" parent="." unique_id=1874232016 instance=ExtResource("2_a0xoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.24705666, 3)
 
 [node name="InteractionUI" type="CanvasLayer" parent="." unique_id=2002159298 groups=["interaction_ui"]]
-script = ExtResource("3_m5hwo")
+script = ExtResource("3_lxn2w")
 
 [node name="Panel" type="PanelContainer" parent="InteractionUI" unique_id=1006308847]
 anchors_preset = 12
@@ -84,10 +84,10 @@ size_flags_vertical = 10
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Door_To_Level2" parent="." unique_id=545627889 instance=ExtResource("4_wtlyx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.498482, 0.25000048, -8.631333)
-target_scene = "uid://dh6mu8itlwn4s"
-target_spawn_id = "Spawn_From_Level2"
+[node name="Door_To_Level1" parent="." unique_id=545627889 instance=ExtResource("4_a0xoy")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.025690198, 0.25000095, 1.203407)
+target_scene = "uid://d3apw3a58uf1r"
+target_spawn_id = "Spawn_From_Level1"
 
-[node name="Spawn_From_Level1" type="Marker3D" parent="." unique_id=208036464]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.733774, 0, -8.0355625)
+[node name="Spawn_From_Level2" type="Marker3D" parent="." unique_id=497397167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5079222)

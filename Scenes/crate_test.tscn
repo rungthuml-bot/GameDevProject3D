@@ -95,4 +95,9 @@ shape = SubResource("BoxShape3D_v5eft")
 
 [node name="InteractionLabel" type="Label3D" parent="." unique_id=1980296028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
-text = "[E] ตรวจสอบ"
+
+[node name="InteractionLabel" type="Label3D" parent="InteractionLabel" unique_id=1064992178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
+
+[node name="InteractionLabel" type="Label3D" parent="InteractionLabel/InteractionLabel" unique_id=739861865]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
