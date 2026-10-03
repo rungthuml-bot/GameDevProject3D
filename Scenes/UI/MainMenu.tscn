@@ -2,6 +2,104 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_menu"]
 [ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://Scripts/UI/menu_backdrop.gd" id="3_backdrop"]
+[ext_resource type="Shader" path="res://Scenes/UI/Shaders/menu_overlay.gdshader" id="4_overlay"]
+[ext_resource type="PackedScene" uid="uid://1oij6tc6tn1e" path="res://Assets/Test_Asset/Door by Quaternius - a948jjnuaL.glb" id="5_door"]
+[ext_resource type="PackedScene" uid="uid://crpha0kyrdpvw" path="res://Assets/Test_Asset/Crate by Quaternius - 3VGWnZPXmG.glb" id="6_crate"]
+[ext_resource type="PackedScene" uid="uid://da7yt4canc7a" path="res://Assets/Main_Character/Adventurer by Quaternius - 5EGWBMpuXq.glb" id="7_adventurer"]
+
+[sub_resource type="ProceduralSkyMaterial" id="Sky_dusk_mat"]
+sky_top_color = Color(0.1, 0.105, 0.12, 1)
+sky_horizon_color = Color(0.47, 0.37, 0.27, 1)
+ground_bottom_color = Color(0.05, 0.045, 0.04, 1)
+ground_horizon_color = Color(0.3, 0.24, 0.18, 1)
+
+[sub_resource type="Sky" id="Sky_dusk"]
+sky_material = SubResource("Sky_dusk_mat")
+
+[sub_resource type="Environment" id="Env_menu"]
+background_mode = 2
+sky = SubResource("Sky_dusk")
+ambient_light_source = 2
+ambient_light_color = Color(0.4, 0.36, 0.32, 1)
+ambient_light_energy = 0.55
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.36, 0.31, 0.26, 1)
+fog_density = 0.035
+fog_sky_affect = 0.35
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_saturation = 0.85
+
+[sub_resource type="FastNoiseLite" id="Noise_stone"]
+frequency = 0.03
+
+[sub_resource type="Gradient" id="Gradient_stone"]
+colors = PackedColorArray(0.55, 0.52, 0.48, 1, 1, 0.98, 0.94, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTex_stone_albedo"]
+seamless = true
+color_ramp = SubResource("Gradient_stone")
+noise = SubResource("Noise_stone")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTex_stone_normal"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.0
+noise = SubResource("Noise_stone")
+
+[sub_resource type="StandardMaterial3D" id="Mat_stone_wall"]
+albedo_color = Color(0.42, 0.38, 0.33, 1)
+albedo_texture = SubResource("NoiseTex_stone_albedo")
+roughness = 0.95
+normal_enabled = true
+normal_texture = SubResource("NoiseTex_stone_normal")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_stone_floor"]
+albedo_color = Color(0.3, 0.27, 0.23, 1)
+albedo_texture = SubResource("NoiseTex_stone_albedo")
+roughness = 1.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTex_stone_normal")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="Box_stone"]
+material = SubResource("Mat_stone_wall")
+
+[sub_resource type="PlaneMesh" id="Plane_floor"]
+material = SubResource("Mat_stone_floor")
+size = Vector2(60, 60)
+
+[sub_resource type="ShaderMaterial" id="Mat_overlay"]
+shader = ExtResource("4_overlay")
+
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+
+[sub_resource type="SystemFont" id="Font_sans"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+
+[sub_resource type="SystemFont" id="Font_sans_semibold"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_weight = 600
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 5
+
+[sub_resource type="FontVariation" id="FontVar_subtitle"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 6
+
+[sub_resource type="FontVariation" id="FontVar_menu"]
+base_font = SubResource("Font_sans_semibold")
+spacing_glyph = 3
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -13,98 +111,247 @@ grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_menu")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="MenuBackdrop" type="Node3D" parent="."]
+script = ExtResource("3_backdrop")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MenuBackdrop"]
+environment = SubResource("Env_menu")
+
+[node name="SunLight" type="DirectionalLight3D" parent="MenuBackdrop"]
+transform = Transform3D(-0.6018, 0.6117, -0.5133, 0, 0.6428, 0.766, 0.7986, 0.461, -0.3868, 0, 10, 0)
+light_color = Color(1, 0.8, 0.58, 1)
+light_energy = 1.35
+shadow_enabled = true
+directional_shadow_max_distance = 40.0
+
+[node name="TorchLight" type="OmniLight3D" parent="MenuBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 2.6, -9.7)
+light_color = Color(1, 0.6, 0.3, 1)
+light_energy = 2.2
+omni_range = 5.5
+
+[node name="MenuCamera" type="Camera3D" parent="MenuBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 1.45, 3.6)
+current = true
+fov = 50.0
+
+[node name="Floor" type="MeshInstance3D" parent="MenuBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("Plane_floor")
+
+[node name="Corridor" type="Node3D" parent="MenuBackdrop"]
+
+[node name="WallL_A" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.2, 0, 0, 0, 5, -2.5, 2.1, 1.5)
+mesh = SubResource("Box_stone")
+
+[node name="WallL_B" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 3.6, -2.5, 1.5, -4)
+mesh = SubResource("Box_stone")
+
+[node name="WallL_C" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.4, 0, 0, 0, 4, -2.5, 2.2, -8.8)
+mesh = SubResource("Box_stone")
+
+[node name="WallR_A" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 7, 2.5, 2, 0.5)
+mesh = SubResource("Box_stone")
+
+[node name="WallR_B" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.6, 0, 0, 0, 7.8, 2.5, 2.3, -6.9)
+mesh = SubResource("Box_stone")
+
+[node name="BackWall_L" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(2.05, 0, 0, 0, 4.8, 0, 0, 0, 0.8, -1.975, 2.4, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="BackWall_R" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(2.05, 0, 0, 0, 4.8, 0, 0, 0, 0.8, 1.975, 2.4, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="Lintel" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(1.9, 0, 0, 0, 1.55, 0, 0, 0, 0.8, 0, 4.025, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="Pillar_L" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.45, 0, 0, 0, 4.2, 0, 0, 0, 0.45, -1.25, 2.1, -10.2)
+mesh = SubResource("Box_stone")
+
+[node name="Pillar_R" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.45, 0, 0, 0, 4.2, 0, 0, 0, 0.45, 1.25, 2.1, -10.2)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_1" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.6578, 0, 0.2052, 0, 0.45, 0, -0.2394, 0, 0.5638, -1.4, 0.22, -2)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_2" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.483, 0, -0.1294, 0, 0.35, 0, 0.1294, 0, 0.483, -1, 0.17, -1.4)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_3" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.983, 0, 0.4589, 0, 0.6, 0, -0.6883, 0, 0.6554, -1.5, 0.3, -6.3)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_4" type="MeshInstance3D" parent="MenuBackdrop/Corridor"]
+transform = Transform3D(0.2571, 0, 0.3064, 0, 0.3, 0, -0.3064, 0, 0.2571, 0.2, 0.15, -7.8)
+mesh = SubResource("Box_stone")
+
+[node name="DistantRuins" type="Node3D" parent="MenuBackdrop"]
+
+[node name="Tower_A" type="MeshInstance3D" parent="MenuBackdrop/DistantRuins"]
+transform = Transform3D(2.2, 0, 0, 0, 9, 0, 0, 0, 2.2, -4.5, 4.5, -18)
+mesh = SubResource("Box_stone")
+
+[node name="Tower_B" type="MeshInstance3D" parent="MenuBackdrop/DistantRuins"]
+transform = Transform3D(3, 0, 0, 0, 6, 0, 0, 0, 3, 5, 3, -20)
+mesh = SubResource("Box_stone")
+
+[node name="RuinWall_Far" type="MeshInstance3D" parent="MenuBackdrop/DistantRuins"]
+transform = Transform3D(8, 0, 0, 0, 3.5, 0, 0, 0, 1, -9, 1.75, -15)
+mesh = SubResource("Box_stone")
+
+[node name="Door" parent="MenuBackdrop" instance=ExtResource("5_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.35)
+
+[node name="Crate_A" parent="MenuBackdrop" instance=ExtResource("6_crate")]
+transform = Transform3D(0.9659, 0, 0.2588, 0, 1, 0, -0.2588, 0, 0.9659, 1.75, 0, 0.3)
+
+[node name="Crate_B" parent="MenuBackdrop" instance=ExtResource("6_crate")]
+transform = Transform3D(0.9848, 0, -0.1736, 0, 1, 0, 0.1736, 0, 0.9848, 1.5, 0, -7.6)
+
+[node name="Adventurer" parent="MenuBackdrop" instance=ExtResource("7_adventurer")]
+transform = Transform3D(-0.9659, 0, -0.2588, 0, 1, 0, 0.2588, 0, -0.9659, 1, 0, -5)
+
+[node name="Overlay" type="ColorRect" parent="."]
+material = SubResource("Mat_overlay")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.03, 0.05, 1)
+mouse_filter = 2
 
-[node name="ContentMargin" type="MarginContainer" parent="."]
+[node name="MenuAnchor" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchor_left = 0.12
+anchor_top = 0.56
+anchor_right = 0.12
+anchor_bottom = 0.56
+mouse_filter = 2
+
+[node name="MenuContent" type="VBoxContainer" parent="MenuAnchor"]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_top = 0.5
+anchor_bottom = 0.5
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 60
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentMargin"]
-layout_mode = 2
-
-[node name="MenuContent" type="VBoxContainer" parent="ContentMargin/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 0
 
-[node name="TitleLabel" type="Label" parent="ContentMargin/HBoxContainer/MenuContent"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
-theme_override_font_sizes/font_size = 48
-text = "MAZE ESCAPE"
-
-[node name="SubtitleLabel" type="Label" parent="ContentMargin/HBoxContainer/MenuContent"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 14
-text = "A Labyrinth Adventure"
-
-[node name="Divider" type="ColorRect" parent="ContentMargin/HBoxContainer/MenuContent"]
-layout_mode = 2
-custom_minimum_size = Vector2(180, 1)
-size_flags_horizontal = 0
-color = Color(0.76, 0.63, 0.36, 0.2)
-
-[node name="ButtonSpacer" type="Control" parent="ContentMargin/HBoxContainer/MenuContent"]
-layout_mode = 2
-custom_minimum_size = Vector2(0, 24)
-
-[node name="ButtonsContainer" type="VBoxContainer" parent="ContentMargin/HBoxContainer/MenuContent"]
+[node name="TitleBlock" type="VBoxContainer" parent="MenuAnchor/MenuContent"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="PlayButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+[node name="TitleLabel" type="Label" parent="MenuAnchor/MenuContent/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.93, 0.89, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.35)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 66
+text = "MAZE ESCAPE"
+
+[node name="SubtitleLabel" type="Label" parent="MenuAnchor/MenuContent/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.62, 0.45, 1)
+theme_override_fonts/font = SubResource("FontVar_subtitle")
+theme_override_font_sizes/font_size = 14
+text = "A LABYRINTH ADVENTURE"
+
+[node name="DividerSpacer" type="Control" parent="MenuAnchor/MenuContent/TitleBlock"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Divider" type="ColorRect" parent="MenuAnchor/MenuContent/TitleBlock"]
+custom_minimum_size = Vector2(64, 1)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(200, 44)
+mouse_filter = 2
+color = Color(0.78, 0.62, 0.36, 0.55)
+
+[node name="ButtonSpacer" type="Control" parent="MenuAnchor/MenuContent"]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="MenuAnchor/MenuContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlayButton" type="Button" parent="MenuAnchor/MenuContent/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 42)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
 text = "PLAY"
 alignment = 0
 
-[node name="SettingsButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+[node name="SettingsButton" type="Button" parent="MenuAnchor/MenuContent/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 42)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(200, 44)
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
 text = "SETTINGS"
 alignment = 0
 
-[node name="CreditsButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+[node name="CreditsButton" type="Button" parent="MenuAnchor/MenuContent/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 42)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(200, 44)
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
 text = "CREDITS"
 alignment = 0
 
-[node name="QuitButton" type="Button" parent="ContentMargin/HBoxContainer/MenuContent/ButtonsContainer"]
+[node name="QuitButton" type="Button" parent="MenuAnchor/MenuContent/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 42)
 layout_mode = 2
 size_flags_horizontal = 0
-custom_minimum_size = Vector2(200, 44)
-theme_override_colors/font_color = Color(0.50, 0.30, 0.28, 1)
-theme_override_colors/font_hover_color = Color(0.72, 0.38, 0.35, 1)
-theme_override_colors/font_pressed_color = Color(0.55, 0.25, 0.22, 1)
+theme_override_colors/font_color = Color(0.6, 0.57, 0.52, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
 text = "QUIT"
 alignment = 0
-
-[node name="RightSpacer" type="Control" parent="ContentMargin/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 3.0
 
 [node name="VersionLabel" type="Label" parent="."]
 layout_mode = 1
@@ -113,13 +360,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = -40.0
+offset_left = -232.0
+offset_top = -48.0
+offset_right = -32.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.28, 0.26, 0.23, 1)
+theme_override_colors/font_color = Color(0.62, 0.58, 0.52, 0.55)
+theme_override_fonts/font = SubResource("FontVar_subtitle")
 theme_override_font_sizes/font_size = 11
-text = "v0.1 — Prototype"
+text = "v0.1 — PROTOTYPE"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1
