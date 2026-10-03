@@ -2,18 +2,101 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/splash_screen.gd" id="1_splash"]
 [ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://Scripts/UI/splash_backdrop.gd" id="3_backdrop"]
+[ext_resource type="Shader" path="res://Scenes/UI/Shaders/splash_overlay.gdshader" id="4_overlay"]
+[ext_resource type="PackedScene" uid="uid://1oij6tc6tn1e" path="res://Assets/Test_Asset/Door by Quaternius - a948jjnuaL.glb" id="5_door"]
+[ext_resource type="PackedScene" uid="uid://crpha0kyrdpvw" path="res://Assets/Test_Asset/Crate by Quaternius - 3VGWnZPXmG.glb" id="6_crate"]
+
+[sub_resource type="ProceduralSkyMaterial" id="Sky_dusk_mat"]
+sky_top_color = Color(0.04, 0.04, 0.05, 1)
+sky_horizon_color = Color(0.12, 0.09, 0.07, 1)
+ground_bottom_color = Color(0.02, 0.02, 0.02, 1)
+ground_horizon_color = Color(0.08, 0.06, 0.05, 1)
+
+[sub_resource type="Sky" id="Sky_dusk"]
+sky_material = SubResource("Sky_dusk_mat")
+
+[sub_resource type="Environment" id="Env_splash"]
+background_mode = 2
+sky = SubResource("Sky_dusk")
+ambient_light_source = 2
+ambient_light_color = Color(0.22, 0.18, 0.15, 1)
+ambient_light_energy = 0.25
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.16, 0.13, 0.1, 1)
+fog_density = 0.045
+fog_sky_affect = 0.4
+adjustment_enabled = true
+adjustment_contrast = 1.06
+adjustment_saturation = 0.75
+
+[sub_resource type="FastNoiseLite" id="Noise_stone"]
+frequency = 0.03
+
+[sub_resource type="Gradient" id="Gradient_stone"]
+colors = PackedColorArray(0.55, 0.52, 0.48, 1, 1, 0.98, 0.94, 1)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTex_stone_albedo"]
+seamless = true
+color_ramp = SubResource("Gradient_stone")
+noise = SubResource("Noise_stone")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTex_stone_normal"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.0
+noise = SubResource("Noise_stone")
+
+[sub_resource type="StandardMaterial3D" id="Mat_stone_wall"]
+albedo_color = Color(0.38, 0.34, 0.29, 1)
+albedo_texture = SubResource("NoiseTex_stone_albedo")
+roughness = 0.95
+normal_enabled = true
+normal_texture = SubResource("NoiseTex_stone_normal")
+uv1_scale = Vector3(0.25, 0.25, 0.25)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="Mat_stone_floor"]
+albedo_color = Color(0.26, 0.23, 0.2, 1)
+albedo_texture = SubResource("NoiseTex_stone_albedo")
+roughness = 1.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTex_stone_normal")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="Box_stone"]
+material = SubResource("Mat_stone_wall")
+
+[sub_resource type="PlaneMesh" id="Plane_floor"]
+material = SubResource("Mat_stone_floor")
+size = Vector2(60, 60)
+
+[sub_resource type="ShaderMaterial" id="Mat_overlay"]
+shader = ExtResource("4_overlay")
 
 [sub_resource type="SystemFont" id="Font_serif"]
-font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Leelawadee UI", "Times New Roman", "Serif")
 
 [sub_resource type="SystemFont" id="Font_sans"]
-font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Leelawadee UI", "Sans-Serif")
 
-[sub_resource type="FontVariation" id="FontVar_title"]
+[sub_resource type="FontVariation" id="FontVar_title_dungeon"]
 base_font = SubResource("Font_serif")
-spacing_glyph = 5
+spacing_glyph = 9
+
+[sub_resource type="FontVariation" id="FontVar_title_maze"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 7
 
 [sub_resource type="FontVariation" id="FontVar_subtitle"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 6
+
+[sub_resource type="FontVariation" id="FontVar_prompt"]
 base_font = SubResource("Font_sans")
 spacing_glyph = 4
 
@@ -27,60 +110,210 @@ grow_vertical = 2
 theme = ExtResource("2_theme")
 script = ExtResource("1_splash")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="SplashBackdrop" type="Node3D" parent="."]
+script = ExtResource("3_backdrop")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SplashBackdrop"]
+environment = SubResource("Env_splash")
+
+[node name="SunLight" type="DirectionalLight3D" parent="SplashBackdrop"]
+transform = Transform3D(-0.7071, 0.5, -0.5, 0, 0.7071, 0.7071, 0.7071, 0.5, -0.5, 0, 10, 0)
+light_color = Color(0.7, 0.55, 0.42, 1)
+light_energy = 0.35
+shadow_enabled = true
+
+[node name="TorchLight" type="OmniLight3D" parent="SplashBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 2.3, -9.4)
+light_color = Color(1, 0.62, 0.3, 1)
+light_energy = 1.6
+shadow_enabled = true
+omni_range = 6.5
+
+[node name="SplashCamera" type="Camera3D" parent="SplashBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 3.8)
+current = true
+fov = 48.0
+
+[node name="Floor" type="MeshInstance3D" parent="SplashBackdrop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+mesh = SubResource("Plane_floor")
+
+[node name="Corridor" type="Node3D" parent="SplashBackdrop"]
+
+[node name="WallL_A" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.2, 0, 0, 0, 5, -2.4, 2.1, 1.5)
+mesh = SubResource("Box_stone")
+
+[node name="WallL_B" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.2, 0, 0, 0, 5, -2.4, 2.1, -4)
+mesh = SubResource("Box_stone")
+
+[node name="WallL_C" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.4, 0, 0, 0, 5, -2.4, 2.2, -9)
+mesh = SubResource("Box_stone")
+
+[node name="WallR_A" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.2, 0, 0, 0, 5, 2.4, 2.1, 1.5)
+mesh = SubResource("Box_stone")
+
+[node name="WallR_B" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.2, 0, 0, 0, 5, 2.4, 2.1, -4)
+mesh = SubResource("Box_stone")
+
+[node name="WallR_C" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1, 0, 0, 0, 4.4, 0, 0, 0, 5, 2.4, 2.2, -9)
+mesh = SubResource("Box_stone")
+
+[node name="BackWall_L" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1.8, 0, 0, 0, 4.8, 0, 0, 0, 0.8, -1.8, 2.4, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="BackWall_R" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(1.8, 0, 0, 0, 4.8, 0, 0, 0, 0.8, 1.8, 2.4, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="Lintel" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(2, 0, 0, 0, 1.55, 0, 0, 0, 0.8, 0, 4.025, -10.8)
+mesh = SubResource("Box_stone")
+
+[node name="Pillar_L" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(0.45, 0, 0, 0, 4.2, 0, 0, 0, 0.45, -1.15, 2.1, -10.2)
+mesh = SubResource("Box_stone")
+
+[node name="Pillar_R" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(0.45, 0, 0, 0, 4.2, 0, 0, 0, 0.45, 1.15, 2.1, -10.2)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_1" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(0.6, 0, 0.2, 0, 0.4, 0, -0.2, 0, 0.5, -1.5, 0.2, -3)
+mesh = SubResource("Box_stone")
+
+[node name="Rubble_2" type="MeshInstance3D" parent="SplashBackdrop/Corridor"]
+transform = Transform3D(0.5, 0, -0.15, 0, 0.35, 0, 0.15, 0, 0.5, 1.5, 0.18, -2.5)
+mesh = SubResource("Box_stone")
+
+[node name="Door" parent="SplashBackdrop" instance=ExtResource("5_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.35)
+
+[node name="Crate_A" parent="SplashBackdrop" instance=ExtResource("6_crate")]
+transform = Transform3D(0.9659, 0, 0.2588, 0, 1, 0, -0.2588, 0, 0.9659, 1.55, 0, -8.2)
+
+[node name="Crate_B" parent="SplashBackdrop" instance=ExtResource("6_crate")]
+transform = Transform3D(0.9848, 0, -0.1736, 0, 1, 0, 0.1736, 0, 0.9848, -1.55, 0, -7.5)
+
+[node name="CinematicOverlay" type="ColorRect" parent="."]
+material = SubResource("Mat_overlay")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.03, 0.05, 1)
+mouse_filter = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="UIMargin" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="UIMargin"]
 layout_mode = 2
-theme_override_constants/separation = 10
+mouse_filter = 2
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="ContentBox" type="VBoxContainer" parent="UIMargin/CenterContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
-theme_override_constants/shadow_offset_x = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TitleBox" type="VBoxContainer" parent="UIMargin/CenterContainer/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="TitleDungeon" type="Label" parent="UIMargin/CenterContainer/ContentBox/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94, 0.91, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
 theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = SubResource("FontVar_title")
-theme_override_font_sizes/font_size = 48
-text = "DUNGEON MYSTERY MAZE"
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVar_title_dungeon")
+theme_override_font_sizes/font_size = 56
+text = "DUNGEON"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TitleMaze" type="Label" parent="UIMargin/CenterContainer/ContentBox/TitleBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.74, 0.62, 0.45, 1)
+theme_override_colors/font_color = Color(0.94, 0.91, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVar_title_maze")
+theme_override_font_sizes/font_size = 42
+text = "MYSTERY MAZE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpacerSubtitle" type="Control" parent="UIMargin/CenterContainer/ContentBox"]
+layout_mode = 2
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 18)
+
+[node name="SubtitleLabel" type="Label" parent="UIMargin/CenterContainer/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.78, 0.63, 0.38, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.55)
+theme_override_constants/shadow_offset_y = 1
 theme_override_fonts/font = SubResource("FontVar_subtitle")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 14
 text = "A JOURNEY INTO THE UNKNOWN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
+[node name="SpacerDivider" type="Control" parent="UIMargin/CenterContainer/ContentBox"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 48)
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 20)
 
-[node name="PromptLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Divider" type="ColorRect" parent="UIMargin/CenterContainer/ContentBox"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 1)
-theme_override_fonts/font = SubResource("FontVar_subtitle")
-theme_override_font_sizes/font_size = 12
+size_flags_horizontal = 4
+mouse_filter = 2
+custom_minimum_size = Vector2(92, 2)
+color = Color(0.78, 0.62, 0.36, 0.6)
+
+[node name="SpacerPrompt" type="Control" parent="UIMargin/CenterContainer/ContentBox"]
+layout_mode = 2
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 24)
+
+[node name="PromptLabel" type="Label" parent="UIMargin/CenterContainer/ContentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.81, 0.73, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.65)
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = SubResource("FontVar_prompt")
+theme_override_font_sizes/font_size = 15
 text = "PRESS ANY KEY TO ENTER"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BottomBalancer" type="Control" parent="UIMargin/CenterContainer/ContentBox"]
+layout_mode = 2
+mouse_filter = 2
+custom_minimum_size = Vector2(0, 68)
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1
