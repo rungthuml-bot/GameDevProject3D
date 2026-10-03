@@ -3,6 +3,20 @@
 [ext_resource type="Script" path="res://Scripts/UI/settings_menu.gd" id="1_settings"]
 [ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
 
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+
+[sub_resource type="SystemFont" id="Font_sans"]
+font_names = PackedStringArray("Segoe UI", "Leelawadee UI", "Tahoma", "Helvetica Neue", "Arial", "Sans-Serif")
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVar_sub"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 2
+
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,14 +46,28 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 16
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="TitleBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/TitleBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
 theme_override_font_sizes/font_size = 36
 text = "SETTINGS"
 horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="CenterContainer/VBoxContainer/TitleBox"]
+custom_minimum_size = Vector2(80, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.35)
 
 [node name="SettingsPanel" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
@@ -62,8 +90,9 @@ theme_override_constants/separation = 8
 
 [node name="GameplayLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/GameplaySection"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.9)
+theme_override_fonts/font = SubResource("FontVar_sub")
+theme_override_font_sizes/font_size = 12
 text = "GAMEPLAY"
 
 [node name="SensitivityLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/GameplaySection"]
@@ -86,8 +115,9 @@ theme_override_constants/separation = 8
 
 [node name="AudioLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/AudioSection"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.9)
+theme_override_fonts/font = SubResource("FontVar_sub")
+theme_override_font_sizes/font_size = 12
 text = "AUDIO"
 
 [node name="MasterVolumeLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/AudioSection"]
@@ -110,8 +140,9 @@ theme_override_constants/separation = 8
 
 [node name="DisplayLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/DisplaySection"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.9)
+theme_override_fonts/font = SubResource("FontVar_sub")
+theme_override_font_sizes/font_size = 12
 text = "DISPLAY"
 
 [node name="FullscreenCheck" type="CheckButton" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/DisplaySection"]
@@ -124,8 +155,9 @@ theme_override_constants/separation = 8
 
 [node name="ControlsLabel" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/ControlsSection"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.9)
+theme_override_fonts/font = SubResource("FontVar_sub")
+theme_override_font_sizes/font_size = 12
 text = "CONTROLS"
 
 [node name="ControlsList" type="Label" parent="CenterContainer/VBoxContainer/SettingsPanel/MarginContainer/VBoxContainer/ControlsSection"]
@@ -145,12 +177,12 @@ theme_override_constants/separation = 20
 [node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 custom_minimum_size = Vector2(140, 40)
-text = "Back"
+text = "BACK"
 
 [node name="ApplyButton" type="Button" parent="CenterContainer/VBoxContainer/ButtonsContainer"]
 layout_mode = 2
 custom_minimum_size = Vector2(140, 40)
-text = "Apply"
+text = "APPLY"
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1

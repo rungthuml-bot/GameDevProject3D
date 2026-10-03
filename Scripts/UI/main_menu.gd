@@ -109,17 +109,14 @@ func _play_intro() -> void:
 	fade_rect.modulate.a = 1.0
 	title_block.modulate.a = 0.0
 	buttons_container.modulate.a = 0.0
-	menu_content.position.x = -16.0
 
 	var tween := create_tween().set_parallel(true)
 	# 1) Reveal the 3D world
 	tween.tween_property(fade_rect, "modulate:a", 0.0, 1.6) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	# 2) Title fades / slides in
+	# 2) Title fades in
 	tween.tween_property(title_block, "modulate:a", 1.0, 0.9) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).set_delay(0.9)
-	tween.tween_property(menu_content, "position:x", 0.0, 1.2) \
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC).set_delay(0.9)
 	# 3) Menu items fade in
 	tween.tween_property(buttons_container, "modulate:a", 1.0, 0.7) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE).set_delay(1.4)

@@ -2,10 +2,10 @@ extends CanvasLayer
 
 signal message_closed
 
-@onready var panel: PanelContainer = $Panel
-@onready var title_label: Label = $Panel/Margin/VBox/Title
-@onready var description_label: Label = $Panel/Margin/VBox/Description
-@onready var hint_label: Label = $Panel/Margin/VBox/HintContainer/Hint
+@onready var panel: PanelContainer = %Panel if has_node("%Panel") else $Panel
+@onready var title_label: Label = %Title if has_node("%Title") else $Panel/Margin/VBox/Title
+@onready var description_label: Label = %Description if has_node("%Description") else $Panel/Margin/VBox/Description
+@onready var hint_label: Label = %Hint if has_node("%Hint") else $Panel/Margin/VBox/HintContainer/Hint
 
 @export var display_time: float = 4.0
 

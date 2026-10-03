@@ -20,44 +20,54 @@ shadow_size = 6
 [node name="InteractionUI" type="CanvasLayer" groups=["interaction_ui"]]
 script = ExtResource("1_interact")
 
-[node name="Panel" type="PanelContainer" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -260.0
-offset_top = -154.0
-offset_right = 260.0
-offset_bottom = -28.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 36
+
+[node name="CenterBox" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="MarginContainer/CenterBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
 theme = ExtResource("2_theme")
 theme_override_styles/panel = SubResource("StyleBoxFlat_interact")
 
-[node name="Margin" type="MarginContainer" parent="Panel"]
+[node name="Margin" type="MarginContainer" parent="MarginContainer/CenterBox/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 16
 
-[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/CenterBox/Panel/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 6
 
-[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+[node name="Title" type="Label" parent="MarginContainer/CenterBox/Panel/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
 theme_override_font_sizes/font_size = 18
 text = "Ancient Relic"
 
-[node name="Divider" type="ColorRect" parent="Panel/Margin/VBox"]
+[node name="Divider" type="ColorRect" parent="MarginContainer/CenterBox/Panel/Margin/VBox"]
 layout_mode = 2
 custom_minimum_size = Vector2(0, 1)
 color = Color(0.76, 0.63, 0.36, 0.25)
 
-[node name="Description" type="Label" parent="Panel/Margin/VBox"]
+[node name="Description" type="Label" parent="MarginContainer/CenterBox/Panel/Margin/VBox"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
@@ -65,11 +75,12 @@ theme_override_font_sizes/font_size = 14
 text = "An ancient inscription carved into the weathered stone."
 autowrap_mode = 2
 
-[node name="HintContainer" type="HBoxContainer" parent="Panel/Margin/VBox"]
+[node name="HintContainer" type="HBoxContainer" parent="MarginContainer/CenterBox/Panel/Margin/VBox"]
 layout_mode = 2
 alignment = 2
 
-[node name="Hint" type="Label" parent="Panel/Margin/VBox/HintContainer"]
+[node name="Hint" type="Label" parent="MarginContainer/CenterBox/Panel/Margin/VBox/HintContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
 theme_override_font_sizes/font_size = 12

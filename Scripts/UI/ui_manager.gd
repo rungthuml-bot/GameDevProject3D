@@ -19,7 +19,7 @@ signal settings_updated
 
 var master_volume: float = 80.0
 var mouse_sensitivity: float = 0.002
-var is_fullscreen: bool = false
+var is_fullscreen: bool = true
 
 # =========================================================
 # GAME STATE
@@ -36,6 +36,32 @@ var levels: Array[String] = [
 	"res://Scenes/Level/level_1.tscn",
 	"res://Scenes/Level/level_2.tscn",
 ]
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	# Ensure game starts in fullscreen mode
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	is_fullscreen = true
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_F11 or (event.keycode == KEY_ENTER and event.alt_pressed):
+			toggle_fullscreen()
+			get_viewport().set_input_as_handled()
+
+
+func toggle_fullscreen() -> void:
+	var mode := DisplayServer.window_get_mode()
+	if mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+		is_fullscreen = false
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		is_fullscreen = true
+	settings_updated.emit()
+
 
 # =========================================================
 # STATE MANAGEMENT
