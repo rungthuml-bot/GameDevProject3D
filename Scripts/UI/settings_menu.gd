@@ -32,6 +32,12 @@ func _ready() -> void:
 	back_btn.grab_focus()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		_on_back()
+		get_viewport().set_input_as_handled()
+
+
 func _on_apply() -> void:
 	UIManager.update_settings(
 		master_volume_slider.value,

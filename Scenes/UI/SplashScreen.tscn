@@ -3,6 +3,20 @@
 [ext_resource type="Script" path="res://Scripts/UI/splash_screen.gd" id="1_splash"]
 [ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
 
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+
+[sub_resource type="SystemFont" id="Font_sans"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 5
+
+[sub_resource type="FontVariation" id="FontVar_subtitle"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 4
+
 [node name="SplashScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -32,33 +46,39 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 10
 
 [node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.87, 0.82, 0.73, 1)
-theme_override_font_sizes/font_size = 52
-text = "MAZE ESCAPE"
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 48
+text = "DUNGEON MYSTERY MAZE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SubtitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.50, 0.46, 0.40, 1)
-theme_override_font_sizes/font_size = 16
-text = "Find your way out"
+theme_override_colors/font_color = Color(0.74, 0.62, 0.45, 1)
+theme_override_fonts/font = SubResource("FontVar_subtitle")
+theme_override_font_sizes/font_size = 13
+text = "A JOURNEY INTO THE UNKNOWN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Spacer" type="Control" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 48)
 
 [node name="PromptLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.45, 0.42, 0.38, 1)
-theme_override_font_sizes/font_size = 13
-text = "PRESS ANY KEY"
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 1)
+theme_override_fonts/font = SubResource("FontVar_subtitle")
+theme_override_font_sizes/font_size = 12
+text = "PRESS ANY KEY TO ENTER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
