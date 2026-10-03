@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dnh8h74qsx0p"]
+
+[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_x3iwh"]
+[ext_resource type="PackedScene" uid="uid://dcd3lup60xgad" path="res://Scenes/Cave/Cave1.tscn" id="2_2lela"]
+[ext_resource type="PackedScene" uid="uid://bm4xg7iw40lll" path="res://Scenes/Cave/Treasure_chest.tscn" id="3_ad025"]
+[ext_resource type="PackedScene" uid="uid://bppxmraelldx2" path="res://Scenes/Cave/Stone3.tscn" id="4_77kyg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
+
+[sub_resource type="Sky" id="Sky_8ffim"]
+sky_material = SubResource("ProceduralSkyMaterial_xfk5q")
+
+[sub_resource type="Environment" id="Environment_vk57k"]
+background_mode = 2
+sky = SubResource("Sky_8ffim")
+ambient_light_source = 3
+ambient_light_energy = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p6j4"]
+albedo_color = Color(0.22327536, 0.08222782, 0.015651928, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qqy1o"]
+material = SubResource("StandardMaterial3D_7p6j4")
+size = Vector3(1, 1, 1.2602539)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vk57k"]
+size = Vector3(30, 0.5, 100)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2vdu"]
+margin = 0.0
+size = Vector3(2.5, 2, 2.5)
+
+[node name="Level_4" type="Node3D" unique_id=1418685217]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1165985249]
+environment = SubResource("Environment_vk57k")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1201968839]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=106129981]
+transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 89.329926, 0, 0, 6.4579062)
+mesh = SubResource("BoxMesh_qqy1o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1289807496]
+shape = SubResource("BoxShape3D_vk57k")
+
+[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_x3iwh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572622, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Player" unique_id=1320394680]
+transform = Transform3D(0.89805096, 0.43942273, -0.02030307, -0.162886, 0.37505582, 0.9125795, 0.40862298, -0.81623566, 0.40839508, 0.003971666, 2.2994077, 0.0065951347)
+omni_range = 13.714
+omni_attenuation = 0.259
+
+[node name="Sketchfab_Scene" parent="." unique_id=1269555247 instance=ExtResource("2_2lela")]
+transform = Transform3D(-0.72335094, 0, -0.014873245, 0, 0.42955408, 0, 0.005212421, 0, -2.0640266, -0.78248525, -0.7040858, -8.999397)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=1254901576 instance=ExtResource("3_ad025")]
+transform = Transform3D(2.5628798, 0, 0, 0, 2.0205624, 0, 0, 0, 2.9157295, -0.71031266, 0.25561363, -21.911661)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1935211612]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1865727061]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.71668, 0.9370663, -21.939613)
+shape = SubResource("BoxShape3D_j2vdu")
+
+[node name="Stone" type="Node3D" parent="." unique_id=1731416609]
+transform = Transform3D(-0.46024433, 0, 1.5722094, 0, 1.2698464, 0, -1.7881428, 0, -0.40466586, 7.466195, 0.32146144, -9.540157)
+
+[node name="Sketchfab_Scene3" parent="Stone" unique_id=333252046 instance=ExtResource("4_77kyg")]
+transform = Transform3D(-0.9999951, 0, -0.0027413964, 0, 1, 0, 0.003546089, 0, -0.9999951, -1.1076837, 0.18613428, -9.926666)
+
+[node name="Sketchfab_Scene4" parent="Stone" unique_id=398159320 instance=ExtResource("4_77kyg")]
+transform = Transform3D(0.99999994, 0, -1.4901161e-08, 0, 0.99999994, 0, 2.9802322e-08, 0, 0.99999994, 0, 0, 0)

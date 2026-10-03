@@ -5,15 +5,16 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ijsis"]
 margin = 0.0
-height = 3.667
+height = 1.947022
 
 [node name="Sketchfab_Scene" unique_id=1321213094 instance=ExtResource("1_exylh")]
 script = ExtResource("2_eqibq")
 
-[node name="Object_4" parent="Sketchfab_model/a91ed12f7cfe41a1b437fc9fd788a3fa_fbx/RootNode/Object001" parent_id_path=PackedInt32Array(699911146) index="0" unique_id=2061066282]
+[node name="Object_4" parent="Sketchfab_model/a91ed12f7cfe41a1b437fc9fd788a3fa_fbx/RootNode/Object001" parent_id_path=PackedInt32Array(1984335961) index="0" unique_id=2146728058]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9344885, 1.6323619, 0.022708774)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1292670845]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1013375066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0479764, 0)
 shape = SubResource("CylinderShape3D_ijsis")

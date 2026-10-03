@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bep0kcjic8xi0"]
 
 [ext_resource type="PackedScene" uid="uid://tk4yl5fukfnj" path="res://Assets/Trap/Bear_trap.glb" id="1_gqnwl"]
-[ext_resource type="Script" uid="uid://da2peo1xb6uy0" path="res://Scripts/bear_trap.gd" id="2_1806f"]
+[ext_resource type="Script" uid="uid://da2peo1xb6uy0" path="res://Scripts/Bear_trap.gd" id="2_1806f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j2vdu"]
 size = Vector3(0.1665039, 1, 1)
