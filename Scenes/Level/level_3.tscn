@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://sdjayo8e2mss"]
+
+[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_knxya"]
+[ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_gd4xb"]
+[ext_resource type="Script" uid="uid://dmmlwa10auukk" path="res://Scripts/interaction_ui.gd" id="3_eh5w8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
+
+[sub_resource type="Sky" id="Sky_8ffim"]
+sky_material = SubResource("ProceduralSkyMaterial_xfk5q")
+
+[sub_resource type="Environment" id="Environment_vk57k"]
+background_mode = 2
+sky = SubResource("Sky_8ffim")
+ambient_light_source = 3
+ambient_light_energy = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p6j4"]
+albedo_color = Color(0.558636, 0.51149344, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qqy1o"]
+material = SubResource("StandardMaterial3D_7p6j4")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vk57k"]
+size = Vector3(30, 0.5, 30)
+
+[node name="Level_3" type="Node3D" unique_id=1418685217]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1165985249]
+environment = SubResource("Environment_vk57k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=271042767]
+transform = Transform3D(0.8660254, 0.43301272, -0.24999999, 0, 0.49999997, 0.86602545, 0.5, -0.75, 0.43301266, 0, 8.84073, 0)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1201968839]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=106129981]
+transform = Transform3D(30, 0, 0, 0, 0.5, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_qqy1o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1289807496]
+shape = SubResource("BoxShape3D_vk57k")
+
+[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_knxya")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572622, 0)
+
+[node name="Crate" parent="." unique_id=1874232016 instance=ExtResource("2_gd4xb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.24705666, 3)
+
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=2002159298 groups=["interaction_ui"]]
+script = ExtResource("3_eh5w8")
+
+[node name="Panel" type="PanelContainer" parent="InteractionUI" unique_id=1006308847]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -198.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="InteractionUI/Panel" unique_id=1473892099]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="InteractionUI/Panel/Margin" unique_id=1806009821]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="InteractionUI/Panel/Margin/VBox" unique_id=388336732]
+layout_mode = 2
+
+[node name="Description" type="Label" parent="InteractionUI/Panel/Margin/VBox" unique_id=2088274465]
+layout_mode = 2
+
+[node name="HintContainer" type="HBoxContainer" parent="InteractionUI/Panel/Margin/VBox" unique_id=650306505]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="Hint" type="Label" parent="InteractionUI/Panel/Margin/VBox/HintContainer" unique_id=1865295724]
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="Spawn_From_Level3" type="Marker3D" parent="." unique_id=208036464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.8457613, 0, 1.7473431)

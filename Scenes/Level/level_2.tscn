@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_a0xoy"]
 [ext_resource type="Script" uid="uid://dmmlwa10auukk" path="res://Scripts/interaction_ui.gd" id="3_lxn2w"]
 [ext_resource type="PackedScene" uid="uid://b2g2t6k0fq068" path="res://Scenes/door_test.tscn" id="4_a0xoy"]
+[ext_resource type="PackedScene" uid="uid://bwgfg5n2dandm" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
+[ext_resource type="Script" uid="uid://t8fna37ydn65" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
+[ext_resource type="PackedScene" uid="uid://bojes14gy1arn" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
+[ext_resource type="Script" uid="uid://dhqaglmubhb06" path="res://Scripts/puzzle_ui.gd" id="8_n0bsh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
 
@@ -91,3 +95,46 @@ target_spawn_id = "Spawn_From_Level1"
 
 [node name="Spawn_From_Level2" type="Marker3D" parent="." unique_id=497397167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5079222)
+
+[node name="PuzzleManager" type="Node3D" parent="." unique_id=1898739333 groups=["puzzle_manager"]]
+script = ExtResource("5_nraam")
+
+[node name="red_button" parent="." unique_id=384808600 groups=["interactable"] instance=ExtResource("5_lxn2w")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 14.135929, 0.6085796, -14.064656)
+
+[node name="blue_button" parent="." unique_id=1400264052 groups=["interactable"] instance=ExtResource("6_ppjc3")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.632113, 0.26748854, -14.064656)
+
+[node name="Door_To_Level3" parent="." unique_id=1745359917 instance=ExtResource("4_a0xoy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23779297, -13.202479)
+target_scene = "uid://sdjayo8e2mss"
+target_spawn_id = "Spawn_From_Level3"
+require_puzzle = true
+
+[node name="PuzzleUI" type="CanvasLayer" parent="." unique_id=260289974 groups=["puzzle_ui"]]
+script = ExtResource("8_n0bsh")
+
+[node name="Panel" type="PanelContainer" parent="PuzzleUI" unique_id=825268546]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -198.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBox" type="VBoxContainer" parent="PuzzleUI/Panel" unique_id=655698380]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1045975336]
+layout_mode = 2
+
+[node name="RedStatus" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=973994232]
+layout_mode = 2
+
+[node name="BlueStatus" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1192130313]
+layout_mode = 2
+
+[node name="Timer" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1884794093]
+layout_mode = 2
