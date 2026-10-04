@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c58lnnkt7haut"]
+
+[ext_resource type="Script" uid="uid://y2klsc5an13a" path="res://Scripts/playertest.gd" id="1_38e0k"]
+[ext_resource type="PackedScene" uid="uid://da7yt4canc7a" path="res://Assets/Main_Character/Adventurer by Quaternius - 5EGWBMpuXq.glb" id="2_5pr24"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3o3ib"]
+radius = 0.195
+height = 1.771
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=2077284241]
+script = ExtResource("1_38e0k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1841475238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_3o3ib")
+
+[node name="Root Scene" parent="." unique_id=1599872243 instance=ExtResource("2_5pr24")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1471898613]
+transform = Transform3D(-1, 0, -8.742278e-08, -2.262668e-08, 0.9659259, 0.25881907, 8.444392e-08, 0.25881907, -0.9659258, 0, 2, -2)
