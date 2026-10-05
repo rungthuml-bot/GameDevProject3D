@@ -273,9 +273,9 @@ shape = SubResource("BoxShape3D_bvs58")
 [node name="Door_To_Level3" type="Area3D" parent="." unique_id=1534380448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -58.02498)
 script = ExtResource("9_4eusg")
-target_scene = "uid://sdjayo8e2mss"
-target_spawn_id = "Spawn_From_Level1"
-require_puzzle = true
+target_scene = "res://Scenes/Level/level_3.tscn"
+target_spawn_id = "Spawn_From_Level2"
+require_puzzle = false
 
 [node name="Door" type="MeshInstance3D" parent="Door_To_Level3" unique_id=58508325]
 transform = Transform3D(2.155, 0, 0, 0, 1.825, 0, 0, 0, 1, 0.049514532, 3.1272635, 4.9609833)

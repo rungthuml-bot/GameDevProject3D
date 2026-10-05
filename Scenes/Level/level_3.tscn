@@ -1,4 +1,4 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://sdjayo8e2mss"]
 
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/floor_stone.tscn" id="1_n8qwc"]
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/floor_straw.tscn" id="2_7oeqx"]
@@ -16,6 +16,24 @@
 [ext_resource type="Script" path="res://addons/psx_dungeon_kit/machine.gd" id="14_a08nm"]
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/banner_red.tscn" id="15_f552b"]
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/torch_wall.tscn" id="16_7xg22"]
+[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="17_player"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/InteractionUI.tscn" id="18_interact"]
+[ext_resource type="PackedScene" uid="uid://dpsk2s3fuh21r" path="res://Scenes/UI/HUD.tscn" id="19_hud"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="20_door"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door4"]
+size = Vector3(2.5, 3.5, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_portal"]
+transparency = 1
+albedo_color = Color(0.2, 0.7, 1, 0.5)
+emission_enabled = true
+emission = Color(0.25, 0.75, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_portal"]
+material = SubResource("StandardMaterial3D_portal")
+size = Vector3(1.2, 2.3, 0.15)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_66jpl"]
 size = Vector3(40, 1, 40)
@@ -2602,8 +2620,54 @@ light_energy = 2.0
 shadow_enabled = true
 omni_range = 7.5
 
+[node name="Spawn_From_Level2" type="Marker3D" parent="." unique_id=497397167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 17.5)
+
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=349787626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 17.5)
+
+[node name="Player" parent="." unique_id=263796391 instance=ExtResource("17_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 17.5)
+
+[node name="InteractionUI" parent="." unique_id=724437815 instance=ExtResource("18_interact")]
+
+[node name="HUD" parent="." unique_id=1038714079 instance=ExtResource("19_hud")]
+
+[node name="Door_To_Level4" type="Area3D" parent="." unique_id=1982736450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -18.2)
+script = ExtResource("20_door")
+target_scene = "res://Scenes/Level/level_4.tscn"
+target_spawn_id = "Spawn_From_Level3"
+interaction_text = "Enter Level 4"
+interaction_title = "Sanctum Gateway"
+description = "Venture deeper into the royal dungeon."
+require_puzzle = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door_To_Level4" unique_id=1982736451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_door4")
+
+[node name="InteractionLabel" type="Label3D" parent="Door_To_Level4" unique_id=1982736452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0.5)
+
+[node name="PortalMesh" type="MeshInstance3D" parent="Door_To_Level4" unique_id=1982736453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.6)
+mesh = SubResource("BoxMesh_portal")
+
+[node name="PortalLight" type="OmniLight3D" parent="Door_To_Level4" unique_id=1982736454]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.3, 0.75, 1, 1)
+light_energy = 2.5
+shadow_enabled = true
+omni_range = 6.0
+
+[node name="PortalTitle" type="Label3D" parent="Door_To_Level4" unique_id=1982736455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7, 0.2)
+text = "[ GATEWAY TO LEVEL 4 ]"
+font_size = 28
+modulate = Color(0.35, 0.85, 1, 1)
+outline_modulate = Color(0, 0, 0, 1)
+outline_size = 6
 
 [node name="Exit" type="Marker3D" parent="." unique_id=1717274794]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.2, -17.5)

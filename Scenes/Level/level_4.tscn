@@ -16,6 +16,10 @@
 [ext_resource type="Script" path="res://addons/psx_dungeon_kit/machine.gd" id="14_drh5r"]
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/banner_red.tscn" id="15_bx3jw"]
 [ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/torch_wall.tscn" id="16_d41ks"]
+[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="17_player"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/InteractionUI.tscn" id="18_interact"]
+[ext_resource type="PackedScene" uid="uid://dpsk2s3fuh21r" path="res://Scenes/UI/HUD.tscn" id="19_hud"]
+[ext_resource type="PackedScene" uid="uid://final_door_scene_v1" path="res://Scenes/FinalDoor.tscn" id="20_finaldoor"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_roxc6"]
 size = Vector3(40, 1, 40)
@@ -2666,8 +2670,21 @@ light_energy = 2.0
 shadow_enabled = true
 omni_range = 7.5
 
+[node name="Spawn_From_Level3" type="Marker3D" parent="." unique_id=73829104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 17)
+
 [node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1318801491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 17)
+
+[node name="Player" parent="." unique_id=263796391 instance=ExtResource("17_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 17)
+
+[node name="InteractionUI" parent="." unique_id=724437815 instance=ExtResource("18_interact")]
+
+[node name="HUD" parent="." unique_id=1038714079 instance=ExtResource("19_hud")]
+
+[node name="FinalDoor" parent="." unique_id=111222333 instance=ExtResource("20_finaldoor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.2)
 
 [node name="Exit" type="Marker3D" parent="." unique_id=525939404]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -17.5)
