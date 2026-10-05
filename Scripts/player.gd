@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-## Player Controller with Movement, Sprint (Shift), Crouch (Ctrl), and Jump (Spacebar).
+## Player Controller with Movement, Sprint (Shift), Crouch (Ctrl), Jump (Spacebar), and Perspective Toggle (V).
 
 # =========================================================
 # MOVEMENT SETTINGS
@@ -47,16 +47,26 @@ const STANDING_MESH_SCALE_Y: float = 1.0
 const CROUCH_MESH_SCALE_Y: float = 0.65
 
 # =========================================================
-# CAMERA SETTINGS
+# CAMERA & PERSPECTIVE SETTINGS
 # =========================================================
 
 @export_category("Camera")
 @export var mouse_sensitivity: float = 0.002
-@export var camera_min_angle: float = -45.0
-@export var camera_max_angle: float = 55.0
 @export var normal_fov: float = 65.0
 @export var sprint_fov: float = 73.0
 @export var crouch_fov: float = 60.0
+
+@export_category("Perspective Mode")
+@export var is_first_person: bool = false
+@export var perspective_transition_speed: float = 16.0
+
+const THIRD_PERSON_CAM_POS: Vector3 = Vector3(0.0, 1.0, 4.5)
+const FIRST_PERSON_CAM_POS: Vector3 = Vector3(0.0, 0.15, -0.15)
+
+const THIRD_PERSON_MIN_PITCH: float = -45.0
+const THIRD_PERSON_MAX_PITCH: float = 55.0
+const FIRST_PERSON_MIN_PITCH: float = -85.0
+const FIRST_PERSON_MAX_PITCH: float = 85.0
 
 # =========================================================
 # NODE REFERENCES
@@ -89,6 +99,14 @@ func _ready() -> void:
 	camera.current = true
 	camera.fov = normal_fov
 	play_animation("CharacterArmature|Idle")
+
+	# Initialize perspective mode
+	if is_first_person:
+		camera.position = FIRST_PERSON_CAM_POS
+		character_mesh.visible = false
+	else:
+		camera.position = THIRD_PERSON_CAM_POS
+		character_mesh.visible = true
 
 	if collision_shape and collision_shape.shape is CapsuleShape3D:
 		duplicate_capsule_shape = collision_shape.shape.duplicate()
@@ -126,23 +144,53 @@ func set_spawn_position() -> void:
 
 
 # =========================================================
+# PERSPECTIVE TOGGLE (1st / 3rd Person)
+# =========================================================
+
+func toggle_perspective() -> void:
+	is_first_person = not is_first_person
+	if is_first_person:
+		character_mesh.visible = false
+		if UIManager:
+			UIManager.notify_info("First-Person View (V)", 1.5)
+	else:
+		character_mesh.visible = true
+		if UIManager:
+			UIManager.notify_info("Third-Person View (V)", 1.5)
+
+
+# =========================================================
 # INPUT
 # =========================================================
 
 func _unhandled_input(event: InputEvent) -> void:
 
 	# =====================================================
-	# MOUSE CAMERA
+	# MOUSE CAMERA LOOK
 	# =====================================================
 
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
+
+		var min_pitch := FIRST_PERSON_MIN_PITCH if is_first_person else THIRD_PERSON_MIN_PITCH
+		var max_pitch := FIRST_PERSON_MAX_PITCH if is_first_person else THIRD_PERSON_MAX_PITCH
+
 		gimbal.rotation.x = clamp(
 			gimbal.rotation.x,
-			deg_to_rad(camera_min_angle),
-			deg_to_rad(camera_max_angle)
+			deg_to_rad(min_pitch),
+			deg_to_rad(max_pitch)
 		)
+
+	# =====================================================
+	# TOGGLE PERSPECTIVE (V Key)
+	# =====================================================
+
+	if event is InputEventKey and event.pressed and not event.echo:
+		if event.keycode == KEY_V or event.physical_keycode == KEY_V:
+			toggle_perspective()
+	elif event.is_action_pressed("toggle_perspective"):
+		toggle_perspective()
 
 	# =====================================================
 	# JUMP INPUT BUFFER (Spacebar key event)
@@ -336,6 +384,18 @@ func _physics_process(delta: float) -> void:
 	)
 
 	camera.fov = lerp(camera.fov, target_fov, 8.0 * delta)
+
+	# =====================================================
+	# PERSPECTIVE CAMERA & MESH VISIBILITY
+	# =====================================================
+
+	var target_cam_pos := FIRST_PERSON_CAM_POS if is_first_person else THIRD_PERSON_CAM_POS
+	camera.position = camera.position.lerp(target_cam_pos, perspective_transition_speed * delta)
+
+	if is_first_person:
+		character_mesh.visible = false
+	else:
+		character_mesh.visible = true
 
 	# =====================================================
 	# ANIMATION STATE MACHINE
