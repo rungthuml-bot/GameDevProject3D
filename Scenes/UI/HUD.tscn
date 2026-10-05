@@ -11,36 +11,6 @@ font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "
 base_font = SubResource("Font_serif")
 spacing_glyph = 4
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bg"]
-bg_color = Color(0.06, 0.05, 0.08, 0.85)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.55, 0.45, 0.28, 0.4)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_ghost"]
-bg_color = Color(0.85, 0.55, 0.2, 0.75)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
-bg_color = Color(0.72, 0.16, 0.18, 0.95)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.95, 0.4, 0.35, 0.45)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prompt_panel"]
 bg_color = Color(0.04, 0.035, 0.05, 0.9)
@@ -108,15 +78,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.85, 0.08, 0.08, 0)
-
-[node name="LowHealthVignette" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.65, 0.05, 0.05, 0)
 
 [node name="Crosshair" type="CenterContainer" parent="."]
 anchors_preset = 8
@@ -241,54 +202,6 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 18
 text = "LEVEL 1"
 
-[node name="HealthSection" type="HBoxContainer" parent="MarginContainer/TopBar/LeftSection"]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 8
-
-[node name="HealthIcon" type="Label" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 0.9)
-theme_override_font_sizes/font_size = 13
-text = "HP"
-
-[node name="HealthBarStack" type="Control" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
-custom_minimum_size = Vector2(200, 16)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="GhostHealthBar" type="ProgressBar" parent="MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hp_ghost")
-value = 100.0
-show_percentage = false
-
-[node name="HealthBar" type="ProgressBar" parent="MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
-theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
-value = 100.0
-show_percentage = false
-
-[node name="HealthValueLabel" type="Label" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 0.95)
-theme_override_font_sizes/font_size = 13
-text = "100 / 100"
-
 [node name="CenterSection" type="VBoxContainer" parent="MarginContainer/TopBar"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -392,18 +305,6 @@ layout_mode = 2
 columns = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
-
-[node name="BtnDmg" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "-20 HP"
-
-[node name="BtnHeal" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 12
-text = "+20 HP"
 
 [node name="BtnAddObj" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -817,9 +718,6 @@ text = "RETRY"
 layout_mode = 2
 custom_minimum_size = Vector2(0, 40)
 text = "MAIN MENU"
-
-[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDmg" to="." method="_on_test_dmg"]
-[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnHeal" to="." method="_on_test_heal"]
 [connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnAddObj" to="." method="_on_test_add_obj"]
 [connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDoneObj" to="." method="_on_test_done_obj"]
 [connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnToastInfo" to="." method="_on_test_toast_info"]
