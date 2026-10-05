@@ -17,6 +17,14 @@ spacing_glyph = 4
 base_font = SubResource("Font_thai_body")
 spacing_glyph = 3
 
+[sub_resource type="SystemFont" id="Font_sans_semibold"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_weight = 600
+
+[sub_resource type="FontVariation" id="FontVar_menu"]
+base_font = SubResource("Font_sans_semibold")
+spacing_glyph = 3
+
 [node name="Credits" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -232,16 +240,18 @@ layout_mode = 2
 
 [node name="BackButton" type="Button" parent="CenterContainer/ContentBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 42)
+custom_minimum_size = Vector2(116, 42)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
 theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
 theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
 theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
-theme_override_fonts/font = SubResource("FontVar_credits_sub")
-theme_override_font_sizes/font_size = 18
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
 text = "BACK"
+alignment = 0
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1
