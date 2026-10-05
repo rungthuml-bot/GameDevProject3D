@@ -78,6 +78,7 @@ var levels: Array[String] = [
 	"res://Scenes/Level/level_1.tscn",
 	"res://Scenes/Level/level_2.tscn",
 	"res://Scenes/Level/level_3.tscn",
+	"res://Scenes/Level/level_4.tscn",
 ]
 
 # =========================================================

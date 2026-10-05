@@ -1,0 +1,2673 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/floor_stone.tscn" id="1_ebqgu"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/floor_straw.tscn" id="2_o01w8"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/ceiling_stone.tscn" id="3_cmcly"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/wall_stone.tscn" id="4_66md8"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/wall_doorway_stone.tscn" id="5_7v10n"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/wall_bars_door.tscn" id="6_a206j"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/wall_rough.tscn" id="7_acu5p"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/wall_post_stone.tscn" id="8_uhuyo"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/door_cell.tscn" id="9_j1u2o"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/door_dungeon.tscn" id="10_wstg1"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/skeleton_chained.tscn" id="11_3qihp"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/bed_straw.tscn" id="12_d5xgj"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/chest_wood.tscn" id="13_ar033"]
+[ext_resource type="Script" path="res://addons/psx_dungeon_kit/machine.gd" id="14_drh5r"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/banner_red.tscn" id="15_bx3jw"]
+[ext_resource type="PackedScene" path="res://addons/psx_dungeon_kit/props/torch_wall.tscn" id="16_d41ks"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_roxc6"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dcc70"]
+albedo_color = Color(0.18, 0.18, 0.22, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_1htp2"]
+material = SubResource("StandardMaterial3D_dcc70")
+size = Vector3(40, 1, 40)
+
+[sub_resource type="Environment" id="Environment_mkphx"]
+background_mode = 1
+background_color = Color(0.06, 0.06, 0.09, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.35, 0.35, 0.42, 1)
+tonemap_mode = 3
+
+[node name="Level4" type="Node3D" unique_id=815689054]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=305737880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=821557465]
+shape = SubResource("BoxShape3D_roxc6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=616594722]
+mesh = SubResource("BoxMesh_1htp2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1683813725]
+environment = SubResource("Environment_mkphx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1175095004]
+transform = Transform3D(0.70710677, -0.61237246, 0.35355335, 0, 0.49999997, 0.86602545, -0.70710677, -0.61237246, 0.35355335, 0, 0, 0)
+light_color = Color(0.55, 0.65, 0.85, 1)
+light_energy = 0.25
+shadow_enabled = true
+
+[node name="DungeonModularKit" type="Node3D" parent="." unique_id=858937241]
+
+[node name="Floors" type="Node3D" parent="DungeonModularKit" unique_id=1987381832]
+
+[node name="floor_stone_-4_14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=615267075 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 14)
+
+[node name="floor_stone_-4_16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1436879308 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
+
+[node name="floor_stone_-4_18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1890659656 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 18)
+
+[node name="floor_stone_-2_14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=521397818 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 14)
+
+[node name="floor_stone_-2_16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1633705475 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 16)
+
+[node name="floor_stone_-2_18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1773854994 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 18)
+
+[node name="floor_stone_0_14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1039796065 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="floor_stone_0_16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=174248849 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="floor_stone_0_18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=872665820 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="floor_stone_2_14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=589935229 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
+
+[node name="floor_stone_2_16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1143712380 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 16)
+
+[node name="floor_stone_2_18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=917851307 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
+
+[node name="floor_stone_4_14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1514459635 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14)
+
+[node name="floor_stone_4_16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=450828473 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16)
+
+[node name="floor_stone_4_18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=234155061 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 18)
+
+[node name="floor_stone_-2_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=826916577 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="floor_stone_-2_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=141622931 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="floor_stone_-2_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1668021052 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="floor_stone_-2_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1384537874 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="floor_stone_-2_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=315412656 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="floor_stone_-2_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=403448320 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
+
+[node name="floor_stone_-2_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=604281330 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+
+[node name="floor_stone_0_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1256027623 instance=ExtResource("1_ebqgu")]
+
+[node name="floor_stone_0_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1777291575 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="floor_stone_0_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2048361398 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="floor_stone_0_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1018503207 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="floor_stone_0_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1934033183 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="floor_stone_0_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1326885485 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="floor_stone_0_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=361505143 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="floor_stone_2_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=699898344 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="floor_stone_2_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=543515215 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="floor_stone_2_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1615102423 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="floor_stone_2_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1081250933 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="floor_stone_2_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2022509501 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="floor_stone_2_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=34492440 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
+
+[node name="floor_stone_2_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1755155674 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 12)
+
+[node name="floor_straw_-18_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=70048176 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="floor_straw_-18_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1543803244 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 2)
+
+[node name="floor_straw_-18_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1340454759 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 4)
+
+[node name="floor_stone_-18_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1731793475 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 6)
+
+[node name="floor_stone_-18_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=973908217 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 8)
+
+[node name="floor_straw_-18_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1272114936 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 10)
+
+[node name="floor_straw_-18_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=330773173 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 12)
+
+[node name="floor_straw_-16_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1556839874 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+
+[node name="floor_straw_-16_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1235295567 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2)
+
+[node name="floor_straw_-16_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=949862213 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 4)
+
+[node name="floor_stone_-16_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=391178189 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 6)
+
+[node name="floor_stone_-16_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1648815244 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="floor_straw_-16_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1825653441 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 10)
+
+[node name="floor_straw_-16_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1956525091 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 12)
+
+[node name="floor_straw_-14_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1262529778 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+
+[node name="floor_straw_-14_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1598033951 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2)
+
+[node name="floor_straw_-14_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=430831196 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4)
+
+[node name="floor_stone_-14_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1416251978 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+
+[node name="floor_stone_-14_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1596726378 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 8)
+
+[node name="floor_straw_-14_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=571454101 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 10)
+
+[node name="floor_straw_-14_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1341199745 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 12)
+
+[node name="floor_straw_-12_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1422963001 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="floor_straw_-12_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1637148697 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+
+[node name="floor_straw_-12_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=288497452 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="floor_stone_-12_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=854768116 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="floor_stone_-12_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1917197819 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="floor_straw_-12_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1281933562 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="floor_straw_-12_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1939895199 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+
+[node name="floor_straw_-10_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=228709896 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="floor_straw_-10_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=760165844 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+
+[node name="floor_straw_-10_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=476148419 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
+
+[node name="floor_stone_-10_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1027195599 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 6)
+
+[node name="floor_stone_-10_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=461903952 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 8)
+
+[node name="floor_straw_-10_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1107292334 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="floor_straw_-10_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=14026597 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
+
+[node name="floor_straw_-8_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=294189219 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="floor_straw_-8_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=596873032 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+
+[node name="floor_straw_-8_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=531661749 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+
+[node name="floor_stone_-8_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=717206530 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
+
+[node name="floor_stone_-8_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=281147684 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="floor_straw_-8_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1483455940 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
+
+[node name="floor_straw_-8_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=925009489 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
+
+[node name="floor_straw_-6_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=663602960 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="floor_straw_-6_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=785772185 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+
+[node name="floor_straw_-6_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=747735297 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="floor_stone_-6_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1240672608 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="floor_stone_-6_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=699208671 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="floor_straw_-6_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=948457285 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 10)
+
+[node name="floor_straw_-6_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1220085437 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="floor_straw_-4_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1368647232 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="floor_straw_-4_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1055742430 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+
+[node name="floor_straw_-4_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1869807278 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="floor_stone_-4_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=639177331 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+
+[node name="floor_stone_-4_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1201186660 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="floor_straw_-4_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2083068354 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
+
+[node name="floor_straw_-4_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2086570385 instance=ExtResource("2_o01w8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
+
+[node name="floor_stone_4_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=566147228 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="floor_stone_4_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=235144903 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="floor_stone_4_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1590511343 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="floor_stone_4_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1208209232 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+
+[node name="floor_stone_4_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1746056513 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="floor_stone_4_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1819954031 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 10)
+
+[node name="floor_stone_4_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1964966876 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12)
+
+[node name="floor_stone_6_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=877150249 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="floor_stone_6_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1661898075 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="floor_stone_6_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=63995651 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="floor_stone_6_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=234409080 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="floor_stone_6_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1964134567 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 8)
+
+[node name="floor_stone_6_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=48969201 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
+
+[node name="floor_stone_6_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2095085768 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+
+[node name="floor_stone_8_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=112491931 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="floor_stone_8_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2121127620 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="floor_stone_8_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1444135390 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="floor_stone_8_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=559444208 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+
+[node name="floor_stone_8_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=900168685 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="floor_stone_8_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1874569231 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
+
+[node name="floor_stone_8_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=194130165 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
+
+[node name="floor_stone_10_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1325007070 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="floor_stone_10_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1093224319 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="floor_stone_10_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=488582407 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
+
+[node name="floor_stone_10_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1647313950 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
+
+[node name="floor_stone_10_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=719716193 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 8)
+
+[node name="floor_stone_10_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1776501282 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="floor_stone_10_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=360440046 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
+
+[node name="floor_stone_12_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=540895646 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="floor_stone_12_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1473578624 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+
+[node name="floor_stone_12_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=369077456 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="floor_stone_12_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1994247238 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="floor_stone_12_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2132476855 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="floor_stone_12_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=121706996 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 10)
+
+[node name="floor_stone_12_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1271008232 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="floor_stone_14_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1544192356 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+
+[node name="floor_stone_14_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1671748386 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+
+[node name="floor_stone_14_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=820370220 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+
+[node name="floor_stone_14_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=479900782 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+
+[node name="floor_stone_14_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1735883259 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 8)
+
+[node name="floor_stone_14_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1992461680 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 10)
+
+[node name="floor_stone_14_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1933113855 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 12)
+
+[node name="floor_stone_16_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=440489348 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="floor_stone_16_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=25541101 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
+
+[node name="floor_stone_16_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1015554761 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
+
+[node name="floor_stone_16_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=475676971 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 6)
+
+[node name="floor_stone_16_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1347824463 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+
+[node name="floor_stone_16_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1671693275 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 10)
+
+[node name="floor_stone_16_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=640715453 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 12)
+
+[node name="floor_stone_18_0" type="Node3D" parent="DungeonModularKit/Floors" unique_id=30760442 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="floor_stone_18_2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1495394534 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
+
+[node name="floor_stone_18_4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=723279282 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 4)
+
+[node name="floor_stone_18_6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=25518250 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 6)
+
+[node name="floor_stone_18_8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=371228852 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
+
+[node name="floor_stone_18_10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2094254116 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 10)
+
+[node name="floor_stone_18_12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=43166069 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 12)
+
+[node name="floor_stone_-14_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1083613381 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
+
+[node name="floor_stone_-14_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1652462152 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -16)
+
+[node name="floor_stone_-14_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=705417200 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
+
+[node name="floor_stone_-14_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=223935576 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -12)
+
+[node name="floor_stone_-14_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=859118622 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -10)
+
+[node name="floor_stone_-14_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1351640392 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8)
+
+[node name="floor_stone_-14_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=20833104 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+
+[node name="floor_stone_-14_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1161439966 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4)
+
+[node name="floor_stone_-14_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1001356005 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+
+[node name="floor_stone_-12_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2102071972 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -18)
+
+[node name="floor_stone_-12_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=951508405 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -16)
+
+[node name="floor_stone_-12_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=903493775 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
+
+[node name="floor_stone_-12_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1932205139 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="floor_stone_-12_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2091600347 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="floor_stone_-12_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=313803897 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="floor_stone_-12_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=173368334 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[node name="floor_stone_-12_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1896891093 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+
+[node name="floor_stone_-12_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=874403041 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+
+[node name="floor_stone_-10_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1432798221 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -18)
+
+[node name="floor_stone_-10_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=523782506 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -16)
+
+[node name="floor_stone_-10_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1361769940 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -14)
+
+[node name="floor_stone_-10_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1639077106 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
+
+[node name="floor_stone_-10_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=786580973 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="floor_stone_-10_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=343767765 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -8)
+
+[node name="floor_stone_-10_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=427277350 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+
+[node name="floor_stone_-10_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1887815283 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+
+[node name="floor_stone_-10_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1280266811 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+
+[node name="floor_stone_-8_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1612555582 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -18)
+
+[node name="floor_stone_-8_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=701874605 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16)
+
+[node name="floor_stone_-8_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=715419022 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -14)
+
+[node name="floor_stone_-8_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=955870280 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
+
+[node name="floor_stone_-8_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=89020481 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10)
+
+[node name="floor_stone_-8_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1713503301 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="floor_stone_-8_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1189001122 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+
+[node name="floor_stone_-8_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=246595400 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+
+[node name="floor_stone_-8_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=181262049 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+
+[node name="floor_stone_-6_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1062157477 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
+
+[node name="floor_stone_-6_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1256875207 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -16)
+
+[node name="floor_stone_-6_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=952289892 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
+
+[node name="floor_stone_-6_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=185110892 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
+
+[node name="floor_stone_-6_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1939928312 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
+
+[node name="floor_stone_-6_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=421919365 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+
+[node name="floor_stone_-6_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=708963807 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="floor_stone_-6_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=220319468 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+
+[node name="floor_stone_-6_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=733916184 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+
+[node name="floor_stone_-4_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=426517563 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -18)
+
+[node name="floor_stone_-4_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1099496786 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="floor_stone_-4_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=247594603 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
+
+[node name="floor_stone_-4_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1767715686 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="floor_stone_-4_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=926657600 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)
+
+[node name="floor_stone_-4_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=860443322 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="floor_stone_-4_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1510233240 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="floor_stone_-4_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=476495163 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="floor_stone_-4_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=110869590 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="floor_stone_-2_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=762770965 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -18)
+
+[node name="floor_stone_-2_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=373883743 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16)
+
+[node name="floor_stone_-2_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=814696035 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -14)
+
+[node name="floor_stone_-2_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1383042665 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -12)
+
+[node name="floor_stone_-2_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1299158392 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
+
+[node name="floor_stone_-2_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=351448870 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="floor_stone_-2_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1368580443 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="floor_stone_-2_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1716348532 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="floor_stone_-2_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=89730119 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="floor_stone_0_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1044765374 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="floor_stone_0_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=749255871 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="floor_stone_0_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1279938827 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="floor_stone_0_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1192305811 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="floor_stone_0_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1541977580 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="floor_stone_0_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1839377417 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="floor_stone_0_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=331903411 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="floor_stone_0_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1680118549 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="floor_stone_0_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1201462485 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="floor_stone_2_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=866039378 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
+
+[node name="floor_stone_2_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=340741348 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -16)
+
+[node name="floor_stone_2_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1740492588 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14)
+
+[node name="floor_stone_2_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1015901358 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -12)
+
+[node name="floor_stone_2_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=824873990 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+
+[node name="floor_stone_2_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=107165195 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="floor_stone_2_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=41652334 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="floor_stone_2_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1674540155 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="floor_stone_2_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2135498996 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="floor_stone_4_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=177582711 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -18)
+
+[node name="floor_stone_4_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=745544495 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="floor_stone_4_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=19457198 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
+
+[node name="floor_stone_4_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1264054829 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="floor_stone_4_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=931487753 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
+
+[node name="floor_stone_4_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=342511976 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="floor_stone_4_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2005378923 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="floor_stone_4_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1712747278 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="floor_stone_4_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=380050374 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="floor_stone_6_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1837835203 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -18)
+
+[node name="floor_stone_6_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=175762736 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -16)
+
+[node name="floor_stone_6_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=332853708 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+
+[node name="floor_stone_6_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1853200656 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+
+[node name="floor_stone_6_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2068257111 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+
+[node name="floor_stone_6_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1270970758 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+
+[node name="floor_stone_6_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=262605841 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="floor_stone_6_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1886586340 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+
+[node name="floor_stone_6_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1181921935 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="floor_stone_8_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=299234903 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -18)
+
+[node name="floor_stone_8_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1365676850 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16)
+
+[node name="floor_stone_8_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=44695067 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
+
+[node name="floor_stone_8_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1401579025 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
+
+[node name="floor_stone_8_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=440393666 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
+
+[node name="floor_stone_8_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=26871487 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="floor_stone_8_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=163447668 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+
+[node name="floor_stone_8_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1935523453 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="floor_stone_8_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1443661540 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+
+[node name="floor_stone_10_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1924746638 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -18)
+
+[node name="floor_stone_10_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1309800618 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -16)
+
+[node name="floor_stone_10_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1512003581 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -14)
+
+[node name="floor_stone_10_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1709467081 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -12)
+
+[node name="floor_stone_10_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=167776595 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="floor_stone_10_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1268315724 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8)
+
+[node name="floor_stone_10_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=2074453279 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+
+[node name="floor_stone_10_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1571473680 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+
+[node name="floor_stone_10_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1266363695 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+
+[node name="floor_stone_12_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1754964984 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -18)
+
+[node name="floor_stone_12_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=408777793 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -16)
+
+[node name="floor_stone_12_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=728828182 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -14)
+
+[node name="floor_stone_12_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=699007476 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+
+[node name="floor_stone_12_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1738851419 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -10)
+
+[node name="floor_stone_12_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=146489126 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="floor_stone_12_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1088811922 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+
+[node name="floor_stone_12_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=469241356 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+
+[node name="floor_stone_12_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=183065747 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+
+[node name="floor_stone_14_-18" type="Node3D" parent="DungeonModularKit/Floors" unique_id=159325548 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -18)
+
+[node name="floor_stone_14_-16" type="Node3D" parent="DungeonModularKit/Floors" unique_id=739442269 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -16)
+
+[node name="floor_stone_14_-14" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1916682870 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
+
+[node name="floor_stone_14_-12" type="Node3D" parent="DungeonModularKit/Floors" unique_id=982269065 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12)
+
+[node name="floor_stone_14_-10" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1796253001 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10)
+
+[node name="floor_stone_14_-8" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1083976548 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
+
+[node name="floor_stone_14_-6" type="Node3D" parent="DungeonModularKit/Floors" unique_id=1619784828 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+
+[node name="floor_stone_14_-4" type="Node3D" parent="DungeonModularKit/Floors" unique_id=564855604 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -4)
+
+[node name="floor_stone_14_-2" type="Node3D" parent="DungeonModularKit/Floors" unique_id=950316979 instance=ExtResource("1_ebqgu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -2)
+
+[node name="Ceilings" type="Node3D" parent="DungeonModularKit" unique_id=540111809]
+
+[node name="ceiling_stone_-4_14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=439951493 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 14)
+
+[node name="ceiling_stone_-4_16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=567813737 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 16)
+
+[node name="ceiling_stone_-4_18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=556688453 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 18)
+
+[node name="ceiling_stone_-2_14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2030253627 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 14)
+
+[node name="ceiling_stone_-2_16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1895020208 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 16)
+
+[node name="ceiling_stone_-2_18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1350552336 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 18)
+
+[node name="ceiling_stone_0_14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=136274547 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+
+[node name="ceiling_stone_0_16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1418345062 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
+
+[node name="ceiling_stone_0_18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2132743378 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 18)
+
+[node name="ceiling_stone_2_14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1799963955 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
+
+[node name="ceiling_stone_2_16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=393526316 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 16)
+
+[node name="ceiling_stone_2_18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=919788432 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
+
+[node name="ceiling_stone_4_14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1125796915 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 14)
+
+[node name="ceiling_stone_4_16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1705972395 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 16)
+
+[node name="ceiling_stone_4_18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1671560262 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 18)
+
+[node name="ceiling_stone_-2_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1223775069 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="ceiling_stone_-2_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1464740080 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
+
+[node name="ceiling_stone_-2_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1679322431 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 4)
+
+[node name="ceiling_stone_-2_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1284179771 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+
+[node name="ceiling_stone_-2_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1314664921 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 8)
+
+[node name="ceiling_stone_-2_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2024146827 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
+
+[node name="ceiling_stone_-2_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=100454934 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 12)
+
+[node name="ceiling_stone_0_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=761183593 instance=ExtResource("3_cmcly")]
+
+[node name="ceiling_stone_0_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=820089968 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="ceiling_stone_0_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1365766093 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="ceiling_stone_0_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1884749866 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6)
+
+[node name="ceiling_stone_0_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=617765562 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="ceiling_stone_0_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1903623519 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="ceiling_stone_0_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1880304361 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12)
+
+[node name="ceiling_stone_2_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1393846146 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="ceiling_stone_2_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=334484450 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="ceiling_stone_2_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=92632594 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="ceiling_stone_2_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=415969115 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+
+[node name="ceiling_stone_2_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1725331247 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 8)
+
+[node name="ceiling_stone_2_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=875280932 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
+
+[node name="ceiling_stone_2_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1471813445 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 12)
+
+[node name="ceiling_stone_-18_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1857872623 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="ceiling_stone_-18_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1520182484 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 2)
+
+[node name="ceiling_stone_-18_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1204582919 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 4)
+
+[node name="ceiling_stone_-18_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=594626380 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 6)
+
+[node name="ceiling_stone_-18_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2093025519 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 8)
+
+[node name="ceiling_stone_-18_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1200440016 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 10)
+
+[node name="ceiling_stone_-18_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1838283829 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 12)
+
+[node name="ceiling_stone_-16_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1523924840 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
+
+[node name="ceiling_stone_-16_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1483835873 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 2)
+
+[node name="ceiling_stone_-16_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=551308397 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 4)
+
+[node name="ceiling_stone_-16_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=341685624 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 6)
+
+[node name="ceiling_stone_-16_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=76208036 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
+
+[node name="ceiling_stone_-16_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=726894530 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 10)
+
+[node name="ceiling_stone_-16_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=277430428 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 12)
+
+[node name="ceiling_stone_-14_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1080480502 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 0)
+
+[node name="ceiling_stone_-14_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1235841886 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2)
+
+[node name="ceiling_stone_-14_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1445458808 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4)
+
+[node name="ceiling_stone_-14_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=934717680 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
+
+[node name="ceiling_stone_-14_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=67347043 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 8)
+
+[node name="ceiling_stone_-14_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=446270627 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 10)
+
+[node name="ceiling_stone_-14_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=716727832 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 12)
+
+[node name="ceiling_stone_-12_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=107397561 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="ceiling_stone_-12_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1697686552 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 2)
+
+[node name="ceiling_stone_-12_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=143833226 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="ceiling_stone_-12_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=900150523 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 6)
+
+[node name="ceiling_stone_-12_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1971624980 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
+
+[node name="ceiling_stone_-12_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=231384754 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10)
+
+[node name="ceiling_stone_-12_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=267694838 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
+
+[node name="ceiling_stone_-10_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=190616450 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
+
+[node name="ceiling_stone_-10_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1973483828 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 2)
+
+[node name="ceiling_stone_-10_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1310143223 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 4)
+
+[node name="ceiling_stone_-10_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1426956595 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 6)
+
+[node name="ceiling_stone_-10_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1071193620 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 8)
+
+[node name="ceiling_stone_-10_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1673347493 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 10)
+
+[node name="ceiling_stone_-10_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1972393297 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 12)
+
+[node name="ceiling_stone_-8_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=889806272 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="ceiling_stone_-8_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1330209663 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 2)
+
+[node name="ceiling_stone_-8_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1663934661 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
+
+[node name="ceiling_stone_-8_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=743079394 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 6)
+
+[node name="ceiling_stone_-8_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=211863688 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
+
+[node name="ceiling_stone_-8_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=648661347 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 10)
+
+[node name="ceiling_stone_-8_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2070225745 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
+
+[node name="ceiling_stone_-6_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=279630097 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+
+[node name="ceiling_stone_-6_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1135926974 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 2)
+
+[node name="ceiling_stone_-6_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2019726424 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 4)
+
+[node name="ceiling_stone_-6_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=372077096 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+
+[node name="ceiling_stone_-6_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2087221146 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 8)
+
+[node name="ceiling_stone_-6_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2114924030 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 10)
+
+[node name="ceiling_stone_-6_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=116688926 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 12)
+
+[node name="ceiling_stone_-4_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=132648901 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="ceiling_stone_-4_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1544162675 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
+
+[node name="ceiling_stone_-4_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1657028230 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="ceiling_stone_-4_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2002584748 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 6)
+
+[node name="ceiling_stone_-4_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2040136437 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
+
+[node name="ceiling_stone_-4_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1642114274 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 10)
+
+[node name="ceiling_stone_-4_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1216573360 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
+
+[node name="ceiling_stone_4_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1924121908 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="ceiling_stone_4_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1196262088 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+
+[node name="ceiling_stone_4_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2054284214 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="ceiling_stone_4_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2030424413 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)
+
+[node name="ceiling_stone_4_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1276145778 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
+
+[node name="ceiling_stone_4_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=846646160 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 10)
+
+[node name="ceiling_stone_4_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1118319035 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 12)
+
+[node name="ceiling_stone_6_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1992676488 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0)
+
+[node name="ceiling_stone_6_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1093223484 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 2)
+
+[node name="ceiling_stone_6_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1015341472 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 4)
+
+[node name="ceiling_stone_6_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=811101347 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
+
+[node name="ceiling_stone_6_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1244967402 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 8)
+
+[node name="ceiling_stone_6_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1544760508 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 10)
+
+[node name="ceiling_stone_6_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1823713198 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 12)
+
+[node name="ceiling_stone_8_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2142075590 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="ceiling_stone_8_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1841967134 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
+
+[node name="ceiling_stone_8_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=678911341 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 4)
+
+[node name="ceiling_stone_8_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1402906198 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 6)
+
+[node name="ceiling_stone_8_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1574173808 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
+
+[node name="ceiling_stone_8_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=77176776 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 10)
+
+[node name="ceiling_stone_8_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2125421610 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 12)
+
+[node name="ceiling_stone_10_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=447658954 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="ceiling_stone_10_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1754120270 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 2)
+
+[node name="ceiling_stone_10_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1906794931 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 4)
+
+[node name="ceiling_stone_10_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=720677111 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 6)
+
+[node name="ceiling_stone_10_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=54841692 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 8)
+
+[node name="ceiling_stone_10_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1755070210 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 10)
+
+[node name="ceiling_stone_10_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1890458475 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 12)
+
+[node name="ceiling_stone_12_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1669806473 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="ceiling_stone_12_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1543172075 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 2)
+
+[node name="ceiling_stone_12_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=157751832 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 4)
+
+[node name="ceiling_stone_12_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2058598608 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 6)
+
+[node name="ceiling_stone_12_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1841693733 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 8)
+
+[node name="ceiling_stone_12_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1217567900 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 10)
+
+[node name="ceiling_stone_12_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1635766691 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 12)
+
+[node name="ceiling_stone_14_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=121239305 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
+
+[node name="ceiling_stone_14_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2030782474 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
+
+[node name="ceiling_stone_14_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2080136537 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 4)
+
+[node name="ceiling_stone_14_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=595350294 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
+
+[node name="ceiling_stone_14_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1355486190 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 8)
+
+[node name="ceiling_stone_14_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=83448548 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 10)
+
+[node name="ceiling_stone_14_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=20817906 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 12)
+
+[node name="ceiling_stone_16_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=343797569 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
+
+[node name="ceiling_stone_16_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1550001625 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 2)
+
+[node name="ceiling_stone_16_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1345990886 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 4)
+
+[node name="ceiling_stone_16_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=82052916 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 6)
+
+[node name="ceiling_stone_16_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=513656432 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+
+[node name="ceiling_stone_16_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1826263255 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 10)
+
+[node name="ceiling_stone_16_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=514144689 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 12)
+
+[node name="ceiling_stone_18_0" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1973724183 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 0)
+
+[node name="ceiling_stone_18_2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1261399963 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 2)
+
+[node name="ceiling_stone_18_4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1718839438 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 4)
+
+[node name="ceiling_stone_18_6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1983407064 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 6)
+
+[node name="ceiling_stone_18_8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=330579373 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 8)
+
+[node name="ceiling_stone_18_10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=295231700 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 10)
+
+[node name="ceiling_stone_18_12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1019673329 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 12)
+
+[node name="ceiling_stone_-14_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=301778160 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -18)
+
+[node name="ceiling_stone_-14_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=77745489 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -16)
+
+[node name="ceiling_stone_-14_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=815037077 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
+
+[node name="ceiling_stone_-14_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1930056573 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -12)
+
+[node name="ceiling_stone_-14_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=712605771 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -10)
+
+[node name="ceiling_stone_-14_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1636352968 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -8)
+
+[node name="ceiling_stone_-14_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1545921225 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -6)
+
+[node name="ceiling_stone_-14_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=569572841 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -4)
+
+[node name="ceiling_stone_-14_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2015330603 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -2)
+
+[node name="ceiling_stone_-12_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=339360302 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -18)
+
+[node name="ceiling_stone_-12_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=54845089 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -16)
+
+[node name="ceiling_stone_-12_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2068045897 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -14)
+
+[node name="ceiling_stone_-12_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2133746631 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -12)
+
+[node name="ceiling_stone_-12_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=825428331 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10)
+
+[node name="ceiling_stone_-12_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1676278853 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+
+[node name="ceiling_stone_-12_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1547390646 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -6)
+
+[node name="ceiling_stone_-12_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=781851062 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -4)
+
+[node name="ceiling_stone_-12_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1064530946 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -2)
+
+[node name="ceiling_stone_-10_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=833631443 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -18)
+
+[node name="ceiling_stone_-10_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=433920592 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -16)
+
+[node name="ceiling_stone_-10_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=812919619 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -14)
+
+[node name="ceiling_stone_-10_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=439414841 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -12)
+
+[node name="ceiling_stone_-10_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2050000194 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -10)
+
+[node name="ceiling_stone_-10_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=70709197 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -8)
+
+[node name="ceiling_stone_-10_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1365075282 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+
+[node name="ceiling_stone_-10_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1103262469 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -4)
+
+[node name="ceiling_stone_-10_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=372794002 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -2)
+
+[node name="ceiling_stone_-8_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=393692430 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -18)
+
+[node name="ceiling_stone_-8_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2072374324 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -16)
+
+[node name="ceiling_stone_-8_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1444897722 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -14)
+
+[node name="ceiling_stone_-8_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=25495905 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
+
+[node name="ceiling_stone_-8_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1149695459 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -10)
+
+[node name="ceiling_stone_-8_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1280125287 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
+
+[node name="ceiling_stone_-8_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=173384526 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -6)
+
+[node name="ceiling_stone_-8_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=586053117 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -4)
+
+[node name="ceiling_stone_-8_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1880752889 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -2)
+
+[node name="ceiling_stone_-6_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=192778523 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
+
+[node name="ceiling_stone_-6_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1577421170 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -16)
+
+[node name="ceiling_stone_-6_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=268004201 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
+
+[node name="ceiling_stone_-6_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1269943283 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -12)
+
+[node name="ceiling_stone_-6_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1067265860 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
+
+[node name="ceiling_stone_-6_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1973612804 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+
+[node name="ceiling_stone_-6_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2115668684 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
+
+[node name="ceiling_stone_-6_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2089903 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -4)
+
+[node name="ceiling_stone_-6_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=611298202 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
+
+[node name="ceiling_stone_-4_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2042012600 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -18)
+
+[node name="ceiling_stone_-4_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1592006787 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
+
+[node name="ceiling_stone_-4_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=661975770 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -14)
+
+[node name="ceiling_stone_-4_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1455597214 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
+
+[node name="ceiling_stone_-4_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1130144991 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)
+
+[node name="ceiling_stone_-4_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=434284923 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -8)
+
+[node name="ceiling_stone_-4_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=172848226 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -6)
+
+[node name="ceiling_stone_-4_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=728518761 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="ceiling_stone_-4_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1190041019 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
+
+[node name="ceiling_stone_-2_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1499508416 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -18)
+
+[node name="ceiling_stone_-2_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2014311073 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -16)
+
+[node name="ceiling_stone_-2_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=142710036 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -14)
+
+[node name="ceiling_stone_-2_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=7152498 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -12)
+
+[node name="ceiling_stone_-2_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1744134304 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
+
+[node name="ceiling_stone_-2_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1238960433 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -8)
+
+[node name="ceiling_stone_-2_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=64878208 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -6)
+
+[node name="ceiling_stone_-2_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1015707453 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="ceiling_stone_-2_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2016616460 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="ceiling_stone_0_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1540911987 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+
+[node name="ceiling_stone_0_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1554563992 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+
+[node name="ceiling_stone_0_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=314188510 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+
+[node name="ceiling_stone_0_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=378327227 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+
+[node name="ceiling_stone_0_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1740442854 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="ceiling_stone_0_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1207293209 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="ceiling_stone_0_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=614232790 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+[node name="ceiling_stone_0_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1546298623 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="ceiling_stone_0_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=235256850 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="ceiling_stone_2_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1668806008 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
+
+[node name="ceiling_stone_2_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=835324288 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -16)
+
+[node name="ceiling_stone_2_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1106233860 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -14)
+
+[node name="ceiling_stone_2_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=483376997 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -12)
+
+[node name="ceiling_stone_2_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2035225480 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
+
+[node name="ceiling_stone_2_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1634066847 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+
+[node name="ceiling_stone_2_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1577161217 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
+
+[node name="ceiling_stone_2_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1804689241 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -4)
+
+[node name="ceiling_stone_2_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=799907554 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
+
+[node name="ceiling_stone_4_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1276608264 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -18)
+
+[node name="ceiling_stone_4_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=425714645 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
+
+[node name="ceiling_stone_4_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1366330734 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
+
+[node name="ceiling_stone_4_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=584647451 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
+
+[node name="ceiling_stone_4_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=108097498 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -10)
+
+[node name="ceiling_stone_4_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1810319125 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -8)
+
+[node name="ceiling_stone_4_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=733775025 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -6)
+
+[node name="ceiling_stone_4_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=941287136 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="ceiling_stone_4_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1475524180 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+
+[node name="ceiling_stone_6_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=914924318 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -18)
+
+[node name="ceiling_stone_6_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2025711588 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -16)
+
+[node name="ceiling_stone_6_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1262585191 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
+
+[node name="ceiling_stone_6_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=297429186 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -12)
+
+[node name="ceiling_stone_6_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1093237739 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -10)
+
+[node name="ceiling_stone_6_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=437357234 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -8)
+
+[node name="ceiling_stone_6_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=181542996 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -6)
+
+[node name="ceiling_stone_6_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1785850309 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -4)
+
+[node name="ceiling_stone_6_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1285010929 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+
+[node name="ceiling_stone_8_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1806675601 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -18)
+
+[node name="ceiling_stone_8_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=772369564 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -16)
+
+[node name="ceiling_stone_8_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=767711527 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -14)
+
+[node name="ceiling_stone_8_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1767926724 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12)
+
+[node name="ceiling_stone_8_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1739299838 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -10)
+
+[node name="ceiling_stone_8_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1280231198 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
+
+[node name="ceiling_stone_8_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=773183216 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -6)
+
+[node name="ceiling_stone_8_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=625287660 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+
+[node name="ceiling_stone_8_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=154566169 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -2)
+
+[node name="ceiling_stone_10_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1274856113 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -18)
+
+[node name="ceiling_stone_10_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1060568887 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -16)
+
+[node name="ceiling_stone_10_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1783823151 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -14)
+
+[node name="ceiling_stone_10_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1743877788 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -12)
+
+[node name="ceiling_stone_10_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1182114092 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -10)
+
+[node name="ceiling_stone_10_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2146498398 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -8)
+
+[node name="ceiling_stone_10_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=108153751 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6)
+
+[node name="ceiling_stone_10_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1055267220 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -4)
+
+[node name="ceiling_stone_10_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=675141065 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -2)
+
+[node name="ceiling_stone_12_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=2136122537 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -18)
+
+[node name="ceiling_stone_12_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1234591428 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -16)
+
+[node name="ceiling_stone_12_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=985590923 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -14)
+
+[node name="ceiling_stone_12_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1353929517 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -12)
+
+[node name="ceiling_stone_12_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=881072316 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -10)
+
+[node name="ceiling_stone_12_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=202486974 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -8)
+
+[node name="ceiling_stone_12_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1098697818 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -6)
+
+[node name="ceiling_stone_12_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1625813641 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
+
+[node name="ceiling_stone_12_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=509758067 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -2)
+
+[node name="ceiling_stone_14_-18" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=209987749 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -18)
+
+[node name="ceiling_stone_14_-16" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1474172420 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -16)
+
+[node name="ceiling_stone_14_-14" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1390278777 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
+
+[node name="ceiling_stone_14_-12" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1616817294 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -12)
+
+[node name="ceiling_stone_14_-10" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=788057362 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10)
+
+[node name="ceiling_stone_14_-8" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=768870967 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -8)
+
+[node name="ceiling_stone_14_-6" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1717259894 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+
+[node name="ceiling_stone_14_-4" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=1283698726 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -4)
+
+[node name="ceiling_stone_14_-2" type="Node3D" parent="DungeonModularKit/Ceilings" unique_id=219451851 instance=ExtResource("3_cmcly")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -2)
+
+[node name="Walls" type="Node3D" parent="DungeonModularKit" unique_id=213792454]
+
+[node name="wall_stone_-4_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1062495692 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 19)
+
+[node name="wall_stone_-2_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1396027366 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 0, 19)
+
+[node name="wall_doorway_stone_0_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1536039802 instance=ExtResource("5_7v10n")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 13)
+
+[node name="wall_doorway_stone_0_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=197036372 instance=ExtResource("5_7v10n")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 19)
+
+[node name="wall_stone_2_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1738746992 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, 19)
+
+[node name="wall_stone_4_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1101600060 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, 19)
+
+[node name="wall_doorway_stone_0_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=90996627 instance=ExtResource("5_7v10n")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1)
+
+[node name="wall_doorway_stone_0_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=257967708 instance=ExtResource("5_7v10n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+
+[node name="wall_stone_-18_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1786633114 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, -1)
+
+[node name="wall_stone_-18_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1478930709 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18, 0, 13)
+
+[node name="wall_stone_-16_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2033062792 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -1)
+
+[node name="wall_stone_-16_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1674735503 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, 13)
+
+[node name="wall_stone_-14_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1003751172 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -14, 0, 13)
+
+[node name="wall_stone_-12_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2125142534 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, 13)
+
+[node name="wall_stone_-10_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2072993021 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10, 0, 13)
+
+[node name="wall_stone_-8_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=67271540 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 0, 13)
+
+[node name="wall_stone_-6_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1029910146 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6, 0, 13)
+
+[node name="wall_stone_6_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1876529983 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, 13)
+
+[node name="wall_stone_8_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1137983237 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 13)
+
+[node name="wall_stone_10_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1661287560 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10, 0, 13)
+
+[node name="wall_stone_12_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=111613076 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 0, 13)
+
+[node name="wall_stone_14_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=144754857 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 14, 0, 13)
+
+[node name="wall_stone_16_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1610830897 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -1)
+
+[node name="wall_stone_16_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1943955409 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, 0, 13)
+
+[node name="wall_stone_18_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1244517802 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, -1)
+
+[node name="wall_stone_18_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=338921516 instance=ExtResource("4_66md8")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18, 0, 13)
+
+[node name="wall_stone_-14_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=801864020 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -19)
+
+[node name="wall_stone_-12_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1952365654 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -19)
+
+[node name="wall_stone_-10_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=716893314 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -19)
+
+[node name="wall_stone_-8_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=800028630 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -19)
+
+[node name="wall_stone_-6_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2134193965 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -19)
+
+[node name="wall_stone_-4_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1471979546 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -19)
+
+[node name="wall_stone_-2_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=126870730 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -19)
+
+[node name="wall_doorway_stone_0_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2059165925 instance=ExtResource("5_7v10n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19)
+
+[node name="wall_stone_2_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=886710226 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -19)
+
+[node name="wall_stone_4_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=206959964 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -19)
+
+[node name="wall_stone_6_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2004758283 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -19)
+
+[node name="wall_stone_8_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1862634777 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -19)
+
+[node name="wall_stone_10_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=787113951 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -19)
+
+[node name="wall_stone_12_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=450922126 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -19)
+
+[node name="wall_stone_14_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=581465881 instance=ExtResource("4_66md8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -19)
+
+[node name="wall_stone_-5_14" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1935967436 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 14)
+
+[node name="wall_stone_-5_16" type="Node3D" parent="DungeonModularKit/Walls" unique_id=254421186 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 16)
+
+[node name="wall_stone_-5_18" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1402506492 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 18)
+
+[node name="wall_stone_5_14" type="Node3D" parent="DungeonModularKit/Walls" unique_id=903704655 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 14)
+
+[node name="wall_stone_5_16" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1811900277 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 16)
+
+[node name="wall_stone_5_18" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1850960562 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 18)
+
+[node name="wall_bars_door_-3_6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=361332437 instance=ExtResource("6_a206j")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 6)
+
+[node name="wall_bars_door_-3_8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1782496806 instance=ExtResource("6_a206j")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, 0, 8)
+
+[node name="wall_doorway_stone_3_6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=979358946 instance=ExtResource("5_7v10n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, 6)
+
+[node name="wall_doorway_stone_3_8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=900993497 instance=ExtResource("5_7v10n")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3, 0, 8)
+
+[node name="wall_rough_-19_0" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1803043027 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 0)
+
+[node name="wall_rough_-19_2" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1640723752 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 2)
+
+[node name="wall_rough_-19_4" type="Node3D" parent="DungeonModularKit/Walls" unique_id=962830718 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 4)
+
+[node name="wall_rough_-19_6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=203442018 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 6)
+
+[node name="wall_rough_-19_8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1853464618 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 8)
+
+[node name="wall_rough_-19_10" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1313029675 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 10)
+
+[node name="wall_rough_-19_12" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1187278927 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 12)
+
+[node name="wall_stone_19_0" type="Node3D" parent="DungeonModularKit/Walls" unique_id=557281439 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 0)
+
+[node name="wall_stone_19_2" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1980463547 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 2)
+
+[node name="wall_stone_19_4" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1847026580 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 4)
+
+[node name="wall_stone_19_6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1350970006 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 6)
+
+[node name="wall_stone_19_8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=328143084 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 8)
+
+[node name="wall_stone_19_10" type="Node3D" parent="DungeonModularKit/Walls" unique_id=340151259 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 10)
+
+[node name="wall_stone_19_12" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1565898030 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 12)
+
+[node name="wall_rough_-15_-18" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1400567678 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -18)
+
+[node name="wall_rough_-15_-16" type="Node3D" parent="DungeonModularKit/Walls" unique_id=326308737 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -16)
+
+[node name="wall_rough_-15_-14" type="Node3D" parent="DungeonModularKit/Walls" unique_id=475590730 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -14)
+
+[node name="wall_rough_-15_-12" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1923940434 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -12)
+
+[node name="wall_rough_-15_-10" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1158815744 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -10)
+
+[node name="wall_rough_-15_-8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1627142398 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -8)
+
+[node name="wall_rough_-15_-6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1488199905 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -6)
+
+[node name="wall_rough_-15_-4" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1119590571 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -4)
+
+[node name="wall_rough_-15_-2" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1723517922 instance=ExtResource("7_acu5p")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -2)
+
+[node name="wall_stone_15_-18" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1875520356 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -18)
+
+[node name="wall_stone_15_-16" type="Node3D" parent="DungeonModularKit/Walls" unique_id=270741589 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -16)
+
+[node name="wall_stone_15_-14" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1753825622 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -14)
+
+[node name="wall_stone_15_-12" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1177520665 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -12)
+
+[node name="wall_stone_15_-10" type="Node3D" parent="DungeonModularKit/Walls" unique_id=275554721 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -10)
+
+[node name="wall_stone_15_-8" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1639667139 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -8)
+
+[node name="wall_stone_15_-6" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1684596355 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -6)
+
+[node name="wall_stone_15_-4" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1968809413 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -4)
+
+[node name="wall_stone_15_-2" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1559084838 instance=ExtResource("4_66md8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -2)
+
+[node name="wall_post_stone_-5_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=776992197 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 13)
+
+[node name="wall_post_stone_-5_15" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1421343628 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 15)
+
+[node name="wall_post_stone_-5_17" type="Node3D" parent="DungeonModularKit/Walls" unique_id=207623334 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 17)
+
+[node name="wall_post_stone_-5_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=302642948 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 19)
+
+[node name="wall_post_stone_-3_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=64185046 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 19)
+
+[node name="wall_post_stone_-1_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=104884522 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 19)
+
+[node name="wall_post_stone_-1_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=238721398 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 13)
+
+[node name="wall_post_stone_1_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1402345730 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 13)
+
+[node name="wall_post_stone_1_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1592823066 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 19)
+
+[node name="wall_post_stone_3_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=970502318 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 19)
+
+[node name="wall_post_stone_5_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1251817366 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 13)
+
+[node name="wall_post_stone_5_15" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1781732534 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 15)
+
+[node name="wall_post_stone_5_17" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1343429622 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 17)
+
+[node name="wall_post_stone_5_19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=732142986 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 19)
+
+[node name="wall_post_stone_-3_5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1489930681 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 5)
+
+[node name="wall_post_stone_-3_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=10404933 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+
+[node name="wall_post_stone_-3_9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1235598459 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 9)
+
+[node name="wall_post_stone_-1_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=396193967 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="wall_post_stone_1_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=393870606 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="wall_post_stone_-1_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2047515167 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="wall_post_stone_1_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=228288309 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 7)
+
+[node name="wall_post_stone_3_5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1280878735 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 5)
+
+[node name="wall_post_stone_3_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2063174272 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+
+[node name="wall_post_stone_3_9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1632283427 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 9)
+
+[node name="wall_post_stone_-19_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1927554091 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, -1)
+
+[node name="wall_post_stone_-17_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1692171803 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, -1)
+
+[node name="wall_post_stone_-19_1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=872029560 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 1)
+
+[node name="wall_post_stone_-19_3" type="Node3D" parent="DungeonModularKit/Walls" unique_id=897799586 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 3)
+
+[node name="wall_post_stone_-19_5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1653198819 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 5)
+
+[node name="wall_post_stone_-19_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1739531267 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 7)
+
+[node name="wall_post_stone_-19_9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1519768586 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 9)
+
+[node name="wall_post_stone_-19_11" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1473747830 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 11)
+
+[node name="wall_post_stone_-19_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1736444334 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 13)
+
+[node name="wall_post_stone_-17_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1887786676 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 0, 13)
+
+[node name="wall_post_stone_-15_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=882044838 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -1)
+
+[node name="wall_post_stone_-15_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=688167870 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 13)
+
+[node name="wall_post_stone_-13_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1692805476 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, 13)
+
+[node name="wall_post_stone_-11_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1112298304 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 13)
+
+[node name="wall_post_stone_-9_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=830908032 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 13)
+
+[node name="wall_post_stone_-7_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=535719432 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 13)
+
+[node name="wall_post_stone_7_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1422117304 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 13)
+
+[node name="wall_post_stone_9_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1164701019 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 13)
+
+[node name="wall_post_stone_11_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1216879410 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 13)
+
+[node name="wall_post_stone_13_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=79108361 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 13)
+
+[node name="wall_post_stone_15_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=327245055 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 13)
+
+[node name="wall_post_stone_15_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=681105803 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -1)
+
+[node name="wall_post_stone_17_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=921099044 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -1)
+
+[node name="wall_post_stone_17_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1026659874 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, 13)
+
+[node name="wall_post_stone_19_-1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=928343205 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, -1)
+
+[node name="wall_post_stone_19_1" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1381289132 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 1)
+
+[node name="wall_post_stone_19_3" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1802860806 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 3)
+
+[node name="wall_post_stone_19_5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1891435834 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 5)
+
+[node name="wall_post_stone_19_7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=56034505 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 7)
+
+[node name="wall_post_stone_19_9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=312568754 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 9)
+
+[node name="wall_post_stone_19_11" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1762220860 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 11)
+
+[node name="wall_post_stone_19_13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1827412768 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 13)
+
+[node name="wall_post_stone_-15_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1493076948 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -19)
+
+[node name="wall_post_stone_-13_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1049920560 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0, -19)
+
+[node name="wall_post_stone_-15_-17" type="Node3D" parent="DungeonModularKit/Walls" unique_id=315996630 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -17)
+
+[node name="wall_post_stone_-15_-15" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1598056565 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -15)
+
+[node name="wall_post_stone_-15_-13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=329887939 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -13)
+
+[node name="wall_post_stone_-15_-11" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1103811728 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -11)
+
+[node name="wall_post_stone_-15_-9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=322825899 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -9)
+
+[node name="wall_post_stone_-15_-7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=180434805 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -7)
+
+[node name="wall_post_stone_-15_-5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1220950834 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -5)
+
+[node name="wall_post_stone_-15_-3" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1890078140 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, -3)
+
+[node name="wall_post_stone_-11_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=834116866 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -19)
+
+[node name="wall_post_stone_-9_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1785527641 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, -19)
+
+[node name="wall_post_stone_-7_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=218833014 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -19)
+
+[node name="wall_post_stone_-5_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1221601262 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -19)
+
+[node name="wall_post_stone_-3_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1026714009 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -19)
+
+[node name="wall_post_stone_-1_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=656983182 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -19)
+
+[node name="wall_post_stone_1_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2085277459 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -19)
+
+[node name="wall_post_stone_3_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1280900334 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -19)
+
+[node name="wall_post_stone_5_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1634826488 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -19)
+
+[node name="wall_post_stone_7_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=275928820 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -19)
+
+[node name="wall_post_stone_9_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=308798660 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -19)
+
+[node name="wall_post_stone_11_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=768001095 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -19)
+
+[node name="wall_post_stone_13_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1012231070 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -19)
+
+[node name="wall_post_stone_15_-19" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1217083311 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -19)
+
+[node name="wall_post_stone_15_-17" type="Node3D" parent="DungeonModularKit/Walls" unique_id=797283215 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -17)
+
+[node name="wall_post_stone_15_-15" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1330421607 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -15)
+
+[node name="wall_post_stone_15_-13" type="Node3D" parent="DungeonModularKit/Walls" unique_id=810515191 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -13)
+
+[node name="wall_post_stone_15_-11" type="Node3D" parent="DungeonModularKit/Walls" unique_id=2039222395 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -11)
+
+[node name="wall_post_stone_15_-9" type="Node3D" parent="DungeonModularKit/Walls" unique_id=599642046 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -9)
+
+[node name="wall_post_stone_15_-7" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1368364572 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -7)
+
+[node name="wall_post_stone_15_-5" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1058931076 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -5)
+
+[node name="wall_post_stone_15_-3" type="Node3D" parent="DungeonModularKit/Walls" unique_id=1300163251 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -3)
+
+[node name="Doors" type="Node3D" parent="DungeonModularKit" unique_id=1112343418]
+
+[node name="door_cell_-3_6" type="Node3D" parent="DungeonModularKit/Doors" unique_id=1096365047 instance=ExtResource("9_j1u2o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 6)
+
+[node name="door_cell_-3_8" type="Node3D" parent="DungeonModularKit/Doors" unique_id=268470323 instance=ExtResource("9_j1u2o")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 8)
+
+[node name="door_dungeon_3_6" type="Node3D" parent="DungeonModularKit/Doors" unique_id=2089346949 instance=ExtResource("10_wstg1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 6)
+
+[node name="door_dungeon_3_8" type="Node3D" parent="DungeonModularKit/Doors" unique_id=1458475323 instance=ExtResource("10_wstg1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 8)
+
+[node name="door_dungeon_0_-19" type="Node3D" parent="DungeonModularKit/Doors" unique_id=714654708 instance=ExtResource("10_wstg1")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -19)
+
+[node name="Props" type="Node3D" parent="DungeonModularKit" unique_id=1115415208]
+
+[node name="wall_post_stone_-5_-3" type="Node3D" parent="DungeonModularKit/Props" unique_id=528801513 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -3)
+
+[node name="wall_post_stone_5_-3" type="Node3D" parent="DungeonModularKit/Props" unique_id=20507880 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
+
+[node name="wall_post_stone_-5_-7" type="Node3D" parent="DungeonModularKit/Props" unique_id=1918694182 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -7)
+
+[node name="wall_post_stone_5_-7" type="Node3D" parent="DungeonModularKit/Props" unique_id=1769645908 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -7)
+
+[node name="wall_post_stone_-5_-11" type="Node3D" parent="DungeonModularKit/Props" unique_id=1925739955 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -11)
+
+[node name="wall_post_stone_5_-11" type="Node3D" parent="DungeonModularKit/Props" unique_id=359474420 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -11)
+
+[node name="wall_post_stone_-5_-15" type="Node3D" parent="DungeonModularKit/Props" unique_id=721685391 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -15)
+
+[node name="wall_post_stone_5_-15" type="Node3D" parent="DungeonModularKit/Props" unique_id=639063236 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -15)
+
+[node name="wall_post_stone_-2_16" type="Node3D" parent="DungeonModularKit/Props" unique_id=680520213 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 16)
+
+[node name="wall_post_stone_2_16" type="Node3D" parent="DungeonModularKit/Props" unique_id=1218891489 instance=ExtResource("8_uhuyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 16)
+
+[node name="skeleton_chained_-19_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1926413080 instance=ExtResource("11_3qihp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 2)
+
+[node name="skeleton_chained_-19_10" type="Node3D" parent="DungeonModularKit/Props" unique_id=1138111159 instance=ExtResource("11_3qihp")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 10)
+
+[node name="skeleton_chained_-11_13" type="Node3D" parent="DungeonModularKit/Props" unique_id=860383500 instance=ExtResource("11_3qihp")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11, 0, 13)
+
+[node name="bed_straw_-15_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1067467373 instance=ExtResource("12_d5xgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 2)
+
+[node name="bed_straw_-15_10" type="Node3D" parent="DungeonModularKit/Props" unique_id=1943933203 instance=ExtResource("12_d5xgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 10)
+
+[node name="bed_straw_-7_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1267592125 instance=ExtResource("12_d5xgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 2)
+
+[node name="bed_straw_-7_10" type="Node3D" parent="DungeonModularKit/Props" unique_id=1565540653 instance=ExtResource("12_d5xgj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 10)
+
+[node name="chest_wood_17_6" type="Node3D" parent="DungeonModularKit/Props" unique_id=302105344 instance=ExtResource("13_ar033")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 6)
+script = ExtResource("14_drh5r")
+clip = "open"
+lit = PackedStringArray()
+idle = PackedStringArray()
+fitted = PackedStringArray()
+
+[node name="chest_wood_17_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1844470915 instance=ExtResource("13_ar033")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 2)
+script = ExtResource("14_drh5r")
+clip = "open"
+lit = PackedStringArray()
+idle = PackedStringArray()
+fitted = PackedStringArray()
+
+[node name="chest_wood_17_10" type="Node3D" parent="DungeonModularKit/Props" unique_id=2121476453 instance=ExtResource("13_ar033")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17, 0, 10)
+script = ExtResource("14_drh5r")
+clip = "open"
+lit = PackedStringArray()
+idle = PackedStringArray()
+fitted = PackedStringArray()
+
+[node name="banner_red_19_4" type="Node3D" parent="DungeonModularKit/Props" unique_id=783379419 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 4)
+
+[node name="banner_red_19_8" type="Node3D" parent="DungeonModularKit/Props" unique_id=596429868 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 8)
+
+[node name="banner_red_-3_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1055805731 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 2)
+
+[node name="banner_red_3_2" type="Node3D" parent="DungeonModularKit/Props" unique_id=1540191972 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 2)
+
+[node name="banner_red_-4_-19" type="Node3D" parent="DungeonModularKit/Props" unique_id=179994318 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -19)
+
+[node name="banner_red_4_-19" type="Node3D" parent="DungeonModularKit/Props" unique_id=688968389 instance=ExtResource("15_bx3jw")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -19)
+
+[node name="Torches" type="Node3D" parent="DungeonModularKit" unique_id=175309539]
+
+[node name="torch_wall_-5_16" type="Node3D" parent="DungeonModularKit/Torches" unique_id=180972057 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5, 0, 16)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-5_16" unique_id=2023114625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_5_16" type="Node3D" parent="DungeonModularKit/Torches" unique_id=2030696751 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 16)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_5_16" unique_id=1408615791]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-3_19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1502590666 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3, 0, 19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-3_19" unique_id=753284206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_3_19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=837923529 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3, 0, 19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_3_19" unique_id=2023909585]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-3_10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=356077742 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-3_10" unique_id=1342861547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_3_10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=231591390 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_3_10" unique_id=1262472354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-3_4" type="Node3D" parent="DungeonModularKit/Torches" unique_id=815967130 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3, 0, 4)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-3_4" unique_id=118847576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_3_4" type="Node3D" parent="DungeonModularKit/Torches" unique_id=210890634 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3, 0, 4)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_3_4" unique_id=614049429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-19_6" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1283740708 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 6)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-19_6" unique_id=154656822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(0.7, 0.9, 0.4, 1)
+light_energy = 1.6
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-19_2" type="Node3D" parent="DungeonModularKit/Torches" unique_id=879437209 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 2)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-19_2" unique_id=1445241505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(0.7, 0.9, 0.4, 1)
+light_energy = 1.6
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-19_10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=937108735 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -19, 0, 10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-19_10" unique_id=711059401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(0.7, 0.9, 0.4, 1)
+light_energy = 1.6
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-11_-1" type="Node3D" parent="DungeonModularKit/Torches" unique_id=211175418 instance=ExtResource("16_d41ks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-11_-1" unique_id=1717530680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-11_13" type="Node3D" parent="DungeonModularKit/Torches" unique_id=220567215 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11, 0, 13)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-11_13" unique_id=1082893518]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_19_6" type="Node3D" parent="DungeonModularKit/Torches" unique_id=907473918 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 6)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_19_6" unique_id=1877594140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.68, 0.25, 1)
+light_energy = 2.2
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_19_2" type="Node3D" parent="DungeonModularKit/Torches" unique_id=640589253 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 2)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_19_2" unique_id=764808329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.68, 0.25, 1)
+light_energy = 2.2
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_19_10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1211080351 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 19, 0, 10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_19_10" unique_id=1092400551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.68, 0.25, 1)
+light_energy = 2.2
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_11_-1" type="Node3D" parent="DungeonModularKit/Torches" unique_id=2055513568 instance=ExtResource("16_d41ks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_11_-1" unique_id=386822809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_11_13" type="Node3D" parent="DungeonModularKit/Torches" unique_id=2143446212 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 11, 0, 13)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_11_13" unique_id=1431744659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-15_-4" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1634234194 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -4)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-15_-4" unique_id=99521620]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_15_-4" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1011164433 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -4)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_15_-4" unique_id=1042930529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-15_-10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1974878476 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-15_-10" unique_id=456267635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_15_-10" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1499827465 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -10)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_15_-10" unique_id=632252492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-15_-16" type="Node3D" parent="DungeonModularKit/Torches" unique_id=223191437 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -15, 0, -16)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-15_-16" unique_id=1227648582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_15_-16" type="Node3D" parent="DungeonModularKit/Torches" unique_id=70190377 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 15, 0, -16)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_15_-16" unique_id=460393506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 1.85, 1.0927847e-08)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-6_-19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=1983793582 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -6, 0, -19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-6_-19" unique_id=118304929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_6_-19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=540850394 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6, 0, -19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_6_-19" unique_id=399660667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_-2_-19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=513036073 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, 0, -19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_-2_-19" unique_id=1746495633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="torch_wall_2_-19" type="Node3D" parent="DungeonModularKit/Torches" unique_id=952982077 instance=ExtResource("16_d41ks")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2, 0, -19)
+
+[node name="FlameLight" type="OmniLight3D" parent="DungeonModularKit/Torches/torch_wall_2_-19" unique_id=324258646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1855694e-08, 1.85, 0.25)
+light_color = Color(1, 0.72, 0.38, 1)
+light_energy = 2.0
+shadow_enabled = true
+omni_range = 7.5
+
+[node name="PlayerSpawn" type="Marker3D" parent="." unique_id=1318801491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 17)
+
+[node name="Exit" type="Marker3D" parent="." unique_id=525939404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -17.5)
