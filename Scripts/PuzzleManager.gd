@@ -21,6 +21,8 @@ func _ready() -> void:
 
 	if puzzle_ui == null:
 		print("ERROR: PuzzleUI not found!")
+	elif puzzle_ui.has_method("set_total_time"):
+		puzzle_ui.set_total_time(puzzle_time)
 
 
 func press_red() -> void:
@@ -83,7 +85,7 @@ func _process(delta: float) -> void:
 		remaining_time = 0.0
 
 		if puzzle_ui != null:
-			puzzle_ui.update_timer(0.0)
+			puzzle_ui.show_timeout()
 
 		reset_puzzle()
 		return
@@ -117,6 +119,3 @@ func reset_puzzle() -> void:
 
 	timer_active = false
 	remaining_time = 0.0
-
-	if puzzle_ui != null:
-		puzzle_ui.reset_display()

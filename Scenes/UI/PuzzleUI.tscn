@@ -1,0 +1,215 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/puzzle_ui.gd" id="1_puzzle"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.035, 0.05, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.63, 0.36, 0.45)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+shadow_color = Color(0, 0, 0, 0.55)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.08, 0.07, 0.1, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.63, 0.36, 0.25)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.85, 0.68, 0.35, 0.95)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_red_waiting"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.14, 0.06, 0.08, 0.65)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.65, 0.25, 0.25, 0.35)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_blue_waiting"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.05, 0.1, 0.16, 0.65)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.45, 0.75, 0.35)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PuzzleUI" type="CanvasLayer" groups=["puzzle_ui"]]
+script = ExtResource("1_puzzle")
+
+[node name="RootControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="CardPanel" type="PanelContainer" parent="RootControl"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -142.0
+offset_right = 190.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="Margin" type="MarginContainer" parent="RootControl/CardPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="RootControl/CardPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="HeaderRow" type="HBoxContainer" parent="RootControl/CardPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TitleLabel" type="Label" parent="RootControl/CardPanel/Margin/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.88, 0.76, 0.48, 1)
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 14
+text = "TEMPLE MECHANISM"
+
+[node name="TimerBadge" type="Label" parent="RootControl/CardPanel/Margin/VBox/HeaderRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 15
+text = "10.0s"
+horizontal_alignment = 2
+
+[node name="TimeProgressBar" type="ProgressBar" parent="RootControl/CardPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="StatusRow" type="HBoxContainer" parent="RootControl/CardPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="RedBadge" type="PanelContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_red_waiting")
+
+[node name="Margin" type="MarginContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBox" type="HBoxContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="RedIcon" type="Label" parent="RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 12
+text = "●"
+
+[node name="RedLabel" type="Label" parent="RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.6, 0.6, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "RED: WAITING"
+
+[node name="BlueBadge" type="PanelContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_blue_waiting")
+
+[node name="Margin" type="MarginContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBox" type="HBoxContainer" parent="RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge/Margin"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="BlueIcon" type="Label" parent="RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.7, 1, 1)
+theme_override_font_sizes/font_size = 12
+text = "●"
+
+[node name="BlueLabel" type="Label" parent="RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge/Margin/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.7, 0.8, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "BLUE: WAITING"
+
+[node name="MessageLabel" type="Label" parent="RootControl/CardPanel/Margin/VBox"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.95, 0.65, 1)
+theme_override_font_sizes/font_size = 12
+text = "✓ MECHANISM SOLVED! DOOR OPEN"
+horizontal_alignment = 1

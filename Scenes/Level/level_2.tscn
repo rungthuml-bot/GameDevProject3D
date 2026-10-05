@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bwgfg5n2dandm" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
 [ext_resource type="Script" uid="uid://t8fna37ydn65" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
 [ext_resource type="PackedScene" uid="uid://bojes14gy1arn" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
-[ext_resource type="Script" uid="uid://dhqaglmubhb06" path="res://Scripts/puzzle_ui.gd" id="8_n0bsh"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/PuzzleUI.tscn" id="8_puzzle_ui"]
 [ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="9_4eusg"]
 [ext_resource type="PackedScene" uid="uid://dpsk2s3fuh21r" path="res://Scenes/UI/HUD.tscn" id="9_hud"]
 [ext_resource type="Texture2D" uid="uid://bn2e6r13vfpue" path="res://Assets/RuinsGLB/Walls/WallNormalXL_WallNormalXL_1_Color.png" id="9_lnnfv"]
@@ -217,33 +217,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.253342, 0.6085796, -50.712
 [node name="blue_button" parent="." unique_id=1400264052 groups=["interactable"] instance=ExtResource("6_ppjc3")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -20.434956, 0.26748854, -50.712578)
 
-[node name="PuzzleUI" type="CanvasLayer" parent="." unique_id=260289974 groups=["puzzle_ui"]]
-script = ExtResource("8_n0bsh")
-
-[node name="Panel" type="PanelContainer" parent="PuzzleUI" unique_id=825268546]
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -198.0
-offset_bottom = -18.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="VBox" type="VBoxContainer" parent="PuzzleUI/Panel" unique_id=655698380]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1045975336]
-layout_mode = 2
-
-[node name="RedStatus" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=973994232]
-layout_mode = 2
-
-[node name="BlueStatus" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1192130313]
-layout_mode = 2
-
-[node name="Timer" type="Label" parent="PuzzleUI/Panel/VBox" unique_id=1884794093]
-layout_mode = 2
+[node name="PuzzleUI" parent="." unique_id=260289974 instance=ExtResource("8_puzzle_ui")]
 
 [node name="HUD" parent="." unique_id=1038714079 instance=ExtResource("9_hud")]
 
