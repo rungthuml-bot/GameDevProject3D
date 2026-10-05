@@ -238,6 +238,24 @@ func trigger_lose() -> void:
 
 
 # =========================================================
+# ENDING CUTSCENE
+# =========================================================
+
+## Call this when the player completes the final level.
+## The cutscene will play and then show the Game Complete screen.
+## Integration point: call UIManager.trigger_ending_cutscene() from
+## your win condition trigger (e.g. a "final door" interact(), trap cleared, etc.)
+func trigger_ending_cutscene() -> void:
+	if current_state == GameState.WIN:
+		return  # Already triggered
+	current_state = GameState.WIN
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_tree().change_scene_to_file("res://Scenes/UI/EndingCutscene.tscn")
+
+
+
+# =========================================================
 # QUIT
 # =========================================================
 

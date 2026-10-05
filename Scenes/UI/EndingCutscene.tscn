@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://ending_cutscene_v1"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ending_cutscene.gd" id="1_cutscene"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Serif")
+
+[sub_resource type="SystemFont" id="Font_sans_semibold"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_weight = 600
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 6
+
+[sub_resource type="FontVariation" id="FontVar_escaped"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVar_menu"]
+base_font = SubResource("Font_sans_semibold")
+spacing_glyph = 3
+
+[sub_resource type="Environment" id="Environment_ending"]
+background_mode = 0
+background_color = Color(0.02, 0.015, 0.025, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.12, 0.09, 0.06, 1)
+ambient_light_energy = 0.6
+
+; =========================================================
+; ROOT — EndingCutscene (Node3D so cinematic camera works in 3D)
+; =========================================================
+
+[node name="EndingCutscene" type="Node3D"]
+script = ExtResource("1_cutscene")
+
+; =========================================================
+; 3D WORLD — Minimal dark environment
+; =========================================================
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ending")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, 0.433, -0.25, 0, 0.5, 0.866, 0.5, -0.75, 0.433, 0, 8, 0)
+light_color = Color(0.9, 0.82, 0.65, 1)
+light_energy = 0.8
+shadow_enabled = true
+
+; =========================================================
+; CINEMATIC CAMERA
+; =========================================================
+
+[node name="CinematicCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97, -0.24, 0, 0.24, 0.97, -3, 2.5, 6)
+fov = 60.0
+near = 0.05
+
+; =========================================================
+; EXIT MARKER — Where the player walks toward
+; This should be replaced by the actual exit door position in the real level.
+; =========================================================
+
+[node name="ExitMarker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+
+; =========================================================
+; CAMERA PATH — 3 waypoints for cinematic pan
+; =========================================================
+
+[node name="CameraPath" type="Node3D" parent="."]
+
+[node name="CameraStart" type="Marker3D" parent="CameraPath"]
+transform = Transform3D(1, 0, 0, 0, 0.97, -0.24, 0, 0.24, 0.97, -3, 2.5, 6)
+
+[node name="CameraMid" type="Marker3D" parent="CameraPath"]
+transform = Transform3D(1, 0, 0, 0, 0.97, -0.24, 0, 0.24, 0.97, 2, 3.5, 4)
+
+[node name="CameraEnd" type="Marker3D" parent="CameraPath"]
+transform = Transform3D(1, 0, 0, 0, 0.97, -0.24, 0, 0.24, 0.97, 0, 5, -2)
+
+; =========================================================
+; UI LAYER
+; =========================================================
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="FadeRect" type="ColorRect" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SkipHint" type="Label" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 4
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme = ExtResource("2_theme")
+theme_override_colors/font_color = Color(0.62, 0.59, 0.53, 1)
+theme_override_font_sizes/font_size = 13
+text = "Press ESC to skip"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+; =========================================================
+; GAME COMPLETE SCREEN
+; =========================================================
+
+[node name="GameCompleteScreen" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+visible = false
+
+[node name="Background" type="ColorRect" parent="UILayer/GameCompleteScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.035, 0.05, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="UILayer/GameCompleteScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/GameCompleteScreen/CenterContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EscapedLabel" type="Label" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_escaped")
+theme_override_font_sizes/font_size = 24
+text = "You escaped..."
+horizontal_alignment = 1
+
+[node name="DividerRect" type="ColorRect" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(220, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.35)
+
+[node name="CompleteLabel" type="Label" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.45)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 42
+text = "GAME COMPLETE"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MainMenuButton" type="Button" parent="UILayer/GameCompleteScreen/CenterContainer/VBoxContainer/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 46)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
+text = "MAIN MENU"
+alignment = 0
