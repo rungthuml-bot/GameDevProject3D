@@ -77,6 +77,7 @@ var current_level_index: int = 1
 var levels: Array[String] = [
 	"res://Scenes/Level/level_1.tscn",
 	"res://Scenes/Level/level_2.tscn",
+	"res://Scenes/Level/level_3.tscn",
 ]
 
 # =========================================================
