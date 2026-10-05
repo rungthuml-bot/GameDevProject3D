@@ -13,15 +13,15 @@ const DIALOGUES: Dictionary = {
 		"lines": [
 			{
 				"speaker": "Player",
-				"text": "นี่มันที่ไหนกัน... ทำไมถึงเงียบขนาดนี้"
+				"text": "Where is this place... Why is it so quiet?"
 			},
 			{
 				"speaker": "Player",
-				"text": "ดูเหมือนว่าฉันจะต้องหาทางออกจากที่นี่ให้ได้"
+				"text": "Looks like I need to find a way out of here."
 			},
 			{
 				"speaker": "Player",
-				"text": "เอาล่ะ... คงไม่มีทางอื่นนอกจากเดินหน้าต่อ"
+				"text": "Alright... There's no other choice but to press forward."
 			}
 		]
 	},
@@ -32,15 +32,15 @@ const DIALOGUES: Dictionary = {
 		"lines": [
 			{
 				"speaker": "Player",
-				"text": "ทางข้างหน้าเงียบเกินไป... บรรยากาศเริ่มเย็นลงเรื่อยๆ"
+				"text": "The path ahead is eerily quiet... The air is growing colder."
 			},
 			{
 				"speaker": "Player",
-				"text": "หวังว่าจะไม่มีอะไรซ่อนอยู่ในความมืด"
+				"text": "I hope nothing is lurking in the shadows."
 			},
 			{
 				"speaker": "Player",
-				"text": "ต้องระวังตัวให้มากกว่าเดิม"
+				"text": "I need to stay on high alert."
 			}
 		]
 	},
@@ -51,15 +51,15 @@ const DIALOGUES: Dictionary = {
 		"lines": [
 			{
 				"speaker": "Player",
-				"text": "ยิ่งเดินลึกเข้ามา ทุกอย่างยิ่งแปลกขึ้น... กำแพงนี้มีร่องรอยเวทมนตร์"
+				"text": "The deeper I go, the stranger it gets... These walls bear traces of ancient magic."
 			},
 			{
 				"speaker": "Player",
-				"text": "มีบางอย่างไม่อยากให้ฉันไปต่อ..."
+				"text": "Something doesn't want me to proceed..."
 			},
 			{
 				"speaker": "Player",
-				"text": "แต่ฉันต้องรู้ความจริงของที่แห่งนี้"
+				"text": "Yet I must uncover the truth behind this place."
 			}
 		]
 	},
@@ -70,15 +70,15 @@ const DIALOGUES: Dictionary = {
 		"lines": [
 			{
 				"speaker": "Player",
-				"text": "ในที่สุดก็มาถึงที่นี่... ประตูบานสุดท้ายของดันเจี้ยน"
+				"text": "Finally made it here... The final gate of the dungeon."
 			},
 			{
 				"speaker": "Player",
-				"text": "ถ้าคำตอบอยู่ข้างหน้า"
+				"text": "If the answers lie ahead,"
 			},
 			{
 				"speaker": "Player",
-				"text": "ฉันก็จะไม่หยุดจนกว่าจะรู้ความจริง"
+				"text": "I won't stop until the truth is revealed."
 			}
 		]
 	}

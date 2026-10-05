@@ -102,7 +102,7 @@ func check_puzzle() -> void:
 		if puzzle_ui != null:
 			puzzle_ui.show_completed()
 
-		# แจ้งให้ Door รู้ว่า Puzzle สำเร็จแล้ว
+		# Notify Door that puzzle has been solved
 		var door = get_tree().current_scene.get_node_or_null("Door_To_Level3")
 
 		if door != null:
