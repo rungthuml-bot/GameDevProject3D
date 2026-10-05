@@ -100,7 +100,10 @@ func _ready() -> void:
 	camera.fov = normal_fov
 	play_animation("CharacterArmature|Idle")
 
-	# Initialize perspective mode
+	# Initialize perspective mode from persistent GameManager state
+	if GameManager:
+		is_first_person = GameManager.is_first_person_enabled()
+
 	if is_first_person:
 		camera.position = FIRST_PERSON_CAM_POS
 		character_mesh.visible = false
@@ -149,6 +152,9 @@ func set_spawn_position() -> void:
 
 func toggle_perspective() -> void:
 	is_first_person = not is_first_person
+	if GameManager:
+		GameManager.set_first_person(is_first_person)
+
 	if is_first_person:
 		character_mesh.visible = false
 		if UIManager:
