@@ -1,0 +1,446 @@
+[gd_scene format=3 uid="uid://dpovgq425u1rm"]
+
+[ext_resource type="Script" path="res://Scripts/UI/settings_menu.gd" id="1_settings"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+[ext_resource type="Script" path="res://Scripts/UI/settings_toggle.gd" id="4_toggle"]
+
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Leelawadee UI", "Times New Roman", "Serif")
+
+[sub_resource type="SystemFont" id="Font_sans"]
+font_names = PackedStringArray("Segoe UI", "Leelawadee UI", "Tahoma", "Helvetica Neue", "Arial", "Sans-Serif")
+
+[sub_resource type="SystemFont" id="Font_sans_semibold"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_weight = 600
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVar_section"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 3
+
+[sub_resource type="FontVariation" id="FontVar_key"]
+base_font = SubResource("Font_sans")
+spacing_glyph = 2
+
+[sub_resource type="FontVariation" id="FontVar_menu"]
+base_font = SubResource("Font_sans_semibold")
+spacing_glyph = 3
+
+[sub_resource type="Gradient" id="Grad_grabber"]
+offsets = PackedFloat32Array(0.65, 1)
+colors = PackedColorArray(0.94, 0.91, 0.84, 1, 0.78, 0.62, 0.36, 1)
+
+[sub_resource type="GradientTexture2D" id="Tex_grabber"]
+gradient = SubResource("Grad_grabber")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Grad_grabber_hl"]
+offsets = PackedFloat32Array(0.65, 1)
+colors = PackedColorArray(1, 0.98, 0.92, 1, 0.95, 0.82, 0.48, 1)
+
+[sub_resource type="GradientTexture2D" id="Tex_grabber_hl"]
+gradient = SubResource("Grad_grabber_hl")
+width = 12
+height = 12
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_custom"]
+bg_color = Color(0.1, 0.09, 0.12, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.62, 0.36, 0.25)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grabber_fill"]
+bg_color = Color(0.78, 0.62, 0.36, 0.85)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grabber_fill_hl"]
+bg_color = Color(0.95, 0.82, 0.48, 0.95)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keybadge"]
+bg_color = Color(0.1, 0.09, 0.12, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.62, 0.36, 0.35)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_settings")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.035, 0.05, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentBox" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleBlock" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.35)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 32
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_section")
+theme_override_font_sizes/font_size = 12
+text = "CONFIGURATION"
+horizontal_alignment = 1
+
+[node name="TitleDivider" type="ColorRect" parent="CenterContainer/ContentBox/TitleBlock"]
+custom_minimum_size = Vector2(160, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.3)
+
+[node name="SectionsBox" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="GameplaySection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="GameplayLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_section")
+theme_override_font_sizes/font_size = 12
+text = "GAMEPLAY"
+
+[node name="SensitivityRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+layout_mode = 2
+
+[node name="SensitivityLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection/SensitivityRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "Mouse Sensitivity"
+
+[node name="SensitivityValue" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection/SensitivityRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.63, 0.38, 0.95)
+theme_override_font_sizes/font_size = 13
+text = "50%"
+horizontal_alignment = 2
+
+[node name="SensitivitySlider" type="HSlider" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+min_value = 10.0
+step = 1.0
+value = 50.0
+
+[node name="SectionDivider1" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.76, 0.63, 0.36, 0.18)
+
+[node name="AudioSection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AudioLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_section")
+theme_override_font_sizes/font_size = 12
+text = "AUDIO"
+
+[node name="VolumeRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
+layout_mode = 2
+
+[node name="MasterVolumeLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection/VolumeRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "Master Volume"
+
+[node name="VolumeValue" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection/VolumeRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.78, 0.63, 0.38, 0.95)
+theme_override_font_sizes/font_size = 13
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+step = 1.0
+value = 80.0
+
+[node name="SectionDivider2" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.76, 0.63, 0.36, 0.18)
+
+[node name="DisplaySection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="DisplayLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_section")
+theme_override_font_sizes/font_size = 12
+text = "DISPLAY"
+
+[node name="FullscreenRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection"]
+layout_mode = 2
+
+[node name="FullscreenLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection/FullscreenRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
+theme_override_font_sizes/font_size = 14
+text = "Fullscreen"
+
+[node name="FullscreenToggle" type="Button" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection/FullscreenRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+focus_mode = 2
+toggle_mode = true
+flat = true
+script = ExtResource("4_toggle")
+
+[node name="SectionDivider3" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.76, 0.63, 0.36, 0.18)
+
+[node name="ControlsSection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="ControlsLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_section")
+theme_override_font_sizes/font_size = 12
+text = "CONTROLS"
+
+[node name="ControlsGrid" type="GridContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection"]
+layout_mode = 2
+theme_override_constants/h_separation = 24
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="KeyBadge1" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="KeyLabel1" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
+theme_override_fonts/font = SubResource("FontVar_key")
+theme_override_font_sizes/font_size = 11
+text = "W A S D"
+horizontal_alignment = 1
+
+[node name="ActionLabel1" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
+theme_override_font_sizes/font_size = 13
+text = "Move"
+vertical_alignment = 1
+
+[node name="KeyBadge2" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="KeyLabel2" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
+theme_override_fonts/font = SubResource("FontVar_key")
+theme_override_font_sizes/font_size = 11
+text = "SPACE"
+horizontal_alignment = 1
+
+[node name="ActionLabel2" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
+theme_override_font_sizes/font_size = 13
+text = "Jump"
+vertical_alignment = 1
+
+[node name="KeyBadge3" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="KeyLabel3" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
+theme_override_fonts/font = SubResource("FontVar_key")
+theme_override_font_sizes/font_size = 11
+text = "E"
+horizontal_alignment = 1
+
+[node name="ActionLabel3" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
+theme_override_font_sizes/font_size = 13
+text = "Interact"
+vertical_alignment = 1
+
+[node name="KeyBadge4" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="KeyLabel4" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
+theme_override_fonts/font = SubResource("FontVar_key")
+theme_override_font_sizes/font_size = 11
+text = "ESC"
+horizontal_alignment = 1
+
+[node name="ActionLabel4" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
+theme_override_font_sizes/font_size = 13
+text = "Pause"
+vertical_alignment = 1
+
+[node name="ButtonSpacer" type="Control" parent="CenterContainer/ContentBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 48
+
+[node name="ApplyButton" type="Button" parent="CenterContainer/ContentBox/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
+text = "APPLY"
+alignment = 0
+
+[node name="BackButton" type="Button" parent="CenterContainer/ContentBox/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
+text = "BACK"
+alignment = 0
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

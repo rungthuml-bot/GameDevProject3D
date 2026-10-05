@@ -55,7 +55,18 @@ func _ready() -> void:
 	camera.current = true
 	play_animation("CharacterArmature|Idle")
 
+	if UIManager:
+		mouse_sensitivity = UIManager.mouse_sensitivity
+		if not UIManager.settings_updated.is_connected(_on_settings_updated):
+			UIManager.settings_updated.connect(_on_settings_updated)
+
 	call_deferred("set_spawn_position")
+
+
+func _on_settings_updated() -> void:
+	if UIManager:
+		mouse_sensitivity = UIManager.mouse_sensitivity
+
 
 func set_spawn_position() -> void:
 	var spawn_id := GameManager.get_spawn_point()
@@ -105,20 +116,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 	# =====================================================
-	# ESC
+	# ESC — Pause (handled by HUD via ui_pause action)
 	# =====================================================
 
-	if event is InputEventKey:
-
-		if event.pressed and event.keycode == KEY_ESCAPE:
-
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-
-				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-			else:
-
-				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event.is_action_pressed("ui_pause"):
+		if UIManager.is_playing():
+			# Let HUD handle the pause via UIManager
+			return
 
 
 	# =====================================================

@@ -1,0 +1,163 @@
+[gd_scene format=3 uid="uid://cbx2y4m7qp01t"]
+
+[ext_resource type="Script" path="res://Scripts/UI/dialogue_ui.gd" id="1_dlg_script"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialogue_panel"]
+bg_color = Color(0.04, 0.035, 0.05, 0.94)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.63, 0.36, 0.5)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_speaker_badge"]
+bg_color = Color(0.78, 0.63, 0.36, 0.15)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.85, 0.72, 0.45, 0.7)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 10.0
+content_margin_top = 2.0
+content_margin_right = 10.0
+content_margin_bottom = 2.0
+
+[node name="DialogueUI" type="CanvasLayer"]
+process_mode = 3
+layer = 15
+script = ExtResource("1_dlg_script")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.01, 0.01, 0.02, 0.3)
+
+[node name="RootContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+
+[node name="DialogueBox" type="PanelContainer" parent="RootContainer"]
+custom_minimum_size = Vector2(800, 160)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialogue_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="RootContainer/DialogueBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 14
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RootContainer/DialogueBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderRow" type="HBoxContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SpeakerBadge" type="PanelContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_speaker_badge")
+
+[node name="SpeakerLabel" type="Label" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/HeaderRow/SpeakerBadge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+theme_override_font_sizes/font_size = 14
+text = "PLAYER"
+
+[node name="Spacer" type="Control" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SkipPrompt" type="Label" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/HeaderRow"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.6, 0.52, 0.75)
+theme_override_font_sizes/font_size = 12
+text = "[Esc] Skip"
+
+[node name="Divider" type="ColorRect" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.78, 0.63, 0.36, 0.25)
+
+[node name="ContentRow" type="HBoxContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="PortraitContainer" type="CenterContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/ContentRow"]
+visible = false
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+
+[node name="PortraitPlaceholder" type="ColorRect" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/ContentRow/PortraitContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+color = Color(0.15, 0.13, 0.18, 0.8)
+
+[node name="DialogueText" type="Label" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/ContentRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.93, 0.9, 0.84, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 18
+text = "..."
+autowrap_mode = 3
+
+[node name="FooterRow" type="HBoxContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/FooterRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ContinueIndicator" type="HBoxContainer" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/FooterRow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="IndicatorArrow" type="Label" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/FooterRow/ContinueIndicator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+theme_override_font_sizes/font_size = 12
+text = "▼"
+
+[node name="IndicatorLabel" type="Label" parent="RootContainer/DialogueBox/MarginContainer/VBoxContainer/FooterRow/ContinueIndicator"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "[Space] Continue"

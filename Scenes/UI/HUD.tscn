@@ -1,0 +1,843 @@
+[gd_scene format=3 uid="uid://dpsk2s3fuh21r"]
+
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_hud"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/DialogueUI.tscn" id="3_dlg"]
+
+[sub_resource type="SystemFont" id="Font_serif"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
+
+[sub_resource type="FontVariation" id="FontVar_title"]
+base_font = SubResource("Font_serif")
+spacing_glyph = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_bg"]
+bg_color = Color(0.06, 0.05, 0.08, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.45, 0.28, 0.4)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_ghost"]
+bg_color = Color(0.85, 0.55, 0.2, 0.75)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hp_fill"]
+bg_color = Color(0.72, 0.16, 0.18, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.95, 0.4, 0.35, 0.45)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prompt_panel"]
+bg_color = Color(0.04, 0.035, 0.05, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.63, 0.36, 0.5)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.5)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_key_badge"]
+bg_color = Color(0.78, 0.63, 0.36, 0.22)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.88, 0.76, 0.48, 0.85)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+content_margin_left = 7.0
+content_margin_top = 2.0
+content_margin_right = 7.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_obj_panel"]
+bg_color = Color(0.04, 0.035, 0.05, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.63, 0.36, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_test_panel"]
+bg_color = Color(0.04, 0.03, 0.05, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.65, 0.85, 0.6)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_hud")
+
+[node name="DamageOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.85, 0.08, 0.08, 0)
+
+[node name="LowHealthVignette" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.65, 0.05, 0.05, 0)
+
+[node name="Crosshair" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ReticleDot" type="ColorRect" parent="Crosshair"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.92, 0.88, 0.82, 0.45)
+
+[node name="InteractionPrompt" type="CenterContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = 60.0
+offset_right = 160.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InteractionPrompt"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_prompt_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="InteractionPrompt/PanelContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 6
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InteractionPrompt/PanelContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="KeyBadge" type="PanelContainer" parent="InteractionPrompt/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_key_badge")
+
+[node name="KeyLabel" type="Label" parent="InteractionPrompt/PanelContainer/MarginContainer/HBoxContainer/KeyBadge"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 13
+text = "E"
+horizontal_alignment = 1
+
+[node name="PromptLabel" type="Label" parent="InteractionPrompt/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92, 0.9, 0.84, 0.95)
+theme_override_font_sizes/font_size = 15
+text = "Inspect Object"
+
+[node name="NotificationContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -210.0
+offset_right = 240.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="NotificationList" type="VBoxContainer" parent="NotificationContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+theme_override_constants/separation = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_theme")
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 20
+
+[node name="TopBar" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="LeftSection" type="VBoxContainer" parent="MarginContainer/TopBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="LevelLabel" type="Label" parent="MarginContainer/TopBar/LeftSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 18
+text = "LEVEL 1"
+
+[node name="HealthSection" type="HBoxContainer" parent="MarginContainer/TopBar/LeftSection"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="HealthIcon" type="Label" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 0.9)
+theme_override_font_sizes/font_size = 13
+text = "HP"
+
+[node name="HealthBarStack" type="Control" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GhostHealthBar" type="ProgressBar" parent="MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_ghost")
+value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fill")
+value = 100.0
+show_percentage = false
+
+[node name="HealthValueLabel" type="Label" parent="MarginContainer/TopBar/LeftSection/HealthSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 0.95)
+theme_override_font_sizes/font_size = 13
+text = "100 / 100"
+
+[node name="CenterSection" type="VBoxContainer" parent="MarginContainer/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ObjectiveLabel" type="Label" parent="MarginContainer/TopBar/CenterSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 0.9)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 18
+text = "Find the exit"
+horizontal_alignment = 1
+
+[node name="RightSection" type="VBoxContainer" parent="MarginContainer/TopBar"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+
+[node name="TimerLabel" type="Label" parent="MarginContainer/TopBar/RightSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 18
+text = "00:00"
+horizontal_alignment = 2
+
+[node name="ObjectivePanel" type="PanelContainer" parent="MarginContainer/TopBar/RightSection"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_obj_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TopBar/RightSection/ObjectivePanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TopBar/RightSection/ObjectivePanel/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="MarginContainer/TopBar/RightSection/ObjectivePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 0.95)
+theme_override_font_sizes/font_size = 12
+text = "OBJECTIVES"
+
+[node name="Divider" type="ColorRect" parent="MarginContainer/TopBar/RightSection/ObjectivePanel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.78, 0.63, 0.36, 0.25)
+
+[node name="ObjectiveList" type="VBoxContainer" parent="MarginContainer/TopBar/RightSection/ObjectivePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 3
+
+[node name="TestModePanel" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -340.0
+offset_right = 260.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_test_panel")
+
+[node name="MarginContainer" type="MarginContainer" parent="TestModePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TestModePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Header" type="HBoxContainer" parent="TestModePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TestModePanel/MarginContainer/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "UI TEST MODE (F3)"
+
+[node name="GridContainer" type="GridContainer" parent="TestModePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="BtnDmg" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "-20 HP"
+
+[node name="BtnHeal" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "+20 HP"
+
+[node name="BtnAddObj" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "+ Objective"
+
+[node name="BtnDoneObj" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "✓ Complete"
+
+[node name="BtnToastInfo" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Toast Info"
+
+[node name="BtnToastWarn" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Toast Warn"
+
+[node name="BtnToastSucc" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Toast Success"
+
+[node name="BtnPrompt" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Toggle Prompt"
+
+[node name="BtnDlgL1" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Intro L1"
+
+[node name="BtnDlgL2" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Intro L2"
+
+[node name="BtnDlgL3" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Intro L3"
+
+[node name="BtnDlgL4" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Intro L4"
+
+[node name="BtnResetSeen" type="Button" parent="TestModePanel/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Reset Seen"
+
+[node name="DialogueUI" parent="." instance=ExtResource("3_dlg")]
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(320, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PausedLabel" type="Label" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.25)
+
+[node name="Spacer" type="Control" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "RESTART"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "SETTINGS"
+
+[node name="MainMenuButton" type="Button" parent="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "MAIN MENU"
+
+[node name="PauseSettings" type="CenterContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/PauseSettings"]
+layout_mode = 2
+custom_minimum_size = Vector2(360, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/PauseSettings/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 28
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SettingsTitle" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.25)
+
+[node name="VolumeSection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="VolumeLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "MASTER VOLUME"
+
+[node name="VolumeSlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection"]
+layout_mode = 2
+value = 80.0
+
+[node name="SensitivitySection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SensitivityLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "CAMERA SENSITIVITY"
+
+[node name="SensitivitySlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection"]
+layout_mode = 2
+value = 50.0
+
+[node name="DisplaySection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="FullscreenCheck" type="CheckButton" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/DisplaySection"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Spacer" type="Control" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
+[node name="SettingsBackButton" type="Button" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "BACK"
+
+[node name="WinScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="WinScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="WinScreen/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(380, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="WinScreen/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WinLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 34
+text = "AREA CLEARED"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 15
+text = "The way out has been found."
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.83, 0.74, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "Time: 00:00"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.76, 0.63, 0.36, 0.25)
+
+[node name="Spacer" type="Control" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="NextLevelButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "NEXT LEVEL"
+
+[node name="RetryButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "RETRY"
+
+[node name="MainMenuButton" type="Button" parent="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "MAIN MENU"
+
+[node name="LoseScreen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+
+[node name="DimBackground" type="ColorRect" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.03, 0.82)
+
+[node name="CenterContainer" type="CenterContainer" parent="LoseScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LoseScreen/CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(380, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="LoseScreen/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LoseLabel" type="Label" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.28, 0.24, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.4)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 34
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.68, 0.63, 0.55, 1)
+theme_override_font_sizes/font_size = 15
+text = "The maze claims another soul..."
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 1)
+color = Color(0.75, 0.28, 0.24, 0.3)
+
+[node name="Spacer" type="Control" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 4)
+
+[node name="ButtonsContainer" type="VBoxContainer" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RetryButton" type="Button" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "RETRY"
+
+[node name="MainMenuButton" type="Button" parent="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 40)
+text = "MAIN MENU"
+
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDmg" to="." method="_on_test_dmg"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnHeal" to="." method="_on_test_heal"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnAddObj" to="." method="_on_test_add_obj"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDoneObj" to="." method="_on_test_done_obj"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnToastInfo" to="." method="_on_test_toast_info"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnToastWarn" to="." method="_on_test_toast_warn"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnToastSucc" to="." method="_on_test_toast_succ"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnPrompt" to="." method="_on_test_toggle_prompt"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDlgL1" to="." method="_on_test_dlg_l1"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDlgL2" to="." method="_on_test_dlg_l2"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDlgL3" to="." method="_on_test_dlg_l3"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnDlgL4" to="." method="_on_test_dlg_l4"]
+[connection signal="pressed" from="TestModePanel/MarginContainer/VBoxContainer/GridContainer/BtnResetSeen" to="." method="_on_test_reset_seen"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu"]
+[connection signal="pressed" from="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SettingsBackButton" to="." method="_on_settings_back"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/NextLevelButton" to="." method="_on_win_next_level"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/RetryButton" to="." method="_on_win_retry"]
+[connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_win_main_menu"]
+[connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/RetryButton" to="." method="_on_lose_retry"]
+[connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_lose_main_menu"]

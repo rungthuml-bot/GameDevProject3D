@@ -81,7 +81,9 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gsjss")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5eft"]
-size = Vector3(0.85543823, 0.8519592, 0.82910156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_awhhx"]
+size = Vector3(0.84, 0.825, 0.825)
 
 [node name="Crate" type="Area3D" unique_id=1874232016]
 script = ExtResource("1_mjmk7")
@@ -91,14 +93,14 @@ transform = Transform3D(514.2259, 0, 0, 0, -6.130051e-05, 514.2259, 0, -514.2259
 mesh = SubResource("ArrayMesh_lshg0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1936427288]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0028533936, 0.4033525, 0.0043945313)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45826888, 0)
 shape = SubResource("BoxShape3D_v5eft")
 
 [node name="InteractionLabel" type="Label3D" parent="." unique_id=1980296028]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
 
-[node name="InteractionLabel" type="Label3D" parent="InteractionLabel" unique_id=1064992178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1469751915]
 
-[node name="InteractionLabel" type="Label3D" parent="InteractionLabel/InteractionLabel" unique_id=739861865]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2585162, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=825761050]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40509433, 0)
+shape = SubResource("BoxShape3D_awhhx")

@@ -1,0 +1,264 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scripts/UI/credits.gd" id="1_credits"]
+[ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
+
+[sub_resource type="SystemFont" id="Font_thai_title"]
+font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Segoe UI", "Serif")
+
+[sub_resource type="SystemFont" id="Font_thai_body"]
+font_names = PackedStringArray("Segoe UI", "Leelawadee UI", "Tahoma", "Sans-Serif")
+
+[sub_resource type="FontVariation" id="FontVar_credits_title"]
+base_font = SubResource("Font_thai_title")
+spacing_glyph = 4
+
+[sub_resource type="FontVariation" id="FontVar_credits_sub"]
+base_font = SubResource("Font_thai_body")
+spacing_glyph = 3
+
+[sub_resource type="SystemFont" id="Font_sans_semibold"]
+font_names = PackedStringArray("Segoe UI", "Helvetica Neue", "Arial", "Sans-Serif")
+font_weight = 600
+
+[sub_resource type="FontVariation" id="FontVar_menu"]
+base_font = SubResource("Font_sans_semibold")
+spacing_glyph = 3
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_credits")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.035, 0.05, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentBox" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="TitleBlock" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.35)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_credits_title")
+theme_override_font_sizes/font_size = 32
+text = "DUNGEON MYSTERY MAZE"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 12
+text = "DEVELOPED BY"
+horizontal_alignment = 1
+
+[node name="Divider1" type="ColorRect" parent="CenterContainer/ContentBox/TitleBlock"]
+custom_minimum_size = Vector2(160, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.3)
+
+[node name="TeamGrid" type="GridContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 56
+theme_override_constants/v_separation = 14
+columns = 2
+
+[node name="MemberCard1" type="VBoxContainer" parent="CenterContainer/ContentBox/TeamGrid"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Id1" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.95)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 13
+text = "643020651-7"
+horizontal_alignment = 1
+
+[node name="Name1" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_fonts/font = SubResource("Font_thai_body")
+theme_override_font_sizes/font_size = 18
+text = "สุชานาฏ แก้วมุงคุณ"
+horizontal_alignment = 1
+
+[node name="Role1" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 0.85)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 12
+text = "CS-VIP"
+horizontal_alignment = 1
+
+[node name="MemberCard2" type="VBoxContainer" parent="CenterContainer/ContentBox/TeamGrid"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Id2" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.95)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 13
+text = "663380639-0"
+horizontal_alignment = 1
+
+[node name="Name2" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_fonts/font = SubResource("Font_thai_body")
+theme_override_font_sizes/font_size = 18
+text = "รุ่งธรรม ล้อมในเมือง"
+horizontal_alignment = 1
+
+[node name="Role2" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 0.85)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 12
+text = "CS-VIP"
+horizontal_alignment = 1
+
+[node name="MemberCard3" type="VBoxContainer" parent="CenterContainer/ContentBox/TeamGrid"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Id3" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.95)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 13
+text = "683380448-1"
+horizontal_alignment = 1
+
+[node name="Name3" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_fonts/font = SubResource("Font_thai_body")
+theme_override_font_sizes/font_size = 18
+text = "อรจิรา วงศ์ประดิษฐ์"
+horizontal_alignment = 1
+
+[node name="Role3" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 0.85)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 12
+text = "CS-VIP"
+horizontal_alignment = 1
+
+[node name="MemberCard4" type="VBoxContainer" parent="CenterContainer/ContentBox/TeamGrid"]
+custom_minimum_size = Vector2(230, 0)
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Id4" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.95)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 13
+text = "683380659-8"
+horizontal_alignment = 1
+
+[node name="Name4" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_fonts/font = SubResource("Font_thai_body")
+theme_override_font_sizes/font_size = 18
+text = "ธราเทพ ภาคโพธิ์"
+horizontal_alignment = 1
+
+[node name="Role4" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 0.85)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 12
+text = "CS-VIP"
+horizontal_alignment = 1
+
+[node name="Divider2" type="ColorRect" parent="CenterContainer/ContentBox"]
+custom_minimum_size = Vector2(100, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+color = Color(0.76, 0.63, 0.36, 0.2)
+
+[node name="ThanksBlock" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ThanksLabel" type="Label" parent="CenterContainer/ContentBox/ThanksBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.7)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 11
+text = "SPECIAL THANKS"
+horizontal_alignment = 1
+
+[node name="ThanksContent" type="Label" parent="CenterContainer/ContentBox/ThanksBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.58, 0.51, 1)
+theme_override_fonts/font = SubResource("FontVar_credits_sub")
+theme_override_font_sizes/font_size = 14
+text = "Godot Engine"
+horizontal_alignment = 1
+
+[node name="ButtonSpacer" type="Control" parent="CenterContainer/ContentBox"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="CenterContainer/ContentBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(116, 42)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
+theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
+theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 21
+text = "BACK"
+alignment = 0
+
+[node name="FadeRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
