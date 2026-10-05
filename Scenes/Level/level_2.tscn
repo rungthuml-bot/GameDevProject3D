@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://d0kc3e1h0woka" path="res://Scenes/crate_test.tscn" id="2_a0xoy"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/InteractionUI.tscn" id="3_lxn2w"]
 [ext_resource type="PackedScene" uid="uid://b2g2t6k0fq068" path="res://Scenes/door_test.tscn" id="4_a0xoy"]
-[ext_resource type="PackedScene" uid="uid://bwgfg5n2dandm" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
-[ext_resource type="Script" uid="uid://t8fna37ydn65" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
-[ext_resource type="PackedScene" uid="uid://bojes14gy1arn" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
-[ext_resource type="Script" uid="uid://dhqaglmubhb06" path="res://Scripts/puzzle_ui.gd" id="8_n0bsh"]
+[ext_resource type="PackedScene" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
+[ext_resource type="Script" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
+[ext_resource type="PackedScene" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
+[ext_resource type="Script" path="res://Scripts/puzzle_ui.gd" id="8_n0bsh"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="9_hud"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
@@ -76,7 +76,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -13.632113, 0.26748854, -14.0
 
 [node name="Door_To_Level3" parent="." unique_id=1745359917 instance=ExtResource("4_a0xoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23779297, -13.202479)
-target_scene = "uid://sdjayo8e2mss"
+target_scene = "res://Scenes/Level/level_3.tscn"
 target_spawn_id = "Spawn_From_Level3"
 require_puzzle = true
 

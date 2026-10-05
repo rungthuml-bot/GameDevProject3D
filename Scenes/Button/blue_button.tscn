@@ -1,6 +1,6 @@
-[gd_scene format=4 uid="uid://bojes14gy1arn"]
+[gd_scene format=3 uid="uid://bojes14gy1arn"]
 
-[ext_resource type="Script" uid="uid://c5lfd2k2l5rj0" path="res://Scripts/blue_button.gd" id="1_lhsa2"]
+[ext_resource type="Script" path="res://Scripts/blue_button.gd" id="1_lhsa2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f27pr"]
 resource_name = "mat23"

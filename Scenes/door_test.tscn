@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b2g2t6k0fq068"]
 
-[ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="1_gmki5"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="1_gmki5"]
 [ext_resource type="PackedScene" uid="uid://1oij6tc6tn1e" path="res://Assets/Test_Asset/Door by Quaternius - a948jjnuaL.glb" id="2_ref0q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ref0q"]
