@@ -60,6 +60,21 @@ size = Vector3(9.975, 6.405, 0.405)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8b42i"]
 size = Vector3(9.975, 6.405, 0.405)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_invis_1"]
+size = Vector3(1, 10, 52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_invis_2"]
+size = Vector3(1, 10, 52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_invis_3"]
+size = Vector3(42, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_invis_4"]
+size = Vector3(42, 10, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_1"]
+size = Vector3(0.8, 6.5, 40.458)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1jtxm"]
 resource_name = "WallNormalXL_1_Material"
 cull_mode = 2
@@ -99,110 +114,95 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2jmd8")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vk57k"]
-size = Vector3(10, 1, 10)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_y45lv"]
-size = Vector3(40, 1, 40)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v5eft"]
-size = Vector3(10, 5, 0.18)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8bd2"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 3.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_bvs58"]
-size = Vector3(4.595, 3.64, 0.34)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_awhhx"]
-size = Vector3(4.6, 3.6, 0.37)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_bvs58"]
-size = Vector3(4.6, 3.6, 0.37)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5eft"]
-emission_enabled = true
-emission = Color(0.98250765, 0, 0.3487505, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_71ffg"]
-size = Vector3(9.975, 6.405, 0.405)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8b42i"]
-size = Vector3(9.975, 6.405, 0.405)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_1"]
-size = Vector3(0.8, 6.5, 39.500)
 [sub_resource type="BoxShape3D" id="BoxShape3D_maze_2"]
-size = Vector3(0.8, 6.5, 39.500)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_3"]
-size = Vector3(16.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_4"]
-size = Vector3(16.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_5"]
-size = Vector3(16.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_6"]
-size = Vector3(16.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_7"]
-size = Vector3(12.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_8"]
-size = Vector3(7.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_9"]
-size = Vector3(7.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_10"]
-size = Vector3(6.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_11"]
-size = Vector3(6.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_12"]
-size = Vector3(7.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_13"]
-size = Vector3(7.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_14"]
-size = Vector3(6.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_15"]
-size = Vector3(7.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_16"]
-size = Vector3(7.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_17"]
-size = Vector3(3.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_18"]
-size = Vector3(3.000, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_19"]
-size = Vector3(13.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_20"]
-size = Vector3(13.500, 6.5, 0.8)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_21"]
-size = Vector3(0.8, 6.5, 12.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_22"]
-size = Vector3(0.8, 6.5, 12.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_23"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_24"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_25"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_26"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_27"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_28"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_29"]
-size = Vector3(0.8, 6.5, 6.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_30"]
-size = Vector3(0.8, 6.5, 12.000)
-[sub_resource type="BoxShape3D" id="BoxShape3D_maze_31"]
-size = Vector3(0.8, 6.5, 12.000)
+size = Vector3(0.8, 6.5, 40.458)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_invis_1"]
-size = Vector3(1, 10, 52)
-[sub_resource type="BoxShape3D" id="BoxShape3D_invis_2"]
-size = Vector3(1, 10, 52)
-[sub_resource type="BoxShape3D" id="BoxShape3D_invis_3"]
-size = Vector3(42, 10, 1)
-[sub_resource type="BoxShape3D" id="BoxShape3D_invis_4"]
-size = Vector3(42, 10, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_3"]
+size = Vector3(17.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_4"]
+size = Vector3(17.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_5"]
+size = Vector3(17.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_6"]
+size = Vector3(17.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_7"]
+size = Vector3(8.085, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_8"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_9"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_10"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_11"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_12"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_13"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_14"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_15"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_16"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_17"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_18"]
+size = Vector3(6.6, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_19"]
+size = Vector3(14.372, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_20"]
+size = Vector3(14.362, 6.5, 0.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_21"]
+size = Vector3(0.8, 6.5, 12.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_22"]
+size = Vector3(0.8, 6.5, 12.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_23"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_24"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_25"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_26"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_27"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_28"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_29"]
+size = Vector3(0.8, 6.5, 6.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_30"]
+size = Vector3(0.8, 6.5, 12.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_maze_31"]
+size = Vector3(0.8, 6.5, 12.6)
 
 [node name="Level_2" type="Node3D" unique_id=1418685217]
 
@@ -287,10 +287,10 @@ script = ExtResource("5_nraam")
 puzzle_time = 15.0
 
 [node name="red_button" parent="." unique_id=384808600 groups=["interactable"] instance=ExtResource("5_lxn2w")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15.5, 0.6, -38.0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15.62812, 0.390687, -38)
 
 [node name="blue_button" parent="." unique_id=1400264052 groups=["interactable"] instance=ExtResource("6_ppjc3")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.5, 0.6, -38.0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.989077, 0.014453918, -38)
 
 [node name="PuzzleUI" parent="." unique_id=260289974 instance=ExtResource("8_puzzle_ui")]
 
@@ -346,22 +346,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34876132, 1.3486476, 0)
 shape = SubResource("BoxShape3D_8b42i")
 
 [node name="InvisWall_Left" type="StaticBody3D" parent="." unique_id=500000178]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2, 5.0, -20.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2, 5, -20)
 
 [node name="Collision" type="CollisionShape3D" parent="InvisWall_Left" unique_id=500000179]
 shape = SubResource("BoxShape3D_invis_1")
+
 [node name="InvisWall_Right" type="StaticBody3D" parent="." unique_id=500000180]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2, 5.0, -20.0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2, 5, -20)
 
 [node name="Collision" type="CollisionShape3D" parent="InvisWall_Right" unique_id=500000181]
 shape = SubResource("BoxShape3D_invis_2")
+
 [node name="InvisWall_Back" type="StaticBody3D" parent="." unique_id=500000182]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.0, -45.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -45.2)
 
 [node name="Collision" type="CollisionShape3D" parent="InvisWall_Back" unique_id=500000183]
 shape = SubResource("BoxShape3D_invis_3")
+
 [node name="InvisWall_Front" type="StaticBody3D" parent="." unique_id=500000184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 5.0, 5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 5.2)
 
 [node name="Collision" type="CollisionShape3D" parent="InvisWall_Front" unique_id=500000185]
 shape = SubResource("BoxShape3D_invis_4")
@@ -369,447 +372,557 @@ shape = SubResource("BoxShape3D_invis_4")
 [node name="Maze" type="Area3D" parent="." unique_id=1715454892]
 
 [node name="Wall_Perim_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000000]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 3.25, -24.750)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 3.25, -24.75)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Left_Body" unique_id=500000001]
 shape = SubResource("BoxShape3D_maze_1")
+
 [node name="Wall_Perim_Left_M1" type="Node3D" parent="Maze" unique_id=500000002]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -41.679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -41.679)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M1" unique_id=500000003]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M2" type="Node3D" parent="Maze" unique_id=500000004]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -36.036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -36.036)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M2" unique_id=500000005]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M3" type="Node3D" parent="Maze" unique_id=500000006]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -30.393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -30.393)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M3" unique_id=500000007]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M4" type="Node3D" parent="Maze" unique_id=500000008]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -24.750)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -24.75)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M4" unique_id=500000009]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M5" type="Node3D" parent="Maze" unique_id=500000010]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -19.107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -19.107)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M5" unique_id=500000011]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M6" type="Node3D" parent="Maze" unique_id=500000012]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -13.464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -13.464)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M6" unique_id=500000013]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Left_M7" type="Node3D" parent="Maze" unique_id=500000014]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.500, 0.1, -7.821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0.1, -7.821)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Left_M7" unique_id=500000015]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000016]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 3.25, -24.750)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 3.25, -24.75)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Right_Body" unique_id=500000017]
 shape = SubResource("BoxShape3D_maze_2")
+
 [node name="Wall_Perim_Right_M1" type="Node3D" parent="Maze" unique_id=500000018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -41.679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -41.679)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M1" unique_id=500000019]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M2" type="Node3D" parent="Maze" unique_id=500000020]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -36.036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -36.036)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M2" unique_id=500000021]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M3" type="Node3D" parent="Maze" unique_id=500000022]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -30.393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -30.393)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M3" unique_id=500000023]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M4" type="Node3D" parent="Maze" unique_id=500000024]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -24.750)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -24.75)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M4" unique_id=500000025]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M5" type="Node3D" parent="Maze" unique_id=500000026]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -19.107)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -19.107)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M5" unique_id=500000027]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M6" type="Node3D" parent="Maze" unique_id=500000028]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -13.464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -13.464)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M6" unique_id=500000029]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Right_M7" type="Node3D" parent="Maze" unique_id=500000030]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.500, 0.1, -7.821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0.1, -7.821)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Right_M7" unique_id=500000031]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_L_Body" type="StaticBody3D" parent="Maze" unique_id=500000032]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.250, 3.25, -44.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 3.25, -44.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Back_L_Body" unique_id=500000033]
 shape = SubResource("BoxShape3D_maze_3")
+
 [node name="Wall_Perim_Back_L_M1" type="Node3D" parent="Maze" unique_id=500000034]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.750, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.75, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_L_M1" unique_id=500000035]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_L_M2" type="Node3D" parent="Maze" unique_id=500000036]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.250, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.25, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_L_M2" unique_id=500000037]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_L_M3" type="Node3D" parent="Maze" unique_id=500000038]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.750, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_L_M3" unique_id=500000039]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_R_Body" type="StaticBody3D" parent="Maze" unique_id=500000040]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.250, 3.25, -44.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.25, 3.25, -44.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Back_R_Body" unique_id=500000041]
 shape = SubResource("BoxShape3D_maze_4")
+
 [node name="Wall_Perim_Back_R_M1" type="Node3D" parent="Maze" unique_id=500000042]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.750, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.75, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_R_M1" unique_id=500000043]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_R_M2" type="Node3D" parent="Maze" unique_id=500000044]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.250, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.25, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_R_M2" unique_id=500000045]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Back_R_M3" type="Node3D" parent="Maze" unique_id=500000046]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.750, 0.1, -44.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.75, 0.1, -44)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Back_R_M3" unique_id=500000047]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_L_Body" type="StaticBody3D" parent="Maze" unique_id=500000048]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.250, 3.25, -5.500)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.25, 3.25, -5.5)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Front_L_Body" unique_id=500000049]
 shape = SubResource("BoxShape3D_maze_5")
+
 [node name="Wall_Perim_Front_L_M1" type="Node3D" parent="Maze" unique_id=500000050]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.750, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.75, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_L_M1" unique_id=500000051]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_L_M2" type="Node3D" parent="Maze" unique_id=500000052]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.250, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.25, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_L_M2" unique_id=500000053]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_L_M3" type="Node3D" parent="Maze" unique_id=500000054]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.750, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.75, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_L_M3" unique_id=500000055]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_R_Body" type="StaticBody3D" parent="Maze" unique_id=500000056]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.250, 3.25, -5.500)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.25, 3.25, -5.5)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_Perim_Front_R_Body" unique_id=500000057]
 shape = SubResource("BoxShape3D_maze_6")
+
 [node name="Wall_Perim_Front_R_M1" type="Node3D" parent="Maze" unique_id=500000058]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.750, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.75, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_R_M1" unique_id=500000059]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_R_M2" type="Node3D" parent="Maze" unique_id=500000060]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.250, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.25, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_R_M2" unique_id=500000061]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_Perim_Front_R_M3" type="Node3D" parent="Maze" unique_id=500000062]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.750, 0.1, -5.500)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.75, 0.1, -5.5)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_Perim_Front_R_M3" unique_id=500000063]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H11_Center_Body" type="StaticBody3D" parent="Maze" unique_id=500000064]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.25, -11.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.551, 3.25, -11.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H11_Center_Body" unique_id=500000065]
 shape = SubResource("BoxShape3D_maze_7")
+
 [node name="Wall_H11_Center_M1" type="Node3D" parent="Maze" unique_id=500000066]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.000, 0.1, -11.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 0.1, -11)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H11_Center_M1" unique_id=500000067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.19172454)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H11_Center_M2" type="Node3D" parent="Maze" unique_id=500000068]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.000, 0.1, -11.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.1, -11)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H11_Center_M2" unique_id=500000069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.293262)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H11_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.750, 3.25, -11.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.987, 3.25, -11.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H11_Left_Body" unique_id=500000071]
 shape = SubResource("BoxShape3D_maze_8")
+
 [node name="Wall_H11_Left_M1" type="Node3D" parent="Maze" unique_id=500000072]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.750, 0.1, -11.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.75, 0.1, -11)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H11_Left_M1" unique_id=500000073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7634859)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H11_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000074]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.750, 3.25, -11.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.423, 3.25, -11.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H11_Right_Body" unique_id=500000075]
 shape = SubResource("BoxShape3D_maze_9")
+
 [node name="Wall_H11_Right_M1" type="Node3D" parent="Maze" unique_id=500000076]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.750, 0.1, -11.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.75, 0.1, -11)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H11_Right_M1" unique_id=500000077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.32660007)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H17_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000078]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.000, 3.25, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.242, 3.25, -17.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H17_Left_Body" unique_id=500000079]
 shape = SubResource("BoxShape3D_maze_10")
+
 [node name="Wall_H17_Left_M1" type="Node3D" parent="Maze" unique_id=500000080]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.000, 0.1, -17.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0.1, -17)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H17_Left_M1" unique_id=500000081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7575884)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H17_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000082]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.000, 3.25, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.558, 3.25, -17.286)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H17_Right_Body" unique_id=500000083]
 shape = SubResource("BoxShape3D_maze_11")
+
 [node name="Wall_H17_Right_M1" type="Node3D" parent="Maze" unique_id=500000084]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.000, 0.1, -17.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9, 0.1, -17)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H17_Right_M1" unique_id=500000085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28598976, -0.022330292, -6.5584316)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H23_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000086]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.750, 3.25, -23.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.611, 3.25, -23.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H23_Left_Body" unique_id=500000087]
 shape = SubResource("BoxShape3D_maze_12")
+
 [node name="Wall_H23_Left_M1" type="Node3D" parent="Maze" unique_id=500000088]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.750, 0.1, -23.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.75, 0.1, -23)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H23_Left_M1" unique_id=500000089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1391115)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H23_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000090]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.750, 3.25, -23.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.75, 3.25, -23.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H23_Right_Body" unique_id=500000091]
 shape = SubResource("BoxShape3D_maze_13")
+
 [node name="Wall_H23_Right_M1" type="Node3D" parent="Maze" unique_id=500000092]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.750, 0.1, -23.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15.75, 0.1, -23)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H23_Right_M1" unique_id=500000093]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H23_Center_Body" type="StaticBody3D" parent="Maze" unique_id=500000094]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.25, -23.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.805, 3.25, -23.594)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H23_Center_Body" unique_id=500000095]
 shape = SubResource("BoxShape3D_maze_14")
+
 [node name="Wall_H23_Center_M1" type="Node3D" parent="Maze" unique_id=500000096]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.000, 0.1, -23.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.1, -23)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H23_Center_M1" unique_id=500000097]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5942497, 0, 2.805277)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H29_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.500, 3.25, -29.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.58, 3.25, -28.536)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H29_Left_Body" unique_id=500000099]
 shape = SubResource("BoxShape3D_maze_15")
+
 [node name="Wall_H29_Left_M1" type="Node3D" parent="Maze" unique_id=500000100]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.500, 0.1, -29.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.5, 0.1, -29)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H29_Left_M1" unique_id=500000101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4644184, 0, -0.9195719)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H29_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000102]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.500, 3.25, -29.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 3.25, -29.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H29_Right_Body" unique_id=500000103]
 shape = SubResource("BoxShape3D_maze_16")
+
 [node name="Wall_H29_Right_M1" type="Node3D" parent="Maze" unique_id=500000104]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.500, 0.1, -29.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8.5, 0.1, -29)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H29_Right_M1" unique_id=500000105]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H35_MidL_Body" type="StaticBody3D" parent="Maze" unique_id=500000106]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.500, 3.25, -35.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.617, 3.25, -35.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H35_MidL_Body" unique_id=500000107]
 shape = SubResource("BoxShape3D_maze_17")
+
 [node name="Wall_H35_MidL_M1" type="Node3D" parent="Maze" unique_id=500000108]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.500, 0.1, -35.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.5, 0.1, -35)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H35_MidL_M1" unique_id=500000109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1170182)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H35_MidR_Body" type="StaticBody3D" parent="Maze" unique_id=500000110]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.500, 3.25, -35.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.249, 3.25, -31.531)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H35_MidR_Body" unique_id=500000111]
 shape = SubResource("BoxShape3D_maze_18")
+
 [node name="Wall_H35_MidR_M1" type="Node3D" parent="Maze" unique_id=500000112]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.500, 0.1, -35.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.5, 0.1, -35)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H35_MidR_M1" unique_id=500000113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4689407, 0, 4.2509046)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H41_Left_Body" type="StaticBody3D" parent="Maze" unique_id=500000114]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.750, 3.25, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.239, 3.25, -41.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H41_Left_Body" unique_id=500000115]
 shape = SubResource("BoxShape3D_maze_19")
+
 [node name="Wall_H41_Left_M1" type="Node3D" parent="Maze" unique_id=500000116]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.125, 0.1, -41.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.125, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H41_Left_M1" unique_id=500000117]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H41_Left_M2" type="Node3D" parent="Maze" unique_id=500000118]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.375, 0.1, -41.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.375, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H41_Left_M2" unique_id=500000119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0224247)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H41_Right_Body" type="StaticBody3D" parent="Maze" unique_id=500000120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.750, 3.25, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.244, 3.25, -41.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_H41_Right_Body" unique_id=500000121]
 shape = SubResource("BoxShape3D_maze_20")
+
 [node name="Wall_H41_Right_M1" type="Node3D" parent="Maze" unique_id=500000122]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.375, 0.1, -41.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.375, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H41_Right_M1" unique_id=500000123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.011961)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_H41_Right_M2" type="Node3D" parent="Maze" unique_id=500000124]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.125, 0.1, -41.000)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.125, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_H41_Right_M2" unique_id=500000125]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_L_South_Body" type="StaticBody3D" parent="Maze" unique_id=500000126]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 3.25, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.439, 3.25, -17.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V12_L_South_Body" unique_id=500000127]
 shape = SubResource("BoxShape3D_maze_21")
+
 [node name="Wall_V12_L_South_M1" type="Node3D" parent="Maze" unique_id=500000128]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 0.1, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1, -20)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_L_South_M1" unique_id=500000129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4476585, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_L_South_M2" type="Node3D" parent="Maze" unique_id=500000130]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 0.1, -14.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1, -14)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_L_South_M2" unique_id=500000131]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4313335, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_L_North_Body" type="StaticBody3D" parent="Maze" unique_id=500000132]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 3.25, -35.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0, 3.25, -35.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V12_L_North_Body" unique_id=500000133]
 shape = SubResource("BoxShape3D_maze_22")
+
 [node name="Wall_V12_L_North_M1" type="Node3D" parent="Maze" unique_id=500000134]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 0.1, -38.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1, -38)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_L_North_M1" unique_id=500000135]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_L_North_M2" type="Node3D" parent="Maze" unique_id=500000136]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.000, 0.1, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.1, -32)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_L_North_M2" unique_id=500000137]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_L_South_Body" type="StaticBody3D" parent="Maze" unique_id=500000138]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 3.25, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.694, 3.25, -19.52)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_L_South_Body" unique_id=500000139]
 shape = SubResource("BoxShape3D_maze_23")
+
 [node name="Wall_V6_L_South_M1" type="Node3D" parent="Maze" unique_id=500000140]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 0.1, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.1, -20)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_L_South_M1" unique_id=500000141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6938934, 0, 0.4802227)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_L_Mid_Body" type="StaticBody3D" parent="Maze" unique_id=500000142]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 3.25, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0, 3.25, -32.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_L_Mid_Body" unique_id=500000143]
 shape = SubResource("BoxShape3D_maze_24")
+
 [node name="Wall_V6_L_Mid_M1" type="Node3D" parent="Maze" unique_id=500000144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 0.1, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.1, -32)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_L_Mid_M1" unique_id=500000145]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_L_Exit_Body" type="StaticBody3D" parent="Maze" unique_id=500000146]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 3.25, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.282, 3.25, -41.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_L_Exit_Body" unique_id=500000147]
 shape = SubResource("BoxShape3D_maze_25")
+
 [node name="Wall_V6_L_Exit_M1" type="Node3D" parent="Maze" unique_id=500000148]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.000, 0.1, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_L_Exit_M1" unique_id=500000149]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2819772, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V0_Center_Body" type="StaticBody3D" parent="Maze" unique_id=500000150]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 3.25, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 3.25, -13.622)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V0_Center_Body" unique_id=500000151]
 shape = SubResource("BoxShape3D_maze_26")
+
 [node name="Wall_V0_Center_M1" type="Node3D" parent="Maze" unique_id=500000152]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000, 0.1, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -17)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V0_Center_M1" unique_id=500000153]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.3778276)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_R_South_Body" type="StaticBody3D" parent="Maze" unique_id=500000154]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 3.25, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 3.25, -19.293)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_R_South_Body" unique_id=500000155]
 shape = SubResource("BoxShape3D_maze_27")
+
 [node name="Wall_V6_R_South_M1" type="Node3D" parent="Maze" unique_id=500000156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 0.1, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.1, -20)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_R_South_M1" unique_id=500000157]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.70695496)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_R_Mid_Body" type="StaticBody3D" parent="Maze" unique_id=500000158]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 3.25, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0, 3.25, -32.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_R_Mid_Body" unique_id=500000159]
 shape = SubResource("BoxShape3D_maze_28")
+
 [node name="Wall_V6_R_Mid_M1" type="Node3D" parent="Maze" unique_id=500000160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 0.1, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.1, -32)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_R_Mid_M1" unique_id=500000161]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V6_R_Exit_Body" type="StaticBody3D" parent="Maze" unique_id=500000162]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 3.25, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71, 3.25, -41.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V6_R_Exit_Body" unique_id=500000163]
 shape = SubResource("BoxShape3D_maze_29")
+
 [node name="Wall_V6_R_Exit_M1" type="Node3D" parent="Maze" unique_id=500000164]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.000, 0.1, -41.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.1, -41)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V6_R_Exit_M1" unique_id=500000165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7099295, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_R_South_Body" type="StaticBody3D" parent="Maze" unique_id=500000166]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 3.25, -17.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.28, 3.25, -17.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V12_R_South_Body" unique_id=500000167]
 shape = SubResource("BoxShape3D_maze_30")
+
 [node name="Wall_V12_R_South_M1" type="Node3D" parent="Maze" unique_id=500000168]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 0.1, -20.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -20)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_R_South_M1" unique_id=500000169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2941437, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_R_South_M2" type="Node3D" parent="Maze" unique_id=500000170]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 0.1, -14.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -14)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_R_South_M2" unique_id=500000171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2653103, 0, 0)
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_R_North_Body" type="StaticBody3D" parent="Maze" unique_id=500000172]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 3.25, -35.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0, 3.25, -35.0)
 
 [node name="Collision" type="CollisionShape3D" parent="Maze/Wall_V12_R_North_Body" unique_id=500000173]
 shape = SubResource("BoxShape3D_maze_31")
+
 [node name="Wall_V12_R_North_M1" type="Node3D" parent="Maze" unique_id=500000174]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 0.1, -38.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -38)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_R_North_M1" unique_id=500000175]
 mesh = SubResource("ArrayMesh_3ord6")
+
 [node name="Wall_V12_R_North_M2" type="Node3D" parent="Maze" unique_id=500000176]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.000, 0.1, -32.000)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.1, -32)
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_R_North_M2" unique_id=500000177]
 mesh = SubResource("ArrayMesh_3ord6")
