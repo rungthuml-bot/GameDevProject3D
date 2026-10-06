@@ -124,7 +124,7 @@ albedo_color = Color(0.5084918, 0.6524408, 0.23244649, 1)
 material = SubResource("StandardMaterial3D_7p6j4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vk57k"]
-size = Vector3(75, 0.5, 75)
+size = Vector3(40, 1, 40)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlsb7"]
 resource_name = "bush brighter"
@@ -913,12 +913,12 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ho6n6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5eft"]
-size = Vector3(1, 10, 75)
+size = Vector3(1, 10, 40)
 
 [node name="Level_1" type="Node3D" unique_id=1418685217]
 
 [node name="Door_To_Level2" parent="." unique_id=1327668518 instance=ExtResource("1_4snqv")]
-transform = Transform3D(-7.11, 0, 1.0735802e-06, 0, 7.11, 0, -1.0735802e-06, 0, -7.11, 0, 2.6380134, -40.18158)
+transform = Transform3D(-7.11, 0, 1.0735802e-06, 0, 7.11, 0, -1.0735802e-06, 0, -7.11, 0, 2.4, -18.8)
 script = SubResource("GDScript_knogg")
 target_scene = "uid://dh6mu8itlwn4s"
 target_spawn_id = "Spawn_From_Level2"
@@ -932,100 +932,101 @@ light_energy = 2.0
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=1201968839]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=106129981]
-transform = Transform3D(75, 0, 0, 0, 0.5, 0, 0, 0, 75, 0, 0, 0)
+transform = Transform3D(40, 0, 0, 0, 1, 0, 0, 0, 40, 0, 0, 0)
 mesh = SubResource("BoxMesh_qqy1o")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1289807496]
 shape = SubResource("BoxShape3D_vk57k")
 
 [node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_b828a")]
-transform = Transform3D(-0.10757008, 0, -0.9941975, 0, 1, 0, 0.9941975, 0, -0.10757008, -35.141197, 0.26464987, 0.4749937)
+transform = Transform3D(-0.10757008, 0, -0.9941975, 0, 1, 0, 0.9941975, 0, -0.10757008, -15, 0.2, 0.5)
 
 [node name="InteractionUI" parent="." unique_id=929617552 instance=ExtResource("3_m5hwo")]
 
 [node name="Spawn_From_Level1" type="Marker3D" parent="." unique_id=208036464]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8582878, 0, -28.908468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -15)
 
 [node name="HUD" parent="." unique_id=1499615655 instance=ExtResource("5_hud")]
 
 [node name="Forest" type="Node3D" parent="." unique_id=1979883905]
 
 [node name="Bush_Clumps_L_flat2" type="Node3D" parent="Forest" unique_id=110973505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.195675, 0, -33.368065)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -15)
 
 [node name="Bush clumps big f" type="MeshInstance3D" parent="Forest/Bush_Clumps_L_flat2" unique_id=158770548]
 mesh = SubResource("ArrayMesh_6qoep")
 
 [node name="Bush_Clumps_L_flat" type="Node3D" parent="Forest" unique_id=586090315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.218555, 0, 31.913294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0, 15)
 
 [node name="Bush clumps big f" type="MeshInstance3D" parent="Forest/Bush_Clumps_L_flat" unique_id=1352978066]
 mesh = SubResource("ArrayMesh_6qoep")
 
 [node name="Rock_01_flat" type="Node3D" parent="Forest" unique_id=501611523]
-transform = Transform3D(4.51, 0, 0, 0, 4.51, 0, 0, 0, 4.51, -17.628273, 0.28404585, 33.194283)
+transform = Transform3D(4.51, 0, 0, 0, 4.51, 0, 0, 0, 4.51, -10, 0.2, 16)
 
 [node name="Rock 1 f" type="MeshInstance3D" parent="Forest/Rock_01_flat" unique_id=44576104]
 mesh = SubResource("ArrayMesh_e4kk8")
 
 [node name="Tree_Stump_flat" type="Node3D" parent="Forest" unique_id=645673622]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.554209, 0.6176183, 27.250393)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.4, 13)
 
 [node name="Tree Stump f" type="MeshInstance3D" parent="Forest/Tree_Stump_flat" unique_id=1072394850]
 mesh = SubResource("ArrayMesh_umsu6")
 
 [node name="Fallen_Log_flat" type="Node3D" parent="Forest" unique_id=1725688175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.298206, 0.55402976, -21.242891)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.4, -11)
 
 [node name="Fallen Log f" type="MeshInstance3D" parent="Forest/Fallen_Log_flat" unique_id=757078777]
 mesh = SubResource("ArrayMesh_wvtp8")
 
 [node name="Mushroom_Brown_L_flat" type="Node3D" parent="Forest" unique_id=644845200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.715893, 0.25, -2.9403691)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.1, -2)
 
 [node name="Brown Mushroom big f" type="MeshInstance3D" parent="Forest/Mushroom_Brown_L_flat" unique_id=1733888145]
 mesh = SubResource("ArrayMesh_tqlci")
 
 [node name="Mushroom_Red_L_flat" type="Node3D" parent="Forest" unique_id=590081919]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.2473216, 0.25, -2.2489793)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.1, -1.5)
 
 [node name="Red Mushroom big f" type="MeshInstance3D" parent="Forest/Mushroom_Red_L_flat" unique_id=50496417]
 mesh = SubResource("ArrayMesh_o4teq")
 
 [node name="Cypress_L_flat" type="Node3D" parent="Forest" unique_id=135931863]
-transform = Transform3D(1.505, 0, 0, 0, 1.505, 0, 0, 0, 1.505, -10.140347, 0.2830708, 22.320082)
+transform = Transform3D(1.505, 0, 0, 0, 1.505, 0, 0, 0, 1.505, -7, 0.2, 12)
 
 [node name="Cypress big f" type="MeshInstance3D" parent="Forest/Cypress_L_flat" unique_id=516334100]
 mesh = SubResource("ArrayMesh_5dgrc")
 
 [node name="Cypress_L_flat2" type="Node3D" parent="Forest" unique_id=1592395196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.876668, 0.2830708, 17.097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.2, 8.5)
 
 [node name="Cypress big f" type="MeshInstance3D" parent="Forest/Cypress_L_flat2" unique_id=330006359]
 mesh = SubResource("ArrayMesh_5dgrc")
 
 [node name="Spruce_L_flat" type="Node3D" parent="Forest" unique_id=586442103]
-transform = Transform3D(1.505, 0, 0, 0, 1.505, 0, 0, 0, 1.505, -32.387024, 0, 33.37016)
+transform = Transform3D(1.505, 0, 0, 0, 1.505, 0, 0, 0, 1.505, -15, 0, 15.5)
 
 [node name="Spruce big f" type="MeshInstance3D" parent="Forest/Spruce_L_flat" unique_id=1855927656]
 mesh = SubResource("ArrayMesh_u84si")
 
 [node name="Mistletoe_Tree_flat" type="Node3D" parent="Forest" unique_id=742719845]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.831003, 0, 34.122196)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0, 16)
 
 [node name="Tree with mistletoe f" type="MeshInstance3D" parent="Forest/Mistletoe_Tree_flat" unique_id=1319211071]
 mesh = SubResource("ArrayMesh_72fua")
 
 [node name="Birch_H_flat" type="Node3D" parent="Forest" unique_id=1691828181]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.812078, 0.338637, -13.800077)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 0.2, -7)
 
 [node name="Birch hero green f" type="MeshInstance3D" parent="Forest/Birch_H_flat" unique_id=924827034]
 mesh = SubResource("ArrayMesh_b85qw")
 
 [node name="Boulder_01_flat" type="Node3D" parent="Forest" unique_id=54264431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.076555, 0.6099504, -30.40677)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.4, -14.5)
 
 [node name="Boulder 1 f" type="MeshInstance3D" parent="Forest/Boulder_01_flat" unique_id=1058034114]
 mesh = SubResource("ArrayMesh_3vfiv")
@@ -1033,17 +1034,18 @@ mesh = SubResource("ArrayMesh_3vfiv")
 [node name="InvisibleWall" type="StaticBody3D" parent="." unique_id=1937073821]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InvisibleWall" unique_id=427939199]
-transform = Transform3D(0.9999864, 0.00024049667, 0.0052040885, -0.00023331017, 0.99999905, -0.0013793287, -0.0052044154, 0.0013780937, 0.99998546, -38.035305, 5.271849, -0.027265549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 5, 0)
 shape = SubResource("BoxShape3D_v5eft")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="InvisibleWall" unique_id=1723139952]
-transform = Transform3D(0.9999864, 0.00024049667, 0.0052040885, -0.00023331017, 0.99999905, -0.0013793287, -0.0052044154, 0.0013780937, 0.99998546, 37.986027, 5.271849, -0.027265549)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 5, 0)
 shape = SubResource("BoxShape3D_v5eft")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="InvisibleWall" unique_id=1897706372]
-transform = Transform3D(-4.371139e-08, 0.0017453283, 0.99999845, 0, 0.99999845, -0.0017453283, -1, -7.6290724e-11, -4.371132e-08, 0.09932518, 5.271849, -38.04077)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, -20)
 shape = SubResource("BoxShape3D_v5eft")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="InvisibleWall" unique_id=2078463758]
-transform = Transform3D(-4.371139e-08, 0.0017453283, 0.99999845, 0, 0.99999845, -0.0017453283, -1, -7.6290724e-11, -4.371132e-08, 0.09932518, 5.271849, 37.97792)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, 20)
 shape = SubResource("BoxShape3D_v5eft")
+
