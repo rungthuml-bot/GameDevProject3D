@@ -81,7 +81,7 @@ func interact() -> void:
 		return
 
 	# Player has relic and returns it now!
-	GameManager.relic_returned = true
+	GameManager.set_relic_returned(true)
 	_update_state()
 
 	if is_inside_tree() and has_node("/root/AudioManager"):

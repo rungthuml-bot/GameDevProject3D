@@ -77,7 +77,7 @@ func interact() -> void:
 
 	# First time pickup
 	if GameManager:
-		GameManager.has_relic = true
+		GameManager.set_relic_acquired(true)
 
 	if is_instance_valid(_relic_mesh):
 		_relic_mesh.visible = false

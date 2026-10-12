@@ -182,7 +182,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	# MOUSE CAMERA LOOK
 	# =====================================================
 
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
 
@@ -227,7 +227,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+			if UIManager and not UIManager.is_dialogue_active() and UIManager.is_playing():
+				# Only recapture if HUD inventory is not open
+				var hud = get_tree().get_first_node_in_group("hud")
+				if hud == null or not (hud.has_node("InventoryUI") and hud.get_node("InventoryUI").visible):
+					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 # =========================================================

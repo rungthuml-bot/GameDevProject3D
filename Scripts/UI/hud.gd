@@ -46,6 +46,9 @@ const NotificationSystemScript = preload("res://Scripts/UI/notification_system.g
 @onready var pause_resume_btn: Button = $PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton
 @onready var pause_settings_btn: Button = $PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton
 
+# Inventory UI Overlay
+@onready var inventory_ui: Control = $InventoryUI
+
 # =========================================================
 # STATE & TWEENS
 # =========================================================
@@ -93,6 +96,9 @@ func _ready() -> void:
 	UIManager.win_triggered.connect(_show_win_screen)
 	UIManager.lose_triggered.connect(_show_lose_screen)
 
+	if is_instance_valid(inventory_ui):
+		inventory_ui.inventory_closed.connect(_on_inventory_closed)
+
 	# Connect Presentation Layer signals
 	UIManager.damage_taken.connect(_on_damage_taken)
 	UIManager.objective_added.connect(_on_objective_added)
@@ -139,7 +145,16 @@ func _unhandled_input(event: InputEvent) -> void:
 	if UIManager.is_dialogue_active():
 		return
 
+	if event.is_action_pressed("toggle_inventory"):
+		_toggle_inventory()
+		get_viewport().set_input_as_handled()
+		return
+
 	if event.is_action_pressed("ui_pause"):
+		if is_instance_valid(inventory_ui) and inventory_ui.visible:
+			_close_inventory()
+			get_viewport().set_input_as_handled()
+			return
 		_toggle_pause()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		# Quick hotkeys when test panel is visible
@@ -480,6 +495,46 @@ func _toggle_pause() -> void:
 		pause_resume_btn.call_deferred("grab_focus")
 	elif UIManager.current_state == UIManager.GameState.PAUSED:
 		_on_resume()
+
+
+# =========================================================
+# INVENTORY CONTROLS
+# =========================================================
+
+func _toggle_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+
+	# Do not toggle inventory during pause menu, win, lose, or dialogue
+	if pause_menu.visible or win_screen.visible or lose_screen.visible or UIManager.is_dialogue_active():
+		return
+
+	if inventory_ui.visible:
+		_close_inventory()
+	else:
+		_open_inventory()
+
+
+func _open_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	crosshair.visible = false
+	interaction_prompt.visible = false
+	inventory_ui.open_inventory()
+
+
+func _close_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+	inventory_ui.close_inventory()
+
+
+func _on_inventory_closed() -> void:
+	crosshair.visible = true
+	# Restore mouse capture if game is currently in playing state
+	if UIManager.is_playing() and not pause_menu.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
 func _show_overlay(overlay: Control) -> void:
