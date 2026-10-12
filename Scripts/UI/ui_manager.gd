@@ -55,12 +55,31 @@ signal dialogue_line_displayed(speaker: String, text: String, line_index: int, t
 signal dialogue_ended(dialogue_id: String)
 
 # =========================================================
-# SETTINGS
+# SETTINGS & PERSISTENCE
 # =========================================================
 
+const SETTINGS_FILE_PATH := "user://settings.cfg"
+
+# Audio Settings (Percentages 0 - 100)
 var master_volume: float = 80.0
-var mouse_sensitivity: float = 0.002
+var music_volume: float = 80.0
+var sfx_volume: float = 85.0
+var ambient_volume: float = 80.0
+
+# Graphics Settings
 var is_fullscreen: bool = true
+var window_mode_index: int = 0  # 0: Fullscreen, 1: Windowed, 2: Borderless
+var vsync_enabled: bool = true
+var brightness_value: float = 1.0 # 0.5 - 1.5 multiplier
+var shadow_quality_index: int = 2 # 0: Low, 1: Medium, 2: High
+
+# Controls Settings
+var mouse_sensitivity: float = 0.002
+var invert_y: bool = false
+
+# Gameplay & Accessibility Settings
+var subtitles_enabled: bool = true
+var text_size_index: int = 1 # 0: Normal, 1: Large (Accessibility)
 
 # =========================================================
 # GAME STATE
@@ -102,14 +121,14 @@ var ui_test_mode_enabled: bool = false
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	# Ensure game starts in fullscreen mode
-	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	is_fullscreen = true
 
 	# Connect DialogueManager signals
 	dialogue_manager.dialogue_started.connect(_on_dialogue_mgr_started)
 	dialogue_manager.dialogue_line_ready.connect(_on_dialogue_mgr_line_ready)
 	dialogue_manager.dialogue_ended.connect(_on_dialogue_mgr_ended)
+
+	# Load saved configurations or defaults
+	load_settings_from_config()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -279,25 +298,145 @@ func quit_game() -> void:
 
 
 # =========================================================
-# SETTINGS API
+# SETTINGS API & PERSISTENCE
 # =========================================================
+
+func load_settings_from_config() -> void:
+	var config := ConfigFile.new()
+	var err := config.load(SETTINGS_FILE_PATH)
+	if err == OK:
+		# Audio
+		master_volume = config.get_value("audio", "master_volume", 80.0)
+		music_volume = config.get_value("audio", "music_volume", 80.0)
+		sfx_volume = config.get_value("audio", "sfx_volume", 85.0)
+		ambient_volume = config.get_value("audio", "ambient_volume", 80.0)
+
+		# Graphics
+		window_mode_index = config.get_value("graphics", "window_mode", 0)
+		is_fullscreen = (window_mode_index == 0 or window_mode_index == 2)
+		vsync_enabled = config.get_value("graphics", "vsync", true)
+		brightness_value = config.get_value("graphics", "brightness", 1.0)
+		shadow_quality_index = config.get_value("graphics", "shadow_quality", 2)
+
+		# Controls
+		var sens_pct = config.get_value("controls", "sensitivity_percent", 50.0)
+		mouse_sensitivity = remap(sens_pct, 0.0, 100.0, 0.0005, 0.006)
+		invert_y = config.get_value("controls", "invert_y", false)
+
+		# Gameplay
+		subtitles_enabled = config.get_value("gameplay", "subtitles", true)
+		text_size_index = config.get_value("gameplay", "text_size", 1)
+
+	apply_all_settings()
+
+
+func save_settings_to_config() -> void:
+	var config := ConfigFile.new()
+	# Audio
+	config.set_value("audio", "master_volume", master_volume)
+	config.set_value("audio", "music_volume", music_volume)
+	config.set_value("audio", "sfx_volume", sfx_volume)
+	config.set_value("audio", "ambient_volume", ambient_volume)
+
+	# Graphics
+	config.set_value("graphics", "window_mode", window_mode_index)
+	config.set_value("graphics", "vsync", vsync_enabled)
+	config.set_value("graphics", "brightness", brightness_value)
+	config.set_value("graphics", "shadow_quality", shadow_quality_index)
+
+	# Controls
+	config.set_value("controls", "sensitivity_percent", get_sensitivity_percent())
+	config.set_value("controls", "invert_y", invert_y)
+
+	# Gameplay
+	config.set_value("gameplay", "subtitles", subtitles_enabled)
+	config.set_value("gameplay", "text_size", text_size_index)
+
+	config.save(SETTINGS_FILE_PATH)
+
+
+func apply_all_settings() -> void:
+	# 1. Audio Buses (Master, Music, SFX, Ambient)
+	_apply_bus_volume("Master", master_volume)
+	_apply_bus_volume("Music", music_volume)
+	_apply_bus_volume("SFX", sfx_volume)
+	_apply_bus_volume("Ambient", ambient_volume)
+
+	# 2. Window Mode
+	match window_mode_index:
+		0:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			is_fullscreen = true
+		1:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
+			is_fullscreen = false
+		2:
+			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
+			is_fullscreen = true
+
+	# 3. VSync
+	DisplayServer.window_set_vsync_mode(
+		DisplayServer.VSYNC_ENABLED if vsync_enabled else DisplayServer.VSYNC_DISABLED
+	)
+
+	# 4. Shadow Quality (Directional & Positional Shadows)
+	match shadow_quality_index:
+		0: # Low
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_HARD)
+			RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_HARD)
+		1: # Medium
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
+			RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_LOW)
+		2: # High
+			RenderingServer.directional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
+			RenderingServer.positional_soft_shadow_filter_set_quality(RenderingServer.SHADOW_QUALITY_SOFT_MEDIUM)
+
+	settings_updated.emit()
+
+
+func _apply_bus_volume(bus_name: String, percent: float) -> void:
+	var idx := AudioServer.get_bus_index(bus_name)
+	if idx != -1:
+		if percent <= 0.0:
+			AudioServer.set_bus_mute(idx, true)
+		else:
+			AudioServer.set_bus_mute(idx, false)
+			AudioServer.set_bus_volume_db(idx, linear_to_db(percent / 100.0))
+
+
+func reset_settings_to_defaults() -> void:
+	master_volume = 80.0
+	music_volume = 80.0
+	sfx_volume = 85.0
+	ambient_volume = 80.0
+
+	window_mode_index = 0
+	is_fullscreen = true
+	vsync_enabled = true
+	brightness_value = 1.0
+	shadow_quality_index = 2
+
+	mouse_sensitivity = remap(50.0, 0.0, 100.0, 0.0005, 0.006)
+	invert_y = false
+
+	subtitles_enabled = true
+	text_size_index = 1
+
+	apply_all_settings()
+	save_settings_to_config()
+
 
 func update_settings(volume: float, sensitivity_percent: float, fullscreen: bool) -> void:
 	master_volume = volume
 	mouse_sensitivity = remap(sensitivity_percent, 0.0, 100.0, 0.0005, 0.006)
 	is_fullscreen = fullscreen
+	window_mode_index = 0 if fullscreen else 1
 
-	# Apply audio
-	var bus_index = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(volume / 100.0))
-
-	# Apply display
-	if fullscreen:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-
-	settings_updated.emit()
+	apply_all_settings()
+	save_settings_to_config()
 
 
 func get_sensitivity_percent() -> float:

@@ -42,8 +42,19 @@ func _ready() -> void:
 	UIManager.dialogue_started.connect(_on_dialogue_started)
 	UIManager.dialogue_line_displayed.connect(_on_dialogue_line_displayed)
 	UIManager.dialogue_ended.connect(_on_dialogue_ended)
+	UIManager.settings_updated.connect(_apply_accessibility_settings)
 
+	_apply_accessibility_settings()
 	_start_indicator_pulse()
+
+
+func _apply_accessibility_settings() -> void:
+	if not is_instance_valid(dialogue_text):
+		return
+	if UIManager:
+		# Text size: 0: Normal (16px), 1: Large (19px)
+		var font_size := 16 if UIManager.text_size_index == 0 else 20
+		dialogue_text.add_theme_font_size_override("font_size", font_size)
 
 
 func _process(delta: float) -> void:

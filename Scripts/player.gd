@@ -201,8 +201,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	# =====================================================
 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var y_mult := 1.0 if (UIManager and UIManager.invert_y) else -1.0
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
+		gimbal.rotate_x(event.relative.y * mouse_sensitivity * y_mult)
 
 		var min_pitch := FIRST_PERSON_MIN_PITCH if is_first_person else THIRD_PERSON_MIN_PITCH
 		var max_pitch := FIRST_PERSON_MAX_PITCH if is_first_person else THIRD_PERSON_MAX_PITCH

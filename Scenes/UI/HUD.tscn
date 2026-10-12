@@ -517,6 +517,48 @@ text = "MASTER VOLUME"
 layout_mode = 2
 value = 80.0
 
+[node name="MusicSection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="MusicLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/MusicSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "MUSIC VOLUME"
+
+[node name="MusicSlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/MusicSection"]
+layout_mode = 2
+value = 80.0
+
+[node name="SfxSection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SfxLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SfxSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "SFX VOLUME"
+
+[node name="SfxSlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SfxSection"]
+layout_mode = 2
+value = 85.0
+
+[node name="AmbientSection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AmbientLabel" type="Label" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/AmbientSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.8)
+theme_override_font_sizes/font_size = 12
+text = "AMBIENT VOLUME"
+
+[node name="AmbientSlider" type="HSlider" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/AmbientSection"]
+layout_mode = 2
+value = 80.0
+
 [node name="SensitivitySection" type="VBoxContainer" parent="PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 4

@@ -40,6 +40,9 @@ const NotificationSystemScript = preload("res://Scripts/UI/notification_system.g
 @onready var pause_main_panel: Control = $PauseMenu/CenterContainer
 @onready var pause_settings_panel: Control = $PauseMenu/PauseSettings
 @onready var pause_volume_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection/VolumeSlider
+@onready var pause_music_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/MusicSection/MusicSlider
+@onready var pause_sfx_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SfxSection/SfxSlider
+@onready var pause_ambient_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/AmbientSection/AmbientSlider
 @onready var pause_sensitivity_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection/SensitivitySlider
 @onready var pause_fullscreen_check: CheckButton = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/DisplaySection/FullscreenCheck
 @onready var pause_settings_back_btn: Button = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SettingsBackButton
@@ -90,6 +93,9 @@ func _ready() -> void:
 
 	# Connect Pause & Navigation signals
 	pause_volume_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_music_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_sfx_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_ambient_slider.value_changed.connect(_on_pause_settings_changed)
 	pause_sensitivity_slider.value_changed.connect(_on_pause_settings_changed)
 	pause_fullscreen_check.toggled.connect(_on_pause_settings_changed)
 
@@ -560,6 +566,9 @@ func _on_restart() -> void:
 
 func _on_settings() -> void:
 	pause_volume_slider.value = UIManager.master_volume
+	pause_music_slider.value = UIManager.music_volume
+	pause_sfx_slider.value = UIManager.sfx_volume
+	pause_ambient_slider.value = UIManager.ambient_volume
 	pause_sensitivity_slider.value = UIManager.get_sensitivity_percent()
 	pause_fullscreen_check.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 
@@ -575,11 +584,16 @@ func _on_settings_back() -> void:
 
 
 func _on_pause_settings_changed(_val = 0) -> void:
-	UIManager.update_settings(
-		pause_volume_slider.value,
-		pause_sensitivity_slider.value,
-		pause_fullscreen_check.button_pressed
-	)
+	UIManager.master_volume = pause_volume_slider.value
+	UIManager.music_volume = pause_music_slider.value
+	UIManager.sfx_volume = pause_sfx_slider.value
+	UIManager.ambient_volume = pause_ambient_slider.value
+	UIManager.mouse_sensitivity = remap(pause_sensitivity_slider.value, 0.0, 100.0, 0.0005, 0.006)
+	UIManager.is_fullscreen = pause_fullscreen_check.button_pressed
+	UIManager.window_mode_index = 0 if UIManager.is_fullscreen else 1
+
+	UIManager.apply_all_settings()
+	UIManager.save_settings_to_config()
 
 
 func _on_main_menu() -> void:
