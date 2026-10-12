@@ -110,7 +110,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
 theme_override_fonts/font = SubResource("Font_thai_body")
 theme_override_font_sizes/font_size = 18
-text = "สุชานาฏ แก้วมุงคุณ"
+text = "Suchanat Kaewmungkool"
 horizontal_alignment = 1
 
 [node name="Role1" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard1"]
@@ -139,7 +139,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
 theme_override_fonts/font = SubResource("Font_thai_body")
 theme_override_font_sizes/font_size = 18
-text = "รุ่งธรรม ล้อมในเมือง"
+text = "Rungtham Lomnaimuang"
 horizontal_alignment = 1
 
 [node name="Role2" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard2"]
@@ -168,7 +168,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
 theme_override_fonts/font = SubResource("Font_thai_body")
 theme_override_font_sizes/font_size = 18
-text = "อรจิรา วงศ์ประดิษฐ์"
+text = "Orajira Wongpradit"
 horizontal_alignment = 1
 
 [node name="Role3" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard3"]
@@ -197,7 +197,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
 theme_override_fonts/font = SubResource("Font_thai_body")
 theme_override_font_sizes/font_size = 18
-text = "ธราเทพ ภาคโพธิ์"
+text = "Tharathep Phakpho"
 horizontal_alignment = 1
 
 [node name="Role4" type="Label" parent="CenterContainer/ContentBox/TeamGrid/MemberCard4"]

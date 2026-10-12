@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://test_settings_runner_v1"]
+
+[ext_resource type="Script" path="res://scratch/test_settings.gd" id="1_testsettings"]
+
+[node name="TestSettingsRunner" type="Node"]
+script = ExtResource("1_testsettings")

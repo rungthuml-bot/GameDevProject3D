@@ -130,14 +130,16 @@ func _skip_cutscene() -> void:
 	_is_skipped = true
 
 	# Kill all running tweens, jump to end state
-	get_tree().get_root().propagate_notification(Node.NOTIFICATION_PAUSED)
+	if get_tree() and get_tree().root:
+		get_tree().root.propagate_notification(Node.NOTIFICATION_PAUSED)
 
 	var tween := create_tween()
 	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween.tween_property(fade_rect, "modulate:a", 1.0, 0.3) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_SINE)
 	tween.tween_callback(func():
-		get_tree().get_root().propagate_notification(Node.NOTIFICATION_UNPAUSED)
+		if get_tree() and get_tree().root:
+			get_tree().root.propagate_notification(Node.NOTIFICATION_UNPAUSED)
 		_show_game_complete_screen()
 	)
 

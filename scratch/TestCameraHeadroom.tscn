@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://test_camera_headroom_runner"]
+
+[ext_resource type="Script" path="res://scratch/test_camera_headroom.gd" id="1_camtest"]
+
+[node name="TestCameraHeadroomRunner" type="Node3D"]
+script = ExtResource("1_camtest")

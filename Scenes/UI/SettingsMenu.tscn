@@ -102,7 +102,22 @@ content_margin_top = 3.0
 content_margin_right = 8.0
 content_margin_bottom = 3.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
+bg_color = Color(0.05, 0.045, 0.06, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.78, 0.62, 0.36, 0.45)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_color = Color(0, 0, 0, 0.6)
+shadow_size = 14
+
 [node name="SettingsMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,7 +134,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.035, 0.05, 1)
+color = Color(0.03, 0.025, 0.04, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -129,74 +144,277 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ContentBox" type="VBoxContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(480, 0)
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(860, 680)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="TitleBlock" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 6
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 22
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.35)
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 2
-theme_override_fonts/font = SubResource("FontVar_title")
-theme_override_font_sizes/font_size = 32
-text = "SETTINGS"
-horizontal_alignment = 1
-
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/ContentBox/TitleBlock"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
-theme_override_fonts/font = SubResource("FontVar_section")
-theme_override_font_sizes/font_size = 12
-text = "CONFIGURATION"
-horizontal_alignment = 1
-
-[node name="TitleDivider" type="ColorRect" parent="CenterContainer/ContentBox/TitleBlock"]
-custom_minimum_size = Vector2(160, 1)
-layout_mode = 2
-size_flags_horizontal = 4
-color = Color(0.76, 0.63, 0.36, 0.3)
-
-[node name="SectionsBox" type="VBoxContainer" parent="CenterContainer/ContentBox"]
+[node name="ContentBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="GameplaySection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
+[node name="TitleBlock" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="GameplayLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TitleBlock"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.91, 0.88, 0.78, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("FontVar_title")
+theme_override_font_sizes/font_size = 28
+text = "SETTINGS / การตั้งค่า"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TitleBlock"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
 theme_override_fonts/font = SubResource("FontVar_section")
 theme_override_font_sizes/font_size = 12
-text = "GAMEPLAY"
+text = "SYSTEM CONFIGURATION & CONTROLS"
+horizontal_alignment = 1
 
-[node name="SensitivityRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+[node name="TitleDivider" type="ColorRect" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TitleBlock"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+color = Color(0.78, 0.62, 0.36, 0.3)
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="Audio" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="AudioVBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MasterRow" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MasterRow"]
 layout_mode = 2
 
-[node name="SensitivityLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection/SensitivityRow"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MasterRow/HBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
-theme_override_font_sizes/font_size = 14
-text = "Mouse Sensitivity"
+text = "Master Volume (ระดับเสียงหลัก)"
 
-[node name="SensitivityValue" type="Label" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection/SensitivityRow"]
+[node name="MasterVolumeValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MasterRow/HBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.78, 0.63, 0.38, 0.95)
-theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MasterRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+step = 1.0
+value = 80.0
+
+[node name="MusicRow" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MusicRow"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MusicRow/HBox"]
+layout_mode = 2
+text = "Music Volume (เสียงดนตรีประกอบ - BGM)"
+
+[node name="MusicVolumeValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MusicRow/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MusicVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/MusicRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+step = 1.0
+value = 80.0
+
+[node name="SfxRow" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/SfxRow"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/SfxRow/HBox"]
+layout_mode = 2
+text = "Sound Effects Volume (เสียงเอฟเฟกต์ - SFX)"
+
+[node name="SfxVolumeValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/SfxRow/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+text = "85%"
+horizontal_alignment = 2
+
+[node name="SfxVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/SfxRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+step = 1.0
+value = 85.0
+
+[node name="AmbientRow" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/AmbientRow"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/AmbientRow/HBox"]
+layout_mode = 2
+text = "Ambient Volume (เสียงบรรยากาศถ้ำ/ลม)"
+
+[node name="AmbientVolumeValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/AmbientRow/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
+text = "80%"
+horizontal_alignment = 2
+
+[node name="AmbientVolumeSlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Audio/AudioVBox/AmbientRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("Tex_grabber")
+theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
+theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
+step = 1.0
+value = 80.0
+
+[node name="Graphics" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="GraphicsVBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="WindowRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/WindowRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Display Mode (โหมดแสดงผล)"
+
+[node name="WindowModeOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/WindowRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+
+[node name="VsyncRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/VsyncRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Vertical Sync (VSync)"
+
+[node name="VsyncToggle" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/VsyncRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+focus_mode = 2
+toggle_mode = true
+flat = true
+script = ExtResource("4_toggle")
+
+[node name="ShadowRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/ShadowRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Shadow Quality (คุณภาพเงาวัตถุ)"
+
+[node name="ShadowOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Graphics/GraphicsVBox/ShadowRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+
+[node name="Controls" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="ControlsVBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="SensRow" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="HBox" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/SensRow"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/SensRow/HBox"]
+layout_mode = 2
+text = "Mouse Sensitivity (ความไวเมาส์)"
+
+[node name="SensitivityValue" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/SensRow/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.72, 0.45, 1)
 text = "50%"
 horizontal_alignment = 2
 
-[node name="SensitivitySlider" type="HSlider" parent="CenterContainer/ContentBox/SectionsBox/GameplaySection"]
+[node name="SensitivitySlider" type="HSlider" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/SensRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -209,79 +427,15 @@ min_value = 10.0
 step = 1.0
 value = 50.0
 
-[node name="SectionDivider1" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0.76, 0.63, 0.36, 0.18)
-
-[node name="AudioSection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="AudioLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
-theme_override_fonts/font = SubResource("FontVar_section")
-theme_override_font_sizes/font_size = 12
-text = "AUDIO"
-
-[node name="VolumeRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
+[node name="InvertYRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox"]
 layout_mode = 2
 
-[node name="MasterVolumeLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection/VolumeRow"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
-theme_override_font_sizes/font_size = 14
-text = "Master Volume"
-
-[node name="VolumeValue" type="Label" parent="CenterContainer/ContentBox/SectionsBox/AudioSection/VolumeRow"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/InvertYRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.78, 0.63, 0.38, 0.95)
-theme_override_font_sizes/font_size = 13
-text = "80%"
-horizontal_alignment = 2
+text = "Invert Y-Axis (กลับทิศแกนแนวตั้งของเมาส์)"
 
-[node name="MasterVolumeSlider" type="HSlider" parent="CenterContainer/ContentBox/SectionsBox/AudioSection"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-theme_override_icons/grabber = SubResource("Tex_grabber")
-theme_override_icons/grabber_highlight = SubResource("Tex_grabber_hl")
-theme_override_styles/slider = SubResource("StyleBoxFlat_slider_custom")
-theme_override_styles/grabber_area = SubResource("StyleBoxFlat_grabber_fill")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_grabber_fill_hl")
-step = 1.0
-value = 80.0
-
-[node name="SectionDivider2" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0.76, 0.63, 0.36, 0.18)
-
-[node name="DisplaySection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="DisplayLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
-theme_override_fonts/font = SubResource("FontVar_section")
-theme_override_font_sizes/font_size = 12
-text = "DISPLAY"
-
-[node name="FullscreenRow" type="HBoxContainer" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection"]
-layout_mode = 2
-
-[node name="FullscreenLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection/FullscreenRow"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.89, 0.86, 0.8, 1)
-theme_override_font_sizes/font_size = 14
-text = "Fullscreen"
-
-[node name="FullscreenToggle" type="Button" parent="CenterContainer/ContentBox/SectionsBox/DisplaySection/FullscreenRow"]
+[node name="InvertYToggle" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/InvertYRow"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(46, 22)
 layout_mode = 2
@@ -290,150 +444,169 @@ toggle_mode = true
 flat = true
 script = ExtResource("4_toggle")
 
-[node name="SectionDivider3" type="ColorRect" parent="CenterContainer/ContentBox/SectionsBox"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-color = Color(0.76, 0.63, 0.36, 0.18)
-
-[node name="ControlsSection" type="VBoxContainer" parent="CenterContainer/ContentBox/SectionsBox"]
-layout_mode = 2
-theme_override_constants/separation = 6
-
-[node name="ControlsLabel" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection"]
+[node name="KeymapLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.76, 0.63, 0.36, 0.85)
-theme_override_fonts/font = SubResource("FontVar_section")
 theme_override_font_sizes/font_size = 12
-text = "CONTROLS"
+text = "CURRENT KEYBOARD BINDINGS (ปุ่มควบคุม)"
 
-[node name="ControlsGrid" type="GridContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection"]
+[node name="ControlsGrid" type="GridContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox"]
 layout_mode = 2
-theme_override_constants/h_separation = 24
+theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 6
-columns = 2
+columns = 4
 
-[node name="KeyBadge1" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="K1" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
 
-[node name="KeyLabel1" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge1"]
+[node name="L1" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K1"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
 theme_override_fonts/font = SubResource("FontVar_key")
-theme_override_font_sizes/font_size = 11
 text = "W A S D"
-horizontal_alignment = 1
 
-[node name="ActionLabel1" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="A1" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
-theme_override_font_sizes/font_size = 13
 text = "Move"
-vertical_alignment = 1
 
-[node name="KeyBadge2" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="K2" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
 
-[node name="KeyLabel2" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge2"]
+[node name="L2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K2"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
 theme_override_fonts/font = SubResource("FontVar_key")
-theme_override_font_sizes/font_size = 11
 text = "SPACE"
-horizontal_alignment = 1
 
-[node name="ActionLabel2" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="A2" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
-theme_override_font_sizes/font_size = 13
 text = "Jump"
-vertical_alignment = 1
 
-[node name="KeyBadge3" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="K3" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
 
-[node name="KeyLabel3" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge3"]
+[node name="L3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K3"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
 theme_override_fonts/font = SubResource("FontVar_key")
-theme_override_font_sizes/font_size = 11
 text = "E"
-horizontal_alignment = 1
 
-[node name="ActionLabel3" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="A3" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
-theme_override_font_sizes/font_size = 13
 text = "Interact"
-vertical_alignment = 1
 
-[node name="KeyBadge4" type="PanelContainer" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="K4" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
 layout_mode = 2
-size_flags_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
 
-[node name="KeyLabel4" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid/KeyBadge4"]
+[node name="L4" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K4"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.92, 0.88, 0.8, 1)
 theme_override_fonts/font = SubResource("FontVar_key")
-theme_override_font_sizes/font_size = 11
-text = "ESC"
-horizontal_alignment = 1
+text = "I"
 
-[node name="ActionLabel4" type="Label" parent="CenterContainer/ContentBox/SectionsBox/ControlsSection/ControlsGrid"]
+[node name="A4" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="K5" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="L5" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K5"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVar_key")
+text = "V"
+
+[node name="A5" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
+layout_mode = 2
+text = "1st/3rd View"
+
+[node name="K6" type="PanelContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keybadge")
+
+[node name="L6" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid/K6"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("FontVar_key")
+text = "ESC"
+
+[node name="A6" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Controls/ControlsVBox/ControlsGrid"]
+layout_mode = 2
+text = "Pause"
+
+[node name="Gameplay" type="MarginContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 16
+
+[node name="GameplayVBox" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="SubtitlesRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/SubtitlesRow"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0.74, 0.7, 0.63, 1)
-theme_override_font_sizes/font_size = 13
-text = "Pause"
-vertical_alignment = 1
+text = "Dialogue Subtitles (คำบรรยายบทสนทนา)"
 
-[node name="ButtonSpacer" type="Control" parent="CenterContainer/ContentBox"]
-custom_minimum_size = Vector2(0, 10)
+[node name="SubtitlesToggle" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/SubtitlesRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(46, 22)
+layout_mode = 2
+focus_mode = 2
+toggle_mode = true
+flat = true
+script = ExtResource("4_toggle")
+
+[node name="TextSizeRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox"]
 layout_mode = 2
 
-[node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/ContentBox"]
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/TextSizeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Dialogue Text Size (ขนาดตัวอักษร)"
+
+[node name="TextSizeOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/TextSizeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox"]
 layout_mode = 2
 alignment = 1
-theme_override_constants/separation = 48
+theme_override_constants/separation = 32
 
-[node name="ApplyButton" type="Button" parent="CenterContainer/ContentBox/ButtonsContainer"]
+[node name="ApplyButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/ButtonsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 42)
+custom_minimum_size = Vector2(130, 40)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
-theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
-theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
-theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_color = Color(0.92, 0.88, 0.78, 1)
 theme_override_fonts/font = SubResource("FontVar_menu")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 18
 text = "APPLY"
-alignment = 0
 
-[node name="BackButton" type="Button" parent="CenterContainer/ContentBox/ButtonsContainer"]
+[node name="ResetButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/ButtonsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 42)
+custom_minimum_size = Vector2(140, 40)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.74, 0.71, 0.65, 1)
-theme_override_colors/font_hover_color = Color(0.97, 0.94, 0.87, 1)
-theme_override_colors/font_focus_color = Color(0.97, 0.94, 0.87, 1)
-theme_override_colors/font_pressed_color = Color(0.82, 0.68, 0.42, 1)
-theme_override_colors/font_hover_pressed_color = Color(0.82, 0.68, 0.42, 1)
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
 theme_override_fonts/font = SubResource("FontVar_menu")
-theme_override_font_sizes/font_size = 21
+theme_override_font_sizes/font_size = 18
+text = "DEFAULTS"
+
+[node name="BackButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/ButtonsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.78, 0.68, 1)
+theme_override_fonts/font = SubResource("FontVar_menu")
+theme_override_font_sizes/font_size = 18
 text = "BACK"
-alignment = 0
 
 [node name="FadeRect" type="ColorRect" parent="."]
 layout_mode = 1

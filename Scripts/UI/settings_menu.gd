@@ -1,66 +1,183 @@
 extends Control
 
 ## Settings Menu — Cinematic Dark Fantasy Dungeon style
-## Matches visual identity and interaction mechanics of Credits and MainMenu.
+## Full Configuration Suite:
+## 1. Audio: Master, Music, SFX, Ambient volume sliders with real-time bus attenuation
+## 2. Graphics: Display Mode (Fullscreen/Windowed/Borderless), VSync, Shadow Quality
+## 3. Controls: Mouse Sensitivity, Invert Y-Axis, Key Binding Display (WASD, Jump, Interact, Inventory, Hold)
+## 4. Gameplay & Accessibility: Subtitles, Dialogue Text Size
+## Actions: Apply, Reset to Defaults, Back. Fully persists to user://settings.cfg.
 
-const MARKER_COLOR := Color(0.78, 0.62, 0.36, 1.0)   # muted gold
+const MARKER_COLOR := Color(0.78, 0.62, 0.36, 1.0)
 const MARKER_WIDTH := 18.0
 const TEXT_INDENT_REST := 28.0
 const TEXT_INDENT_SELECTED := 38.0
 const SELECT_TIME := 0.18
 
+# Audio Controls
+@onready var master_slider: HSlider = %MasterVolumeSlider
+@onready var master_val: Label = %MasterVolumeValue
+@onready var music_slider: HSlider = %MusicVolumeSlider
+@onready var music_val: Label = %MusicVolumeValue
+@onready var sfx_slider: HSlider = %SfxVolumeSlider
+@onready var sfx_val: Label = %SfxVolumeValue
+@onready var ambient_slider: HSlider = %AmbientVolumeSlider
+@onready var ambient_val: Label = %AmbientVolumeValue
+
+# Graphics Controls
+@onready var window_mode_btn: OptionButton = %WindowModeOption
+@onready var vsync_toggle: Button = %VsyncToggle
+@onready var shadow_opt_btn: OptionButton = %ShadowOption
+
+# Controls Tab
 @onready var sensitivity_slider: HSlider = %SensitivitySlider
-@onready var sensitivity_value: Label = %SensitivityValue
-@onready var master_volume_slider: HSlider = %MasterVolumeSlider
-@onready var volume_value: Label = %VolumeValue
-@onready var fullscreen_toggle: Button = %FullscreenToggle
+@onready var sensitivity_val: Label = %SensitivityValue
+@onready var invert_y_toggle: Button = %InvertYToggle
+
+# Gameplay & Accessibility
+@onready var subtitles_toggle: Button = %SubtitlesToggle
+@onready var text_size_opt: OptionButton = %TextSizeOption
+
+# Action Buttons
 @onready var apply_btn: Button = %ApplyButton
+@onready var reset_btn: Button = %ResetButton
 @onready var back_btn: Button = %BackButton
 @onready var fade_rect: ColorRect = $FadeRect
 
 var return_scene: String = "res://Scenes/UI/MainMenu.tscn"
 var _buttons: Array[Button] = []
-var _markers: Dictionary = {}      # Button -> ColorRect
-var _styles: Dictionary = {}       # Button -> StyleBoxEmpty
-var _tweens: Dictionary = {}       # Button -> Tween
+var _markers: Dictionary = {}
+var _styles: Dictionary = {}
+var _tweens: Dictionary = {}
 var _transitioning: bool = false
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-	_buttons = [apply_btn, back_btn]
+	_buttons = [apply_btn, reset_btn, back_btn]
 	for btn in _buttons:
 		_setup_menu_button(btn)
 
 	apply_btn.pressed.connect(_on_apply)
+	reset_btn.pressed.connect(_on_reset_defaults)
 	back_btn.pressed.connect(_on_back)
 
-	sensitivity_slider.value_changed.connect(_on_sensitivity_changed)
-	master_volume_slider.value_changed.connect(_on_volume_changed)
+	# Audio Sliders
+	master_slider.value_changed.connect(_on_master_slider_changed)
+	music_slider.value_changed.connect(_on_music_slider_changed)
+	sfx_slider.value_changed.connect(_on_sfx_slider_changed)
+	ambient_slider.value_changed.connect(_on_ambient_slider_changed)
 
-	# Load current settings from UIManager and DisplayServer
-	var mode := DisplayServer.window_get_mode()
-	var is_fs := (mode == DisplayServer.WINDOW_MODE_FULLSCREEN or mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-	if fullscreen_toggle.has_method("set_toggle_state"):
-		fullscreen_toggle.set_toggle_state(is_fs)
-	else:
-		fullscreen_toggle.button_pressed = is_fs
+	# Controls Sliders
+	sensitivity_slider.value_changed.connect(_on_sensitivity_slider_changed)
 
-	master_volume_slider.value = UIManager.master_volume
-	sensitivity_slider.value = UIManager.get_sensitivity_percent()
+	# Populate OptionButtons
+	_setup_options()
 
-	_update_readouts()
+	# Load state from UIManager
+	_load_ui_from_manager()
 
-	# Cinematic fade-in from black
+	# Cinematic fade-in
 	fade_rect.modulate.a = 1.0
 	var tween := create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 0.0, 0.4) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 
 
+func _setup_options() -> void:
+	window_mode_btn.clear()
+	window_mode_btn.add_item("Fullscreen (เต็มจอ)", 0)
+	window_mode_btn.add_item("Windowed (หน้าต่าง)", 1)
+	window_mode_btn.add_item("Borderless Window (ไร้ขอบ)", 2)
+
+	shadow_opt_btn.clear()
+	shadow_opt_btn.add_item("Low Shadows (ต่ำ)", 0)
+	shadow_opt_btn.add_item("Medium Shadows (ปานกลาง)", 1)
+	shadow_opt_btn.add_item("High Shadows (สูง)", 2)
+
+	text_size_opt.clear()
+	text_size_opt.add_item("Normal (ปกติ - 16px)", 0)
+	text_size_opt.add_item("Large (ขนาดใหญ่ - 20px)", 1)
+
+
+func _load_ui_from_manager() -> void:
+	if not UIManager:
+		return
+
+	# Audio
+	master_slider.value = UIManager.master_volume
+	music_slider.value = UIManager.music_volume
+	sfx_slider.value = UIManager.sfx_volume
+	ambient_slider.value = UIManager.ambient_volume
+	_update_audio_readouts()
+
+	# Graphics
+	window_mode_btn.select(UIManager.window_mode_index)
+	_set_toggle_button(vsync_toggle, UIManager.vsync_enabled)
+	shadow_opt_btn.select(UIManager.shadow_quality_index)
+
+	# Controls
+	sensitivity_slider.value = UIManager.get_sensitivity_percent()
+	_update_sensitivity_readout()
+	_set_toggle_button(invert_y_toggle, UIManager.invert_y)
+
+	# Gameplay
+	_set_toggle_button(subtitles_toggle, UIManager.subtitles_enabled)
+	text_size_opt.select(UIManager.text_size_index)
+
+
+func _set_toggle_button(btn: Button, is_on: bool) -> void:
+	if btn.has_method("set_toggle_state"):
+		btn.set_toggle_state(is_on)
+	else:
+		btn.button_pressed = is_on
+
+
+func _is_toggle_on(btn: Button) -> bool:
+	return btn.button_pressed
+
+
+func _on_master_slider_changed(val: float) -> void:
+	master_val.text = "%d%%" % int(val)
+	if UIManager:
+		UIManager._apply_bus_volume("Master", val)
+
+
+func _on_music_slider_changed(val: float) -> void:
+	music_val.text = "%d%%" % int(val)
+	if UIManager:
+		UIManager._apply_bus_volume("Music", val)
+
+
+func _on_sfx_slider_changed(val: float) -> void:
+	sfx_val.text = "%d%%" % int(val)
+	if UIManager:
+		UIManager._apply_bus_volume("SFX", val)
+
+
+func _on_ambient_slider_changed(val: float) -> void:
+	ambient_val.text = "%d%%" % int(val)
+	if UIManager:
+		UIManager._apply_bus_volume("Ambient", val)
+
+
+func _on_sensitivity_slider_changed(val: float) -> void:
+	sensitivity_val.text = "%d%%" % int(val)
+
+
+func _update_audio_readouts() -> void:
+	master_val.text = "%d%%" % int(master_slider.value)
+	music_val.text = "%d%%" % int(music_slider.value)
+	sfx_val.text = "%d%%" % int(sfx_slider.value)
+	ambient_val.text = "%d%%" % int(ambient_slider.value)
+
+
+func _update_sensitivity_readout() -> void:
+	sensitivity_val.text = "%d%%" % int(sensitivity_slider.value)
+
+
 func _setup_menu_button(btn: Button) -> void:
-	# Per-button style copy so the text indent can slide independently
 	var style := StyleBoxEmpty.new()
 	style.content_margin_left = TEXT_INDENT_REST
 	style.content_margin_top = 8.0
@@ -69,7 +186,6 @@ func _setup_menu_button(btn: Button) -> void:
 		btn.add_theme_stylebox_override(state, style)
 	_styles[btn] = style
 
-	# Small gold marker line on the left side
 	var marker := ColorRect.new()
 	marker.name = "Marker"
 	marker.color = MARKER_COLOR
@@ -84,8 +200,9 @@ func _setup_menu_button(btn: Button) -> void:
 	btn.add_child(marker)
 	_markers[btn] = marker
 
-	# Mouse hover selects (same state as keyboard focus)
 	btn.mouse_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
 		if not _transitioning:
 			btn.grab_focus()
 	)
@@ -93,8 +210,16 @@ func _setup_menu_button(btn: Button) -> void:
 		if not _transitioning:
 			btn.release_focus()
 	)
-	btn.focus_entered.connect(_set_selected.bind(btn, true))
+	btn.focus_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
+		_set_selected(btn, true)
+	)
 	btn.focus_exited.connect(_set_selected.bind(btn, false))
+	btn.pressed.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_click()
+	)
 
 
 func _set_selected(btn: Button, selected: bool) -> void:
@@ -121,41 +246,40 @@ func _set_selected(btn: Button, selected: bool) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if _transitioning:
 		return
-
 	if event.is_action_pressed("ui_cancel"):
 		_on_back()
 		get_viewport().set_input_as_handled()
 
 
-func _on_sensitivity_changed(val: float) -> void:
-	sensitivity_value.text = "%d%%" % int(val)
-
-
-func _on_volume_changed(val: float) -> void:
-	volume_value.text = "%d%%" % int(val)
-
-
-func _update_readouts() -> void:
-	sensitivity_value.text = "%d%%" % int(sensitivity_slider.value)
-	volume_value.text = "%d%%" % int(master_volume_slider.value)
-
-
 func _on_apply() -> void:
-	if _transitioning:
+	if _transitioning or not UIManager:
 		return
 
-	# Update persistent settings via UIManager
-	UIManager.update_settings(
-		master_volume_slider.value,
-		sensitivity_slider.value,
-		fullscreen_toggle.button_pressed
-	)
+	# Write values to UIManager
+	UIManager.master_volume = master_slider.value
+	UIManager.music_volume = music_slider.value
+	UIManager.sfx_volume = sfx_slider.value
+	UIManager.ambient_volume = ambient_slider.value
 
-	# Elegant visual feedback on Apply button
+	UIManager.window_mode_index = window_mode_btn.selected
+	UIManager.is_fullscreen = (UIManager.window_mode_index == 0 or UIManager.window_mode_index == 2)
+	UIManager.vsync_enabled = _is_toggle_on(vsync_toggle)
+	UIManager.shadow_quality_index = shadow_opt_btn.selected
+
+	UIManager.mouse_sensitivity = remap(sensitivity_slider.value, 0.0, 100.0, 0.0005, 0.006)
+	UIManager.invert_y = _is_toggle_on(invert_y_toggle)
+
+	UIManager.subtitles_enabled = _is_toggle_on(subtitles_toggle)
+	UIManager.text_size_index = text_size_opt.selected
+
+	# Apply across all systems and persist
+	UIManager.apply_all_settings()
+	UIManager.save_settings_to_config()
+
+	# Visual Feedback
 	apply_btn.text = "APPLIED"
 	var prev_mod: Color = apply_btn.modulate
 	apply_btn.modulate = Color(1.3, 1.15, 0.85, 1.0)
-
 	var tween := create_tween()
 	tween.tween_property(apply_btn, "modulate", prev_mod, 0.7) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
@@ -165,17 +289,32 @@ func _on_apply() -> void:
 	)
 
 
+func _on_reset_defaults() -> void:
+	if not UIManager:
+		return
+	UIManager.reset_settings_to_defaults()
+	_load_ui_from_manager()
+
+	# Feedback
+	reset_btn.text = "RESETTED"
+	var prev_mod: Color = reset_btn.modulate
+	reset_btn.modulate = Color(1.3, 1.15, 0.85, 1.0)
+	var tween := create_tween()
+	tween.tween_property(reset_btn, "modulate", prev_mod, 0.7) \
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_callback(func():
+		if is_instance_valid(reset_btn):
+			reset_btn.text = "DEFAULTS"
+	)
+
+
 func _on_back() -> void:
 	if _transitioning:
 		return
 	_transitioning = true
 
-	# Save any pending settings changes
-	UIManager.update_settings(
-		master_volume_slider.value,
-		sensitivity_slider.value,
-		fullscreen_toggle.button_pressed
-	)
+	# Auto-save changes on back
+	_on_apply()
 
 	var tween := create_tween()
 	tween.tween_property(fade_rect, "modulate:a", 1.0, 0.3) \

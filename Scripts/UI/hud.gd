@@ -17,14 +17,8 @@ const NotificationSystemScript = preload("res://Scripts/UI/notification_system.g
 @onready var objective_panel: PanelContainer = $MarginContainer/TopBar/RightSection/ObjectivePanel
 @onready var objective_list: VBoxContainer = $MarginContainer/TopBar/RightSection/ObjectivePanel/MarginContainer/VBoxContainer/ObjectiveList
 
-# Health UI
-@onready var health_bar: ProgressBar = $MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack/HealthBar
-@onready var ghost_health_bar: ProgressBar = $MarginContainer/TopBar/LeftSection/HealthSection/HealthBarStack/GhostHealthBar
-@onready var health_value_label: Label = $MarginContainer/TopBar/LeftSection/HealthSection/HealthValueLabel
-
 # Overlays & Sensory Feedback
 @onready var damage_overlay: ColorRect = $DamageOverlay
-@onready var low_health_vignette: ColorRect = $LowHealthVignette
 @onready var crosshair: CenterContainer = $Crosshair
 
 # Interaction Prompt
@@ -46,11 +40,17 @@ const NotificationSystemScript = preload("res://Scripts/UI/notification_system.g
 @onready var pause_main_panel: Control = $PauseMenu/CenterContainer
 @onready var pause_settings_panel: Control = $PauseMenu/PauseSettings
 @onready var pause_volume_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/VolumeSection/VolumeSlider
+@onready var pause_music_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/MusicSection/MusicSlider
+@onready var pause_sfx_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SfxSection/SfxSlider
+@onready var pause_ambient_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/AmbientSection/AmbientSlider
 @onready var pause_sensitivity_slider: HSlider = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SensitivitySection/SensitivitySlider
 @onready var pause_fullscreen_check: CheckButton = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/DisplaySection/FullscreenCheck
 @onready var pause_settings_back_btn: Button = $PauseMenu/PauseSettings/PanelContainer/MarginContainer/VBoxContainer/SettingsBackButton
 @onready var pause_resume_btn: Button = $PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton
 @onready var pause_settings_btn: Button = $PauseMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton
+
+# Inventory UI Overlay
+@onready var inventory_ui: Control = $InventoryUI
 
 # =========================================================
 # STATE & TWEENS
@@ -59,10 +59,7 @@ const NotificationSystemScript = preload("res://Scripts/UI/notification_system.g
 var elapsed_time: float = 0.0
 var timer_running: bool = true
 
-var _hp_tween: Tween = null
-var _ghost_tween: Tween = null
 var _damage_tween: Tween = null
-var _vignette_tween: Tween = null
 var _prompt_tween: Tween = null
 
 var _test_objective_counter: int = 1
@@ -89,25 +86,26 @@ func _ready() -> void:
 	interaction_prompt.visible = false
 	interaction_prompt.modulate.a = 0.0
 	damage_overlay.modulate.a = 0.0
-	low_health_vignette.modulate.a = 0.0
 	test_mode_panel.visible = UIManager.ui_test_mode_enabled
-
-	# Initial Health setup from UIManager state cache
-	_update_health_display(UIManager.current_health, UIManager.max_health, false)
 
 	# Initial Objectives display
 	_refresh_objective_list()
 
 	# Connect Pause & Navigation signals
 	pause_volume_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_music_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_sfx_slider.value_changed.connect(_on_pause_settings_changed)
+	pause_ambient_slider.value_changed.connect(_on_pause_settings_changed)
 	pause_sensitivity_slider.value_changed.connect(_on_pause_settings_changed)
 	pause_fullscreen_check.toggled.connect(_on_pause_settings_changed)
 
 	UIManager.win_triggered.connect(_show_win_screen)
 	UIManager.lose_triggered.connect(_show_lose_screen)
 
+	if is_instance_valid(inventory_ui):
+		inventory_ui.inventory_closed.connect(_on_inventory_closed)
+
 	# Connect Presentation Layer signals
-	UIManager.health_changed.connect(_on_health_changed)
 	UIManager.damage_taken.connect(_on_damage_taken)
 	UIManager.objective_added.connect(_on_objective_added)
 	UIManager.objective_completed.connect(_on_objective_completed)
@@ -153,18 +151,21 @@ func _unhandled_input(event: InputEvent) -> void:
 	if UIManager.is_dialogue_active():
 		return
 
+	if event.is_action_pressed("toggle_inventory"):
+		_toggle_inventory()
+		get_viewport().set_input_as_handled()
+		return
+
 	if event.is_action_pressed("ui_pause"):
+		if is_instance_valid(inventory_ui) and inventory_ui.visible:
+			_close_inventory()
+			get_viewport().set_input_as_handled()
+			return
 		_toggle_pause()
 	elif event is InputEventKey and event.pressed and not event.echo:
 		# Quick hotkeys when test panel is visible
 		if test_mode_panel.visible:
 			match event.keycode:
-				KEY_1:
-					_on_test_dmg()
-					get_viewport().set_input_as_handled()
-				KEY_2:
-					_on_test_heal()
-					get_viewport().set_input_as_handled()
 				KEY_3:
 					_on_test_add_obj()
 					get_viewport().set_input_as_handled()
@@ -186,56 +187,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 # =========================================================
-# HEALTH PRESENTATION & DAMAGE FEEDBACK
+# DAMAGE FEEDBACK
 # =========================================================
-
-func _on_health_changed(current: float, max_val: float) -> void:
-	_update_health_display(current, max_val, true)
-
-
-func _update_health_display(current: float, max_val: float, animate: bool) -> void:
-	health_bar.max_value = max_val
-	ghost_health_bar.max_value = max_val
-
-	health_value_label.text = "%d / %d" % [int(round(current)), int(round(max_val))]
-
-	var is_damage := current < health_bar.value
-
-	if not animate:
-		health_bar.value = current
-		ghost_health_bar.value = current
-	else:
-		if is_damage:
-			# Health bar drops quickly
-			if _hp_tween and _hp_tween.is_valid():
-				_hp_tween.kill()
-			_hp_tween = create_tween()
-			_hp_tween.tween_property(health_bar, "value", current, 0.15) \
-				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-
-			# Ghost bar delays, then catches up smoothly
-			if _ghost_tween and _ghost_tween.is_valid():
-				_ghost_tween.kill()
-			_ghost_tween = create_tween()
-			_ghost_tween.tween_interval(0.25)
-			_ghost_tween.tween_property(ghost_health_bar, "value", current, 0.45) \
-				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		else:
-			# Healing: both bars rise together smoothly
-			if _hp_tween and _hp_tween.is_valid():
-				_hp_tween.kill()
-			if _ghost_tween and _ghost_tween.is_valid():
-				_ghost_tween.kill()
-			_hp_tween = create_tween().set_parallel(true)
-			_hp_tween.tween_property(health_bar, "value", current, 0.3) \
-				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-			_hp_tween.tween_property(ghost_health_bar, "value", current, 0.3) \
-				.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-
-	# Low Health warning pulse (<= 25% HP)
-	var hp_ratio := current / max_val if max_val > 0.0 else 0.0
-	_update_low_health_state(hp_ratio)
-
 
 func _on_damage_taken(_amount: float) -> void:
 	# Flash crimson damage overlay
@@ -247,29 +200,6 @@ func _on_damage_taken(_amount: float) -> void:
 	_damage_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	_damage_tween.tween_property(damage_overlay, "modulate:a", 0.0, 0.4) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-
-
-func _update_low_health_state(hp_ratio: float) -> void:
-	if hp_ratio <= 0.25 and hp_ratio > 0.0:
-		if _vignette_tween == null or not _vignette_tween.is_valid():
-			_start_low_health_pulse()
-	else:
-		if _vignette_tween and _vignette_tween.is_valid():
-			_vignette_tween.kill()
-			_vignette_tween = null
-		low_health_vignette.modulate.a = 0.0
-
-
-func _start_low_health_pulse() -> void:
-	if _vignette_tween and _vignette_tween.is_valid():
-		_vignette_tween.kill()
-
-	_vignette_tween = create_tween().set_loops()
-	_vignette_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	_vignette_tween.tween_property(low_health_vignette, "modulate:a", 0.3, 0.7) \
-		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	_vignette_tween.tween_property(low_health_vignette, "modulate:a", 0.05, 0.7) \
-		.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 
 
 # =========================================================
@@ -486,11 +416,11 @@ func _on_test_mode_toggled(is_enabled: bool) -> void:
 
 
 func _on_test_dmg() -> void:
-	UIManager.trigger_damage_feedback(20.0)
+	pass
 
 
 func _on_test_heal() -> void:
-	UIManager.heal_feedback(20.0)
+	pass
 
 
 func _on_test_add_obj() -> void:
@@ -573,6 +503,46 @@ func _toggle_pause() -> void:
 		_on_resume()
 
 
+# =========================================================
+# INVENTORY CONTROLS
+# =========================================================
+
+func _toggle_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+
+	# Do not toggle inventory during pause menu, win, lose, or dialogue
+	if pause_menu.visible or win_screen.visible or lose_screen.visible or UIManager.is_dialogue_active():
+		return
+
+	if inventory_ui.visible:
+		_close_inventory()
+	else:
+		_open_inventory()
+
+
+func _open_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	crosshair.visible = false
+	interaction_prompt.visible = false
+	inventory_ui.open_inventory()
+
+
+func _close_inventory() -> void:
+	if not is_instance_valid(inventory_ui):
+		return
+	inventory_ui.close_inventory()
+
+
+func _on_inventory_closed() -> void:
+	crosshair.visible = true
+	# Restore mouse capture if game is currently in playing state
+	if UIManager.is_playing() and not pause_menu.visible:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
 func _show_overlay(overlay: Control) -> void:
 	overlay.modulate.a = 0.0
 	overlay.visible = true
@@ -596,6 +566,9 @@ func _on_restart() -> void:
 
 func _on_settings() -> void:
 	pause_volume_slider.value = UIManager.master_volume
+	pause_music_slider.value = UIManager.music_volume
+	pause_sfx_slider.value = UIManager.sfx_volume
+	pause_ambient_slider.value = UIManager.ambient_volume
 	pause_sensitivity_slider.value = UIManager.get_sensitivity_percent()
 	pause_fullscreen_check.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 
@@ -611,11 +584,16 @@ func _on_settings_back() -> void:
 
 
 func _on_pause_settings_changed(_val = 0) -> void:
-	UIManager.update_settings(
-		pause_volume_slider.value,
-		pause_sensitivity_slider.value,
-		pause_fullscreen_check.button_pressed
-	)
+	UIManager.master_volume = pause_volume_slider.value
+	UIManager.music_volume = pause_music_slider.value
+	UIManager.sfx_volume = pause_sfx_slider.value
+	UIManager.ambient_volume = pause_ambient_slider.value
+	UIManager.mouse_sensitivity = remap(pause_sensitivity_slider.value, 0.0, 100.0, 0.0005, 0.006)
+	UIManager.is_fullscreen = pause_fullscreen_check.button_pressed
+	UIManager.window_mode_index = 0 if UIManager.is_fullscreen else 1
+
+	UIManager.apply_all_settings()
+	UIManager.save_settings_to_config()
 
 
 func _on_main_menu() -> void:

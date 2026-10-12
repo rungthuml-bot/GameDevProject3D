@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 	if player == null:
 		return
 
-	# หาตำแหน่ง Player ในแนวราบ
+	# Calculate horizontal direction to player
 	var direction := player.global_position - interaction_label.global_position
 	direction.y = 0.0
 
@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 
 	direction = direction.normalized()
 
-	# หัน Label3D ให้ด้านหน้าหันเข้าหา Player
+	# Rotate Label3D to face the player
 	interaction_label.global_rotation.y = atan2(
 		direction.x,
 		direction.z
@@ -48,6 +48,9 @@ func hide_interaction_prompt() -> void:
 
 
 func interact() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_interact_sfx()
+
 	var interaction_ui = get_tree().get_first_node_in_group("interaction_ui")
 
 	if interaction_ui == null:

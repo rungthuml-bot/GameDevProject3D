@@ -47,6 +47,8 @@ func hide_interaction_prompt() -> void:
 
 func interact() -> void:
 	print("Blue Button Pressed!")
+	if has_node("/root/AudioManager"):
+		AudioManager.play_button_sfx()
 
 	var puzzle_manager = get_parent().get_node_or_null("PuzzleManager")
 

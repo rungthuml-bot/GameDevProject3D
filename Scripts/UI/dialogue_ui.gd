@@ -25,6 +25,7 @@ var is_last_line: bool = false
 
 var _fade_tween: Tween = null
 var _arrow_tween: Tween = null
+var _last_type_sfx_time: float = 0.0
 
 
 func _ready() -> void:
@@ -41,8 +42,19 @@ func _ready() -> void:
 	UIManager.dialogue_started.connect(_on_dialogue_started)
 	UIManager.dialogue_line_displayed.connect(_on_dialogue_line_displayed)
 	UIManager.dialogue_ended.connect(_on_dialogue_ended)
+	UIManager.settings_updated.connect(_apply_accessibility_settings)
 
+	_apply_accessibility_settings()
 	_start_indicator_pulse()
+
+
+func _apply_accessibility_settings() -> void:
+	if not is_instance_valid(dialogue_text):
+		return
+	if UIManager:
+		# Text size: 0: Normal (16px), 1: Large (19px)
+		var font_size := 16 if UIManager.text_size_index == 0 else 20
+		dialogue_text.add_theme_font_size_override("font_size", font_size)
 
 
 func _process(delta: float) -> void:
@@ -53,9 +65,25 @@ func _process(delta: float) -> void:
 	while type_timer >= typing_speed and is_typing:
 		type_timer -= typing_speed
 		dialogue_text.visible_characters += 1
+
+		# Play subtle typing sound on non-whitespace, non-punctuation characters
+		var char_idx := dialogue_text.visible_characters - 1
+		if char_idx >= 0 and char_idx < full_text.length():
+			var c := full_text[char_idx]
+			if not c in [" ", "\t", "\n", ".", ",", "!", "?", "-", "—", ":", ";", "'", "\"", "(", ")"]:
+				_step_type_sfx()
+
 		if dialogue_text.visible_characters >= full_text.length():
 			_finish_typing_instant()
 			break
+
+
+func _step_type_sfx() -> void:
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _last_type_sfx_time >= 0.065:
+		_last_type_sfx_time = now
+		if has_node("/root/AudioManager"):
+			AudioManager.play_dialogue_typing()
 
 
 func _unhandled_input(event: InputEvent) -> void:
