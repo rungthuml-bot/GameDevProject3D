@@ -140,214 +140,235 @@ shadow_enabled = true
 [node name="Floors" type="Node3D" parent="KayKitDungeon" unique_id=212228717]
 
 [node name="floor_1_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1232742938 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, -0.05, -4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -20, 0, -4)
 
 [node name="floor_1_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1042227426 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, -0.05, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -20, 0, 0)
 
 [node name="floor_1_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2033050674 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -20, -0.05, 4)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -20, 0, 4)
 
 [node name="floor_1_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1477833456 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.05, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 8)
 
 [node name="floor_1_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1347224359 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.05, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 12)
 
 [node name="floor_2_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=634653116 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.05, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4)
 
 [node name="floor_2_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1063463862 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, -0.05, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, 0)
 
 [node name="floor_2_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=926333154 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.05, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 4)
 
 [node name="floor_2_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1788512082 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16, -0.05, 8)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16, 0, 8)
 
 [node name="floor_2_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=823825148 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, -0.05, 12)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16, 0, 12)
 
 [node name="floor_3_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=12146911 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -12, -0.05, -4)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -12, 0, -4)
 
 [node name="floor_3_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=790057444 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 0)
+
+[node name="floor_3_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734001 instance=ExtResource("2_1quxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 4)
+
+[node name="floor_3_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734002 instance=ExtResource("1_aylu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 8)
 
 [node name="floor_3_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1745322595 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.05, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 12)
 
 [node name="floor_4_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=348624639 instance=ExtResource("3_xhmj1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, -0.05, -8)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, 0, -8)
 
 [node name="floor_4_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=79223652 instance=ExtResource("3_xhmj1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, -0.05, -4)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, -4)
 
 [node name="floor_4_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1195887750 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, -0.05, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 0)
 
 [node name="floor_4_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2124309809 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, -0.05, 4)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, 0, 4)
+
+[node name="floor_4_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734003 instance=ExtResource("1_aylu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 8)
 
 [node name="floor_4_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=524086110 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.05, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 12)
 
 [node name="floor_5_1" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1137797119 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -0.05, -20)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -20)
 
 [node name="floor_5_2" type="Node3D" parent="KayKitDungeon/Floors" unique_id=923334772 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, -0.05, -16)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, 0, -16)
 
 [node name="floor_5_3" type="Node3D" parent="KayKitDungeon/Floors" unique_id=895486309 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, -0.05, -12)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -12)
 
 [node name="floor_5_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=41180752 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -0.05, -8)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -8)
 
 [node name="floor_5_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1727518534 instance=ExtResource("3_xhmj1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, -0.05, -4)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, 0, -4)
 
 [node name="floor_5_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1041169840 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
 
 [node name="floor_5_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=167211773 instance=ExtResource("3_xhmj1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -0.05, 4)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 4)
+
+[node name="floor_5_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734004 instance=ExtResource("1_aylu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 8)
 
 [node name="floor_5_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=976456608 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.05, 12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
 
 [node name="floor_5_10" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1264306691 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, -0.05, 16)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 16)
 
 [node name="floor_5_11" type="Node3D" parent="KayKitDungeon/Floors" unique_id=72108055 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, -0.05, 20)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, 20)
 
 [node name="floor_5_12" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1980036684 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, -0.05, 24)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, 24)
 
 [node name="floor_6_0" type="Node3D" parent="KayKitDungeon/Floors" unique_id=140795574 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -24)
 
 [node name="floor_6_1" type="Node3D" parent="KayKitDungeon/Floors" unique_id=227317506 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.05, -20)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -20)
 
 [node name="floor_6_2" type="Node3D" parent="KayKitDungeon/Floors" unique_id=421055604 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
 [node name="floor_6_3" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1654684504 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.05, -12)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -12)
 
 [node name="floor_6_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1294923058 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 
 [node name="floor_6_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1366274042 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.05, -4)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -4)
 
 [node name="floor_6_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=77687064 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, -0.05, 0)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
 
 [node name="floor_6_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=940229188 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, -0.05, 4)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 4)
+
+[node name="floor_6_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734005 instance=ExtResource("2_1quxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="floor_6_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=756778300 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, -0.05, 12)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 12)
 
 [node name="floor_6_10" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1367096769 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.05, 16)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 16)
 
 [node name="floor_6_11" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1429562324 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.05, 20)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 20)
 
 [node name="floor_6_12" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1281291977 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, -0.05, 24)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 24)
 
 [node name="floor_7_1" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1913403837 instance=ExtResource("4_7wsfm")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, -0.05, -20)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, -20)
 
 [node name="floor_7_2" type="Node3D" parent="KayKitDungeon/Floors" unique_id=969750135 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.05, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -16)
 
 [node name="floor_7_3" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1560973119 instance=ExtResource("4_7wsfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.05, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
 
 [node name="floor_7_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1990342817 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, -0.05, -8)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, -8)
 
 [node name="floor_7_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=272737463 instance=ExtResource("3_xhmj1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.05, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 
 [node name="floor_7_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1127924484 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, -0.05, 0)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, 0)
 
 [node name="floor_7_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1288502347 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, -0.05, 4)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 4)
+
+[node name="floor_7_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734006 instance=ExtResource("1_aylu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 8)
 
 [node name="floor_7_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1102630797 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, -0.05, 12)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, 12)
 
 [node name="floor_7_10" type="Node3D" parent="KayKitDungeon/Floors" unique_id=595589175 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, -0.05, 16)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, 16)
 
 [node name="floor_7_11" type="Node3D" parent="KayKitDungeon/Floors" unique_id=878961219 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.05, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 20)
 
 [node name="floor_7_12" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2131999835 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, -0.05, 24)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, 24)
 
 [node name="floor_8_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1415930590 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, -0.05, -8)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -8)
 
 [node name="floor_8_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1982535117 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.05, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
 
 [node name="floor_8_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1248082585 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
 [node name="floor_8_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1729933484 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, -0.05, 4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 4)
+
+[node name="floor_8_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=667734007 instance=ExtResource("1_aylu1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 8)
 
 [node name="floor_8_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=378376867 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, -0.05, 12)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 12)
 
 [node name="floor_9_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1455998998 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, -0.05, -4)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, -4)
 
 [node name="floor_9_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=682225238 instance=ExtResource("2_1quxx")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, -0.05, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 0, 0)
 
 [node name="floor_9_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1919489289 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 12, -0.05, 12)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 12, 0, 12)
 
 [node name="floor_10_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=252984697 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.05, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -4)
 
 [node name="floor_10_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1061074744 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, -0.05, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, 0, 0)
 
 [node name="floor_10_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=20334115 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, -0.05, 4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, 0, 4)
 
 [node name="floor_10_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=397435744 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, -0.05, 8)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, 0, 8)
 
 [node name="floor_10_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1063495443 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 16, -0.05, 12)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 16, 0, 12)
 
 [node name="floor_11_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=566041060 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, -0.05, -4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, 0, -4)
 
 [node name="floor_11_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2134830599 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, -0.05, 0)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, 0, 0)
 
 [node name="floor_11_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=421157623 instance=ExtResource("1_aylu1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, -0.05, 4)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, 0, 4)
 
 [node name="floor_11_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1016030113 instance=ExtResource("1_aylu1")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, -0.05, 8)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, 0, 8)
 
 [node name="floor_11_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1229620389 instance=ExtResource("2_1quxx")]
-transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, -0.05, 12)
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, 0, 12)
 
 [node name="Walls" type="Node3D" parent="KayKitDungeon" unique_id=1479863454]
 
@@ -867,6 +888,81 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 20, 
 
 [node name="ceiling_11_9" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=424358973 instance=ExtResource("15_xg5ou")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 4.25, 12)
+
+[node name="ceiling_add_-12_4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000001 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.25, 4)
+
+[node name="ceiling_add_-12_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000002 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 4.25, 8)
+
+[node name="ceiling_add_-8_0" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000003 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.25, 0)
+
+[node name="ceiling_add_-8_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000004 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 4.25, 8)
+
+[node name="ceiling_add_-4_-4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000005 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.25, -4)
+
+[node name="ceiling_add_-4_0" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000006 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.25, 0)
+
+[node name="ceiling_add_-4_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000007 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.25, 8)
+
+[node name="ceiling_add_-4_12" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000008 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.25, 12)
+
+[node name="ceiling_add_0_-24" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000009 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, -24)
+
+[node name="ceiling_add_0_-20" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000010 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, -20)
+
+[node name="ceiling_add_0_-12" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000011 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, -12)
+
+[node name="ceiling_add_0_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000012 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 8)
+
+[node name="ceiling_add_0_20" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000013 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 20)
+
+[node name="ceiling_add_0_24" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000014 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.25, 24)
+
+[node name="ceiling_add_4_-16" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000015 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.25, -16)
+
+[node name="ceiling_add_4_-4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000016 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.25, -4)
+
+[node name="ceiling_add_4_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000017 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.25, 8)
+
+[node name="ceiling_add_8_-8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000018 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, -8)
+
+[node name="ceiling_add_8_-4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000019 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, -4)
+
+[node name="ceiling_add_8_4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000020 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, 4)
+
+[node name="ceiling_add_8_8" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000021 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, 8)
+
+[node name="ceiling_add_12_0" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000022 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4.25, 0)
+
+[node name="ceiling_add_16_-4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000023 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4.25, -4)
+
+[node name="ceiling_add_16_0" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000024 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4.25, 0)
+
+[node name="ceiling_add_20_-4" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=804000025 instance=ExtResource("15_xg5ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 4.25, -4)
 
 [node name="Props" type="Node3D" parent="KayKitDungeon" unique_id=1296589345]
 

@@ -193,13 +193,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 14)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
 
 [node name="trail_floor_8" type="Node3D" parent="Zone_A_Trail" unique_id=20008 instance=ExtResource("25_tile_weeds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.02, 24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 24)
 
 [node name="trail_floor_9" type="Node3D" parent="Zone_A_Trail" unique_id=20009 instance=ExtResource("26_tile_broken")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.02, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 20)
 
 [node name="trail_floor_10" type="Node3D" parent="Zone_A_Trail" unique_id=20010 instance=ExtResource("24_tile_rocky")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
 
 [node name="curb_rock_0" type="Node3D" parent="Zone_A_Trail" unique_id=20011 instance=ExtResource("15_rock")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -4.2, 0, 26)
