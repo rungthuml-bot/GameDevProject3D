@@ -49,6 +49,8 @@ func hide_interaction_prompt() -> void:
 
 
 func interact() -> void:
+	if has_node("/root/AudioManager"):
+		AudioManager.play_door_sfx()
 	# Trigger the ending cutscene via UIManager
 	UIManager.trigger_ending_cutscene()
 

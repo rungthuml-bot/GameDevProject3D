@@ -409,3 +409,4 @@ shape = SubResource("BoxShape3D_awhhx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=143672393]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.042503834, 0.09563422, 0.3719114)
 shape = SubResource("BoxShape3D_bvs58")
+disabled = true

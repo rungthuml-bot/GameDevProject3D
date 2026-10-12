@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://dcttcytaq4ul1"
 UIManager="*res://Scripts/UI/ui_manager.gd"
+AudioManager="*res://Scripts/audio_manager.gd"
 
 [display]
 
@@ -94,3 +95,7 @@ toggle_perspective={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[audio]
+
+buses/default_bus_layout="res://default_bus_layout.tres"

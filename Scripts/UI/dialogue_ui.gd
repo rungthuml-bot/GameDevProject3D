@@ -25,6 +25,7 @@ var is_last_line: bool = false
 
 var _fade_tween: Tween = null
 var _arrow_tween: Tween = null
+var _last_type_sfx_time: float = 0.0
 
 
 func _ready() -> void:
@@ -53,9 +54,25 @@ func _process(delta: float) -> void:
 	while type_timer >= typing_speed and is_typing:
 		type_timer -= typing_speed
 		dialogue_text.visible_characters += 1
+
+		# Play subtle typing sound on non-whitespace, non-punctuation characters
+		var char_idx := dialogue_text.visible_characters - 1
+		if char_idx >= 0 and char_idx < full_text.length():
+			var c := full_text[char_idx]
+			if not c in [" ", "\t", "\n", ".", ",", "!", "?", "-", "—", ":", ";", "'", "\"", "(", ")"]:
+				_step_type_sfx()
+
 		if dialogue_text.visible_characters >= full_text.length():
 			_finish_typing_instant()
 			break
+
+
+func _step_type_sfx() -> void:
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _last_type_sfx_time >= 0.065:
+		_last_type_sfx_time = now
+		if has_node("/root/AudioManager"):
+			AudioManager.play_dialogue_typing()
 
 
 func _unhandled_input(event: InputEvent) -> void:

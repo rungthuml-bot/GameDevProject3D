@@ -52,6 +52,8 @@ func _setup_back_button() -> void:
 	back_btn.add_child(_marker)
 
 	back_btn.mouse_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
 		if not _transitioning:
 			back_btn.grab_focus()
 	)
@@ -59,8 +61,16 @@ func _setup_back_button() -> void:
 		if not _transitioning:
 			back_btn.release_focus()
 	)
-	back_btn.focus_entered.connect(_set_selected.bind(true))
+	back_btn.focus_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
+		_set_selected(true)
+	)
 	back_btn.focus_exited.connect(_set_selected.bind(false))
+	back_btn.pressed.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_click()
+	)
 
 
 func _set_selected(selected: bool) -> void:

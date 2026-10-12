@@ -1,14 +1,24 @@
-[gd_scene format=4 uid="uid://dh6mu8itlwn4s"]
+[gd_scene format=4]
 
-[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_udfm6"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/Player.tscn" id="1_udfm6"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="2_d52fh"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/InteractionUI.tscn" id="3_lxn2w"]
-[ext_resource type="PackedScene" uid="uid://bwgfg5n2dandm" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
-[ext_resource type="Script" uid="uid://t8fna37ydn65" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
-[ext_resource type="PackedScene" uid="uid://bojes14gy1arn" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
+[ext_resource type="Script" path="res://Scripts/interaction_ui.gd" id="4_1kfys"]
+[ext_resource type="PackedScene" path="res://Scenes/Button/red_button.tscn" id="5_lxn2w"]
+[ext_resource type="Script" path="res://Scripts/PuzzleManager.gd" id="5_nraam"]
+[ext_resource type="PackedScene" path="res://Scenes/Button/blue_button.tscn" id="6_ppjc3"]
+[ext_resource type="Script" path="res://Scripts/red_button.gd" id="7_t8rx8"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/PuzzleUI.tscn" id="8_puzzle_ui"]
-[ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="9_4eusg"]
-[ext_resource type="PackedScene" uid="uid://dpsk2s3fuh21r" path="res://Scenes/UI/HUD.tscn" id="9_hud"]
-[ext_resource type="Texture2D" uid="uid://bn2e6r13vfpue" path="res://Assets/RuinsGLB/Walls/WallNormalXL_WallNormalXL_1_Color.png" id="9_lnnfv"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="9_4eusg"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="9_hud"]
+[ext_resource type="Texture2D" path="res://Assets/RuinsGLB/Walls/WallNormalXL_WallNormalXL_1_Color.png" id="9_lnnfv"]
+[ext_resource type="Script" path="res://Scripts/blue_button.gd" id="9_rc20r"]
+[ext_resource type="Script" path="res://Scripts/puzzle_ui.gd" id="11_r1dii"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="13_hn4hu"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_doorway_scaffold.gltf" id="20_doorway"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_gated.gltf" id="21_gated"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/pillar_decorated.gltf" id="22_pillar"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/torch_lit.gltf" id="23_torch"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
 
@@ -37,9 +47,8 @@ size = Vector3(40, 1, 40)
 size = Vector3(10, 5, 0.18)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b8bd2"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 3.0
+albedo_color = Color(0.28, 0.19, 0.13, 1)
+roughness = 0.85
 
 [sub_resource type="BoxMesh" id="BoxMesh_bvs58"]
 size = Vector3(4.595, 3.64, 0.34)
@@ -51,8 +60,9 @@ size = Vector3(4.6, 3.6, 0.37)
 size = Vector3(4.6, 3.6, 0.37)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5eft"]
-emission_enabled = true
-emission = Color(0.98250765, 0, 0.3487505, 1)
+albedo_color = Color(0.18, 0.18, 0.20, 1)
+metallic = 0.85
+roughness = 0.45
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_71ffg"]
 size = Vector3(9.975, 6.405, 0.405)
@@ -162,10 +172,12 @@ mesh = SubResource("BoxMesh_qqy1o")
 transform = Transform3D(-4.3711392e-08, 0, 1.0000001, 0, 1, 0, -1.0000001, 0, -4.3711392e-08, -4.89, 2.95, 0.06)
 shape = SubResource("BoxShape3D_v5eft")
 
-[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_udfm6")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=263796391 groups=["player"] instance=ExtResource("1_udfm6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+script = ExtResource("2_d52fh")
 
-[node name="InteractionUI" parent="." unique_id=724437815 instance=ExtResource("3_lxn2w")]
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=724437815 groups=["interaction_ui"] instance=ExtResource("3_lxn2w")]
+script = ExtResource("4_1kfys")
 
 [node name="Spawn_From_Level2" type="Marker3D" parent="." unique_id=497397167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13202739, 0, 4.1449594)
@@ -174,20 +186,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13202739, 0, 4.1449594)
 script = ExtResource("5_nraam")
 puzzle_time = 15.0
 
-[node name="red_button" parent="." unique_id=384808600 groups=["interactable"] instance=ExtResource("5_lxn2w")]
+[node name="red_button" type="Area3D" parent="." unique_id=384808600 groups=["interactable"] instance=ExtResource("5_lxn2w")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 15.62812, 0.390687, -38)
+script = ExtResource("7_t8rx8")
 
-[node name="blue_button" parent="." unique_id=1400264052 groups=["interactable"] instance=ExtResource("6_ppjc3")]
+[node name="blue_button" type="Area3D" parent="." unique_id=1400264052 groups=["interactable"] instance=ExtResource("6_ppjc3")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -15.989077, 0.014453918, -38)
+script = ExtResource("9_rc20r")
 
-[node name="PuzzleUI" parent="." unique_id=260289974 instance=ExtResource("8_puzzle_ui")]
+[node name="PuzzleUI" type="CanvasLayer" parent="." unique_id=260289974 groups=["puzzle_ui"] instance=ExtResource("8_puzzle_ui")]
+script = ExtResource("11_r1dii")
 
-[node name="HUD" parent="." unique_id=1038714079 instance=ExtResource("9_hud")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1038714079 instance=ExtResource("9_hud")]
+process_mode = 3
+script = ExtResource("13_hn4hu")
 
 [node name="Door_To_Level1" type="Area3D" parent="." unique_id=1564035548]
 script = ExtResource("9_4eusg")
-target_scene = "uid://d3apw3a58uf1r"
-target_spawn_id = "Spawn_From_Level1"
+interaction_text = "Return to Forest"
+interaction_title = "Exit to Level 1"
+target_scene = "res://Scenes/Level/level_1.tscn"
+target_spawn_id = "Spawn_From_Level2"
+
+[node name="DoorFrame" type="Node3D" parent="Door_To_Level1" unique_id=987123410 instance=ExtResource("20_doorway")]
+transform = Transform3D(1.15, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 0.36940932, 0.0, 4.960983)
+
+[node name="TorchLeft" type="Node3D" parent="Door_To_Level1" unique_id=987123411 instance=ExtResource("23_torch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 1.8, 4.5)
+
+[node name="TorchRight" type="Node3D" parent="Door_To_Level1" unique_id=987123412 instance=ExtResource("23_torch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.8, 4.5)
 
 [node name="Door" type="MeshInstance3D" parent="Door_To_Level1" unique_id=1229889070]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36940932, 1.8890607, 4.960983)
@@ -210,9 +238,22 @@ shape = SubResource("BoxShape3D_bvs58")
 [node name="Door_To_Level3" type="Area3D" parent="." unique_id=1534380448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48.96)
 script = ExtResource("9_4eusg")
+interaction_text = "Enter Level 3"
 target_scene = "res://Scenes/Level/level_3.tscn"
 target_spawn_id = "Spawn_From_Level2"
 require_puzzle = true
+
+[node name="GatePillarLeft" type="Node3D" parent="Door_To_Level3" unique_id=987123413 instance=ExtResource("22_pillar")]
+transform = Transform3D(1.5, 0, 0, 0, 1.6, 0, 0, 0, 1.5, -4.8, 0.0, 5.2)
+
+[node name="GatePillarRight" type="Node3D" parent="Door_To_Level3" unique_id=987123414 instance=ExtResource("22_pillar")]
+transform = Transform3D(1.5, 0, 0, 0, 1.6, 0, 0, 0, 1.5, 4.8, 0.0, 5.2)
+
+[node name="TorchLeft" type="Node3D" parent="Door_To_Level3" unique_id=987123415 instance=ExtResource("23_torch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 3.2, 5.8)
+
+[node name="TorchRight" type="Node3D" parent="Door_To_Level3" unique_id=987123416 instance=ExtResource("23_torch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.2, 5.8)
 
 [node name="Door" type="MeshInstance3D" parent="Door_To_Level3" unique_id=58508325]
 transform = Transform3D(2.155, 0, 0, 0, 1.825, 0, 0, 0, 1, 0.049514532, 3.1272635, 4.9609833)
@@ -823,3 +864,9 @@ shape = SubResource("BoxShape3D_wall_unit")
 
 [node name="Mesh" type="MeshInstance3D" parent="Maze/Wall_V12_R_North_M2" unique_id=500000173]
 mesh = SubResource("ArrayMesh_3ord6")
+
+[node name="Spawn_From_Level1" type="Marker3D" parent="." unique_id=499050044]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.13, 0, 4.14)
+
+[node name="Spawn_From_Level3" type="Marker3D" parent="." unique_id=2046203225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45)

@@ -79,6 +79,10 @@ var levels: Array[String] = [
 	"res://Scenes/Level/level_2.tscn",
 	"res://Scenes/Level/level_3.tscn",
 	"res://Scenes/Level/level_4.tscn",
+	"res://Scenes/Level/level_5.tscn",
+	"res://Scenes/Level/level_6.tscn",
+	"res://Scenes/Level/level_7.tscn",
+	"res://Scenes/Level/level_8.tscn",
 ]
 
 # =========================================================
@@ -155,8 +159,13 @@ func go_to_main_menu() -> void:
 
 
 func start_game() -> void:
-	current_level_index = 1
-	load_level(current_level_index)
+	current_level_index = 0
+	current_level_path = "res://Scenes/Level/map_0.tscn"
+	current_state = GameState.PLAYING
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_reset_level_presentation_state()
+	get_tree().change_scene_to_file(current_level_path)
 
 
 func load_level(level_index: int) -> void:

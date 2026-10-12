@@ -12,6 +12,7 @@ var timer_active: bool = false
 var remaining_time: float = 0.0
 
 var puzzle_completed: bool = false
+var _last_warned_second: int = -1
 
 var puzzle_ui = null
 
@@ -68,6 +69,7 @@ func press_blue() -> void:
 func start_timer() -> void:
 	timer_active = true
 	remaining_time = puzzle_time
+	_last_warned_second = -1
 
 	if puzzle_ui != null:
 		puzzle_ui.update_timer(remaining_time)
@@ -83,12 +85,23 @@ func _process(delta: float) -> void:
 
 	if remaining_time <= 0.0:
 		remaining_time = 0.0
+		_last_warned_second = -1
 
 		if puzzle_ui != null:
 			puzzle_ui.show_timeout()
 
 		reset_puzzle()
 		return
+
+	# Warning check
+	var warn_threshold: float = min(3.0, puzzle_time * 0.35)
+	if remaining_time <= warn_threshold and remaining_time > 0.0:
+		var current_sec: int = int(ceil(remaining_time))
+		if current_sec != _last_warned_second and current_sec > 0:
+			_last_warned_second = current_sec
+			if has_node("/root/AudioManager"):
+				var pitch: float = 1.0 + (warn_threshold - remaining_time) / warn_threshold * 0.3
+				AudioManager.play_puzzle_warning_sfx(pitch)
 
 	if puzzle_ui != null:
 		puzzle_ui.update_timer(remaining_time)
@@ -98,8 +111,12 @@ func check_puzzle() -> void:
 	if red_pressed and blue_pressed:
 		puzzle_completed = true
 		timer_active = false
+		_last_warned_second = -1
 
 		print("PUZZLE COMPLETED!")
+
+		if has_node("/root/AudioManager"):
+			AudioManager.play_puzzle_solved_sfx()
 
 		if puzzle_ui != null:
 			puzzle_ui.show_completed()
@@ -119,3 +136,4 @@ func reset_puzzle() -> void:
 
 	timer_active = false
 	remaining_time = 0.0
+	_last_warned_second = -1

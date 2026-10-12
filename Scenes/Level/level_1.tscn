@@ -1,110 +1,16 @@
-[gd_scene format=4 uid="uid://d3apw3a58uf1r"]
+[gd_scene format=4]
 
-[ext_resource type="PackedScene" uid="uid://dwsi35omjipgc" path="res://Scenes/Cave/Cave.tscn" id="1_4snqv"]
-[ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="1_b828a"]
+[ext_resource type="PackedScene" path="res://Scenes/Cave/Cave.tscn" id="1_4snqv"]
+[ext_resource type="PackedScene" path="res://Scenes/Player/Player.tscn" id="1_b828a"]
+[ext_resource type="Script" path="res://Scripts/door.gd" id="2_c458c"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/InteractionUI.tscn" id="3_m5hwo"]
-[ext_resource type="PackedScene" uid="uid://dpsk2s3fuh21r" path="res://Scenes/UI/HUD.tscn" id="5_hud"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="4_pvlc2"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="5_hud"]
+[ext_resource type="Script" path="res://Scripts/interaction_ui.gd" id="6_d68a7"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="8_q2tg5"]
 
-[sub_resource type="GDScript" id="GDScript_knogg"]
-script/source = "extends Area3D
-
-@export_category(\"Interaction\")
-@export var interaction_text: String = \"Enter\"
-@export var interaction_title: String = \"Ancient Door\"
-@export_multiline var description: String = \"Enter the next area.\"
-
-@export_category(\"Level Transition\")
-@export_file(\"*.tscn\") var target_scene: String
-@export var target_spawn_id: String = \"\"
-
-@export_category(\"Puzzle Requirement\")
-@export var require_puzzle: bool = false
-
-@onready var interaction_label: Label3D = $InteractionLabel
-
-var player: Node3D = null
-var door_unlocked: bool = false
-
-
-func _ready() -> void:
-	add_to_group(\"interactable\")
-
-	interaction_label.text = \"[E] \" + interaction_text
-	interaction_label.visible = false
-
-	player = get_tree().get_first_node_in_group(\"player\")
-
-	if not require_puzzle:
-		door_unlocked = true
-
-
-func _process(_delta: float) -> void:
-	if player == null:
-		return
-
-	var direction := player.global_position - interaction_label.global_position
-	direction.y = 0.0
-
-	if direction.length() < 0.01:
-		return
-
-	direction = direction.normalized()
-
-	interaction_label.global_rotation.y = atan2(
-		direction.x,
-		direction.z
-	)
-
-
-func show_interaction_prompt() -> void:
-	if not door_unlocked:
-		return
-
-	interaction_label.visible = true
-
-
-func hide_interaction_prompt() -> void:
-	interaction_label.visible = false
-
-
-func unlock_door() -> void:
-	door_unlocked = true
-	print(\"Door unlocked!\")
-
-	if player != null:
-		interaction_label.visible = true
-
-
-func interact() -> void:
-	if not door_unlocked:
-		print(\"Door is locked!\")
-		return
-
-	if target_scene.is_empty():
-		print(\"ERROR: Target scene is not assigned!\")
-		return
-
-	if target_spawn_id.is_empty():
-		print(\"ERROR: Target spawn ID is not assigned!\")
-		return
-
-	GameManager.set_spawn_point(target_spawn_id)
-
-	# Sync level index with UIManager if target is known
-	for i in range(UIManager.levels.size()):
-		var lvl_path = UIManager.levels[i]
-		if lvl_path == target_scene or (target_scene.begins_with(\"uid://\") and ResourceUID.id_to_text(ResourceLoader.get_resource_uid(lvl_path)) == target_scene):
-			UIManager.current_level_index = i + 1
-			UIManager.current_level_path = lvl_path
-			break
-
-	get_tree().change_scene_to_file(target_scene)
-
-
-func _exit_tree() -> void:
-	if is_instance_valid(interaction_label):
-		interaction_label.visible = false
-"
+[sub_resource type="BoxShape3D" id="BoxShape3D_c458c"]
+size = Vector3(1, 0.8, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xfk5q"]
 
@@ -917,11 +823,16 @@ size = Vector3(1, 10, 40)
 
 [node name="Level_1" type="Node3D" unique_id=1418685217]
 
-[node name="Door_To_Level2" parent="." unique_id=1327668518 instance=ExtResource("1_4snqv")]
+[node name="Door_To_Level2" type="Area3D" parent="." unique_id=1327668518 instance=ExtResource("1_4snqv")]
 transform = Transform3D(-7.11, 0, 1.0735802e-06, 0, 7.11, 0, -1.0735802e-06, 0, -7.11, 0, 2.4, -18.8)
-script = SubResource("GDScript_knogg")
-target_scene = "uid://dh6mu8itlwn4s"
-target_spawn_id = "Spawn_From_Level2"
+script = ExtResource("2_c458c")
+interaction_text = "Enter Level 2"
+target_scene = "res://Scenes/Level/level_2.tscn"
+target_spawn_id = "Spawn_From_Level1"
+
+[node name="TriggerShape" type="CollisionShape3D" parent="Door_To_Level2" unique_id=1431421115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_c458c")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1165985249]
 environment = SubResource("Environment_vk57k")
@@ -941,15 +852,19 @@ mesh = SubResource("BoxMesh_qqy1o")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1289807496]
 shape = SubResource("BoxShape3D_vk57k")
 
-[node name="Player" parent="." unique_id=263796391 instance=ExtResource("1_b828a")]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=263796391 groups=["player"] instance=ExtResource("1_b828a")]
 transform = Transform3D(-0.10757008, 0, -0.9941975, 0, 1, 0, 0.9941975, 0, -0.10757008, -15, 0.2, 0.5)
+script = ExtResource("4_pvlc2")
 
-[node name="InteractionUI" parent="." unique_id=929617552 instance=ExtResource("3_m5hwo")]
+[node name="InteractionUI" type="CanvasLayer" parent="." unique_id=929617552 groups=["interaction_ui"] instance=ExtResource("3_m5hwo")]
+script = ExtResource("6_d68a7")
 
 [node name="Spawn_From_Level1" type="Marker3D" parent="." unique_id=208036464]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -15)
 
-[node name="HUD" parent="." unique_id=1499615655 instance=ExtResource("5_hud")]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1499615655 instance=ExtResource("5_hud")]
+process_mode = 3
+script = ExtResource("8_q2tg5")
 
 [node name="Forest" type="Node3D" parent="." unique_id=1979883905]
 
@@ -1049,3 +964,11 @@ shape = SubResource("BoxShape3D_v5eft")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 5, 20)
 shape = SubResource("BoxShape3D_v5eft")
 
+[node name="Spawn_From_Level2" type="Marker3D" parent="." unique_id=1277896878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -15)
+
+[node name="Spawn_From_Level8" type="Marker3D" parent="." unique_id=2080090965]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -15)
+
+[node name="Spawn_From_Map0" type="Marker3D" parent="." unique_id=987654321]
+transform = Transform3D(-0.10757008, 0, -0.9941975, 0, 1, 0, 0.9941975, 0, -0.10757008, -15, 0.2, 0.5)

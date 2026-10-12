@@ -73,11 +73,21 @@ func _setup_menu_button(btn: Button) -> void:
 
 	# Mouse hover selects (same state as keyboard focus)
 	btn.mouse_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
 		if not _transitioning:
 			btn.grab_focus()
 	)
-	btn.focus_entered.connect(_set_selected.bind(btn, true))
+	btn.focus_entered.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_hover()
+		_set_selected(btn, true)
+	)
 	btn.focus_exited.connect(_set_selected.bind(btn, false))
+	btn.pressed.connect(func() -> void:
+		if has_node("/root/AudioManager"):
+			AudioManager.play_ui_click()
+	)
 
 
 func _set_selected(btn: Button, selected: bool) -> void:

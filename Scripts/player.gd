@@ -20,6 +20,11 @@ var move_speed: float:
 	set(val):
 		walk_speed = val
 
+@export_category("Footsteps")
+@export var walk_step_distance: float = 2.3
+@export var run_step_distance: float = 2.5
+@export var sneak_step_distance: float = 1.5
+
 # =========================================================
 # JUMP & GRAVITY
 # =========================================================
@@ -88,6 +93,8 @@ var is_crouching: bool = false
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 var duplicate_capsule_shape: CapsuleShape3D = null
+var _was_on_floor_last_frame: bool = true
+var _step_distance_accum: float = 0.0
 
 
 # =========================================================
@@ -305,6 +312,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = sqrt(jump_height * 2.0 * gravity)
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
+		if has_node("/root/AudioManager"):
+			AudioManager.play_jump_sfx()
 
 	# =====================================================
 	# HORIZONTAL MOVEMENT
@@ -432,6 +441,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# Landing detection
+	if not _was_on_floor_last_frame and is_on_floor():
+		if has_node("/root/AudioManager"):
+			AudioManager.play_land_sfx()
+	_was_on_floor_last_frame = is_on_floor()
+
+	# Footstep audio processing
+	_process_footsteps(delta, is_moving)
+
 
 # =========================================================
 # HELPER FUNCTIONS
@@ -454,3 +472,41 @@ func play_animation(animation_name: String, speed: float = 1.0) -> void:
 		animation_player.play(animation_name, -1.0, speed)
 	else:
 		animation_player.speed_scale = speed
+
+
+func _process_footsteps(delta: float, is_input_moving: bool) -> void:
+	# 1. Footsteps must NEVER play while in the air (jumping, falling)
+	if not is_on_floor():
+		_step_distance_accum = 0.0
+		return
+
+	# 2. Footsteps must NEVER play when standing still or blocked
+	var horizontal_speed := Vector3(velocity.x, 0.0, velocity.z).length()
+	if not is_input_moving or horizontal_speed < 0.2:
+		_step_distance_accum = 0.0
+		return
+
+	# 3. Determine target step stride based on actual movement state
+	var step_threshold := walk_step_distance
+	if is_crouching:
+		step_threshold = sneak_step_distance
+	elif is_sprinting and horizontal_speed > walk_speed * 0.8:
+		step_threshold = run_step_distance
+
+	# Prevent abrupt triggers when switching from longer to shorter stride
+	if _step_distance_accum > step_threshold:
+		_step_distance_accum = step_threshold * 0.75
+
+	# 4. Accumulate distance based on actual horizontal velocity
+	_step_distance_accum += horizontal_speed * delta
+
+	# 5. Play footstep when stride distance is completed
+	if _step_distance_accum >= step_threshold:
+		_step_distance_accum = 0.0
+		if has_node("/root/AudioManager"):
+			if is_crouching:
+				AudioManager.play_footstep_sneak()
+			elif is_sprinting and horizontal_speed > walk_speed * 0.8:
+				AudioManager.play_footstep_run()
+			else:
+				AudioManager.play_footstep_walk()

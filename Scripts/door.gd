@@ -62,6 +62,8 @@ func hide_interaction_prompt() -> void:
 func unlock_door() -> void:
 	door_unlocked = true
 	print("Door unlocked!")
+	if has_node("/root/AudioManager"):
+		AudioManager.play_lock_unlock_sfx()
 
 	if player != null:
 		interaction_label.visible = true
@@ -79,6 +81,9 @@ func interact() -> void:
 	if target_spawn_id.is_empty():
 		print("ERROR: Target spawn ID is not assigned!")
 		return
+
+	if has_node("/root/AudioManager"):
+		AudioManager.play_door_sfx()
 
 	GameManager.set_spawn_point(target_spawn_id)
 
