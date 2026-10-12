@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://dgf67f70482wr"]
-
-[ext_resource type="Script" path="res://Scripts/test_map0_runner.gd" id="1_runner"]
-
-[node name="TestMap0Runner" type="Node3D"]
-script = ExtResource("1_runner")

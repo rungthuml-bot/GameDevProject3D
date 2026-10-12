@@ -329,6 +329,11 @@ func play_lock_unlock_sfx() -> void:
 	play_sfx(SFX_LOCK_UNLOCK, 0.0)
 
 
+func play_chest_open_sfx() -> void:
+	play_sfx(SFX_LOCK_UNLOCK, 1.0, 1.05)
+	play_sfx(SFX_DOOR_OPEN, -2.0, 1.25)
+
+
 func play_button_sfx() -> void:
 	play_sfx(SFX_BUTTON_PRESS, 1.0, randf_range(0.96, 1.04))
 

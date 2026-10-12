@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://test_floor_physics_runner"]
-
-[ext_resource type="Script" path="res://scratch/test_floor_physics.gd" id="1_floortest"]
-
-[node name="TestFloorPhysicsRunner" type="Node3D"]
-script = ExtResource("1_floortest")

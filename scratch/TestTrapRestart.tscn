@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://test_trap_restart_runner"]
-
-[ext_resource type="Script" path="res://scratch/test_trap_restart.gd" id="1_traprunner"]
-
-[node name="TestTrapRestart" type="Node"]
-script = ExtResource("1_traprunner")

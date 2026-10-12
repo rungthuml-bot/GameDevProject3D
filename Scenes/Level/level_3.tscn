@@ -24,8 +24,8 @@
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/rubble_large.gltf" id="22_rubble_large"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/barrier.gltf" id="23_barrier"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_broken.gltf" id="24_sword_broken"]
-[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest.gltf" id="25_chest"]
-[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf" id="26_chest_gold"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/TreasureChest.tscn" id="25_chest"]
+[ext_resource type="PackedScene" path="res://Scenes/Props/TreasureChestGold.tscn" id="26_chest_gold"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/coin_stack_large.gltf" id="27_coin_stack"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/crates_stacked.gltf" id="28_crates"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/barrel_large.gltf" id="29_barrel"]
@@ -662,10 +662,10 @@ transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, -14.5, 0.0, -3.2)
 [node name="WestBrokenSword" type="Node3D" parent="KayKitDungeon/Props" unique_id=500264 instance=ExtResource("24_sword_broken")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0, 0.0, -3.2)
 
-[node name="EastChestGold" type="Node3D" parent="KayKitDungeon/Props" unique_id=500265 instance=ExtResource("26_chest_gold")]
+[node name="EastChestGold" type="Area3D" parent="KayKitDungeon/Props" unique_id=500265 instance=ExtResource("26_chest_gold")]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 16.0, 0.0, -3.4)
 
-[node name="EastChestNormal" type="Node3D" parent="KayKitDungeon/Props" unique_id=500266 instance=ExtResource("25_chest")]
+[node name="EastChestNormal" type="Area3D" parent="KayKitDungeon/Props" unique_id=500266 instance=ExtResource("25_chest")]
 transform = Transform3D(1.0, 0, 0, 0, 1.0, 0, 0, 0, 1.0, 14.5, 0.0, -4.5)
 
 [node name="EastCoins" type="Node3D" parent="KayKitDungeon/Props" unique_id=500267 instance=ExtResource("27_coin_stack")]
@@ -1145,11 +1145,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 billboard = 1
 
 [node name="Inspect_CryptTreasury" type="Area3D" parent="." unique_id=1055227405]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, -3.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -7.5)
 script = ExtResource("39_interactable")
 interaction_text = "Examine"
-interaction_title = "Royal Vault Offering"
-description = "Chests and gilded urns containing ancient currency and ceremonial relics left to accompany the dead into the deep maze."
+interaction_title = "Ancient Urn Offering"
+description = "Gilded urns and ritual candles containing ceremonial incense left to accompany the dead into the deep maze."
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Inspect_CryptTreasury" unique_id=215281689]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
