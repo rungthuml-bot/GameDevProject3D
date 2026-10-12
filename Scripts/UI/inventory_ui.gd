@@ -57,7 +57,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 
+var _anim_tween: Tween = null
+
+
 func open_inventory() -> void:
+	if _anim_tween and _anim_tween.is_valid():
+		_anim_tween.kill()
+
 	visible = true
 	modulate.a = 0.0
 	refresh_inventory()
@@ -67,19 +73,22 @@ func open_inventory() -> void:
 		_slot_buttons[0].grab_focus()
 		_select_item("sovereign_relic")
 
-	var tween := create_tween()
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(self, "modulate:a", 1.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_anim_tween = create_tween()
+	_anim_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_anim_tween.tween_property(self, "modulate:a", 1.0, 0.2).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 
 
 func close_inventory() -> void:
 	if not visible:
 		return
 
-	var tween := create_tween()
-	tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	tween.tween_property(self, "modulate:a", 0.0, 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-	tween.tween_callback(func():
+	if _anim_tween and _anim_tween.is_valid():
+		_anim_tween.kill()
+
+	_anim_tween = create_tween()
+	_anim_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	_anim_tween.tween_property(self, "modulate:a", 0.0, 0.15).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	_anim_tween.tween_callback(func():
 		visible = false
 		inventory_closed.emit()
 	)

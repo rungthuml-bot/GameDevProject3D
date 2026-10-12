@@ -146,12 +146,23 @@ func _update_timer_display() -> void:
 	timer_label.text = "%02d:%02d" % [minutes, seconds]
 
 
+var _last_inventory_toggle_time: float = 0.0
+const INVENTORY_TOGGLE_COOLDOWN_SEC: float = 0.2
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	# Don't trigger pause menu if dialogue is currently active
 	if UIManager.is_dialogue_active():
 		return
 
 	if event.is_action_pressed("toggle_inventory"):
+		if event is InputEventKey and event.echo:
+			return
+		var now := Time.get_ticks_msec() / 1000.0
+		if now - _last_inventory_toggle_time < INVENTORY_TOGGLE_COOLDOWN_SEC:
+			return
+		_last_inventory_toggle_time = now
+
 		_toggle_inventory()
 		get_viewport().set_input_as_handled()
 		return
@@ -285,6 +296,9 @@ func _refresh_objective_list() -> void:
 # =========================================================
 
 func _on_interaction_prompt_shown(text: String, action_key: String) -> void:
+	if interaction_prompt.visible and prompt_key_label.text == action_key and prompt_text_label.text == text:
+		return
+
 	prompt_key_label.text = action_key
 	prompt_text_label.text = text
 
@@ -315,10 +329,45 @@ func _on_interaction_prompt_hidden() -> void:
 # =========================================================
 
 func _on_notification_requested(text: String, type_name: String, duration: float) -> void:
-	# Keep maximum visible notifications within limit
+	if text.strip_edges().is_empty():
+		return
+
+	# Check if an identical notification is already visible.
+	# If so, aggregate (increment count or refresh duration) instead of creating a new Node/Tween!
+	for child in notification_list.get_children():
+		if child.has_meta("toast_text") and child.get_meta("toast_text") == text:
+			# Update repeat count
+			var count: int = child.get_meta("repeat_count", 1) + 1
+			child.set_meta("repeat_count", count)
+
+			var msg_label: Label = child.get_meta("msg_label", null)
+			if is_instance_valid(msg_label):
+				msg_label.text = "%s (x%d)" % [text, count]
+
+			# Kill previous tween and start a fresh fade-out
+			var old_tween: Tween = child.get_meta("tween", null)
+			if old_tween and old_tween.is_valid():
+				old_tween.kill()
+
+			child.modulate.a = 1.0
+			var new_tween := create_tween()
+			new_tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+			new_tween.tween_interval(duration)
+			new_tween.tween_property(child, "modulate:a", 0.0, 0.35) \
+				.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+			new_tween.tween_callback(child.queue_free)
+			child.set_meta("tween", new_tween)
+			return
+
+	# Keep maximum visible notifications strictly within limit
 	while notification_list.get_child_count() >= NotificationSystemScript.MAX_VISIBLE_NOTIFICATIONS:
 		var oldest = notification_list.get_child(0)
+		var old_tw: Tween = oldest.get_meta("tween", null)
+		if old_tw and old_tw.is_valid():
+			old_tw.kill()
 		oldest.queue_free()
+		# Detach from list immediately to ensure child count reflects removal synchronously
+		notification_list.remove_child(oldest)
 
 	var n_type = NotificationSystemScript.parse_type(type_name)
 	var accent_color: Color = NotificationSystemScript.get_color(n_type)
@@ -327,6 +376,8 @@ func _on_notification_requested(text: String, type_name: String, duration: float
 	# Container for the toast item
 	var toast := PanelContainer.new()
 	toast.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	toast.set_meta("toast_text", text)
+	toast.set_meta("repeat_count", 1)
 
 	# Toast style
 	var style := StyleBoxFlat.new()
@@ -368,6 +419,7 @@ func _on_notification_requested(text: String, type_name: String, duration: float
 	msg_label.add_theme_color_override("font_color", Color(0.92, 0.9, 0.85, 1.0))
 	msg_label.add_theme_font_size_override("font_size", 14)
 	hbox.add_child(msg_label)
+	toast.set_meta("msg_label", msg_label)
 
 	# Initial transparent state
 	toast.modulate.a = 0.0
@@ -382,6 +434,7 @@ func _on_notification_requested(text: String, type_name: String, duration: float
 	tween.tween_property(toast, "modulate:a", 0.0, 0.35) \
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	tween.tween_callback(toast.queue_free)
+	toast.set_meta("tween", tween)
 
 
 # =========================================================

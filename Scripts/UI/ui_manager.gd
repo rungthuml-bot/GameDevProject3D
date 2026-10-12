@@ -111,11 +111,13 @@ var levels: Array[String] = [
 const ObjectiveManagerScript = preload("res://Scripts/UI/objective_manager.gd")
 const DialogueManagerScript = preload("res://Scripts/UI/dialogue_manager.gd")
 const DialogueUIScene = preload("res://Scenes/UI/DialogueUI.tscn")
+const NotificationSystemScript = preload("res://Scripts/UI/notification_system.gd")
 
 var current_health: float = 100.0
 var max_health: float = 100.0
 var objective_manager = ObjectiveManagerScript.new()
 var dialogue_manager = DialogueManagerScript.new()
+var notification_system = NotificationSystemScript.new()
 var ui_test_mode_enabled: bool = false
 
 
@@ -510,6 +512,17 @@ func hide_interaction_prompt() -> void:
 # =========================================================
 
 func notify(text: String, type_name: String = "info", duration: float = 3.5) -> void:
+	if text.strip_edges().is_empty():
+		return
+
+	# Debounce duplicate notifications within cooldown window
+	if notification_system.is_duplicate_spam(text):
+		# Re-emit with flag or allow HUD to refresh duration without creating new toast
+		notification_system.record_notification(text)
+		notification_requested.emit(text, type_name, duration)
+		return
+
+	notification_system.record_notification(text)
 	notification_requested.emit(text, type_name, duration)
 
 

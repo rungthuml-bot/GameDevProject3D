@@ -4,8 +4,67 @@ extends Node
 
 var next_spawn_id: String = ""
 var is_first_person: bool = true
+var is_restarting_level: bool = false
 var has_relic: bool = false
 var relic_returned: bool = false
+
+## Default spawn node names per level scene
+const LEVEL_DEFAULT_SPAWNS: Dictionary = {
+	"res://Scenes/Level/level_0.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_1.tscn": "Spawn_From_Map0",
+	"res://Scenes/Level/level_2.tscn": "Spawn_From_Level2",
+	"res://Scenes/Level/level_3.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_4.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_5.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_6.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_7.tscn": "PlayerSpawn",
+	"res://Scenes/Level/level_8.tscn": "Default_Spawn"
+}
+
+
+func get_default_spawn_for_level(level_path: String) -> String:
+	return LEVEL_DEFAULT_SPAWNS.get(level_path, "PlayerSpawn")
+
+
+func trigger_trap_restart(trap_name: String = "Lethal Trap") -> void:
+	if is_restarting_level:
+		return
+	is_restarting_level = true
+
+	# Disable player controls
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.has_method("disable_controls"):
+		player.disable_controls()
+
+	if has_node("/root/AudioManager"):
+		AudioManager.play_puzzle_warning_sfx()
+
+	if has_node("/root/UIManager"):
+		UIManager.notify_danger("%s triggered! Restarting current level..." % trap_name)
+
+	# Set the correct default spawn point for the current scene
+	var cur_scene_path: String = ""
+	if get_tree().current_scene:
+		cur_scene_path = get_tree().current_scene.scene_file_path
+
+	if cur_scene_path.is_empty() and has_node("/root/UIManager"):
+		cur_scene_path = UIManager.current_level_path
+
+	var default_spawn = get_default_spawn_for_level(cur_scene_path)
+	set_spawn_point(default_spawn)
+
+	# Wait briefly for notification, then reload current level scene
+	await get_tree().create_timer(0.45).timeout
+
+	if not cur_scene_path.is_empty():
+		get_tree().change_scene_to_file(cur_scene_path)
+	else:
+		get_tree().reload_current_scene()
+
+	# Re-enable controls flag after scene finishes loading
+	await get_tree().process_frame
+	await get_tree().process_frame
+	is_restarting_level = false
 
 
 func set_spawn_point(spawn_id: String) -> void:

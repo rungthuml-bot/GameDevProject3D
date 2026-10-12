@@ -190,11 +190,29 @@ func toggle_perspective() -> void:
 			UIManager.notify_info("Third-Person View (V)", 1.5)
 
 
+var controls_enabled: bool = true
+
+
+func disable_controls() -> void:
+	controls_enabled = false
+	velocity = Vector3.ZERO
+
+
+func enable_controls() -> void:
+	controls_enabled = true
+
+
 # =========================================================
 # INPUT
 # =========================================================
 
+var _last_perspective_toggle_time: float = 0.0
+const PERSPECTIVE_COOLDOWN_SEC: float = 0.25
+
+
 func _unhandled_input(event: InputEvent) -> void:
+	if not controls_enabled:
+		return
 
 	# =====================================================
 	# MOUSE CAMERA LOOK
@@ -218,11 +236,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	# TOGGLE PERSPECTIVE (V Key)
 	# =====================================================
 
+	var triggered_toggle := false
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.keycode == KEY_V or event.physical_keycode == KEY_V:
-			toggle_perspective()
+			triggered_toggle = true
 	elif event.is_action_pressed("toggle_perspective"):
-		toggle_perspective()
+		if not (event is InputEventKey and event.echo):
+			triggered_toggle = true
+
+	if triggered_toggle:
+		var now := Time.get_ticks_msec() / 1000.0
+		if now - _last_perspective_toggle_time >= PERSPECTIVE_COOLDOWN_SEC:
+			_last_perspective_toggle_time = now
+			toggle_perspective()
 
 	# =====================================================
 	# JUMP INPUT BUFFER (Spacebar key event)
@@ -258,6 +284,15 @@ func _unhandled_input(event: InputEvent) -> void:
 # =========================================================
 
 func _physics_process(delta: float) -> void:
+	if not controls_enabled:
+		if not is_on_floor():
+			velocity.y -= gravity * delta
+		else:
+			velocity.y = 0.0
+		velocity.x = move_toward(velocity.x, 0.0, deceleration * delta)
+		velocity.z = move_toward(velocity.z, 0.0, deceleration * delta)
+		move_and_slide()
+		return
 
 	# =====================================================
 	# TIMERS & INPUT POLLING

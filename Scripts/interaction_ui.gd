@@ -28,6 +28,11 @@ func show_message(
 
 	current_interactable = interactable
 
+	# If already showing the exact same message, simply reset the timer without creating a new tween
+	if is_showing and title_label.text == title and description_label.text == description:
+		message_timer = display_time
+		return
+
 	title_label.text = title
 	description_label.text = description
 	hint_label.text = "[E] Close"

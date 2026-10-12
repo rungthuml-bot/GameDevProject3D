@@ -22,9 +22,12 @@ const ICON_WARNING := "▲"
 const ICON_DANGER := "✕"
 
 const MAX_VISIBLE_NOTIFICATIONS := 4
+const MAX_QUEUE_LIMIT := 10
 const DEFAULT_DURATION := 3.5
+const DUPLICATE_COOLDOWN_SEC := 1.2
 
 var _queue: Array[Dictionary] = []
+var _recent_history: Dictionary = {} # text -> timestamp_sec
 
 
 static func parse_type(type_name: String) -> NotificationType:
@@ -63,8 +66,47 @@ static func get_icon(type: NotificationType) -> String:
 			return ICON_INFO
 
 
+func is_duplicate_spam(text: String) -> bool:
+	var now := Time.get_ticks_msec() / 1000.0
+	_clean_history(now)
+	if _recent_history.has(text):
+		var last_time: float = _recent_history[text]
+		if (now - last_time) < DUPLICATE_COOLDOWN_SEC:
+			return true
+	return false
+
+
+func record_notification(text: String) -> void:
+	var now := Time.get_ticks_msec() / 1000.0
+	_recent_history[text] = now
+
+
+func _clean_history(now: float) -> void:
+	var keys_to_remove: Array[String] = []
+	for k in _recent_history.keys():
+		if (now - _recent_history[k]) > (DUPLICATE_COOLDOWN_SEC * 3.0):
+			keys_to_remove.append(k)
+	for k in keys_to_remove:
+		_recent_history.erase(k)
+
+
 func push(text: String, type_name: String = "info", duration: float = DEFAULT_DURATION) -> Dictionary:
+	if text.strip_edges().is_empty():
+		return {}
+
 	var n_type := parse_type(type_name)
+
+	# Check if this item already exists in the queue to coalesce/aggregate
+	for item in _queue:
+		if item.get("text", "") == text and item.get("type", NotificationType.INFO) == n_type:
+			item["repeat_count"] = item.get("repeat_count", 1) + 1
+			item["duration"] = duration
+			return item
+
+	# If queue exceeds limit, discard the oldest unserved notification
+	if _queue.size() >= MAX_QUEUE_LIMIT:
+		_queue.pop_front()
+
 	var item := {
 		"id": Time.get_ticks_msec(),
 		"text": text,
@@ -72,7 +114,8 @@ func push(text: String, type_name: String = "info", duration: float = DEFAULT_DU
 		"type_name": type_name,
 		"duration": duration,
 		"color": get_color(n_type),
-		"icon": get_icon(n_type)
+		"icon": get_icon(n_type),
+		"repeat_count": 1
 	}
 	_queue.append(item)
 	return item
@@ -86,6 +129,7 @@ func get_next() -> Dictionary:
 
 func clear() -> void:
 	_queue.clear()
+	_recent_history.clear()
 
 
 func count() -> int:
