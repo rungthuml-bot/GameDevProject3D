@@ -24,9 +24,11 @@ func _ready() -> void:
 	test_inventory_persistence_and_reset()
 	test_inventory_ui_scene()
 	test_hud_integration()
+	test_hold_item_system()
+	test_player_hold_model()
 	
 	print("\n=======================================")
-	print("INVENTORY TEST RESULTS: %d PASSED, %d FAILED" % [_passed_count, _failed_count])
+	print("INVENTORY & HOLD ITEM TEST RESULTS: %d PASSED, %d FAILED" % [_passed_count, _failed_count])
 	print("=======================================\n")
 	
 	if _failed_count == 0:
@@ -179,3 +181,74 @@ func test_hud_integration() -> void:
 	
 	hud._close_inventory()
 	hud.queue_free()
+
+
+func test_hold_item_system() -> void:
+	print("\n--- Test 6: Hold Item Logic & State ---")
+	
+	GameManager.reset_game_state()
+	assert_false(GameManager.can_hold_item("sovereign_relic"), "Cannot hold relic before collecting it")
+	
+	# Try to hold when unacquired
+	GameManager.set_held_item("sovereign_relic")
+	assert_eq(GameManager.get_held_item(), "", "Held item remains empty when trying to hold unacquired item")
+	
+	# Acquire relic
+	GameManager.set_relic_acquired(true)
+	assert_true(GameManager.can_hold_item("sovereign_relic"), "Can hold relic after collecting it")
+	
+	# Toggle hold item
+	GameManager.toggle_held_item("sovereign_relic")
+	assert_eq(GameManager.get_held_item(), "sovereign_relic", "Held item is now sovereign_relic")
+	
+	# Toggle hold off (put away)
+	GameManager.toggle_held_item("sovereign_relic")
+	assert_eq(GameManager.get_held_item(), "", "Held item put away after toggle")
+	
+	# Hold again and then return to altar
+	GameManager.set_held_item("sovereign_relic")
+	assert_eq(GameManager.get_held_item(), "sovereign_relic", "Held item re-equipped")
+	
+	GameManager.set_relic_returned(true)
+	assert_false(GameManager.can_hold_item("sovereign_relic"), "Cannot hold relic after returning it to altar")
+	assert_eq(GameManager.get_held_item(), "", "Held item automatically cleared when relic is returned to altar")
+
+
+func test_player_hold_model() -> void:
+	print("\n--- Test 7: Player 1st Person Hold Model & Animation ---")
+	
+	var player_scene: PackedScene = load("res://Scenes/Player/Player.tscn")
+	assert_true(player_scene != null, "Player.tscn loaded successfully")
+	
+	var player = player_scene.instantiate()
+	add_child(player)
+	
+	# Give relic and hold
+	GameManager.reset_game_state()
+	GameManager.set_relic_acquired(true)
+	GameManager.set_first_person(true)
+	player.is_first_person = true
+	
+	assert_true(player.held_item_root != null, "Player has held_item_root under camera")
+	assert_false(player.held_item_root.visible, "held_item_root starts invisible before holding")
+	
+	# Trigger hold
+	GameManager.set_held_item("sovereign_relic")
+	assert_true(player.held_item_root.visible, "held_item_root becomes visible in 1st person when holding relic")
+	assert_true(player.held_item_model != null, "held_item_model instantiated inside held_item_root")
+	
+	# Switch to 3rd person: held item should be hidden in 3rd person
+	player.toggle_perspective() # to 3rd person
+	assert_false(player.is_first_person, "Perspective toggled to 3rd person")
+	assert_false(player.held_item_root.visible, "Held item model hidden in 3rd person view")
+	
+	# Switch back to 1st person: held item should reappear
+	player.toggle_perspective() # back to 1st person
+	assert_true(player.is_first_person, "Perspective toggled to 1st person")
+	assert_true(player.held_item_root.visible, "Held item model restored in 1st person view")
+	
+	# Put away
+	GameManager.set_held_item("")
+	assert_eq(player._current_held_id, "", "Player _current_held_id cleared")
+	
+	player.queue_free()

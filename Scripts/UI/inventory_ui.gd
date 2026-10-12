@@ -21,6 +21,8 @@ const THEME_LIGHT_TEXT := Color(0.92, 0.89, 0.82, 1.0)
 @onready var detail_status_label: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/StatusBadge/StatusLabel
 @onready var detail_desc_label: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/DescriptionLabel
 @onready var detail_lore_label: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/LoreLabel
+@onready var action_row: HBoxContainer = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/ActionRow
+@onready var hold_btn: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/ActionRow/HoldButton
 @onready var empty_guide_label: Label = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ContentHBox/DetailSection/DetailMargin/DetailVBox/EmptyGuideLabel
 @onready var close_btn: Button = $CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HeaderHBox/CloseButton
 
@@ -33,9 +35,11 @@ var _selected_item_id: String = "sovereign_relic"
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	close_btn.pressed.connect(close_inventory)
+	hold_btn.pressed.connect(_on_hold_button_pressed)
 	
 	if GameManager:
 		GameManager.inventory_updated.connect(_on_inventory_updated)
+		GameManager.held_item_changed.connect(_on_held_item_changed)
 	
 	_build_slots()
 	refresh_inventory()
@@ -215,6 +219,60 @@ func _select_item(item_id: String) -> void:
 		else:
 			_apply_slot_style(_slot_buttons[i], false, false)
 
+	# Update Hold Button state
+	_update_hold_button_state()
+
+
+func _update_hold_button_state() -> void:
+	if not is_instance_valid(action_row) or not is_instance_valid(hold_btn):
+		return
+
+	if _selected_item_id.is_empty():
+		action_row.visible = false
+		return
+
+	var can_hold: bool = GameManager and GameManager.can_hold_item(_selected_item_id)
+	var currently_held: bool = GameManager and GameManager.get_held_item() == _selected_item_id
+	var item_status: String = GameManager.get_item_status(_selected_item_id) if GameManager else "UNFOUND"
+
+	action_row.visible = true
+
+	if currently_held:
+		hold_btn.disabled = false
+		hold_btn.text = "PUT AWAY / เก็บไอเทม (Held)"
+		hold_btn.add_theme_color_override("font_color", Color(0.95, 0.45, 0.45, 1.0))
+	elif can_hold:
+		hold_btn.disabled = false
+		hold_btn.text = "HOLD ITEM / ชูถือไอเทม"
+		hold_btn.add_theme_color_override("font_color", Color(0.95, 0.85, 0.55, 1.0))
+	else:
+		hold_btn.disabled = true
+		if item_status == "RETURNED":
+			hold_btn.text = "RESTED AT ALTAR (Cannot Hold)"
+		else:
+			hold_btn.text = "NOT ACQUIRED (Cannot Hold)"
+		hold_btn.add_theme_color_override("font_color", THEME_DIM_TEXT)
+
+
+func _on_hold_button_pressed() -> void:
+	if _selected_item_id.is_empty() or not GameManager:
+		return
+
+	var will_hold := (GameManager.get_held_item() != _selected_item_id)
+	GameManager.toggle_held_item(_selected_item_id)
+	_update_hold_button_state()
+
+	# Provide feedback toast
+	if UIManager:
+		if will_hold:
+			var item_def := GameManager.get_item_definition(_selected_item_id)
+			UIManager.notify_info("Holding " + item_def.get("name", "Item"), 2.0)
+		else:
+			UIManager.notify_info("Put away item", 1.5)
+
+	# Auto-close inventory cleanly so player can view the item immediately
+	close_inventory()
+
 
 func _select_empty_slot(slot_idx: int) -> void:
 	_selected_item_id = ""
@@ -225,12 +283,19 @@ func _select_empty_slot(slot_idx: int) -> void:
 	detail_status_badge.visible = false
 	detail_desc_label.visible = false
 	detail_lore_label.visible = false
+	if is_instance_valid(action_row):
+		action_row.visible = false
 
 	empty_guide_label.text = "Slot #%d\n(Empty Slot / ช่องว่างสำรอง)\n\nAdditional items discovered in the labyrinth will be placed here." % (slot_idx + 1 if slot_idx >= 0 else 0)
 
 	for i in range(_slot_buttons.size()):
 		var is_disc: bool = (i == 0 and GameManager and (GameManager.has_relic or GameManager.relic_returned))
 		_apply_slot_style(_slot_buttons[i], is_disc, i == slot_idx)
+
+
+func _on_held_item_changed(_item_id: String) -> void:
+	if is_inside_tree() and visible:
+		_update_hold_button_state()
 
 
 func _on_inventory_updated() -> void:

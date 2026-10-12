@@ -85,6 +85,20 @@ const FIRST_PERSON_MAX_PITCH: float = 85.0
 @onready var interaction_area: Area3D = $InteractionArea
 
 # =========================================================
+# HELD ITEM (1st-Person Model Display)
+# =========================================================
+
+var held_item_root: Node3D = null
+var held_item_model: Node3D = null
+var _held_item_tween: Tween = null
+var _current_held_id: String = ""
+
+const HELD_POS_LOWERED: Vector3 = Vector3(0.24, -0.45, -0.45)
+const HELD_POS_RAISED: Vector3 = Vector3(0.24, -0.18, -0.45)
+const HELD_ROT_LOWERED: Vector3 = Vector3(deg_to_rad(-35.0), deg_to_rad(-18.0), deg_to_rad(10.0))
+const HELD_ROT_RAISED: Vector3 = Vector3(deg_to_rad(-10.0), deg_to_rad(-22.0), deg_to_rad(4.0))
+
+# =========================================================
 # RUNTIME STATE
 # =========================================================
 
@@ -106,6 +120,8 @@ func _ready() -> void:
 	camera.current = true
 	camera.fov = normal_fov
 	play_animation("CharacterArmature|Idle")
+
+	_setup_held_item_system()
 
 	# Initialize perspective mode from persistent GameManager state
 	if GameManager:
@@ -164,10 +180,12 @@ func toggle_perspective() -> void:
 
 	if is_first_person:
 		character_mesh.visible = false
+		_update_held_item_visibility()
 		if UIManager:
 			UIManager.notify_info("First-Person View (V)", 1.5)
 	else:
 		character_mesh.visible = true
+		_update_held_item_visibility()
 		if UIManager:
 			UIManager.notify_info("Third-Person View (V)", 1.5)
 
@@ -514,3 +532,108 @@ func _process_footsteps(delta: float, is_input_moving: bool) -> void:
 				AudioManager.play_footstep_run()
 			else:
 				AudioManager.play_footstep_walk()
+
+
+# =========================================================
+# HELD ITEM SYSTEM IMPLEMENTATION
+# =========================================================
+
+func _setup_held_item_system() -> void:
+	if held_item_root == null:
+		held_item_root = Node3D.new()
+		held_item_root.name = "HeldItemRoot"
+		camera.add_child(held_item_root)
+		held_item_root.position = HELD_POS_LOWERED
+		held_item_root.rotation = HELD_ROT_LOWERED
+		held_item_root.visible = false
+
+	if GameManager:
+		if not GameManager.held_item_changed.is_connected(_on_held_item_changed):
+			GameManager.held_item_changed.connect(_on_held_item_changed)
+		# Load initial held item state if player held it in previous scene
+		var initial_held := GameManager.get_held_item()
+		if not initial_held.is_empty():
+			_equip_held_item(initial_held, false)
+
+
+func _on_held_item_changed(item_id: String) -> void:
+	if item_id.is_empty():
+		_unequip_held_item()
+	else:
+		_equip_held_item(item_id, true)
+
+
+func _equip_held_item(item_id: String, animate: bool = true) -> void:
+	_current_held_id = item_id
+	if held_item_root == null:
+		return
+
+	# Clear previous model
+	for child in held_item_root.get_children():
+		child.queue_free()
+	held_item_model = null
+
+	var item_def := GameManager.get_item_definition(item_id) if GameManager else {}
+	var model_scene_path: String = item_def.get("model_scene", "")
+	if not model_scene_path.is_empty() and ResourceLoader.exists(model_scene_path):
+		var model_scene := load(model_scene_path) as PackedScene
+		if model_scene:
+			held_item_model = model_scene.instantiate()
+			# Ergonomic scaling for 1st person hand view (compact size)
+			held_item_model.scale = Vector3(0.24, 0.24, 0.24)
+			held_item_model.rotation = Vector3(0.0, deg_to_rad(15.0), 0.0)
+			held_item_root.add_child(held_item_model)
+
+	_update_held_item_visibility()
+
+	if is_instance_valid(_held_item_tween):
+		_held_item_tween.kill()
+
+	if animate and is_first_person:
+		held_item_root.position = HELD_POS_LOWERED
+		held_item_root.rotation = HELD_ROT_LOWERED
+		_held_item_tween = create_tween()
+		_held_item_tween.set_parallel(true)
+		_held_item_tween.tween_property(held_item_root, "position", HELD_POS_RAISED, 0.35) \
+			.set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+		_held_item_tween.tween_property(held_item_root, "rotation", HELD_ROT_RAISED, 0.35) \
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	else:
+		held_item_root.position = HELD_POS_RAISED
+		held_item_root.rotation = HELD_ROT_RAISED
+
+
+func _unequip_held_item() -> void:
+	_current_held_id = ""
+	if held_item_root == null or not held_item_root.visible:
+		_cleanup_held_models()
+		return
+
+	if is_instance_valid(_held_item_tween):
+		_held_item_tween.kill()
+
+	_held_item_tween = create_tween()
+	_held_item_tween.set_parallel(true)
+	_held_item_tween.tween_property(held_item_root, "position", HELD_POS_LOWERED, 0.25) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_held_item_tween.tween_property(held_item_root, "rotation", HELD_ROT_LOWERED, 0.25) \
+		.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+	_held_item_tween.chain().tween_callback(func():
+		_cleanup_held_models()
+		_update_held_item_visibility()
+	)
+
+
+func _cleanup_held_models() -> void:
+	if held_item_root:
+		for child in held_item_root.get_children():
+			child.queue_free()
+	held_item_model = null
+
+
+func _update_held_item_visibility() -> void:
+	if held_item_root == null:
+		return
+	# Item is held in first person view only
+	var has_item: bool = not _current_held_id.is_empty()
+	held_item_root.visible = is_first_person and has_item

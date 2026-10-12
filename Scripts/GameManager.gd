@@ -29,6 +29,9 @@ func is_first_person_enabled() -> bool:
 
 
 signal inventory_updated
+signal held_item_changed(item_id: String)
+
+var held_item_id: String = ""
 
 ## Registry of canonical game items.
 ## Designed to support additional items cleanly without phantom items or gameplay rewrites.
@@ -39,6 +42,7 @@ const ITEM_DEFINITIONS: Dictionary = {
 		"title_th": "คทาราชันโบราณ",
 		"category": "Sacred Artifact",
 		"icon_symbol": "♚",
+		"model_scene": "res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf",
 		"description": "An ancient golden scepter imbued with the eldritch authority of Eldoria. Required to dissolve the seal on the Sanctuary Gate in Level 1.",
 		"lore": "Forged in the labyrinth's deepest sanctuary (Level 8) to command the labyrinth. Returning it to the surface altar breaks the final gate seal."
 	}
@@ -109,12 +113,46 @@ func set_relic_acquired(acquired: bool) -> void:
 func set_relic_returned(returned: bool) -> void:
 	if relic_returned != returned:
 		relic_returned = returned
+		# If the player is currently holding the relic and returns it, unequip it
+		if returned and held_item_id == "sovereign_relic":
+			set_held_item("")
 		inventory_updated.emit()
+
+
+func can_hold_item(item_id: String) -> bool:
+	match item_id:
+		"sovereign_relic":
+			# Only allow holding if the player currently possesses it and hasn't returned it
+			return has_relic and not relic_returned
+		_:
+			return false
+
+
+func set_held_item(item_id: String) -> void:
+	if item_id == held_item_id:
+		return
+	if item_id != "" and not can_hold_item(item_id):
+		return
+	held_item_id = item_id
+	held_item_changed.emit(held_item_id)
+
+
+func toggle_held_item(item_id: String) -> void:
+	if held_item_id == item_id:
+		set_held_item("")
+	else:
+		set_held_item(item_id)
+
+
+func get_held_item() -> String:
+	return held_item_id
 
 
 func reset_game_state() -> void:
 	next_spawn_id = ""
 	has_relic = false
 	relic_returned = false
+	held_item_id = ""
+	held_item_changed.emit("")
 	inventory_updated.emit()
 
