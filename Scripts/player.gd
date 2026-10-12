@@ -62,7 +62,7 @@ const CROUCH_MESH_SCALE_Y: float = 0.65
 @export var crouch_fov: float = 60.0
 
 @export_category("Perspective Mode")
-@export var is_first_person: bool = false
+@export var is_first_person: bool = true
 @export var perspective_transition_speed: float = 16.0
 
 const THIRD_PERSON_CAM_POS: Vector3 = Vector3(0.0, 1.0, 4.5)

@@ -3,7 +3,7 @@ extends Node
 ## GameManager — Autoload singleton for global game state, spawn points, and camera persistence.
 
 var next_spawn_id: String = ""
-var is_first_person: bool = false
+var is_first_person: bool = true
 var has_relic: bool = false
 var relic_returned: bool = false
 
