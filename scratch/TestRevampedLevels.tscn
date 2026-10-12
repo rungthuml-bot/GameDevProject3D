@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://test_revamped_levels_runner_v1"]
+
+[ext_resource type="Script" path="res://scratch/test_revamped_levels.gd" id="1_testrunner"]
+
+[node name="TestRevampedLevelsRunner" type="Node3D"]
+script = ExtResource("1_testrunner")

@@ -139,6 +139,7 @@ func _setup_scene_mappings() -> void:
 		"res://Scenes/UI/SettingsMenu.tscn": MUSIC_MENU,
 		"res://Scenes/UI/Credits.tscn": MUSIC_CREDITS,
 		"res://Scenes/UI/SplashScreen.tscn": MUSIC_MENU,
+		"res://Scenes/Level/level_0.tscn": MUSIC_LEVEL1,
 		"res://Scenes/Level/map_0.tscn": MUSIC_LEVEL1,
 		"res://Scenes/Level/level_1.tscn": MUSIC_LEVEL1,
 		"res://Scenes/Level/level_2.tscn": MUSIC_LEVEL2,
@@ -148,9 +149,11 @@ func _setup_scene_mappings() -> void:
 		"res://Scenes/Level/level_6.tscn": MUSIC_LEVEL6,
 		"res://Scenes/Level/level_7.tscn": MUSIC_LEVEL7,
 		"res://Scenes/Level/level_8.tscn": MUSIC_LEVEL8,
+		"res://Scenes/UI/EndingCutscene.tscn": MUSIC_CREDITS,
 	}
 
 	_scene_ambient_map = {
+		"res://Scenes/Level/level_0.tscn": AMBIENT_FOREST,
 		"res://Scenes/Level/map_0.tscn": AMBIENT_FOREST,
 		"res://Scenes/Level/level_3.tscn": AMBIENT_CAVE,
 		"res://Scenes/Level/level_6.tscn": AMBIENT_WATER,

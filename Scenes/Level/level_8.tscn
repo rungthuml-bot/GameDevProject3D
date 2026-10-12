@@ -45,6 +45,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="43_np8yh"]
 [ext_resource type="Script" path="res://Scripts/interactable.gd" id="44_scavf"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="45_80ihl"]
+[ext_resource type="Script" path="res://Scripts/relic_item.gd" id="46_relicitem"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ef8d"]
 size = Vector3(80, 1, 80)
@@ -1869,7 +1870,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="Inspect_RoyalRelic" type="Area3D" parent="." unique_id=815729154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1.1)
-script = ExtResource("44_scavf")
+script = ExtResource("46_relicitem")
 interaction_title = "The Sovereign Relic"
 description = "The Sovereign Scepter rests upon a velvet cushion of gold. Its light has not diminished in a thousand years."
 

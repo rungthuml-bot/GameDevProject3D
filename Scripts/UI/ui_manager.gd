@@ -70,8 +70,8 @@ enum GameState { MENU, PLAYING, PAUSED, WIN, LOSE, DIALOGUE }
 
 var current_state: GameState = GameState.MENU
 var previous_state: GameState = GameState.PLAYING
-var current_level_path: String = ""
-var current_level_index: int = 1
+var current_level_path: String = "res://Scenes/Level/level_0.tscn"
+var current_level_index: int = 0
 
 # Level registry — add new levels here
 var levels: Array[String] = [
@@ -155,16 +155,20 @@ func go_to_main_menu() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	current_state = GameState.MENU
 	_reset_level_presentation_state()
+	if GameManager:
+		GameManager.reset_game_state()
 	get_tree().change_scene_to_file("res://Scenes/UI/MainMenu.tscn")
 
 
 func start_game() -> void:
 	current_level_index = 0
-	current_level_path = "res://Scenes/Level/map_0.tscn"
+	current_level_path = "res://Scenes/Level/level_0.tscn"
 	current_state = GameState.PLAYING
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_reset_level_presentation_state()
+	if GameManager:
+		GameManager.reset_game_state()
 	get_tree().change_scene_to_file(current_level_path)
 
 

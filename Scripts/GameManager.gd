@@ -4,6 +4,8 @@ extends Node
 
 var next_spawn_id: String = ""
 var is_first_person: bool = false
+var has_relic: bool = false
+var relic_returned: bool = false
 
 
 func set_spawn_point(spawn_id: String) -> void:
@@ -24,3 +26,10 @@ func set_first_person(enabled: bool) -> void:
 
 func is_first_person_enabled() -> bool:
 	return is_first_person
+
+
+func reset_game_state() -> void:
+	next_spawn_id = ""
+	has_relic = false
+	relic_returned = false
+

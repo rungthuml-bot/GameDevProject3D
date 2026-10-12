@@ -6,6 +6,25 @@ extends RefCounted
 ## Add, modify, or translate dialogues here without modifying UI scripts.
 
 const DIALOGUES: Dictionary = {
+	"level_0_intro": {
+		"id": "level_0_intro",
+		"level_id": "level_0",
+		"title": "The Forgotten Entrance",
+		"lines": [
+			{
+				"speaker": "Player",
+				"text": "The wind howls through the ancient pine woods..."
+			},
+			{
+				"speaker": "Player",
+				"text": "Ahead lies the forgotten entrance to the subterranean maze."
+			},
+			{
+				"speaker": "Player",
+				"text": "I must proceed cautiously into the depths."
+			}
+		]
+	},
 	"level_1_intro": {
 		"id": "level_1_intro",
 		"level_id": "level_1",
