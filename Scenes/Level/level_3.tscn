@@ -62,14 +62,14 @@ size = Vector3(64, 1, 64)
 background_mode = 0
 background_color = Color(0.008, 0.01, 0.016, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.12, 0.15, 0.24, 1)
-ambient_light_energy = 0.85
+ambient_light_color = Color(0.16, 0.14, 0.20, 1)
+ambient_light_energy = 1.1
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.045, 0.065, 0.11, 1)
-fog_density = 0.032
-fog_depth_begin = 4.0
-fog_depth_end = 36.0
+fog_light_color = Color(0.06, 0.055, 0.09, 1)
+fog_density = 0.028
+fog_depth_begin = 5.0
+fog_depth_end = 38.0
 
 [sub_resource type="BoxShape3D" id="Shape_door_trigger"]
 size = Vector3(3.0, 3.2, 2.0)
@@ -550,8 +550,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.2, -3.2)
 
 [node name="light_4" type="OmniLight3D" parent="KayKitDungeon/Torches" unique_id=500179]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 2.6, -3.2)
-light_color = Color(0.4, 0.75, 1.0, 1)
-light_energy = 2.5
+light_color = Color(1.0, 0.72, 0.32, 1)
+light_energy = 2.2
 shadow_enabled = true
 omni_range = 8.0
 
@@ -560,8 +560,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.2, -3.2)
 
 [node name="light_5" type="OmniLight3D" parent="KayKitDungeon/Torches" unique_id=500181]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 2.6, -3.2)
-light_color = Color(0.4, 0.75, 1.0, 1)
-light_energy = 2.5
+light_color = Color(1.0, 0.72, 0.32, 1)
+light_energy = 2.2
 shadow_enabled = true
 omni_range = 8.0
 

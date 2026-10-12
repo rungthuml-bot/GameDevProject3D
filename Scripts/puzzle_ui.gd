@@ -43,18 +43,38 @@ var _bar_fill_critical: StyleBoxFlat
 var _bar_fill_complete: StyleBoxFlat
 
 
+func _ensure_nodes() -> void:
+	if card_panel == null:
+		card_panel = get_node_or_null("RootControl/CardPanel")
+		title_label = get_node_or_null("RootControl/CardPanel/Margin/VBox/HeaderRow/TitleLabel")
+		timer_badge = get_node_or_null("RootControl/CardPanel/Margin/VBox/HeaderRow/TimerBadge")
+		progress_bar = get_node_or_null("RootControl/CardPanel/Margin/VBox/TimeProgressBar")
+		red_badge = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge")
+		red_icon = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge/Margin/HBox/RedIcon")
+		red_label = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/RedBadge/Margin/HBox/RedLabel")
+		blue_badge = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge")
+		blue_icon = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge/Margin/HBox/BlueIcon")
+		blue_label = get_node_or_null("RootControl/CardPanel/Margin/VBox/StatusRow/BlueBadge/Margin/HBox/BlueLabel")
+		message_label = get_node_or_null("RootControl/CardPanel/Margin/VBox/MessageLabel")
+	if _bar_fill_complete == null:
+		_init_styles()
+
+
 func _ready() -> void:
+	_ensure_nodes()
 	_init_styles()
 
 	# Start completely hidden as requested
-	card_panel.visible = false
-	card_panel.modulate.a = 0.0
+	if card_panel:
+		card_panel.visible = false
+		card_panel.modulate.a = 0.0
 	_is_visible = false
 	_is_completed = false
 
 	# Setup initial values
-	progress_bar.max_value = _total_time
-	progress_bar.value = _total_time
+	if progress_bar:
+		progress_bar.max_value = _total_time
+		progress_bar.value = _total_time
 	reset_display()
 
 
@@ -167,6 +187,9 @@ func set_total_time(time_val: float) -> void:
 
 
 func show_ui() -> void:
+	_ensure_nodes()
+	if not card_panel:
+		return
 	if _is_visible and card_panel.visible:
 		return
 
@@ -254,18 +277,22 @@ func update_timer(time_left: float) -> void:
 
 
 func show_completed() -> void:
+	_ensure_nodes()
 	_is_completed = true
 	show_ui()
 
-	message_label.text = "✓ MECHANISM SOLVED! DOOR OPEN"
-	message_label.modulate = Color(0.55, 0.95, 0.65, 1.0)
-	message_label.visible = true
+	if message_label:
+		message_label.text = "✓ MECHANISM SOLVED! DOOR OPEN"
+		message_label.modulate = Color(0.55, 0.95, 0.65, 1.0)
+		message_label.visible = true
 
-	timer_badge.text = "SOLVED"
-	timer_badge.modulate = Color(0.55, 0.95, 0.65, 1.0)
+	if timer_badge:
+		timer_badge.text = "SOLVED"
+		timer_badge.modulate = Color(0.55, 0.95, 0.65, 1.0)
 
-	progress_bar.add_theme_stylebox_override("fill", _bar_fill_complete)
-	progress_bar.value = _total_time
+	if progress_bar:
+		progress_bar.add_theme_stylebox_override("fill", _bar_fill_complete)
+		progress_bar.value = _total_time
 
 	# Toast notification across HUD
 	var ui_mgr = get_node_or_null("/root/UIManager")

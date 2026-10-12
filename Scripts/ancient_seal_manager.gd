@@ -69,12 +69,14 @@ func discover_glyph(glyph_id: String, glyph_name: String) -> void:
 		gm.record_item_collected(cur_lvl, glyph_id)
 		gm.set_level_mechanism_state(cur_lvl, "discovered_glyphs", discovered_glyphs)
 	
-	if has_node("/root/AudioManager"):
-		AudioManager.play_button_sfx()
-		AudioManager.play_puzzle_solved_sfx()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_button_sfx()
+		am.play_puzzle_solved_sfx()
 	
-	if has_node("/root/UIManager"):
-		UIManager.notify_success("Discovered %s! (%d/%d Ancient Glyphs Found)" % [glyph_name, current_count, required_glyph_count])
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		ui.notify_success("Discovered %s! (%d/%d Ancient Glyphs Found)" % [glyph_name, current_count, required_glyph_count])
 	
 	glyph_discovered.emit(glyph_id, glyph_name)
 	_update_altar_state()
@@ -90,15 +92,18 @@ func attune_pillar(pillar_index: int) -> bool:
 		return false
 	
 	if discovered_glyphs.size() < required_glyph_count:
-		if has_node("/root/UIManager"):
-			UIManager.notify_warning("The pillar stands inert. Find all 3 Ancient Glyphs in the maze first (%d/%d found)." % [discovered_glyphs.size(), required_glyph_count])
-		if has_node("/root/AudioManager"):
-			AudioManager.play_interact_sfx()
+		var ui = get_node_or_null("/root/UIManager")
+		if ui:
+			ui.notify_warning("The pillar stands inert. Find all 3 Ancient Glyphs in the maze first (%d/%d found)." % [discovered_glyphs.size(), required_glyph_count])
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_interact_sfx()
 		return false
 	
 	if attuned_pillars.has(pillar_index):
-		if has_node("/root/UIManager"):
-			UIManager.notify_info("This pillar is already humming with radiant power.")
+		var ui = get_node_or_null("/root/UIManager")
+		if ui:
+			ui.notify_info("This pillar is already humming with radiant power.")
 		return false
 	
 	attuned_pillars.append(pillar_index)
@@ -112,11 +117,13 @@ func attune_pillar(pillar_index: int) -> bool:
 		gm.record_pillar_attuned(cur_lvl, pillar_index)
 		gm.set_level_mechanism_state(cur_lvl, "attuned_pillars", attuned_pillars)
 	
-	if has_node("/root/AudioManager"):
-		AudioManager.play_lock_unlock_sfx()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_lock_unlock_sfx()
 	
-	if has_node("/root/UIManager"):
-		UIManager.notify_success("Sanctuary Pillar #%d attuned! (%d/%d activated)" % [pillar_index + 1, attuned_pillars.size(), total_pillars])
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		ui.notify_success("Sanctuary Pillar #%d attuned! (%d/%d activated)" % [pillar_index + 1, attuned_pillars.size(), total_pillars])
 	
 	if attuned_pillars.size() >= total_pillars:
 		complete_seal()
@@ -140,11 +147,13 @@ func complete_seal() -> void:
 	if gm != null:
 		gm.record_puzzle_solved(cur_lvl, "ancient_seal")
 	
-	if has_node("/root/AudioManager"):
-		AudioManager.play_puzzle_solved_sfx()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_puzzle_solved_sfx()
 	
-	if has_node("/root/UIManager"):
-		UIManager.notify_success("THE ANCIENT SEAL HAS BEEN AWAKENED! The passage to Level 5 is unlocked!")
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		ui.notify_success("THE ANCIENT SEAL HAS BEEN AWAKENED! The passage to Level 5 is unlocked!")
 	
 	# Unlock the doorway
 	if exit_door != null:

@@ -115,9 +115,10 @@ func _process(delta: float) -> void:
 		var current_sec: int = int(ceil(remaining_time))
 		if current_sec != _last_warned_second and current_sec > 0:
 			_last_warned_second = current_sec
-			if has_node("/root/AudioManager"):
+			var am = get_node_or_null("/root/AudioManager")
+			if am:
 				var pitch: float = 1.0 + (warn_threshold - remaining_time) / warn_threshold * 0.3
-				AudioManager.play_puzzle_warning_sfx(pitch)
+				am.play_puzzle_warning_sfx(pitch)
 
 	if puzzle_ui != null:
 		puzzle_ui.update_timer(remaining_time)
@@ -138,8 +139,9 @@ func check_puzzle() -> void:
 		if gm != null:
 			gm.record_puzzle_solved(cur_lvl, "puzzle_dual_pedestal")
 
-		if has_node("/root/AudioManager"):
-			AudioManager.play_puzzle_solved_sfx()
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_puzzle_solved_sfx()
 
 		if puzzle_ui != null:
 			puzzle_ui.show_completed()

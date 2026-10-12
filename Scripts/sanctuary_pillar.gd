@@ -54,8 +54,9 @@ func interact() -> void:
 		return
 	
 	if _attuned:
-		if has_node("/root/UIManager"):
-			UIManager.notify_info("%s is already glowing with celestial power." % pillar_name)
+		var ui = get_node_or_null("/root/UIManager")
+		if ui:
+			ui.notify_info("%s is already glowing with celestial power." % pillar_name)
 		return
 	
 	var success = seal_mgr.attune_pillar(pillar_index)

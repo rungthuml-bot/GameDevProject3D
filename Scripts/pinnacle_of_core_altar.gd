@@ -36,11 +36,11 @@ func hide_interaction_prompt() -> void:
 		interaction_label.visible = false
 
 func interact() -> void:
+	var ui = get_tree().get_first_node_in_group("interaction_ui")
 	var mgr = get_tree().get_first_node_in_group("crystal_cavern_manager")
 	if mgr != null:
 		if not mgr.core_is_activated:
-			var success = mgr.activate_core()
-			var ui = get_tree().get_first_node_in_group("interaction_ui")
+			mgr.activate_core()
 			if ui != null:
 				ui.show_message(interaction_title, description, self)
 			return
@@ -48,7 +48,6 @@ func interact() -> void:
 	var audio_mgr = get_node_or_null("/root/AudioManager")
 	if audio_mgr:
 		audio_mgr.play_interact_sfx()
-	var ui = get_tree().get_first_node_in_group("interaction_ui")
 	if ui != null:
 		ui.show_message(interaction_title, description, self)
 

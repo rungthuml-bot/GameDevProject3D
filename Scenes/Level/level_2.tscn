@@ -26,10 +26,17 @@
 sky_material = SubResource("ProceduralSkyMaterial_xfk5q")
 
 [sub_resource type="Environment" id="Environment_vk57k"]
-background_mode = 2
-sky = SubResource("Sky_8ffim")
-ambient_light_source = 3
-ambient_light_energy = 1.5
+background_mode = 1
+background_color = Color(0.02, 0.02, 0.03, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.28, 0.32, 0.44, 1)
+ambient_light_energy = 1.25
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.08, 0.09, 0.16, 1)
+fog_density = 0.020
+fog_depth_begin = 6.0
+fog_depth_end = 48.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p6j4"]
 albedo_color = Color(0.00600526, 0.024541253, 0.09990082, 1)

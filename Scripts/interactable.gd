@@ -48,8 +48,9 @@ func hide_interaction_prompt() -> void:
 
 
 func interact() -> void:
-	if has_node("/root/AudioManager"):
-		AudioManager.play_interact_sfx()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_interact_sfx()
 
 	var interaction_ui = get_tree().get_first_node_in_group("interaction_ui")
 

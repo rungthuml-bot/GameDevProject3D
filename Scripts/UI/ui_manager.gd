@@ -17,6 +17,7 @@ signal game_resumed
 signal win_triggered
 signal lose_triggered
 signal settings_updated
+signal language_changed(lang_code: String)
 
 # =========================================================
 # SIGNALS — HUD PRESENTATION LAYER
@@ -80,6 +81,9 @@ var invert_y: bool = false
 # Gameplay & Accessibility Settings
 var subtitles_enabled: bool = true
 var text_size_index: int = 1 # 0: Normal, 1: Large (Accessibility)
+
+# Language Setting  ("th" = Thai default, "en" = English)
+var current_language: String = "th"
 
 # =========================================================
 # GAME STATE
@@ -324,9 +328,10 @@ func load_settings_from_config() -> void:
 		mouse_sensitivity = remap(sens_pct, 0.0, 100.0, 0.0005, 0.006)
 		invert_y = config.get_value("controls", "invert_y", false)
 
-		# Gameplay
+			# Gameplay
 		subtitles_enabled = config.get_value("gameplay", "subtitles", true)
 		text_size_index = config.get_value("gameplay", "text_size", 1)
+		current_language = config.get_value("gameplay", "language", "th")
 
 	apply_all_settings()
 
@@ -352,6 +357,7 @@ func save_settings_to_config() -> void:
 	# Gameplay
 	config.set_value("gameplay", "subtitles", subtitles_enabled)
 	config.set_value("gameplay", "text_size", text_size_index)
+	config.set_value("gameplay", "language", current_language)
 
 	config.save(SETTINGS_FILE_PATH)
 
@@ -425,6 +431,7 @@ func reset_settings_to_defaults() -> void:
 
 	subtitles_enabled = true
 	text_size_index = 1
+	current_language = "th"
 
 	apply_all_settings()
 	save_settings_to_config()
@@ -436,8 +443,32 @@ func update_settings(volume: float, sensitivity_percent: float, fullscreen: bool
 	is_fullscreen = fullscreen
 	window_mode_index = 0 if fullscreen else 1
 
-	apply_all_settings()
+
+# =========================================================
+# LANGUAGE API
+# =========================================================
+
+## Set the game's display language. Supported: "th" (Thai), "en" (English).
+## Persists to settings.cfg automatically.
+func set_language(lang_code: String) -> void:
+	var valid := ["th", "en"]
+	if not lang_code in valid:
+		return
+	if current_language == lang_code:
+		return
+	current_language = lang_code
 	save_settings_to_config()
+	language_changed.emit(lang_code)
+	settings_updated.emit()
+
+
+func get_language() -> String:
+	return current_language
+
+
+func is_thai() -> bool:
+	return current_language == "th"
+
 
 
 func get_sensitivity_percent() -> float:
@@ -633,14 +664,10 @@ func check_and_trigger_level_intro(level_node: Node = null) -> bool:
 			dialogue_id = str(level_node.get_meta("dialogue_id"))
 		else:
 			var node_name := level_node.name.to_lower().replace("_", "")
-			if "level1" in node_name:
-				dialogue_id = "level_1_intro"
-			elif "level2" in node_name:
-				dialogue_id = "level_2_intro"
-			elif "level3" in node_name:
-				dialogue_id = "level_3_intro"
-			elif "level4" in node_name:
-				dialogue_id = "level_4_intro"
+			for lvl_num in range(0, 9):
+				if ("level%d" % lvl_num) in node_name:
+					dialogue_id = "level_%d_intro" % lvl_num
+					break
 
 	if dialogue_id.is_empty():
 		dialogue_id = "level_%d_intro" % current_level_index

@@ -9,6 +9,7 @@ extends Area3D
 
 @onready var interaction_label: Label3D = $InteractionLabel
 @onready var glow_light: OmniLight3D = get_node_or_null("GlowLight")
+@onready var glyph_mesh: MeshInstance3D = get_node_or_null("GlyphMesh")
 
 var player: Node3D = null
 var _discovered: bool = false
@@ -28,8 +29,13 @@ func _ready() -> void:
 		_discovered = true
 		if glow_light:
 			glow_light.light_energy = 2.2
+		if glyph_mesh:
+			glyph_mesh.scale = Vector3(1.15, 1.15, 1.15)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	if glyph_mesh:
+		glyph_mesh.rotate_y(delta * 0.5)
+
 	if player == null or interaction_label == null:
 		return
 	var direction := player.global_position - interaction_label.global_position
@@ -48,19 +54,24 @@ func hide_interaction_prompt() -> void:
 func interact() -> void:
 	var seal_mgr = get_tree().get_first_node_in_group("ancient_seal_manager")
 	if _discovered:
-		if has_node("/root/UIManager"):
-			UIManager.notify_info("%s has already been deciphered." % glyph_name)
+		var ui = get_node_or_null("/root/UIManager")
+		if ui:
+			ui.notify_info("%s has already been deciphered." % glyph_name)
 		return
 	
 	_discovered = true
 	if interaction_label:
 		interaction_label.visible = false
 	
-	if glow_light and is_inside_tree():
+	if is_inside_tree():
 		var tw = create_tween()
 		if tw:
-			tw.tween_property(glow_light, "light_energy", 4.0, 0.3)
-			tw.tween_property(glow_light, "light_energy", 2.2, 0.4)
+			if glow_light:
+				tw.parallel().tween_property(glow_light, "light_energy", 4.0, 0.3)
+				tw.chain().tween_property(glow_light, "light_energy", 2.2, 0.4)
+			if glyph_mesh:
+				tw.parallel().tween_property(glyph_mesh, "scale", Vector3(1.25, 1.25, 1.25), 0.3)
+				tw.chain().tween_property(glyph_mesh, "scale", Vector3(1.15, 1.15, 1.15), 0.3)
 	
 	if seal_mgr != null:
 		seal_mgr.discover_glyph(glyph_id, glyph_name)

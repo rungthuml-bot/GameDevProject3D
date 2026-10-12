@@ -41,6 +41,12 @@
 [ext_resource type="Script" uid="uid://yr0fk3f0o7ns" path="res://Scripts/interactable.gd" id="44_scavf"]
 [ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="45_80ihl"]
 [ext_resource type="Script" uid="uid://dsstqgeospd4j" path="res://Scripts/relic_item.gd" id="46_relicitem"]
+[ext_resource type="Script" path="res://Scripts/throne_chamber_manager.gd" id="47_mgr_scr"]
+[ext_resource type="Script" path="res://Scripts/throne_ritual_altar.gd" id="48_altar_scr"]
+[ext_resource type="Script" path="res://Scripts/dart_trap.gd" id="49_dart_scr"]
+[ext_resource type="Script" path="res://Scripts/guardian_statue.gd" id="50_guard_scr"]
+[ext_resource type="Script" path="res://Scripts/sovereign_seal_puzzle.gd" id="51_seal_scr"]
+[ext_resource type="Script" path="res://Scripts/sanctum_pressure_trap.gd" id="52_ptrap_scr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ef8d"]
 size = Vector3(80, 1, 80)
@@ -58,7 +64,13 @@ background_mode = 1
 background_color = Color(0.03, 0.02, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.25, 0.22, 0.26, 1)
+ambient_light_energy = 1.1
 tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.08, 0.06, 0.09, 1)
+fog_density = 0.020
+fog_depth_begin = 5.0
+fog_depth_end = 44.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sra6m"]
 size = Vector3(4, 4, 1)
@@ -98,6 +110,93 @@ size = Vector3(2.5, 3.5, 2.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eyhu0"]
 size = Vector3(2.5, 3.5, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_altar_trig"]
+size = Vector3(2.2, 2.2, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold_pedestal"]
+albedo_color = Color(0.85, 0.72, 0.28, 1)
+metallic = 0.8
+roughness = 0.25
+emission_enabled = true
+emission = Color(0.7, 0.5, 0.1, 1)
+emission_energy_multiplier = 1.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_altar_pedestal"]
+material = SubResource("StandardMaterial3D_gold_pedestal")
+top_radius = 0.65
+bottom_radius = 0.85
+height = 0.9
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ritual_flame"]
+transparency = 1
+albedo_color = Color(1.0, 0.55, 0.1, 0.9)
+emission_enabled = true
+emission = Color(1.0, 0.6, 0.1, 1)
+emission_energy_multiplier = 3.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_altar_gem"]
+material = SubResource("StandardMaterial3D_ritual_flame")
+size = Vector3(0.5, 0.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptrap_col"]
+size = Vector3(3.2, 0.5, 3.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plate_mat"]
+albedo_color = Color(0.35, 0.32, 0.28, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_ptrap_mesh"]
+material = SubResource("StandardMaterial3D_plate_mat")
+size = Vector3(3.0, 0.1, 3.0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dart_vol_col"]
+size = Vector3(4.5, 2.0, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dart_tip"]
+albedo_color = Color(0.9, 0.2, 0.1, 1)
+metallic = 0.6
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.95, 0.3, 0.1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dart_mesh"]
+material = SubResource("StandardMaterial3D_dart_tip")
+size = Vector3(3.8, 0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_guard_col"]
+size = Vector3(5.5, 2.5, 5.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shockwave"]
+transparency = 1
+albedo_color = Color(1.0, 0.35, 0.2, 0.6)
+emission_enabled = true
+emission = Color(1.0, 0.4, 0.2, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shockwave"]
+material = SubResource("StandardMaterial3D_shockwave")
+top_radius = 2.6
+bottom_radius = 2.6
+height = 0.3
+radial_segments = 16
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seal_col"]
+size = Vector3(2.5, 2.0, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seal_ring"]
+transparency = 1
+albedo_color = Color(0.3, 0.85, 1.0, 0.85)
+emission_enabled = true
+emission = Color(0.4, 0.9, 1.0, 1)
+emission_energy_multiplier = 2.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_seal_ring"]
+material = SubResource("StandardMaterial3D_seal_ring")
+inner_radius = 0.7
+outer_radius = 1.1
 
 [node name="Level8" type="Node3D" unique_id=586183362]
 
@@ -1899,6 +1998,236 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0.4)
 light_color = Color(1, 0.95, 0.72, 1)
 light_energy = 2.8
 omni_range = 8.5
+
+[node name="ThroneChamberManager" type="Node3D" parent="." unique_id=982001001]
+script = ExtResource("47_mgr_scr")
+
+[node name="SealBarrierLight" type="OmniLight3D" parent="ThroneChamberManager" unique_id=982001002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.8, 0)
+light_color = Color(1.0, 0.25, 0.2, 1)
+light_energy = 3.5
+omni_range = 8.0
+
+[node name="ThroneRitualAltar_North" type="Area3D" parent="." unique_id=982002001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+script = ExtResource("48_altar_scr")
+altar_index = 0
+altar_name = "Throne Altar of Dominion"
+altar_lore = "First ritual altar behind the high throne. The eternal fire of the High King blazes again!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_North" unique_id=982002002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_North" unique_id=982002003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_North" unique_id=982002004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_North" unique_id=982002005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_North" unique_id=982002006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+text = "[E] Awaken Throne Altar of Dominion"
+
+[node name="ThroneRitualAltar_West" type="Area3D" parent="." unique_id=982002007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4)
+script = ExtResource("48_altar_scr")
+altar_index = 1
+altar_name = "Archive Altar of Wisdom"
+altar_lore = "Second ritual altar in the royal archives. Ancient memories surge through the chamber!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_West" unique_id=982002008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_West" unique_id=982002009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_West" unique_id=982002010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_West" unique_id=982002011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_West" unique_id=982002012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+text = "[E] Awaken Archive Altar of Wisdom"
+
+[node name="ThroneRitualAltar_East" type="Area3D" parent="." unique_id=982002013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+script = ExtResource("48_altar_scr")
+altar_index = 2
+altar_name = "Sanctuary Altar of Valor"
+altar_lore = "Third ritual altar guarding the royal treasury. The seal resonance reaches maximum pitch!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_East" unique_id=982002014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_East" unique_id=982002015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_East" unique_id=982002016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_East" unique_id=982002017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_East" unique_id=982002018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+text = "[E] Awaken Sanctuary Altar of Valor"
+
+[node name="SovereignSealPuzzle" type="Area3D" parent="." unique_id=982003001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("51_seal_scr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SovereignSealPuzzle" unique_id=982003002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_seal_col")
+
+[node name="SealSymbol" type="MeshInstance3D" parent="SovereignSealPuzzle" unique_id=982003003]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.15, 0)
+mesh = SubResource("TorusMesh_seal_ring")
+
+[node name="SealLight" type="OmniLight3D" parent="SovereignSealPuzzle" unique_id=982003004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_color = Color(1, 0.8, 0.3, 1)
+light_energy = 0.5
+omni_range = 5.0
+
+[node name="InteractionLabel" type="Label3D" parent="SovereignSealPuzzle" unique_id=982003005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+text = "[E] Inspect Sovereign Seal"
+
+[node name="ThroneFloorTrap_1" type="Area3D" parent="." unique_id=982004001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 20)
+script = ExtResource("52_ptrap_scr")
+trap_name = "Throne Antechamber Pressure Plate"
+damage_amount = 30.0
+telegraph_duration = 0.65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneFloorTrap_1" unique_id=982004002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_ptrap_col")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="ThroneFloorTrap_1" unique_id=982004003]
+mesh = SubResource("BoxMesh_ptrap_mesh")
+
+[node name="WarningLight" type="OmniLight3D" parent="ThroneFloorTrap_1" unique_id=982004004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="ThroneFloorTrap_2" type="Area3D" parent="." unique_id=982004005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 8)
+script = ExtResource("52_ptrap_scr")
+trap_name = "Royal Procession Pressure Plate"
+damage_amount = 30.0
+telegraph_duration = 0.65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneFloorTrap_2" unique_id=982004006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_ptrap_col")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="ThroneFloorTrap_2" unique_id=982004007]
+mesh = SubResource("BoxMesh_ptrap_mesh")
+
+[node name="WarningLight" type="OmniLight3D" parent="ThroneFloorTrap_2" unique_id=982004008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="ThroneDartTrap_West" type="Area3D" parent="." unique_id=982005001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 0)
+script = ExtResource("49_dart_scr")
+trap_name = "Archive Cross-Corridor Dart Volley"
+damage_amount = 35.0
+safe_interval = 2.8
+telegraph_duration = 0.8
+volley_duration = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneDartTrap_West" unique_id=982005002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_dart_vol_col")
+
+[node name="DartMesh" type="MeshInstance3D" parent="ThroneDartTrap_West" unique_id=982005003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+visible = false
+mesh = SubResource("BoxMesh_dart_mesh")
+
+[node name="TelegraphLight" type="OmniLight3D" parent="ThroneDartTrap_West" unique_id=982005004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.9, 0.4, 0.1, 1)
+light_energy = 0.2
+omni_range = 4.5
+
+[node name="ThroneDartTrap_East" type="Area3D" parent="." unique_id=982005005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 0)
+script = ExtResource("49_dart_scr")
+trap_name = "Treasury Cross-Corridor Dart Volley"
+damage_amount = 35.0
+safe_interval = 2.8
+telegraph_duration = 0.8
+volley_duration = 0.5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneDartTrap_East" unique_id=982005006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0, 0)
+shape = SubResource("BoxShape3D_dart_vol_col")
+
+[node name="DartMesh" type="MeshInstance3D" parent="ThroneDartTrap_East" unique_id=982005007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+visible = false
+mesh = SubResource("BoxMesh_dart_mesh")
+
+[node name="TelegraphLight" type="OmniLight3D" parent="ThroneDartTrap_East" unique_id=982005008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.9, 0.4, 0.1, 1)
+light_energy = 0.2
+omni_range = 4.5
+
+[node name="ThroneGuardian_North" type="Area3D" parent="." unique_id=982006001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -8)
+script = ExtResource("50_guard_scr")
+guardian_name = "Sentinel of the Forgotten Throne"
+charge_time = 1.4
+blast_duration = 0.6
+rest_time = 3.2
+damage_amount = 40.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneGuardian_North" unique_id=982006002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_guard_col")
+
+[node name="EyeLight" type="OmniLight3D" parent="ThroneGuardian_North" unique_id=982006003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.4)
+light_color = Color(0.4, 0.7, 1, 1)
+light_energy = 0.4
+omni_range = 6.0
+
+[node name="ShockwaveMesh" type="MeshInstance3D" parent="ThroneGuardian_North" unique_id=982006004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_shockwave")
 
 [node name="Exit" type="Marker3D" parent="." unique_id=648983950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -28)

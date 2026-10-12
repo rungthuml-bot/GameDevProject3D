@@ -172,7 +172,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			_close_inventory()
 			get_viewport().set_input_as_handled()
 			return
+		# Close quest log if open before pausing
+		var ql = get_tree().get_first_node_in_group("quest_log_ui")
+		if ql and ql.is_open:
+			ql.close()
 		_toggle_pause()
+
 	elif event is InputEventKey and event.pressed and not event.echo:
 		# Quick hotkeys when test panel is visible
 		if test_mode_panel.visible:
@@ -340,9 +345,9 @@ func _on_notification_requested(text: String, type_name: String, duration: float
 			var count: int = child.get_meta("repeat_count", 1) + 1
 			child.set_meta("repeat_count", count)
 
-			var msg_label: Label = child.get_meta("msg_label", null)
-			if is_instance_valid(msg_label):
-				msg_label.text = "%s (x%d)" % [text, count]
+			var existing_msg_label: Label = child.get_meta("msg_label", null)
+			if is_instance_valid(existing_msg_label):
+				existing_msg_label.text = "%s (x%d)" % [text, count]
 
 			# Kill previous tween and start a fresh fade-out
 			var old_tween: Tween = child.get_meta("tween", null)

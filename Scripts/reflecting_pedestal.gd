@@ -90,8 +90,9 @@ func interact() -> void:
 	
 	# Direction names
 	var dirs = ["North", "East (Towards Core)", "South", "West (Towards Core)"]
-	if has_node("/root/UIManager"):
-		UIManager.notify_info("%s turned facing %s." % [pedestal_name, dirs[current_state]])
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		ui.notify_info("%s turned facing %s." % [pedestal_name, dirs[current_state]])
 
 func _exit_tree() -> void:
 	if is_instance_valid(interaction_label):

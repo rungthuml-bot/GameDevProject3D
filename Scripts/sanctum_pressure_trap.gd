@@ -45,9 +45,10 @@ func _arm_and_spring_trap() -> void:
 	_is_triggered = true
 	
 	# Step 1: Warning Telegraph (Click & warning sound, plate depresses, light glows red)
-	if has_node("/root/AudioManager"):
-		AudioManager.play_puzzle_warning_sfx(1.2)
-		AudioManager.play_button_sfx()
+	var am = get_node_or_null("/root/AudioManager")
+	if am:
+		am.play_puzzle_warning_sfx(1.2)
+		am.play_button_sfx()
 	
 	if plate_mesh:
 		var press_tw = create_tween()
@@ -65,14 +66,15 @@ func _arm_and_spring_trap() -> void:
 		return
 	
 	# Step 2: Trap Springs!
-	if has_node("/root/AudioManager"):
-		AudioManager.play_door_sfx()
+	if am:
+		am.play_door_sfx()
 	
 	# If player is still inside the trap area when it springs
 	if _player_inside and is_instance_valid(_player_ref):
+		var gm = get_node_or_null("/root/GameManager")
 		if is_lethal:
-			if GameManager:
-				GameManager.trigger_trap_restart(trap_name)
+			if gm and gm.has_method("trigger_trap_restart"):
+				gm.trigger_trap_restart(trap_name)
 			return
 		
 		# Knockback impulse
@@ -83,10 +85,11 @@ func _arm_and_spring_trap() -> void:
 		_player_ref.velocity = push_dir * 8.5
 		
 		# Feedback notification & sensory damage
-		if has_node("/root/UIManager"):
-			UIManager.notify_warning("Sprung a mechanical pressure plate trap! (-%d HP)" % int(damage_amount))
-			if UIManager.has_method("trigger_damage_feedback"):
-				UIManager.trigger_damage_feedback(damage_amount)
+		var ui = get_node_or_null("/root/UIManager")
+		if ui:
+			ui.notify_warning("Sprung a mechanical pressure plate trap! (-%d HP)" % int(damage_amount))
+			if ui.has_method("trigger_damage_feedback"):
+				ui.trigger_damage_feedback(damage_amount)
 	
 	# Step 3: Reset after delay
 	if not is_inside_tree():

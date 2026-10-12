@@ -11,11 +11,13 @@ extends Area3D
 
 @export_category("Visual Target")
 @export var target_prop_path: NodePath = ^"../KayKitDungeon/Props/GoldenRelicChest"
+@export var target_shield_path: NodePath = ^"../KayKitDungeon/Props/RelicGoldShield"
 
 @onready var interaction_label: Label3D = $InteractionLabel
 
 var player: Node3D = null
 var _relic_mesh: Node3D = null
+var _shield_mesh: Node3D = null
 
 
 func _ready() -> void:
@@ -33,6 +35,11 @@ func _resolve_target_prop() -> void:
 	elif get_parent():
 		_relic_mesh = get_parent().get_node_or_null("KayKitDungeon/Props/GoldenRelicChest")
 
+	if has_node(target_shield_path):
+		_shield_mesh = get_node(target_shield_path)
+	elif get_parent():
+		_shield_mesh = get_parent().get_node_or_null("KayKitDungeon/Props/RelicGoldShield")
+
 
 func _process(_delta: float) -> void:
 	if player == null:
@@ -49,13 +56,18 @@ func _process(_delta: float) -> void:
 
 
 func _update_state() -> void:
-	if GameManager and GameManager.has_relic:
+	var gm = get_node_or_null("/root/GameManager")
+	if gm and gm.has_relic:
 		if is_instance_valid(_relic_mesh):
 			_relic_mesh.visible = false
+		if is_instance_valid(_shield_mesh):
+			_shield_mesh.visible = false
 		interaction_label.text = "[E] Inspect Dais"
 	else:
 		if is_instance_valid(_relic_mesh):
 			_relic_mesh.visible = true
+		if is_instance_valid(_shield_mesh):
+			_shield_mesh.visible = true
 		interaction_label.text = "[E] " + interaction_text
 
 
@@ -69,26 +81,40 @@ func hide_interaction_prompt() -> void:
 
 
 func interact() -> void:
-	if GameManager and GameManager.has_relic:
-		if is_inside_tree() and has_node("/root/AudioManager"):
-			AudioManager.play_interact_sfx()
+	var gm = get_node_or_null("/root/GameManager")
+	var am = get_node_or_null("/root/AudioManager")
+	var ui = get_node_or_null("/root/UIManager")
+
+	if gm and gm.has_relic:
+		if am:
+			am.play_interact_sfx()
 		_show_message(interaction_title, description_taken)
 		return
 
+	# Puzzle Guard: Must solve the Sovereign Seal puzzle first!
+	var mgr = get_tree().get_first_node_in_group("throne_chamber_manager")
+	if mgr != null and not mgr.seal_puzzle_solved:
+		if am:
+			am.play_interact_sfx()
+		if ui:
+			ui.notify_warning("The Golden Chest is sealed by the Sovereign Ward. Solve the Sovereign Seal first!")
+		_show_message(interaction_title, "The Golden Chest is locked tight by an ancient glowing seal. Commune with the Sovereign Seal in front of the throne to solve its cipher.")
+		return
+
 	# First time pickup
-	if GameManager:
-		GameManager.set_relic_acquired(true)
+	if gm:
+		gm.set_relic_acquired(true)
 
 	if is_instance_valid(_relic_mesh):
 		_relic_mesh.visible = false
 
 	_update_state()
 
-	if is_inside_tree() and has_node("/root/AudioManager"):
-		AudioManager.play_lock_unlock_sfx()
+	if am:
+		am.play_lock_unlock_sfx()
 
-	if is_inside_tree() and has_node("/root/UIManager"):
-		UIManager.notify_success("Obtained the Sovereign Relic!")
+	if ui:
+		ui.notify_success("Obtained the Sovereign Relic!")
 
 	_show_message(interaction_title, description_pickup)
 

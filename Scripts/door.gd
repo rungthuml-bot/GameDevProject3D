@@ -158,9 +158,10 @@ func interact() -> void:
 	if _is_transitioning:
 		return
 
+	var audio_mgr = get_node_or_null("/root/AudioManager")
+
 	if not door_unlocked:
 		print("Door is locked: ", name)
-		var audio_mgr = get_node_or_null("/root/AudioManager")
 		if audio_mgr != null:
 			audio_mgr.play_interact_sfx()
 		var ui_mgr = get_node_or_null("/root/UIManager")
@@ -180,7 +181,6 @@ func interact() -> void:
 	hide_interaction_prompt()
 
 	# Audio feedback
-	var audio_mgr = get_node_or_null("/root/AudioManager")
 	if audio_mgr != null:
 		audio_mgr.play_door_sfx()
 

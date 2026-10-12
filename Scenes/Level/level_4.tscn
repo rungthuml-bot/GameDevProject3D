@@ -142,6 +142,42 @@ roughness = 0.65
 [sub_resource type="BoxShape3D" id="BoxShape3D_interact_box"]
 size = Vector3(2.4, 2.5, 2.4)
 
+[sub_resource type="StandardMaterial3D" id="Mat_glyph_sun"]
+albedo_color = Color(1.0, 0.85, 0.35, 1)
+emission_enabled = true
+emission = Color(1.0, 0.82, 0.3, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="CylinderMesh" id="Mesh_glyph_sun"]
+material = SubResource("Mat_glyph_sun")
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.08
+radial_segments = 16
+
+[sub_resource type="StandardMaterial3D" id="Mat_glyph_moon"]
+albedo_color = Color(0.75, 0.88, 1.0, 1)
+emission_enabled = true
+emission = Color(0.7, 0.85, 1.0, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="TorusMesh" id="Mesh_glyph_moon"]
+material = SubResource("Mat_glyph_moon")
+inner_radius = 0.25
+outer_radius = 0.45
+rings = 16
+ring_segments = 12
+
+[sub_resource type="StandardMaterial3D" id="Mat_glyph_star"]
+albedo_color = Color(1.0, 0.7, 0.9, 1)
+emission_enabled = true
+emission = Color(1.0, 0.65, 0.88, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="PrismMesh" id="Mesh_glyph_star"]
+material = SubResource("Mat_glyph_star")
+size = Vector3(0.75, 0.75, 0.08)
+
 [node name="Level4" type="Node3D" unique_id=1938340865]
 metadata/dialogue_id = "level_4_intro"
 
@@ -2034,6 +2070,10 @@ glyph_lore = "A radiant golden sun symbol etched into the deep western sanctuary
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("BoxShape3D_interact_box")
 
+[node name="GlyphMesh" type="MeshInstance3D" parent="AncientGlyph_Sun" unique_id=1404000031]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.4, 0)
+mesh = SubResource("Mesh_glyph_sun")
+
 [node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Sun" unique_id=1404000004]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 text = "[E] Decipher Sun Glyph"
@@ -2055,6 +2095,10 @@ glyph_lore = "A silver crescent moon symbol engraved near the eastern reliquary.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("BoxShape3D_interact_box")
 
+[node name="GlyphMesh" type="MeshInstance3D" parent="AncientGlyph_Moon" unique_id=1404000032]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.4, 0)
+mesh = SubResource("Mesh_glyph_moon")
+
 [node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Moon" unique_id=1404000008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 text = "[E] Decipher Moon Glyph"
@@ -2075,6 +2119,10 @@ glyph_lore = "An eight-pointed celestial star carved upon the northern corridor 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AncientGlyph_Star" unique_id=1404000011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 shape = SubResource("BoxShape3D_interact_box")
+
+[node name="GlyphMesh" type="MeshInstance3D" parent="AncientGlyph_Star" unique_id=1404000033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
+mesh = SubResource("Mesh_glyph_star")
 
 [node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Star" unique_id=1404000012]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)

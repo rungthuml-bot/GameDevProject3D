@@ -31,22 +31,26 @@ func _trigger_trap(player_node: Node3D) -> void:
 		warning_light.light_energy = 4.5
 		warning_light.light_color = Color(1.0, 0.15, 0.15, 1.0)
 	
+	var gm = get_node_or_null("/root/GameManager")
+	var am = get_node_or_null("/root/AudioManager")
+	var ui = get_node_or_null("/root/UIManager")
+	
 	if is_lethal:
-		if GameManager:
-			GameManager.trigger_trap_restart(trap_name)
+		if gm and gm.has_method("trigger_trap_restart"):
+			gm.trigger_trap_restart(trap_name)
 		return
 	
 	# Non-lethal / warning only behavior
-	if has_node("/root/AudioManager"):
-		AudioManager.play_puzzle_warning_sfx()
+	if am:
+		am.play_puzzle_warning_sfx()
 	
 	if player_node is CharacterBody3D:
 		var push_dir = (player_node.global_position - global_position).normalized()
 		push_dir.y = 0.4
 		player_node.velocity = push_dir * 7.0
 	
-	if has_node("/root/UIManager"):
-		UIManager.notify_warning("A mechanical spike trap triggered beneath the stones!")
+	if ui:
+		ui.notify_warning("A mechanical spike trap triggered beneath the stones!")
 	
 	await get_tree().create_timer(2.5).timeout
 	if warning_light:

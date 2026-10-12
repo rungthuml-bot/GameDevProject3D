@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b0xt2n15gc3qi" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/torch_lit.gltf" id="22_torch_lit"]
 [ext_resource type="PackedScene" uid="uid://c30p46868fhre" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/candle_triple.gltf" id="23_candle_triple"]
 [ext_resource type="PackedScene" uid="uid://dukchyj5udxeb" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/table_small_decorated_A.gltf" id="24_altar_table"]
-[ext_resource type="PackedScene" uid="uid://cvw8dekly277f" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf" id="25_relic_chest"]
+[ext_resource type="PackedScene" uid="uid://dx67k0i3c21a" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_gold.gltf" id="25_relic_chest"]
 [ext_resource type="PackedScene" uid="uid://ckgj078rrlx3p" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_shield_blue.gltf" id="26_banner_shield"]
 [ext_resource type="PackedScene" uid="uid://b5fnug25ddlmm" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_patternA_blue.gltf" id="27_banner_pattern"]
 [ext_resource type="PackedScene" uid="uid://ck5630oemypun" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/barrel_large.gltf" id="28_barrel"]
@@ -732,7 +732,7 @@ billboard = 1
 modulate = Color(1, 0.94, 0.52, 1)
 
 [node name="RelicVisual" parent="RelicAltar" unique_id=198877669 instance=ExtResource("25_relic_chest")]
-transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0.88, 0)
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0.72, 0)
 visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="RelicAltar" unique_id=198877671]
@@ -765,3 +765,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0.3)
 light_color = Color(1, 0.74, 0.22, 1)
 light_energy = 2.8
 omni_range = 7.5
+
+[node name="Door_To_Level0" type="Area3D" parent="." unique_id=1327668519]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 9.8)
+script = ExtResource("7_doorscript")
+interaction_text = "Return to Forest (Level 0)"
+target_scene = "res://Scenes/Level/level_0.tscn"
+target_spawn_id = "Spawn_From_Level1"
+
+[node name="TriggerShape" type="CollisionShape3D" parent="Door_To_Level0" unique_id=1431421116]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.2)
+shape = SubResource("Shape_door2_trigger")
+
+[node name="InteractionLabel" type="Label3D" parent="Door_To_Level0" unique_id=1574552836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0.6)
+visible = false
+billboard = 1

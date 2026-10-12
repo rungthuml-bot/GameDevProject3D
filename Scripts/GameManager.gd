@@ -98,12 +98,42 @@ const ITEM_DEFINITIONS: Dictionary = {
 	"sovereign_relic": {
 		"id": "sovereign_relic",
 		"name": "The Sovereign Relic",
-		"title_th": "คทาราชันโบราณ",
+		"title_th": "คทาและตราประจำองค์ราชันย์",
 		"category": "Sacred Artifact",
 		"icon_symbol": "♚",
-		"model_scene": "res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf",
+		"model_scene": "res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_gold.gltf",
 		"description": "An ancient golden scepter imbued with the eldritch authority of Eldoria. Required to dissolve the seal on the Sanctuary Gate in Level 1.",
 		"lore": "Forged in the labyrinth's deepest sanctuary (Level 8) to command the labyrinth. Returning it to the surface altar breaks the final gate seal."
+	},
+	"crystal_azure": {
+		"id": "crystal_azure",
+		"name": "Azure Energy Crystal",
+		"title_th": "ผลึกคริสตัลพลังงานสีฟ้า",
+		"category": "Elemental Core",
+		"icon_symbol": "🔷",
+		"model_scene": "",
+		"description": "A radiant azure crystal resonant with high-frequency atmospheric pulse. Harvested from Level 7 fissures.",
+		"lore": "One of the three harmonic keystones required to revitalize the Pinnacle of the Core."
+	},
+	"crystal_amethyst": {
+		"id": "crystal_amethyst",
+		"name": "Amethyst Energy Crystal",
+		"title_th": "ผลึกคริสตัลพลังงานสีม่วง",
+		"category": "Elemental Core",
+		"icon_symbol": "🔮",
+		"model_scene": "",
+		"description": "A luminous violet crystal harvested from deep geode fissures in Level 7.",
+		"lore": "Resonates with subterranean geomagnetic currents, attuning the reflecting crystal pillars."
+	},
+	"crystal_emerald": {
+		"id": "crystal_emerald",
+		"name": "Emerald Energy Crystal",
+		"title_th": "ผลึกคริสตัลพลังงานสีเขียว",
+		"category": "Elemental Core",
+		"icon_symbol": "🟢",
+		"model_scene": "",
+		"description": "A rare emerald-green crystal nestled near the sanctum archway in Level 7.",
+		"lore": "Channeling pure life force through the grand cavern core to breach the final descent."
 	}
 }
 
@@ -115,6 +145,15 @@ func has_item(item_id: String) -> bool:
 	match item_id:
 		"sovereign_relic":
 			return has_relic
+		"crystal_azure", "crystal_amethyst", "crystal_emerald":
+			if not progress_data.has("levels"):
+				return false
+			for lvl_dict in progress_data["levels"].values():
+				if lvl_dict is Dictionary and lvl_dict.has("collected_items"):
+					var items = lvl_dict["collected_items"]
+					if items is Array and items.has(item_id):
+						return true
+			return false
 		_:
 			return false
 
@@ -123,6 +162,8 @@ func is_item_discovered(item_id: String) -> bool:
 	match item_id:
 		"sovereign_relic":
 			return has_relic or relic_returned
+		"crystal_azure", "crystal_amethyst", "crystal_emerald":
+			return has_item(item_id)
 		_:
 			return false
 
@@ -133,6 +174,11 @@ func get_item_status(item_id: String) -> String:
 			if relic_returned:
 				return "RETURNED"
 			elif has_relic:
+				return "IN_POSSESSION"
+			else:
+				return "UNFOUND"
+		"crystal_azure", "crystal_amethyst", "crystal_emerald":
+			if has_item(item_id):
 				return "IN_POSSESSION"
 			else:
 				return "UNFOUND"
@@ -185,6 +231,8 @@ func can_hold_item(item_id: String) -> bool:
 		"sovereign_relic":
 			# Only allow holding if the player currently possesses it and hasn't returned it
 			return has_relic and not relic_returned
+		"crystal_azure", "crystal_amethyst", "crystal_emerald":
+			return has_item(item_id)
 		_:
 			return false
 

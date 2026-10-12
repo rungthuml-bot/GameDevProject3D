@@ -202,16 +202,18 @@ func open_chest() -> void:
 
 	# 1. Audio Feedback
 	if play_open_sound:
-		if has_node("/root/AudioManager"):
-			AudioManager.play_chest_open_sfx()
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_chest_open_sfx()
 
 	# 2. UI Notification Feedback (Spam-safe via centralized UIManager debounce)
-	if has_node("/root/UIManager"):
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
 		if not reward_notification.is_empty():
 			if is_golden:
-				UIManager.notify_success(reward_notification, 3.5)
+				ui.notify_success(reward_notification, 3.5)
 			else:
-				UIManager.notify_info(reward_notification, 3.0)
+				ui.notify_info(reward_notification, 3.0)
 
 	# 3. Animation Execution
 	if _anim_player != null and _anim_player.has_animation("open"):

@@ -370,8 +370,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = sqrt(jump_height * 2.0 * gravity)
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
-		if has_node("/root/AudioManager"):
-			AudioManager.play_jump_sfx()
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_jump_sfx()
 
 	# =====================================================
 	# HORIZONTAL MOVEMENT
@@ -501,8 +502,9 @@ func _physics_process(delta: float) -> void:
 
 	# Landing detection
 	if not _was_on_floor_last_frame and is_on_floor():
-		if has_node("/root/AudioManager"):
-			AudioManager.play_land_sfx()
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_land_sfx()
 	_was_on_floor_last_frame = is_on_floor()
 
 	# Footstep audio processing
@@ -561,13 +563,14 @@ func _process_footsteps(delta: float, is_input_moving: bool) -> void:
 	# 5. Play footstep when stride distance is completed
 	if _step_distance_accum >= step_threshold:
 		_step_distance_accum = 0.0
-		if has_node("/root/AudioManager"):
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
 			if is_crouching:
-				AudioManager.play_footstep_sneak()
+				am.play_footstep_sneak()
 			elif is_sprinting and horizontal_speed > walk_speed * 0.8:
-				AudioManager.play_footstep_run()
+				am.play_footstep_run()
 			else:
-				AudioManager.play_footstep_walk()
+				am.play_footstep_walk()
 
 
 # =========================================================
@@ -583,11 +586,12 @@ func _setup_held_item_system() -> void:
 		held_item_root.rotation = HELD_ROT_LOWERED
 		held_item_root.visible = false
 
-	if GameManager:
-		if not GameManager.held_item_changed.is_connected(_on_held_item_changed):
-			GameManager.held_item_changed.connect(_on_held_item_changed)
+	var gm = get_node_or_null("/root/GameManager")
+	if gm:
+		if not gm.held_item_changed.is_connected(_on_held_item_changed):
+			gm.held_item_changed.connect(_on_held_item_changed)
 		# Load initial held item state if player held it in previous scene
-		var initial_held := GameManager.get_held_item()
+		var initial_held := String(gm.get_held_item())
 		if not initial_held.is_empty():
 			_equip_held_item(initial_held, false)
 
@@ -609,15 +613,20 @@ func _equip_held_item(item_id: String, animate: bool = true) -> void:
 		child.queue_free()
 	held_item_model = null
 
-	var item_def := GameManager.get_item_definition(item_id) if GameManager else {}
+	var gm = get_node_or_null("/root/GameManager")
+	var item_def: Dictionary = gm.get_item_definition(item_id) if gm else {}
 	var model_scene_path: String = item_def.get("model_scene", "")
 	if not model_scene_path.is_empty() and ResourceLoader.exists(model_scene_path):
 		var model_scene := load(model_scene_path) as PackedScene
 		if model_scene:
 			held_item_model = model_scene.instantiate()
-			# Ergonomic scaling for 1st person hand view (compact size)
-			held_item_model.scale = Vector3(0.24, 0.24, 0.24)
-			held_item_model.rotation = Vector3(0.0, deg_to_rad(15.0), 0.0)
+			# Ergonomic scaling for 1st person hand view
+			if item_id == "sovereign_relic":
+				held_item_model.scale = Vector3(0.35, 0.35, 0.35)
+				held_item_model.rotation = Vector3(deg_to_rad(10.0), deg_to_rad(105.0), deg_to_rad(-10.0))
+			else:
+				held_item_model.scale = Vector3(0.25, 0.25, 0.25)
+				held_item_model.rotation = Vector3(0.0, deg_to_rad(15.0), 0.0)
 			held_item_root.add_child(held_item_model)
 
 	_update_held_item_visibility()
