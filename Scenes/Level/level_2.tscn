@@ -225,8 +225,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 1.8, 4.5)
 [node name="TorchRight" type="Node3D" parent="Door_To_Level1" unique_id=987123412 instance=ExtResource("23_torch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1.8, 4.5)
 
-[node name="Door" type="MeshInstance3D" parent="Door_To_Level1" unique_id=1229889070]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36940932, 1.8890607, 4.960983)
+[node name="Hinge" type="Node3D" parent="Door_To_Level1" unique_id=1229889069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.92809068, 1.8890607, 4.960983)
+
+[node name="Door" type="MeshInstance3D" parent="Door_To_Level1/Hinge" unique_id=1229889070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.2975, 0, 0)
 material_override = SubResource("StandardMaterial3D_b8bd2")
 mesh = SubResource("BoxMesh_bvs58")
 
@@ -263,8 +266,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 3.2, 5.8)
 [node name="TorchRight" type="Node3D" parent="Door_To_Level3" unique_id=987123416 instance=ExtResource("23_torch")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 3.2, 5.8)
 
-[node name="Door" type="MeshInstance3D" parent="Door_To_Level3" unique_id=58508325]
-transform = Transform3D(2.155, 0, 0, 0, 1.825, 0, 0, 0, 1, 0.049514532, 3.1272635, 4.9609833)
+[node name="Hinge" type="Node3D" parent="Door_To_Level3" unique_id=58508324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9016005, 3.1272635, 4.9609833)
+
+[node name="Door" type="MeshInstance3D" parent="Door_To_Level3/Hinge" unique_id=58508325]
+transform = Transform3D(2.155, 0, 0, 0, 1.825, 0, 0, 0, 1, 4.951115, 0, 0)
 material_override = SubResource("StandardMaterial3D_v5eft")
 mesh = SubResource("BoxMesh_bvs58")
 

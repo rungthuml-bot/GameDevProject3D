@@ -57,6 +57,33 @@ func _ready() -> void:
 
 	_player = get_tree().get_first_node_in_group("player")
 
+	# Check persistence
+	var gm = get_node_or_null("/root/GameManager")
+	var cur_lvl = ""
+	if get_tree().current_scene:
+		cur_lvl = get_tree().current_scene.scene_file_path
+	var chest_id = String(get_path())
+	if gm != null and gm.is_chest_opened_saved(cur_lvl, chest_id):
+		set_already_open()
+
+
+func set_already_open() -> void:
+	is_open = true
+	_is_animating = false
+	hide_interaction_prompt()
+	_update_prompt_text()
+
+	if _anim_player != null and _anim_player.has_animation("open"):
+		var anim = _anim_player.get_animation("open")
+		if anim:
+			_anim_player.play("open")
+			_anim_player.seek(anim.length, true)
+	elif is_instance_valid(_lid_node):
+		_lid_node.rotation_degrees.x = open_rotation_degrees
+
+	if show_treasure_glow and is_instance_valid(_glow_light):
+		_glow_light.light_energy = 2.2 if is_golden else 1.4
+
 
 func _process(_delta: float) -> void:
 	if not is_instance_valid(_interaction_label) or not _interaction_label.visible:
@@ -161,6 +188,14 @@ func open_chest() -> void:
 
 	is_open = true
 	_is_animating = true
+
+	var gm = get_node_or_null("/root/GameManager")
+	var cur_lvl = ""
+	if get_tree().current_scene:
+		cur_lvl = get_tree().current_scene.scene_file_path
+	var chest_id = String(get_path())
+	if gm != null:
+		gm.record_chest_opened(cur_lvl, chest_id)
 
 	# Hide prompt immediately to prevent user confusion
 	hide_interaction_prompt()

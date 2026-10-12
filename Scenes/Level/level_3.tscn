@@ -42,6 +42,10 @@
 [ext_resource type="Script" path="res://Scripts/door.gd" id="40_doorscript"]
 [ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_big_spikes.gltf" id="41_spike_trap_mesh"]
 [ext_resource type="Script" path="res://Scripts/crypt_spike_trap.gd" id="42_trap_script"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_patternA_red.gltf" id="43_banner_pat"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/box_stacked.gltf" id="44_box_stacked"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/bottle_A_brown.gltf" id="45_bottle"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/barrel_small_stack.gltf" id="46_barrel_stack"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_floor_base"]
 size = Vector3(64, 1, 64)
@@ -56,16 +60,16 @@ size = Vector3(64, 1, 64)
 
 [sub_resource type="Environment" id="Env_crypt"]
 background_mode = 0
-background_color = Color(0.012, 0.015, 0.022, 1)
+background_color = Color(0.008, 0.01, 0.016, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.18, 0.22, 0.35, 1)
-ambient_light_energy = 1.15
+ambient_light_color = Color(0.12, 0.15, 0.24, 1)
+ambient_light_energy = 0.85
 tonemap_mode = 3
 fog_enabled = true
-fog_light_color = Color(0.08, 0.11, 0.20, 1)
-fog_density = 0.024
-fog_depth_begin = 6.0
-fog_depth_end = 42.0
+fog_light_color = Color(0.045, 0.065, 0.11, 1)
+fog_density = 0.032
+fog_depth_begin = 4.0
+fog_depth_end = 36.0
 
 [sub_resource type="BoxShape3D" id="Shape_door_trigger"]
 size = Vector3(3.0, 3.2, 2.0)
@@ -90,8 +94,8 @@ environment = SubResource("Env_crypt")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1688811775]
 transform = Transform3D(0.819, -0.47, 0.329, 0, 0.574, 0.819, -0.574, -0.671, 0.47, 0, 16, 0)
-light_color = Color(0.55, 0.65, 0.90, 1)
-light_energy = 0.45
+light_color = Color(0.42, 0.55, 0.78, 1)
+light_energy = 0.25
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1277357133]
@@ -676,6 +680,50 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0, 0.0, -8.0)
 
 [node name="EastUrnCandles" type="Node3D" parent="KayKitDungeon/Props" unique_id=500269 instance=ExtResource("19_candle_triple")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0, 0.9, -8.0)
+
+[node name="TombWallBannerL" type="Node3D" parent="KayKitDungeon/Props" unique_id=550001 instance=ExtResource("43_banner_pat")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, -2.6, 2.5, -5.8)
+
+[node name="TombWallBannerR" type="Node3D" parent="KayKitDungeon/Props" unique_id=550002 instance=ExtResource("43_banner_pat")]
+transform = Transform3D(1.15, 0, 0, 0, 1.15, 0, 0, 0, 1.15, 2.6, 2.5, -5.8)
+
+[node name="TombCandleLeft" type="Node3D" parent="KayKitDungeon/Props" unique_id=550003 instance=ExtResource("15_candle_lit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.0, -3.2)
+
+[node name="TombCandleRight" type="Node3D" parent="KayKitDungeon/Props" unique_id=550004 instance=ExtResource("15_candle_lit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.0, -3.2)
+
+[node name="TombGlowLight" type="OmniLight3D" parent="KayKitDungeon/Props" unique_id=550005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 1.6, -3.2)
+light_color = Color(0.45, 0.8, 1.0, 1)
+light_energy = 2.4
+omni_range = 6.5
+shadow_enabled = true
+
+[node name="WestRubbleExtra" type="Node3D" parent="KayKitDungeon/Props" unique_id=550006 instance=ExtResource("18_rubble_half")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -15.2, 0.0, -0.6)
+
+[node name="WestCandleGloom" type="Node3D" parent="KayKitDungeon/Props" unique_id=550007 instance=ExtResource("15_candle_lit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5, 0.0, -4.5)
+
+[node name="WestBannerTorn" type="Node3D" parent="KayKitDungeon/Props" unique_id=550008 instance=ExtResource("17_banner_red")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8, 2.4, -2.5)
+
+[node name="EastCrates" type="Node3D" parent="KayKitDungeon/Props" unique_id=550009 instance=ExtResource("44_box_stacked")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, 0.0, -1.8)
+
+[node name="EastBarrelStack" type="Node3D" parent="KayKitDungeon/Props" unique_id=550010 instance=ExtResource("46_barrel_stack")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6, 0.0, -9.2)
+
+[node name="EastBottle1" type="Node3D" parent="KayKitDungeon/Props" unique_id=550011 instance=ExtResource("45_bottle")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3, 0.9, -7.8)
+
+[node name="EastTreasuryGlow" type="OmniLight3D" parent="KayKitDungeon/Props" unique_id=550012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8, 1.4, -3.2)
+light_color = Color(1.0, 0.82, 0.35, 1)
+light_energy = 2.5
+omni_range = 6.0
+shadow_enabled = true
 
 [node name="ceiling_-4_16" type="Node3D" parent="KayKitDungeon/Ceilings" unique_id=500198 instance=ExtResource("14_ceiling_tile")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 5.2, 16)

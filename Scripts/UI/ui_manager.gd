@@ -176,8 +176,7 @@ func go_to_main_menu() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	current_state = GameState.MENU
 	_reset_level_presentation_state()
-	if GameManager:
-		GameManager.reset_game_state()
+	# Returning to main menu does NOT clear the persistent save file
 	get_tree().change_scene_to_file("res://Scenes/UI/MainMenu.tscn")
 
 
@@ -189,7 +188,7 @@ func start_game() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_reset_level_presentation_state()
 	if GameManager:
-		GameManager.reset_game_state()
+		GameManager.reset_game_state(true)
 	get_tree().change_scene_to_file(current_level_path)
 
 

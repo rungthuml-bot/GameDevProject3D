@@ -44,6 +44,14 @@
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="42_xjfkb"]
 [ext_resource type="Script" path="res://Scripts/interactable.gd" id="43_ojuc8"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="44_ws6q7"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_patternA_yellow.gltf" id="45_banner_pat_y"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_gold.gltf" id="46_sword_gold"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/coin_stack_large.gltf" id="47_coin_large"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/barrel_large.gltf" id="48_barrel_l"]
+[ext_resource type="Script" path="res://Scripts/ancient_seal_manager.gd" id="49_seal_mgr"]
+[ext_resource type="Script" path="res://Scripts/ancient_glyph.gd" id="50_glyph_scr"]
+[ext_resource type="Script" path="res://Scripts/sanctuary_pillar.gd" id="51_pillar_scr"]
+[ext_resource type="Script" path="res://Scripts/sanctum_pressure_trap.gd" id="52_trap_scr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7bp3t"]
 size = Vector3(70, 1, 70)
@@ -58,10 +66,16 @@ size = Vector3(70, 1, 70)
 
 [sub_resource type="Environment" id="Environment_1plsy"]
 background_mode = 1
-background_color = Color(0.04, 0.03, 0.03, 1)
+background_color = Color(0.025, 0.02, 0.015, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.35, 0.32, 0.28, 1)
+ambient_light_color = Color(0.24, 0.21, 0.16, 1)
+ambient_light_energy = 0.95
 tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.16, 0.13, 0.08, 1)
+fog_density = 0.022
+fog_depth_begin = 6.0
+fog_depth_end = 40.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fpuyg"]
 size = Vector3(4, 4, 1)
@@ -114,6 +128,20 @@ size = Vector3(2.5, 3.5, 2.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_aylu1"]
 size = Vector3(2.5, 3.5, 2.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_trap_trig"]
+size = Vector3(2.8, 0.8, 2.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_trap_plate"]
+size = Vector3(2.2, 0.08, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plate"]
+albedo_color = Color(0.25, 0.22, 0.16, 1)
+metallic = 0.5
+roughness = 0.65
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_interact_box"]
+size = Vector3(2.4, 2.5, 2.4)
+
 [node name="Level4" type="Node3D" unique_id=1938340865]
 metadata/dialogue_id = "level_4_intro"
 
@@ -131,8 +159,8 @@ environment = SubResource("Environment_1plsy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=258237918]
 transform = Transform3D(0.90630776, -0.3584006, 0.22395356, 0, 0.52991927, 0.8480481, -0.42261827, -0.76859254, 0.48026994, 0, 0, 0)
-light_color = Color(0.96, 0.88, 0.72, 1)
-light_energy = 0.35
+light_color = Color(1.0, 0.88, 0.65, 1)
+light_energy = 0.4
 shadow_enabled = true
 
 [node name="KayKitDungeon" type="Node3D" parent="." unique_id=307947797]
@@ -1088,6 +1116,45 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, -23.2)
 [node name="candle_lit_6_1" type="Node3D" parent="KayKitDungeon/Props" unique_id=1173013606 instance=ExtResource("16_384he")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, -23.2)
 
+[node name="SanctumBannerNorthL" type="Node3D" parent="KayKitDungeon/Props" unique_id=560010 instance=ExtResource("45_banner_pat_y")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -2.6, 2.8, -4.5)
+
+[node name="SanctumBannerNorthR" type="Node3D" parent="KayKitDungeon/Props" unique_id=560011 instance=ExtResource("45_banner_pat_y")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 2.6, 2.8, -4.5)
+
+[node name="SanctumBannerSouthL" type="Node3D" parent="KayKitDungeon/Props" unique_id=560012 instance=ExtResource("45_banner_pat_y")]
+transform = Transform3D(-1.2, 0, -1.049073e-07, 0, 1.2, 0, 1.049073e-07, 0, -1.2, -2.6, 2.8, 5.5)
+
+[node name="SanctumBannerSouthR" type="Node3D" parent="KayKitDungeon/Props" unique_id=560013 instance=ExtResource("45_banner_pat_y")]
+transform = Transform3D(-1.2, 0, -1.049073e-07, 0, 1.2, 0, 1.049073e-07, 0, -1.2, 2.6, 2.8, 5.5)
+
+[node name="SanctumGoldSwordL" type="Node3D" parent="KayKitDungeon/Props" unique_id=560014 instance=ExtResource("46_sword_gold")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0.8)
+
+[node name="SanctumGoldSwordR" type="Node3D" parent="KayKitDungeon/Props" unique_id=560015 instance=ExtResource("46_sword_gold")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8, 0, 0.8)
+
+[node name="SanctumAltarCandleL" type="Node3D" parent="KayKitDungeon/Props" unique_id=560016 instance=ExtResource("19_qtk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1, 0.9, 0.8)
+
+[node name="SanctumAltarCandleR" type="Node3D" parent="KayKitDungeon/Props" unique_id=560017 instance=ExtResource("19_qtk3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0.9, 0.8)
+
+[node name="ExitRubbleLarge1" type="Node3D" parent="KayKitDungeon/Props" unique_id=560018 instance=ExtResource("23_84r04")]
+transform = Transform3D(0.9, 0, 0.43, 0, 1, 0, -0.43, 0, 0.9, -3.2, 0, -22.8)
+
+[node name="ExitRubbleHalf1" type="Node3D" parent="KayKitDungeon/Props" unique_id=560019 instance=ExtResource("20_jy2mm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4, 0, -22.5)
+
+[node name="ExitRubbleHalf2" type="Node3D" parent="KayKitDungeon/Props" unique_id=560020 instance=ExtResource("20_jy2mm")]
+transform = Transform3D(0.7071068, 0, -0.7071068, 0, 0.9, 0, 0.7071068, 0, 0.7071068, -2.2, 0, -24.2)
+
+[node name="ExitBarrelBroken" type="Node3D" parent="KayKitDungeon/Props" unique_id=560021 instance=ExtResource("48_barrel_l")]
+transform = Transform3D(0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0, 1, 2.8, 0.2, -23.8)
+
+[node name="EastReliquaryCoinExtra" type="Node3D" parent="KayKitDungeon/Props" unique_id=560022 instance=ExtResource("47_coin_large")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 19.8, 0, 5.2)
+
 [node name="Torches" type="Node3D" parent="KayKitDungeon" unique_id=1324454390]
 
 [node name="torch_6_24" type="Node3D" parent="KayKitDungeon/Torches" unique_id=1400197671 instance=ExtResource("36_i8kmd")]
@@ -1296,9 +1363,22 @@ omni_range = 9.0
 
 [node name="SanctumGoldenShaft" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=99722611]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2, 0)
-light_color = Color(1, 0.85, 0.6, 1)
-light_energy = 2.0
+light_color = Color(1.0, 0.84, 0.52, 1)
+light_energy = 2.8
 omni_range = 18.0
+shadow_enabled = true
+
+[node name="InnerSanctumGlow" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=560001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0.8)
+light_color = Color(1.0, 0.8, 0.35, 1)
+light_energy = 2.4
+omni_range = 7.0
+
+[node name="ExitRubbleGlow" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=560002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, -23.5)
+light_color = Color(0.9, 0.65, 0.3, 1)
+light_energy = 2.2
+omni_range = 8.0
 
 [node name="StructureCollision" type="StaticBody3D" parent="." unique_id=1777967837]
 
@@ -1896,6 +1976,7 @@ interaction_title = "Broken Passage Gateway"
 description = "Cross into the shattered, unstable depths of Level 5."
 target_scene = "res://Scenes/Level/level_5.tscn"
 target_spawn_id = "Spawn_From_Level4"
+require_puzzle = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door_To_Level5" unique_id=526728690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -1925,7 +2006,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 26)
 script = ExtResource("44_ws6q7")
 interaction_text = "Return to Crypt (Level 3)"
 interaction_title = "Return Archway"
-interaction_title = "Exit to Level 3"
 description = "Return to the Crypt of Shadows."
 target_scene = "res://Scenes/Level/level_3.tscn"
 target_spawn_id = "Spawn_From_Level4"
@@ -1939,3 +2019,209 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0.5)
 
 [node name="Spawn_From_Level5" type="Marker3D" parent="." unique_id=114641391]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.2, -21.5)
+
+[node name="AncientSealManager" type="Node3D" parent="." unique_id=1404000001]
+script = ExtResource("49_seal_mgr")
+
+[node name="AncientGlyph_Sun" type="Area3D" parent="." unique_id=1404000002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 0, 4)
+script = ExtResource("50_glyph_scr")
+glyph_id = "glyph_sun"
+glyph_name = "Sun Glyph"
+glyph_lore = "A radiant golden sun symbol etched into the deep western sanctuary wall. It pulses with living warmth."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AncientGlyph_Sun" unique_id=1404000003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Sun" unique_id=1404000004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Decipher Sun Glyph"
+
+[node name="GlowLight" type="OmniLight3D" parent="AncientGlyph_Sun" unique_id=1404000005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.85, 0.35, 1)
+light_energy = 1.8
+omni_range = 5.0
+
+[node name="AncientGlyph_Moon" type="Area3D" parent="." unique_id=1404000006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 0, 4)
+script = ExtResource("50_glyph_scr")
+glyph_id = "glyph_moon"
+glyph_name = "Moon Glyph"
+glyph_lore = "A silver crescent moon symbol engraved near the eastern reliquary. Its luminescence is serene and constant."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AncientGlyph_Moon" unique_id=1404000007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Moon" unique_id=1404000008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Decipher Moon Glyph"
+
+[node name="GlowLight" type="OmniLight3D" parent="AncientGlyph_Moon" unique_id=1404000009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.75, 0.88, 1, 1)
+light_energy = 1.8
+omni_range = 5.0
+
+[node name="AncientGlyph_Star" type="Area3D" parent="." unique_id=1404000010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+script = ExtResource("50_glyph_scr")
+glyph_id = "glyph_star"
+glyph_name = "Star Glyph"
+glyph_lore = "An eight-pointed celestial star carved upon the northern corridor masonry. It resonates with ancient magic."
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AncientGlyph_Star" unique_id=1404000011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="AncientGlyph_Star" unique_id=1404000012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Decipher Star Glyph"
+
+[node name="GlowLight" type="OmniLight3D" parent="AncientGlyph_Star" unique_id=1404000013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.9, 1)
+light_energy = 1.8
+omni_range = 5.0
+
+[node name="SanctuaryPillar_NW" type="Area3D" parent="." unique_id=1404000014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 0, -4.8)
+script = ExtResource("51_pillar_scr")
+pillar_index = 0
+pillar_name = "Northwest Pillar of Dawn"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SanctuaryPillar_NW" unique_id=1404000015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="SanctuaryPillar_NW" unique_id=1404000016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Attune NW Pillar"
+
+[node name="PillarLight" type="OmniLight3D" parent="SanctuaryPillar_NW" unique_id=1404000017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_color = Color(1, 0.8, 0.4, 1)
+light_energy = 0.5
+omni_range = 6.0
+
+[node name="SanctuaryPillar_NE" type="Area3D" parent="." unique_id=1404000018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, -4.8)
+script = ExtResource("51_pillar_scr")
+pillar_index = 1
+pillar_name = "Northeast Pillar of Zenith"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SanctuaryPillar_NE" unique_id=1404000019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="SanctuaryPillar_NE" unique_id=1404000020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Attune NE Pillar"
+
+[node name="PillarLight" type="OmniLight3D" parent="SanctuaryPillar_NE" unique_id=1404000021]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_color = Color(1, 0.8, 0.4, 1)
+light_energy = 0.5
+omni_range = 6.0
+
+[node name="SanctuaryPillar_SW" type="Area3D" parent="." unique_id=1404000022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2, 0, 5.2)
+script = ExtResource("51_pillar_scr")
+pillar_index = 2
+pillar_name = "Southwest Pillar of Dusk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SanctuaryPillar_SW" unique_id=1404000023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="SanctuaryPillar_SW" unique_id=1404000024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Attune SW Pillar"
+
+[node name="PillarLight" type="OmniLight3D" parent="SanctuaryPillar_SW" unique_id=1404000025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_color = Color(1, 0.8, 0.4, 1)
+light_energy = 0.5
+omni_range = 6.0
+
+[node name="SanctuaryPillar_SE" type="Area3D" parent="." unique_id=1404000026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.2, 0, 5.2)
+script = ExtResource("51_pillar_scr")
+pillar_index = 3
+pillar_name = "Southeast Pillar of Midnight"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SanctuaryPillar_SE" unique_id=1404000027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("BoxShape3D_interact_box")
+
+[node name="InteractionLabel" type="Label3D" parent="SanctuaryPillar_SE" unique_id=1404000028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+text = "[E] Attune SE Pillar"
+
+[node name="PillarLight" type="OmniLight3D" parent="SanctuaryPillar_SE" unique_id=1404000029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+light_color = Color(1, 0.8, 0.4, 1)
+light_energy = 0.5
+omni_range = 6.0
+
+[node name="PressureTrap_NorthGrate1" type="Area3D" parent="." unique_id=1404000030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.05, -8)
+script = ExtResource("52_trap_scr")
+trap_name = "Northwest Mechanical Pressure Trap"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PressureTrap_NorthGrate1" unique_id=1404000031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_trap_trig")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="PressureTrap_NorthGrate1" unique_id=1404000032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+mesh = SubResource("BoxMesh_trap_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_plate")
+
+[node name="WarningLight" type="OmniLight3D" parent="PressureTrap_NorthGrate1" unique_id=1404000033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 3.5
+
+[node name="PressureTrap_NorthGrate2" type="Area3D" parent="." unique_id=1404000034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.05, -4)
+script = ExtResource("52_trap_scr")
+trap_name = "West Threshold Pressure Trap"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PressureTrap_NorthGrate2" unique_id=1404000035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_trap_trig")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="PressureTrap_NorthGrate2" unique_id=1404000036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+mesh = SubResource("BoxMesh_trap_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_plate")
+
+[node name="WarningLight" type="OmniLight3D" parent="PressureTrap_NorthGrate2" unique_id=1404000037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 3.5
+
+[node name="PressureTrap_EastGrate" type="Area3D" parent="." unique_id=1404000038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.05, -4)
+script = ExtResource("52_trap_scr")
+trap_name = "East Threshold Pressure Trap"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PressureTrap_EastGrate" unique_id=1404000039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+shape = SubResource("BoxShape3D_trap_trig")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="PressureTrap_EastGrate" unique_id=1404000040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+mesh = SubResource("BoxMesh_trap_plate")
+surface_material_override/0 = SubResource("StandardMaterial3D_plate")
+
+[node name="WarningLight" type="OmniLight3D" parent="PressureTrap_EastGrate" unique_id=1404000041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 3.5
