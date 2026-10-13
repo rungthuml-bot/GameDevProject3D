@@ -37,10 +37,10 @@ func trigger_trap_restart(trap_name: String = "Lethal Trap") -> void:
 		player.disable_controls()
 
 	if has_node("/root/AudioManager"):
-		AudioManager.play_puzzle_warning_sfx()
+		get_node("/root/AudioManager").play_puzzle_warning_sfx()
 
 	if has_node("/root/UIManager"):
-		UIManager.notify_danger("%s triggered! Restarting current level..." % trap_name)
+		get_node("/root/UIManager").notify_danger("%s triggered! Restarting current level..." % trap_name)
 
 	# Set the correct default spawn point for the current scene
 	var cur_scene_path: String = ""

@@ -946,20 +946,8 @@ shape = SubResource("Shape_wall_v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -20)
 shape = SubResource("Shape_wall_v")
 
-[node name="col_-6_4_-90" type="CollisionShape3D" parent="WallCollisions" unique_id=500101]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 4)
-shape = SubResource("Shape_wall_v")
-
-[node name="col_6_4_90" type="CollisionShape3D" parent="WallCollisions" unique_id=500103]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 4)
-shape = SubResource("Shape_wall_v")
-
 [node name="col_-6_-4_-90" type="CollisionShape3D" parent="WallCollisions" unique_id=500105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -4)
-shape = SubResource("Shape_wall_v")
-
-[node name="col_6_-4_90" type="CollisionShape3D" parent="WallCollisions" unique_id=500107]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -4)
 shape = SubResource("Shape_wall_v")
 
 [node name="col_-8_-14_0" type="CollisionShape3D" parent="WallCollisions" unique_id=500109]
@@ -1006,18 +994,6 @@ shape = SubResource("Shape_wall_v")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2, -12)
 shape = SubResource("Shape_wall_v")
 
-[node name="col_-12_2_0" type="CollisionShape3D" parent="WallCollisions" unique_id=500131]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 2)
-shape = SubResource("Shape_wall_h")
-
-[node name="col_-14_-6_90" type="CollisionShape3D" parent="WallCollisions" unique_id=500133]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -6)
-shape = SubResource("Shape_wall_v")
-
-[node name="col_-10_-8_0" type="CollisionShape3D" parent="WallCollisions" unique_id=500135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -8)
-shape = SubResource("Shape_wall_h")
-
 [node name="col_8_-14_0" type="CollisionShape3D" parent="WallCollisions" unique_id=500137]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -14)
 shape = SubResource("Shape_wall_h")
@@ -1060,14 +1036,6 @@ shape = SubResource("Shape_wall_v")
 
 [node name="col_18_-12_90" type="CollisionShape3D" parent="WallCollisions" unique_id=500157]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, -12)
-shape = SubResource("Shape_wall_v")
-
-[node name="col_12_2_0" type="CollisionShape3D" parent="WallCollisions" unique_id=500159]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 2, 2)
-shape = SubResource("Shape_wall_h")
-
-[node name="col_14_-6_90" type="CollisionShape3D" parent="WallCollisions" unique_id=500161]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -6)
 shape = SubResource("Shape_wall_v")
 
 [node name="Inspect_CryptEntrance" type="Area3D" parent="." unique_id=987000305]
@@ -1182,7 +1150,7 @@ omni_range = 8.0
 [node name="PropCollision" type="StaticBody3D" parent="." unique_id=30050]
 
 [node name="col_TombTable" type="CollisionShape3D" parent="PropCollision" unique_id=30051]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, -3.2)
 shape = SubResource("BoxShape3D_prop_box")
 
 [node name="col_EastChestGold" type="CollisionShape3D" parent="PropCollision" unique_id=30052]
@@ -1190,9 +1158,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.65, -8)
 shape = SubResource("BoxShape3D_prop_box")
 
 [node name="col_EastTable" type="CollisionShape3D" parent="PropCollision" unique_id=30053]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.9, -8)
 shape = SubResource("BoxShape3D_prop_box")
 
 [node name="col_EastBarrelStack" type="CollisionShape3D" parent="PropCollision" unique_id=30054]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.391315, 1.0, -12.708547)
 shape = SubResource("BoxShape3D_prop_box")

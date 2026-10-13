@@ -518,27 +518,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.5, -11)
 [node name="StructureCollision" type="StaticBody3D" parent="." unique_id=10030]
 
 [node name="col_colonnade_w1" type="CollisionShape3D" parent="StructureCollision" unique_id=10031]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, -10)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_colonnade_w2" type="CollisionShape3D" parent="StructureCollision" unique_id=10032]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, -14)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_colonnade_w3" type="CollisionShape3D" parent="StructureCollision" unique_id=10033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 2, -18)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_colonnade_e1" type="CollisionShape3D" parent="StructureCollision" unique_id=10034]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, -10)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_colonnade_e2" type="CollisionShape3D" parent="StructureCollision" unique_id=10035]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, -14)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_colonnade_e3" type="CollisionShape3D" parent="StructureCollision" unique_id=10036]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -18)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 2, -18)
 shape = SubResource("Shape_inspect_trigger")
 
 [node name="col_gate_facade_w" type="CollisionShape3D" parent="StructureCollision" unique_id=10037]

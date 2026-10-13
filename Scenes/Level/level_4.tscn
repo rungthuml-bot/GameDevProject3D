@@ -1662,39 +1662,7 @@ shape = SubResource("BoxShape3D_u8xqs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2, 14)
 shape = SubResource("BoxShape3D_u8xqs")
 
-[node name="col_sanctum_pillar_5_5" type="CollisionShape3D" parent="StructureCollision" unique_id=219882515]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -6)
-shape = SubResource("BoxShape3D_u8xqs")
-
-[node name="col_sanctum_pillar_7_5" type="CollisionShape3D" parent="StructureCollision" unique_id=153496893]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -6)
-shape = SubResource("BoxShape3D_u8xqs")
-
-[node name="col_sanctum_pillar_5_7" type="CollisionShape3D" parent="StructureCollision" unique_id=470030519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 2)
-shape = SubResource("BoxShape3D_u8xqs")
-
-[node name="col_sanctum_pillar_7_7" type="CollisionShape3D" parent="StructureCollision" unique_id=572991470]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 2)
-shape = SubResource("BoxShape3D_u8xqs")
-
-[node name="col_colonnade_col_6_10" type="CollisionShape3D" parent="StructureCollision" unique_id=594843187]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, 14)
-shape = SubResource("BoxShape3D_u8xqs")
-
-[node name="col_colonnade_col_7_10" type="CollisionShape3D" parent="StructureCollision" unique_id=1902620920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 14)
-shape = SubResource("BoxShape3D_u8xqs")
-
 [node name="PropCollision" type="StaticBody3D" parent="." unique_id=98709119]
-
-[node name="col_barrier_half_5_11" type="CollisionShape3D" parent="PropCollision" unique_id=842293426]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -4.0928936, 0.55, 20.092892)
-shape = SubResource("BoxShape3D_eac3m")
-
-[node name="col_barrier_half_7_11" type="CollisionShape3D" parent="PropCollision" unique_id=188187224]
-transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, 5.507107, 0.55, 21.507107)
-shape = SubResource("BoxShape3D_eac3m")
 
 [node name="col_table_long_tablecloth_decorated_A_6_6" type="CollisionShape3D" parent="PropCollision" unique_id=303236992]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0014972687, 0.94285727, 2.3841858e-07)

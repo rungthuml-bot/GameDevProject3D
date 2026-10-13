@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bavnqcvlo2y1n" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_patternA_yellow.gltf" id="34_banner_gold"]
 [ext_resource type="PackedScene" uid="uid://k0lyho60jbjf" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/table_medium_decorated_A.gltf" id="36_side_table"]
 [ext_resource type="PackedScene" uid="uid://hrx7jiu47ppa" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chair.gltf" id="37_chair"]
+[ext_resource type="PackedScene" path="res://Scenes/FinalDoor.tscn" id="38_final_door"]
 
 [sub_resource type="Environment" id="Env_sanctuary"]
 background_color = Color(0.018, 0.02, 0.03, 1)
@@ -286,9 +287,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 7.82
 [node name="wall_n_0" parent="Sanctuary_Walls" unique_id=20057 instance=ExtResource("14_wall")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -22)
 
-[node name="wall_n_1" parent="Sanctuary_Walls" unique_id=20058 instance=ExtResource("17_wall_doorway")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -22)
-
 [node name="wall_n_2" parent="Sanctuary_Walls" unique_id=20059 instance=ExtResource("15_wall_arched")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -22)
 
@@ -357,6 +355,9 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.5
 
 [node name="wall_s_8" parent="Sanctuary_Walls" unique_id=582703446 instance=ExtResource("14_wall")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10.449239, 0, 10)
+
+[node name="wall_n_1" parent="Sanctuary_Walls" unique_id=1050696422 instance=ExtResource("14_wall")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.022291, 0, -22)
 
 [node name="Sanctuary_Lights" type="Node3D" parent="." unique_id=14000]
 
@@ -568,6 +569,9 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("Shape_altar_solid")
 
+[node name="FinalDoor" parent="." unique_id=991001001 instance=ExtResource("38_final_door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -21.4)
+
 [node name="Door_To_Level2" type="Area3D" parent="." unique_id=1327668518]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -21.4)
 script = ExtResource("7_doorscript")
@@ -606,24 +610,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0.6)
 visible = false
 billboard = 1
 
-[node name="PropCollision" type="StaticBody3D" parent="." unique_id=20030]
+[node name="PropCollision" type="StaticBody3D" parent="." unique_id=603258665]
 
-[node name="col_barrel_0" type="CollisionShape3D" parent="PropCollision" unique_id=20031]
+[node name="col_barrel_0" type="CollisionShape3D" parent="PropCollision" unique_id=490289908]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 8)
 shape = SubResource("Shape_altar_solid")
 
-[node name="col_crates_1" type="CollisionShape3D" parent="PropCollision" unique_id=20032]
+[node name="col_crates_1" type="CollisionShape3D" parent="PropCollision" unique_id=1348387893]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 5)
 shape = SubResource("Shape_altar_solid")
 
-[node name="col_crates_3" type="CollisionShape3D" parent="PropCollision" unique_id=20033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 2)
-shape = SubResource("Shape_altar_solid")
-
-[node name="col_barrel_5" type="CollisionShape3D" parent="PropCollision" unique_id=20034]
+[node name="col_barrel_5" type="CollisionShape3D" parent="PropCollision" unique_id=518121073]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 8)
 shape = SubResource("Shape_altar_solid")
 
-[node name="col_side_table" type="CollisionShape3D" parent="PropCollision" unique_id=20035]
+[node name="col_side_table" type="CollisionShape3D" parent="PropCollision" unique_id=2034623969]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 1, -1.68)
 shape = SubResource("Shape_altar_solid")

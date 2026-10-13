@@ -35,21 +35,23 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	_update_label()
 
+	body_entered.connect(_on_body_entered)
+	body_exited.connect(_on_body_exited)
+
 
 func _setup_door_components() -> void:
-	# Detect visual door mesh and handle
-	var door_mesh: Node3D = find_child("Door", true, false)
-	var handle_mesh: Node3D = find_child("DoorHandle", true, false)
+	var existing_hinge: Node3D = find_child("Hinge", true, false)
+	if existing_hinge != null:
+		_hinge_node = existing_hinge
+		_door_leaf = existing_hinge
+	else:
+		# Detect visual door mesh and handle
+		var door_mesh: Node3D = find_child("Door", true, false)
+		var handle_mesh: Node3D = find_child("DoorHandle", true, false)
 
-	if door_mesh != null:
-		# If a custom Hinge does not exist yet, create one at the door's hinge pivot
-		var existing_hinge: Node3D = find_child("Hinge", true, false)
-		if existing_hinge != null:
-			_hinge_node = existing_hinge
-			_door_leaf = existing_hinge
-		else:
+		if door_mesh != null:
 			var parent_node: Node = door_mesh.get_parent()
-			if parent_node != null:
+			if parent_node != null and is_inside_tree():
 				var hinge := Node3D.new()
 				hinge.name = "Hinge"
 				# In Door by Quaternius, hinge pivot is on the positive X edge at (0.658, 0, 0.008)
@@ -62,18 +64,35 @@ func _setup_door_components() -> void:
 
 				_hinge_node = hinge
 				_door_leaf = hinge
-	else:
-		# Fallback candidates
-		var candidates = ["door_dungeon_leaf", "door_cell_leaf", "Door_Root", "Model"]
-		for candidate in candidates:
-			var found = find_child(candidate, true, false)
-			if found != null and found is Node3D and found != self:
-				_door_leaf = found
-				break
+		else:
+			# Fallback candidates
+			var candidates = ["door_dungeon_leaf", "door_cell_leaf", "Door_Root", "Model"]
+			for candidate in candidates:
+				var found = find_child(candidate, true, false)
+				if found != null and found is Node3D and found != self:
+					_door_leaf = found
+					break
 
 	var solid = find_child("StaticBody3D", true, false)
 	if solid != null and solid is StaticBody3D:
 		_solid_body = solid
+
+
+func _on_body_entered(body: Node) -> void:
+	if _ending_triggered:
+		return
+	if body.is_in_group("player") or body.name == "Player":
+		var gm = get_node_or_null("/root/GameManager")
+		if gm != null and gm.relic_returned:
+			# Stepping through the unsealed gate triggers the escape!
+			interact()
+		else:
+			show_interaction_prompt()
+
+
+func _on_body_exited(body: Node) -> void:
+	if body.is_in_group("player") or body.name == "Player":
+		hide_interaction_prompt()
 
 
 func _process(_delta: float) -> void:
@@ -107,13 +126,13 @@ func _update_label() -> void:
 	var gm = get_node_or_null("/root/GameManager")
 	if gm != null:
 		if gm.relic_returned:
-			interaction_label.text = "[E] Open Gate (" + interaction_text + ")"
+			interaction_label.text = "[E] Escape (Exit Sanctuary)"
 			interaction_label.modulate = Color(0.5, 1.0, 0.7, 1.0)
 		elif gm.has_relic:
-			interaction_label.text = "[E] Sealed (Return Relic)"
+			interaction_label.text = "[E] Sealed (Place Relic on Altar)"
 			interaction_label.modulate = Color(1.0, 0.75, 0.35, 1.0)
 		else:
-			interaction_label.text = "[E] Sealed Gate"
+			interaction_label.text = "[E] Sealed Sanctuary Gate"
 			interaction_label.modulate = Color(0.85, 0.45, 0.45, 1.0)
 	else:
 		interaction_label.text = "[E] Open Gate (" + interaction_text + ")"
@@ -181,7 +200,10 @@ func interact() -> void:
 		await get_tree().create_timer(0.3).timeout
 		_trigger_cutscene()
 	else:
-		# If no door leaf, smooth portal delay before cutscene
+		if is_instance_valid(_solid_body):
+			for child in _solid_body.get_children():
+				if child is CollisionShape3D:
+					child.set_deferred("disabled", true)
 		await get_tree().create_timer(0.6).timeout
 		_trigger_cutscene()
 
@@ -190,6 +212,8 @@ func _trigger_cutscene() -> void:
 	var ui_mgr = get_node_or_null("/root/UIManager")
 	if ui_mgr != null:
 		ui_mgr.trigger_ending_cutscene()
+	else:
+		get_tree().change_scene_to_file("res://Scenes/UI/EndingCutscene.tscn")
 
 
 func _show_message(msg_title: String, msg_desc: String) -> void:
