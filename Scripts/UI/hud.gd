@@ -74,7 +74,8 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	# Labels setup
-	level_label.text = "LEVEL " + str(UIManager.current_level_index)
+	var ui = get_node_or_null("/root/UIManager")
+	level_label.text = "LEVEL " + str(ui.current_level_index if ui else 0)
 	timer_label.text = "00:00"
 	top_objective_label.text = "Find the exit"
 

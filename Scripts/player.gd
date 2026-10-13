@@ -124,8 +124,9 @@ func _ready() -> void:
 	_setup_held_item_system()
 
 	# Initialize perspective mode from persistent GameManager state
-	if GameManager:
-		is_first_person = GameManager.is_first_person_enabled()
+	var gm = get_node_or_null("/root/GameManager")
+	if gm:
+		is_first_person = gm.is_first_person_enabled()
 
 	if is_first_person:
 		camera.position = FIRST_PERSON_CAM_POS
@@ -138,26 +139,30 @@ func _ready() -> void:
 		duplicate_capsule_shape = collision_shape.shape.duplicate()
 		collision_shape.shape = duplicate_capsule_shape
 
-	if UIManager:
-		mouse_sensitivity = UIManager.mouse_sensitivity
-		if not UIManager.settings_updated.is_connected(_on_settings_updated):
-			UIManager.settings_updated.connect(_on_settings_updated)
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		mouse_sensitivity = ui.mouse_sensitivity
+		if not ui.settings_updated.is_connected(_on_settings_updated):
+			ui.settings_updated.connect(_on_settings_updated)
 
 	call_deferred("set_spawn_position")
 
 
 func _on_settings_updated() -> void:
-	if UIManager:
-		mouse_sensitivity = UIManager.mouse_sensitivity
+	var ui = get_node_or_null("/root/UIManager")
+	if ui:
+		mouse_sensitivity = ui.mouse_sensitivity
 
 
 func set_spawn_position() -> void:
-	var spawn_id := GameManager.get_spawn_point()
+	var gm = get_node_or_null("/root/GameManager")
+	var spawn_id: String = gm.get_spawn_point() if gm else ""
 
 	if spawn_id.is_empty():
 		return
 
-	var spawn_point := get_tree().current_scene.get_node_or_null(spawn_id)
+	var current_scene = get_tree().current_scene if get_tree() else null
+	var spawn_point = current_scene.get_node_or_null(spawn_id) if current_scene else null
 
 	if spawn_point == null:
 		print("ERROR: Spawn point not found: ", spawn_id)
@@ -166,7 +171,8 @@ func set_spawn_position() -> void:
 	global_position = spawn_point.global_position
 	global_rotation = spawn_point.global_rotation
 
-	GameManager.clear_spawn_point()
+	if gm:
+		gm.clear_spawn_point()
 
 
 # =========================================================
