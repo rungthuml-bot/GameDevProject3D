@@ -16,23 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://fbr7ah23r8r4" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/column.gltf" id="14_cpbdk"]
 [ext_resource type="PackedScene" uid="uid://d37ky7gqfpdnv" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/ceiling_tile.gltf" id="15_vep3v"]
 [ext_resource type="PackedScene" uid="uid://cfbenjap1tmr4" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_foundation_allsides.gltf" id="16_g74ng"]
-[ext_resource type="PackedScene" uid="uid://hrx7jiu47ppa" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chair.gltf" id="17_g644n"]
-[ext_resource type="PackedScene" uid="uid://dx67k0i3c21a" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_gold.gltf" id="18_uiijq"]
-[ext_resource type="PackedScene" uid="uid://b3b5ffaft12x3" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_patternA_red.gltf" id="19_xrr2q"]
 [ext_resource type="PackedScene" uid="uid://bnjeaj7ce2hce" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_shelves.gltf" id="21_6e4p5"]
-[ext_resource type="PackedScene" uid="uid://83w4wxwmdwm7" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/shelf_large.gltf" id="23_rdjm7"]
-[ext_resource type="PackedScene" uid="uid://k0lyho60jbjf" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/table_medium_decorated_A.gltf" id="24_5d8lx"]
-[ext_resource type="PackedScene" uid="uid://bu1mgggnv5pcc" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/candle_thin_lit.gltf" id="25_get02"]
-[ext_resource type="PackedScene" uid="uid://4jcptaf1cdtj" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/box_stacked.gltf" id="26_tsagx"]
-[ext_resource type="PackedScene" uid="uid://bfrb56x4ramvn" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/trunk_large_A.gltf" id="27_t08yq"]
 [ext_resource type="PackedScene" uid="uid://cvw8dekly277f" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf" id="28_i2ew6"]
 [ext_resource type="PackedScene" uid="uid://dhid3lahj1nm5" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/coin_stack_large.gltf" id="29_b0plw"]
 [ext_resource type="PackedScene" uid="uid://bpyvwq84peg5g" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/coin_stack_medium.gltf" id="30_rbko7"]
-[ext_resource type="PackedScene" uid="uid://db2r864dkqqxt" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_shield_red.gltf" id="31_j4kpm"]
-[ext_resource type="PackedScene" uid="uid://c1mga3qovi1xx" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/rubble_large.gltf" id="32_v2wm6"]
 [ext_resource type="PackedScene" uid="uid://cvfal6kcsvxlk" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/rubble_half.gltf" id="33_48boc"]
-[ext_resource type="PackedScene" uid="uid://nnaxug31jaye" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/sword_shield_broken.gltf" id="34_dc8rg"]
-[ext_resource type="PackedScene" uid="uid://vb0y5w8b7d5f" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_red.gltf" id="35_q6dtt"]
 [ext_resource type="PackedScene" uid="uid://defhphbyovljj" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/banner_shield_brown.gltf" id="36_dsj11"]
 [ext_resource type="PackedScene" uid="uid://cetngk5ubo7j8" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/torch_mounted.gltf" id="37_fuqk1"]
 [ext_resource type="PackedScene" uid="uid://c8m7cotw5yb7o" path="res://Scenes/Player/Player.tscn" id="38_qhr24"]
@@ -41,6 +29,12 @@
 [ext_resource type="Script" uid="uid://yr0fk3f0o7ns" path="res://Scripts/interactable.gd" id="44_scavf"]
 [ext_resource type="Script" uid="uid://0s0h1bfw5tfm" path="res://Scripts/door.gd" id="45_80ihl"]
 [ext_resource type="Script" uid="uid://dsstqgeospd4j" path="res://Scripts/relic_item.gd" id="46_relicitem"]
+[ext_resource type="Script" uid="uid://dqapj5og26fih" path="res://Scripts/throne_chamber_manager.gd" id="47_mgr_scr"]
+[ext_resource type="Script" uid="uid://cw7g46aa0650n" path="res://Scripts/throne_ritual_altar.gd" id="48_altar_scr"]
+[ext_resource type="Script" uid="uid://cl7120nr5l4lg" path="res://Scripts/dart_trap.gd" id="49_dart_scr"]
+[ext_resource type="Script" uid="uid://bpfak46xmhosd" path="res://Scripts/guardian_statue.gd" id="50_guard_scr"]
+[ext_resource type="Script" uid="uid://ca2dtvi2qms0l" path="res://Scripts/sovereign_seal_puzzle.gd" id="51_seal_scr"]
+[ext_resource type="Script" uid="uid://sht683kuya00" path="res://Scripts/sanctum_pressure_trap.gd" id="52_ptrap_scr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2ef8d"]
 size = Vector3(80, 1, 80)
@@ -58,7 +52,13 @@ background_mode = 1
 background_color = Color(0.03, 0.02, 0.03, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.25, 0.22, 0.26, 1)
+ambient_light_energy = 1.1
 tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.08, 0.06, 0.09, 1)
+fog_density = 0.02
+fog_depth_begin = 5.0
+fog_depth_end = 44.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sra6m"]
 size = Vector3(4, 4, 1)
@@ -95,6 +95,93 @@ size = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m4g7t"]
 size = Vector3(2.5, 3.5, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_altar_trig"]
+size = Vector3(2.2, 2.2, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gold_pedestal"]
+albedo_color = Color(0.85, 0.72, 0.28, 1)
+metallic = 0.8
+roughness = 0.25
+emission_enabled = true
+emission = Color(0.7, 0.5, 0.1, 1)
+emission_energy_multiplier = 1.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_altar_pedestal"]
+material = SubResource("StandardMaterial3D_gold_pedestal")
+top_radius = 0.65
+bottom_radius = 0.85
+height = 0.9
+radial_segments = 8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ritual_flame"]
+transparency = 1
+albedo_color = Color(1, 0.55, 0.1, 0.9)
+emission_enabled = true
+emission = Color(1, 0.6, 0.1, 1)
+emission_energy_multiplier = 3.5
+
+[sub_resource type="PrismMesh" id="PrismMesh_altar_gem"]
+material = SubResource("StandardMaterial3D_ritual_flame")
+size = Vector3(0.5, 0.75, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_seal_col"]
+size = Vector3(2.5, 2, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seal_ring"]
+transparency = 1
+albedo_color = Color(0.3, 0.85, 1, 0.85)
+emission_enabled = true
+emission = Color(0.4, 0.9, 1, 1)
+emission_energy_multiplier = 2.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_seal_ring"]
+material = SubResource("StandardMaterial3D_seal_ring")
+inner_radius = 0.7
+outer_radius = 1.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ptrap_col"]
+size = Vector3(3.2, 0.5, 3.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plate_mat"]
+albedo_color = Color(0.35, 0.32, 0.28, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_ptrap_mesh"]
+material = SubResource("StandardMaterial3D_plate_mat")
+size = Vector3(3, 0.1, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dart_vol_col"]
+size = Vector3(4.5, 2, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dart_tip"]
+albedo_color = Color(0.9, 0.2, 0.1, 1)
+metallic = 0.6
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.95, 0.3, 0.1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_dart_mesh"]
+material = SubResource("StandardMaterial3D_dart_tip")
+size = Vector3(3.8, 0.15, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_guard_col"]
+size = Vector3(5.5, 2.5, 5.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shockwave"]
+transparency = 1
+albedo_color = Color(1, 0.35, 0.2, 0.6)
+emission_enabled = true
+emission = Color(1, 0.4, 0.2, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_shockwave"]
+material = SubResource("StandardMaterial3D_shockwave")
+top_radius = 2.6
+bottom_radius = 2.6
+height = 0.3
+radial_segments = 16
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eyhu0"]
 size = Vector3(2.5, 3.5, 2.5)
@@ -204,10 +291,10 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 
 [node name="floor_6_2" parent="KayKitDungeon/Floors" unique_id=1392744230 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -20)
 
-[node name="floor_6_3" parent="KayKitDungeon/Floors" unique_id=1232742938 instance=ExtResource("4_wc3yx")]
+[node name="floor_6_3" parent="KayKitDungeon/Floors" unique_id=1232742938 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -16)
 
-[node name="floor_6_4" parent="KayKitDungeon/Floors" unique_id=1578887328 instance=ExtResource("4_wc3yx")]
+[node name="floor_6_4" parent="KayKitDungeon/Floors" unique_id=1578887328 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -12)
 
 [node name="floor_6_5" parent="KayKitDungeon/Floors" unique_id=575558267 instance=ExtResource("1_eyhu0")]
@@ -225,7 +312,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 [node name="floor_6_9" parent="KayKitDungeon/Floors" unique_id=973060848 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, 0, 8)
 
-[node name="floor_6_10" parent="KayKitDungeon/Floors" unique_id=2020716208 instance=ExtResource("4_wc3yx")]
+[node name="floor_6_10" parent="KayKitDungeon/Floors" unique_id=2020716208 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 12)
 
 [node name="floor_6_11" parent="KayKitDungeon/Floors" unique_id=219098220 instance=ExtResource("1_eyhu0")]
@@ -267,16 +354,16 @@ transform = Transform3D(-1, 0, -2.3849761e-08, 0, 1, 0, 2.3849761e-08, 0, -1, -3
 [node name="floor_7_7" parent="KayKitDungeon/Floors" unique_id=1426924481 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
 
-[node name="floor_7_8" parent="KayKitDungeon/Floors" unique_id=1005591664 instance=ExtResource("4_wc3yx")]
+[node name="floor_7_8" parent="KayKitDungeon/Floors" unique_id=1005591664 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="floor_7_9" parent="KayKitDungeon/Floors" unique_id=1606193171 instance=ExtResource("4_wc3yx")]
+[node name="floor_7_9" parent="KayKitDungeon/Floors" unique_id=1606193171 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
 
 [node name="floor_7_10" parent="KayKitDungeon/Floors" unique_id=761231190 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 12)
 
-[node name="floor_7_11" parent="KayKitDungeon/Floors" unique_id=2134556283 instance=ExtResource("4_wc3yx")]
+[node name="floor_7_11" parent="KayKitDungeon/Floors" unique_id=2134556283 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 16)
 
 [node name="floor_7_12" parent="KayKitDungeon/Floors" unique_id=1658845506 instance=ExtResource("1_eyhu0")]
@@ -303,7 +390,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0
 [node name="floor_8_4" parent="KayKitDungeon/Floors" unique_id=951603704 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -12)
 
-[node name="floor_8_5" parent="KayKitDungeon/Floors" unique_id=1072756996 instance=ExtResource("4_wc3yx")]
+[node name="floor_8_5" parent="KayKitDungeon/Floors" unique_id=1072756996 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -8)
 
 [node name="floor_8_6" parent="KayKitDungeon/Floors" unique_id=1768316529 instance=ExtResource("1_eyhu0")]
@@ -318,7 +405,7 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0
 [node name="floor_8_9" parent="KayKitDungeon/Floors" unique_id=1376836423 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, 8)
 
-[node name="floor_8_10" parent="KayKitDungeon/Floors" unique_id=82851504 instance=ExtResource("4_wc3yx")]
+[node name="floor_8_10" parent="KayKitDungeon/Floors" unique_id=82851504 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 12)
 
 [node name="floor_8_11" parent="KayKitDungeon/Floors" unique_id=1039952214 instance=ExtResource("1_eyhu0")]
@@ -336,22 +423,22 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0
 [node name="floor_9_3" parent="KayKitDungeon/Floors" unique_id=1874196377 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -16)
 
-[node name="floor_9_4" parent="KayKitDungeon/Floors" unique_id=396843528 instance=ExtResource("4_wc3yx")]
+[node name="floor_9_4" parent="KayKitDungeon/Floors" unique_id=396843528 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -12)
 
-[node name="floor_9_5" parent="KayKitDungeon/Floors" unique_id=347275063 instance=ExtResource("4_wc3yx")]
+[node name="floor_9_5" parent="KayKitDungeon/Floors" unique_id=347275063 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -8)
 
 [node name="floor_9_6" parent="KayKitDungeon/Floors" unique_id=2104046308 instance=ExtResource("3_bk8l5")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 8, 0, -4)
 
-[node name="floor_9_7" parent="KayKitDungeon/Floors" unique_id=378737540 instance=ExtResource("4_wc3yx")]
+[node name="floor_9_7" parent="KayKitDungeon/Floors" unique_id=378737540 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 0)
 
 [node name="floor_9_10" parent="KayKitDungeon/Floors" unique_id=1762592970 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 12)
 
-[node name="floor_10_5" parent="KayKitDungeon/Floors" unique_id=1093953774 instance=ExtResource("4_wc3yx")]
+[node name="floor_10_5" parent="KayKitDungeon/Floors" unique_id=1093953774 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 12, 0, -8)
 
 [node name="floor_10_6" parent="KayKitDungeon/Floors" unique_id=812097904 instance=ExtResource("1_eyhu0")]
@@ -363,19 +450,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, 0)
 [node name="floor_10_8" parent="KayKitDungeon/Floors" unique_id=1996666794 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 12, 0, 4)
 
-[node name="floor_10_9" parent="KayKitDungeon/Floors" unique_id=1976703480 instance=ExtResource("4_wc3yx")]
+[node name="floor_10_9" parent="KayKitDungeon/Floors" unique_id=1976703480 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 0, 8)
 
 [node name="floor_10_10" parent="KayKitDungeon/Floors" unique_id=1355358386 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 12)
 
-[node name="floor_11_5" parent="KayKitDungeon/Floors" unique_id=799877735 instance=ExtResource("4_wc3yx")]
+[node name="floor_11_5" parent="KayKitDungeon/Floors" unique_id=799877735 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, -8)
 
 [node name="floor_11_6" parent="KayKitDungeon/Floors" unique_id=1667510418 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, -4)
 
-[node name="floor_11_7" parent="KayKitDungeon/Floors" unique_id=2021696136 instance=ExtResource("4_wc3yx")]
+[node name="floor_11_7" parent="KayKitDungeon/Floors" unique_id=2021696136 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
 [node name="floor_11_8" parent="KayKitDungeon/Floors" unique_id=1063615795 instance=ExtResource("1_eyhu0")]
@@ -387,10 +474,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
 [node name="floor_11_10" parent="KayKitDungeon/Floors" unique_id=901368416 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, 12)
 
-[node name="floor_12_5" parent="KayKitDungeon/Floors" unique_id=1459872474 instance=ExtResource("4_wc3yx")]
+[node name="floor_12_5" parent="KayKitDungeon/Floors" unique_id=1459872474 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -8)
 
-[node name="floor_12_6" parent="KayKitDungeon/Floors" unique_id=933398684 instance=ExtResource("4_wc3yx")]
+[node name="floor_12_6" parent="KayKitDungeon/Floors" unique_id=933398684 instance=ExtResource("1_eyhu0")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, 0, -4)
 
 [node name="floor_12_7" parent="KayKitDungeon/Floors" unique_id=1711743179 instance=ExtResource("1_eyhu0")]
@@ -457,9 +544,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10,
 
 [node name="wall_pillar_4_10_S" parent="KayKitDungeon/Walls" unique_id=183428788 instance=ExtResource("6_6fmek")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, 14)
-
-[node name="wall_archedwindow_open_5_3_N" parent="KayKitDungeon/Walls" unique_id=1064597001 instance=ExtResource("10_hok7v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -18)
 
 [node name="wall_5_3_W" parent="KayKitDungeon/Walls" unique_id=124537148 instance=ExtResource("5_sx5dw")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.995746, 0.020278215, -16.000122)
@@ -729,9 +813,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -10)
 
 [node name="pillar_22_14" parent="KayKitDungeon/Pillars" unique_id=1487971256 instance=ExtResource("12_jougo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, 14)
-
-[node name="proc_pillar_6_9" parent="KayKitDungeon/Pillars" unique_id=1136535177 instance=ExtResource("13_3h00s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
 
 [node name="proc_pillar_6_11" parent="KayKitDungeon/Pillars" unique_id=489685012 instance=ExtResource("13_3h00s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
@@ -1028,12 +1109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, 0)
 [node name="ThroneDais" parent="KayKitDungeon/Props" unique_id=503479169 instance=ExtResource("16_g74ng")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
 
-[node name="ThroneBanner_Left" parent="KayKitDungeon/Props" unique_id=585407276 instance=ExtResource("19_xrr2q")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.8, 2.6, -13.8)
-
-[node name="ThroneBanner_Right" parent="KayKitDungeon/Props" unique_id=1015116324 instance=ExtResource("19_xrr2q")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 1.8, 2.6, -13.8)
-
 [node name="archive_shelf_w_6" parent="KayKitDungeon/Props" unique_id=757862600 instance=ExtResource("21_6e4p5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.45, 0, -4)
 
@@ -1046,32 +1121,8 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.
 [node name="archive_shelf_w_9" parent="KayKitDungeon/Props" unique_id=573800041 instance=ExtResource("21_6e4p5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.45, 0, 8)
 
-[node name="archive_bookcase_2" parent="KayKitDungeon/Props" unique_id=187560811 instance=ExtResource("23_rdjm7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 8)
-
-[node name="archivist_desk" parent="KayKitDungeon/Props" unique_id=738464765 instance=ExtResource("24_5d8lx")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 4)
-
-[node name="@Node3D@3" parent="KayKitDungeon/Props" unique_id=1570799172 instance=ExtResource("17_g644n")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -11.1, 0, 4)
-
-[node name="candle_thin_lit2" parent="KayKitDungeon/Props" unique_id=1218060327 instance=ExtResource("25_get02")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.85, 4.4)
-
-[node name="box_stacked2" parent="KayKitDungeon/Props" unique_id=1565080838 instance=ExtResource("26_tsagx")]
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -21, 0, -9)
-
-[node name="trunk_large_A2" parent="KayKitDungeon/Props" unique_id=145415770 instance=ExtResource("27_t08yq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -9.2)
-
-[node name="RelicAltar" parent="KayKitDungeon/Props" unique_id=331033777 instance=ExtResource("16_g74ng")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
-
 [node name="GoldenRelicChest" parent="KayKitDungeon/Props" unique_id=1987261716 instance=ExtResource("28_i2ew6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.6, -0.4)
-
-[node name="RelicGoldShield" parent="KayKitDungeon/Props" unique_id=145033140 instance=ExtResource("18_uiijq")]
-transform = Transform3D(-5.6824803e-08, 0, -1.3, 0, 1.3, 0, 1.3, 0, -5.6824803e-08, 17.85, 2.4, 0)
 
 [node name="coin_stack_large2" parent="KayKitDungeon/Props" unique_id=1759655807 instance=ExtResource("29_b0plw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 0.6, 0.6)
@@ -1079,38 +1130,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1, 0.6, 0.6)
 [node name="coin_stack_medium2" parent="KayKitDungeon/Props" unique_id=262968819 instance=ExtResource("30_rbko7")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 16.9, 0.6, 0.6)
 
-[node name="banner_shield_red2" parent="KayKitDungeon/Props" unique_id=972837215 instance=ExtResource("31_j4kpm")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.85, 2.4, -4)
-
-[node name="@Node3D@4" parent="KayKitDungeon/Props" unique_id=629027719 instance=ExtResource("31_j4kpm")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.85, 2.4, 4)
-
-[node name="rubble_large2" parent="KayKitDungeon/Props" unique_id=928978014 instance=ExtResource("32_v2wm6")]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -5, 0, 12)
-
-[node name="rubble_half2" parent="KayKitDungeon/Props" unique_id=242499569 instance=ExtResource("33_48boc")]
-transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 5, 0, 8.5)
-
-[node name="sword_shield_broken2" parent="KayKitDungeon/Props" unique_id=1208335154 instance=ExtResource("34_dc8rg")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.85, 1.8, 4)
-
-[node name="banner_red2" parent="KayKitDungeon/Props" unique_id=1243093241 instance=ExtResource("35_q6dtt")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.85, 2.4, 16)
-
-[node name="@Node3D@5" parent="KayKitDungeon/Props" unique_id=2017772699 instance=ExtResource("35_q6dtt")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.85, 2.4, 16)
-
-[node name="@Node3D@6" parent="KayKitDungeon/Props" unique_id=1880081479 instance=ExtResource("33_48boc")]
-transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, -5.1, 0, 28.8)
-
-[node name="@Node3D@7" parent="KayKitDungeon/Props" unique_id=229911956 instance=ExtResource("33_48boc")]
-transform = Transform3D(0.9396926, 0, -0.34202012, 0, 1, 0, 0.34202012, 0, 0.9396926, 5.1, 0, 28.8)
-
 [node name="banner_shield_brown2" parent="KayKitDungeon/Props" unique_id=1451437748 instance=ExtResource("36_dsj11")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.85, 2.2, 24)
-
-[node name="@Node3D@8" parent="KayKitDungeon/Props" unique_id=1902463630 instance=ExtResource("36_dsj11")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.85, 2.2, 24)
 
 [node name="Torches" type="Node3D" parent="KayKitDungeon" unique_id=1878719282]
 
@@ -1121,7 +1142,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.5
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.85, 29.52)
 
 [node name="torch_2" parent="KayKitDungeon/Torches" unique_id=1081692413 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.52, 1.85, 24)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.911191, 1.85, 24)
 
 [node name="torch_3" parent="KayKitDungeon/Torches" unique_id=1813758783 instance=ExtResource("37_fuqk1")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.52, 1.85, 4)
@@ -1133,7 +1154,7 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.52
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5.52, 1.85, 16)
 
 [node name="torch_6" parent="KayKitDungeon/Torches" unique_id=1113864862 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.52, 1.85, 16)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.787631, 1.85, 16)
 
 [node name="torch_7" parent="KayKitDungeon/Torches" unique_id=1952168468 instance=ExtResource("37_fuqk1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.52, 1.85, -16)
@@ -1145,31 +1166,28 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -9.5
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 1.85, 1.52)
 
 [node name="torch_10" parent="KayKitDungeon/Torches" unique_id=2098511405 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 1.85, 1.52)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 1.85, 1.698736)
 
 [node name="torch_11" parent="KayKitDungeon/Torches" unique_id=1821521057 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 1.85, -9.52)
+transform = Transform3D(-0.08521633, 0, 0.99636245, 0, 1, 0, -0.99636245, 0, -0.08521633, -21.767782, 1.85, -7.997689)
 
 [node name="torch_12" parent="KayKitDungeon/Torches" unique_id=2124831963 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.52, 1.85, 12)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.985022, 1.85, 12)
 
 [node name="torch_13" parent="KayKitDungeon/Torches" unique_id=49642472 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.48, 1.85, 8)
-
-[node name="torch_14" parent="KayKitDungeon/Torches" unique_id=75794634 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -21.52, 1.85, -4)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.229273, 1.85, 8)
 
 [node name="torch_15" parent="KayKitDungeon/Torches" unique_id=710393315 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, 1.85, 13.52)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20, 1.85, 13.822092)
 
 [node name="torch_16" parent="KayKitDungeon/Torches" unique_id=617338231 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.48, 1.85, 8)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 10.032612, 1.85, 8)
 
 [node name="torch_17" parent="KayKitDungeon/Torches" unique_id=91980844 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.52, 1.85, 0)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.978195, 1.85, 0)
 
 [node name="torch_18" parent="KayKitDungeon/Torches" unique_id=1164561376 instance=ExtResource("37_fuqk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.85, -9.52)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.85, -9.465731)
 
 [node name="torch_19" parent="KayKitDungeon/Torches" unique_id=350147519 instance=ExtResource("37_fuqk1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.85, -29.52)
@@ -1264,14 +1282,14 @@ shadow_enabled = true
 omni_range = 9.0
 
 [node name="light_torch_10" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=1762544592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.3, 1.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.385128, 1.3813527)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 2.4
 shadow_enabled = true
 omni_range = 9.0
 
 [node name="light_torch_11" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=701834917]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 2.3, -9.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.203632, 2.444634, -8.029995)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
@@ -1285,56 +1303,49 @@ shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_13" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=1530090156]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.83, 2.3, 8)
-light_color = Color(1, 0.74, 0.4, 1)
-light_energy = 1.8
-shadow_enabled = true
-omni_range = 7.5
-
-[node name="light_torch_14" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=1391279081]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.17, 2.3, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5398035, 2.273425, 8)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_15" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=272665682]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.3, 13.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.4649754, 13.465504)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_16" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=616542196]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.83, 2.3, 8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.376269, 2.4529085, 8)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_17" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=1505002135]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.17, 2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.688486, 2.3, 0)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_18" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=171219654]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.3, -9.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 2.4227674, -9.14315)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_19" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=238937072]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.3, -29.17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.3906968, -29.17)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
 omni_range = 7.5
 
 [node name="light_torch_20" type="OmniLight3D" parent="KayKitDungeon/Lights" unique_id=1026387222]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17, 2.3, -24)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.17, 2.3795118, -24)
 light_color = Color(1, 0.74, 0.4, 1)
 light_energy = 1.8
 shadow_enabled = true
@@ -1404,10 +1415,6 @@ shape = SubResource("BoxShape3D_to7b1")
 
 [node name="col_wall_pillar_4_10_S" type="CollisionShape3D" parent="StructureCollision" unique_id=1679854866]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 2, 14)
-shape = SubResource("BoxShape3D_sra6m")
-
-[node name="col_wall_archedwindow_open_5_3_N" type="CollisionShape3D" parent="StructureCollision" unique_id=288721605]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -18)
 shape = SubResource("BoxShape3D_sra6m")
 
 [node name="col_wall_5_3_W" type="CollisionShape3D" parent="StructureCollision" unique_id=1033177546]
@@ -1718,10 +1725,6 @@ shape = SubResource("BoxShape3D_jllq5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 2, 14)
 shape = SubResource("BoxShape3D_jllq5")
 
-[node name="col_proc_pillar_6_9" type="CollisionShape3D" parent="StructureCollision" unique_id=1679585018]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 6)
-shape = SubResource("BoxShape3D_fv2ro")
-
 [node name="col_proc_pillar_6_11" type="CollisionShape3D" parent="StructureCollision" unique_id=1608921846]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 14)
 shape = SubResource("BoxShape3D_fv2ro")
@@ -1763,14 +1766,6 @@ shape = SubResource("BoxShape3D_fgogw")
 [node name="col_archive_shelf_w_9" type="CollisionShape3D" parent="PropCollision" unique_id=1132976319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.45, 1.6, 8)
 shape = SubResource("BoxShape3D_fgogw")
-
-[node name="col_bs2" type="CollisionShape3D" parent="PropCollision" unique_id=1884659962]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1.1, 8)
-shape = SubResource("BoxShape3D_be1bj")
-
-[node name="col_desk" type="CollisionShape3D" parent="PropCollision" unique_id=1022178936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0.5, 4)
-shape = SubResource("BoxShape3D_34m4q")
 
 [node name="col_gchest" type="CollisionShape3D" parent="PropCollision" unique_id=1220342107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.1, -0.4)
@@ -1833,6 +1828,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 [node name="Inspect_RoyalRelic" type="Area3D" parent="." unique_id=815729154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 1.1)
 script = ExtResource("46_relicitem")
+target_shield_path = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Inspect_RoyalRelic" unique_id=2427351]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -1899,6 +1895,221 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0.4)
 light_color = Color(1, 0.95, 0.72, 1)
 light_energy = 2.8
 omni_range = 8.5
+
+[node name="ThroneChamberManager" type="Node3D" parent="." unique_id=982001001]
+script = ExtResource("47_mgr_scr")
+
+[node name="SealBarrierLight" type="OmniLight3D" parent="ThroneChamberManager" unique_id=982001002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.8, 0)
+light_color = Color(1, 0.25, 0.2, 1)
+light_energy = 3.5
+omni_range = 8.0
+
+[node name="ThroneRitualAltar_North" type="Area3D" parent="." unique_id=982002001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
+script = ExtResource("48_altar_scr")
+altar_name = "Throne Altar of Dominion"
+altar_lore = "First ritual altar behind the high throne. The eternal fire of the High King blazes again!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_North" unique_id=982002002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_North" unique_id=982002003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_North" unique_id=982002004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_North" unique_id=982002005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_North" unique_id=982002006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Awaken Throne Altar of Dominion"
+
+[node name="ThroneRitualAltar_West" type="Area3D" parent="." unique_id=982002007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -4)
+script = ExtResource("48_altar_scr")
+altar_index = 1
+altar_name = "Archive Altar of Wisdom"
+altar_lore = "Second ritual altar in the royal archives. Ancient memories surge through the chamber!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_West" unique_id=982002008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_West" unique_id=982002009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_West" unique_id=982002010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_West" unique_id=982002011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_West" unique_id=982002012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Awaken Archive Altar of Wisdom"
+
+[node name="ThroneRitualAltar_East" type="Area3D" parent="." unique_id=982002013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 8)
+script = ExtResource("48_altar_scr")
+altar_index = 2
+altar_name = "Sanctuary Altar of Valor"
+altar_lore = "Third ritual altar guarding the royal treasury. The seal resonance reaches maximum pitch!"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneRitualAltar_East" unique_id=982002014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_altar_trig")
+
+[node name="PedestalMesh" type="MeshInstance3D" parent="ThroneRitualAltar_East" unique_id=982002015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+mesh = SubResource("CylinderMesh_altar_pedestal")
+
+[node name="GemMesh" type="MeshInstance3D" parent="ThroneRitualAltar_East" unique_id=982002016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+mesh = SubResource("PrismMesh_altar_gem")
+
+[node name="AltarLight" type="OmniLight3D" parent="ThroneRitualAltar_East" unique_id=982002017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(1, 0.7, 0.2, 1)
+light_energy = 0.4
+omni_range = 4.5
+
+[node name="InteractionLabel" type="Label3D" parent="ThroneRitualAltar_East" unique_id=982002018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Awaken Sanctuary Altar of Valor"
+
+[node name="SovereignSealPuzzle" type="Area3D" parent="." unique_id=982003001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+script = ExtResource("51_seal_scr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SovereignSealPuzzle" unique_id=982003002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_seal_col")
+
+[node name="SealSymbol" type="MeshInstance3D" parent="SovereignSealPuzzle" unique_id=982003003]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.15, 0)
+mesh = SubResource("TorusMesh_seal_ring")
+
+[node name="SealLight" type="OmniLight3D" parent="SovereignSealPuzzle" unique_id=982003004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_color = Color(1, 0.8, 0.3, 1)
+light_energy = 0.5
+
+[node name="InteractionLabel" type="Label3D" parent="SovereignSealPuzzle" unique_id=982003005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+text = "[E] Inspect Sovereign Seal"
+
+[node name="ThroneFloorTrap_1" type="Area3D" parent="." unique_id=982004001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 20)
+script = ExtResource("52_ptrap_scr")
+trap_name = "Throne Antechamber Pressure Plate"
+damage_amount = 30.0
+telegraph_duration = 0.65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneFloorTrap_1" unique_id=982004002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_ptrap_col")
+
+[node name="WarningLight" type="OmniLight3D" parent="ThroneFloorTrap_1" unique_id=982004004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="ThroneFloorTrap_2" type="Area3D" parent="." unique_id=982004005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 8)
+script = ExtResource("52_ptrap_scr")
+trap_name = "Royal Procession Pressure Plate"
+damage_amount = 30.0
+telegraph_duration = 0.65
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneFloorTrap_2" unique_id=982004006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_ptrap_col")
+
+[node name="PlateMesh" type="MeshInstance3D" parent="ThroneFloorTrap_2" unique_id=982004007]
+mesh = SubResource("BoxMesh_ptrap_mesh")
+
+[node name="WarningLight" type="OmniLight3D" parent="ThroneFloorTrap_2" unique_id=982004008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+light_color = Color(1, 0.65, 0.2, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="ThroneDartTrap_West" type="Area3D" parent="." unique_id=982005001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 0)
+script = ExtResource("49_dart_scr")
+trap_name = "Archive Cross-Corridor Dart Volley"
+safe_interval = 2.8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneDartTrap_West" unique_id=982005002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dart_vol_col")
+
+[node name="DartMesh" type="MeshInstance3D" parent="ThroneDartTrap_West" unique_id=982005003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+visible = false
+mesh = SubResource("BoxMesh_dart_mesh")
+
+[node name="TelegraphLight" type="OmniLight3D" parent="ThroneDartTrap_West" unique_id=982005004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.9, 0.4, 0.1, 1)
+light_energy = 0.2
+omni_range = 4.5
+
+[node name="ThroneDartTrap_East" type="Area3D" parent="." unique_id=982005005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 0)
+script = ExtResource("49_dart_scr")
+trap_name = "Treasury Cross-Corridor Dart Volley"
+safe_interval = 2.8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneDartTrap_East" unique_id=982005006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_dart_vol_col")
+
+[node name="DartMesh" type="MeshInstance3D" parent="ThroneDartTrap_East" unique_id=982005007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+visible = false
+mesh = SubResource("BoxMesh_dart_mesh")
+
+[node name="TelegraphLight" type="OmniLight3D" parent="ThroneDartTrap_East" unique_id=982005008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+light_color = Color(0.9, 0.4, 0.1, 1)
+light_energy = 0.2
+omni_range = 4.5
+
+[node name="ThroneGuardian_North" type="Area3D" parent="." unique_id=982006001]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -8)
+script = ExtResource("50_guard_scr")
+guardian_name = "Sentinel of the Forgotten Throne"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThroneGuardian_North" unique_id=982006002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+shape = SubResource("BoxShape3D_guard_col")
+
+[node name="EyeLight" type="OmniLight3D" parent="ThroneGuardian_North" unique_id=982006003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -0.4)
+light_color = Color(0.4, 0.7, 1, 1)
+light_energy = 0.4
+omni_range = 6.0
+
+[node name="ShockwaveMesh" type="MeshInstance3D" parent="ThroneGuardian_North" unique_id=982006004]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+visible = false
+mesh = SubResource("CylinderMesh_shockwave")
 
 [node name="Exit" type="Marker3D" parent="." unique_id=648983950]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -28)

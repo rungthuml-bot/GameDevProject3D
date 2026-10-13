@@ -100,6 +100,82 @@ const DIALOGUES: Dictionary = {
 				"text": "I won't stop until the truth is revealed."
 			}
 		]
+	},
+	"level_5_intro": {
+		"id": "level_5_intro",
+		"level_id": "level_5",
+		"title": "The Haunted Archive",
+		"lines": [
+			{
+				"speaker": "Player",
+				"text": "Beyond the sanctum... I find myself in a vast subterranean archive."
+			},
+			{
+				"speaker": "Player",
+				"text": "Rows of ancient shelves... and something else — dust disturbed recently."
+			},
+			{
+				"speaker": "Player",
+				"text": "Someone was here before me. I must search every corner."
+			}
+		]
+	},
+	"level_6_intro": {
+		"id": "level_6_intro",
+		"level_id": "level_6",
+		"title": "The Sunken Crypt",
+		"lines": [
+			{
+				"speaker": "Player",
+				"text": "The ground slopes downward into a sunken crypt...\nThe air is thick with decay."
+			},
+			{
+				"speaker": "Player",
+				"text": "Ancient sarcophagi line the walls... each sealed with a dark curse."
+			},
+			{
+				"speaker": "Player",
+				"text": "I'll have to tread carefully — this place does not welcome the living."
+			}
+		]
+	},
+	"level_7_intro": {
+		"id": "level_7_intro",
+		"level_id": "level_7",
+		"title": "Crystal Cavern",
+		"lines": [
+			{
+				"speaker": "Player",
+				"text": "Incredible... The walls here pulse with living crystal formations."
+			},
+			{
+				"speaker": "Player",
+				"text": "Three energy crystals — azure, amethyst, emerald — must be gathered\nto power the Crystal Core."
+			},
+			{
+				"speaker": "Player",
+				"text": "The beams of light shift as I move. I must solve what the cavern is telling me."
+			}
+		]
+	},
+	"level_8_intro": {
+		"id": "level_8_intro",
+		"level_id": "level_8",
+		"title": "Forgotten Throne",
+		"lines": [
+			{
+				"speaker": "Player",
+				"text": "The Forgotten Throne... This is the heart of the labyrinth."
+			},
+			{
+				"speaker": "Player",
+				"text": "Three ritual altars surround the throne — each must be activated\nto reveal the Sovereign Relic."
+			},
+			{
+				"speaker": "Player",
+				"text": "After all this... the truth finally lies within reach."
+			}
+		]
 	}
 }
 

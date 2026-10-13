@@ -3,8 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/final_door.gd" id="1_finaldoor"]
 [ext_resource type="PackedScene" uid="uid://1oij6tc6tn1e" path="res://Assets/Test_Asset/Door by Quaternius - a948jjnuaL.glb" id="2_doorglb"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_final"]
-size = Vector3(1.8, 3.17724, 0.456604)
+[sub_resource type="BoxShape3D" id="BoxShape3D_final_trigger"]
+size = Vector3(2.6, 3.2, 2.0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_final_solid"]
+size = Vector3(1.8, 3.1, 0.3)
 
 [node name="FinalDoor" type="Area3D" unique_id=111222333]
 script = ExtResource("1_finaldoor")
@@ -12,8 +15,17 @@ script = ExtResource("1_finaldoor")
 [node name="Root Scene" parent="." unique_id=444555666 instance=ExtResource("2_doorglb")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5939407, 0.013031006)
-shape = SubResource("BoxShape3D_final")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0.4)
+shape = SubResource("BoxShape3D_final_trigger")
 
 [node name="InteractionLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0655727, 0.5908489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8, 0.6)
+visible = false
+billboard = 1
+modulate = Color(0.85, 0.45, 0.45, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="DoorCol" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55, 0)
+shape = SubResource("BoxShape3D_final_solid")

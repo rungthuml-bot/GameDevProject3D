@@ -5,3 +5,5 @@
 # Large archive packages
 *.zip
 
+# Scratch and test workspace
+scratch/

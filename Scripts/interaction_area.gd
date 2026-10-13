@@ -40,9 +40,22 @@ func _on_area_exited(area: Area3D) -> void:
 	print("Interactable left: ", area.name)
 
 
+var _last_interact_time: float = 0.0
+const INTERACT_COOLDOWN_SEC: float = 0.25
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("interact"):
 		return
+
+	# Prevent key repetition / echo
+	if event is InputEventKey and event.echo:
+		return
+
+	var now := Time.get_ticks_msec() / 1000.0
+	if now - _last_interact_time < INTERACT_COOLDOWN_SEC:
+		return
+	_last_interact_time = now
 
 	# ==========================================
 	# If UI is currently open: E = Close UI

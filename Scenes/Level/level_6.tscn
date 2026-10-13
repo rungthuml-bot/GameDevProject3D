@@ -57,7 +57,13 @@ background_mode = 1
 background_color = Color(0.02, 0.03, 0.05, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.24, 0.34, 0.42, 1)
+ambient_light_energy = 1.1
 tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.06, 0.08, 0.12, 1)
+fog_density = 0.020
+fog_depth_begin = 5.0
+fog_depth_end = 44.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f1smp"]
 size = Vector3(4, 4, 1)
@@ -138,7 +144,7 @@ shadow_enabled = true
 
 [node name="Floors" type="Node3D" parent="KayKitDungeon" unique_id=1120856325]
 
-[node name="floor_1_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1606560845 instance=ExtResource("1_ix0xv")]
+[node name="floor_1_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1606560845 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -28, 0, -8)
 
 [node name="floor_1_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1042227426 instance=ExtResource("2_bo4p4")]
@@ -150,7 +156,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 0)
 [node name="floor_2_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=128563801 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -24, 0, -8)
 
-[node name="floor_2_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=864868527 instance=ExtResource("1_ix0xv")]
+[node name="floor_2_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=864868527 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24, 0, -4)
 
 [node name="floor_2_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1108368804 instance=ExtResource("2_bo4p4")]
@@ -171,16 +177,16 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -16,
 [node name="floor_4_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1306688557 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -16, 0, -4)
 
-[node name="floor_4_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2064918831 instance=ExtResource("1_ix0xv")]
+[node name="floor_4_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2064918831 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0)
 
 [node name="floor_5_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1256970380 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -12)
 
-[node name="floor_5_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1232742938 instance=ExtResource("3_m6p3b")]
+[node name="floor_5_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1232742938 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -12, 0, -8)
 
-[node name="floor_5_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1512715548 instance=ExtResource("3_m6p3b")]
+[node name="floor_5_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1512715548 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -12, 0, -4)
 
 [node name="floor_5_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=287342118 instance=ExtResource("2_bo4p4")]
@@ -198,16 +204,16 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 
 [node name="floor_6_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=410547494 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -12)
 
-[node name="floor_6_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=119004058 instance=ExtResource("3_m6p3b")]
+[node name="floor_6_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=119004058 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -8)
 
-[node name="floor_6_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1913403837 instance=ExtResource("4_nq8ik")]
+[node name="floor_6_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1913403837 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, -4)
 
-[node name="floor_6_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1500602249 instance=ExtResource("3_m6p3b")]
+[node name="floor_6_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1500602249 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
 
-[node name="floor_6_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=665461081 instance=ExtResource("4_nq8ik")]
+[node name="floor_6_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=665461081 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 4)
 
 [node name="floor_7_0" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1662423362 instance=ExtResource("2_bo4p4")]
@@ -225,16 +231,16 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 
 [node name="floor_7_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=352052666 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -16)
 
-[node name="floor_7_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=271838405 instance=ExtResource("3_m6p3b")]
+[node name="floor_7_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=271838405 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, 0, -12)
 
-[node name="floor_7_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1391337698 instance=ExtResource("3_m6p3b")]
+[node name="floor_7_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1391337698 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -8)
 
 [node name="floor_7_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=96536093 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0, -4)
 
-[node name="floor_7_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1843889728 instance=ExtResource("3_m6p3b")]
+[node name="floor_7_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1843889728 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -4, 0, 0)
 
 [node name="floor_7_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=390474510 instance=ExtResource("2_bo4p4")]
@@ -273,19 +279,19 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0
 [node name="floor_8_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=142086455 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16)
 
-[node name="floor_8_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=74570756 instance=ExtResource("3_m6p3b")]
+[node name="floor_8_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=74570756 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -12)
 
-[node name="floor_8_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1433808170 instance=ExtResource("3_m6p3b")]
+[node name="floor_8_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1433808170 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -8)
 
 [node name="floor_8_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=184523299 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -4)
 
-[node name="floor_8_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=443423075 instance=ExtResource("3_m6p3b")]
+[node name="floor_8_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=443423075 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="floor_8_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=403955873 instance=ExtResource("3_m6p3b")]
+[node name="floor_8_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=403955873 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [node name="floor_8_10" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1967481433 instance=ExtResource("2_bo4p4")]
@@ -321,19 +327,19 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0
 [node name="floor_9_4" type="Node3D" parent="KayKitDungeon/Floors" unique_id=472549784 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -16)
 
-[node name="floor_9_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=991733268 instance=ExtResource("3_m6p3b")]
+[node name="floor_9_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=991733268 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, -12)
 
-[node name="floor_9_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2142076954 instance=ExtResource("4_nq8ik")]
+[node name="floor_9_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=2142076954 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 4, 0, -8)
 
-[node name="floor_9_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=156752419 instance=ExtResource("4_nq8ik")]
+[node name="floor_9_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=156752419 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
 
 [node name="floor_9_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1148002560 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 0)
 
-[node name="floor_9_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1539071410 instance=ExtResource("4_nq8ik")]
+[node name="floor_9_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1539071410 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 
 [node name="floor_9_10" type="Node3D" parent="KayKitDungeon/Floors" unique_id=710449343 instance=ExtResource("2_bo4p4")]
@@ -366,25 +372,25 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 8, 0
 [node name="floor_10_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=637215139 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -8)
 
-[node name="floor_10_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1536784438 instance=ExtResource("3_m6p3b")]
+[node name="floor_10_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1536784438 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, -4)
 
-[node name="floor_10_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=974495718 instance=ExtResource("4_nq8ik")]
+[node name="floor_10_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=974495718 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
 
-[node name="floor_10_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1180071110 instance=ExtResource("3_m6p3b")]
+[node name="floor_10_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1180071110 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, 4)
 
 [node name="floor_11_5" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1709517653 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, -12)
 
-[node name="floor_11_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1755199202 instance=ExtResource("3_m6p3b")]
+[node name="floor_11_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1755199202 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, -8)
 
-[node name="floor_11_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1390530963 instance=ExtResource("3_m6p3b")]
+[node name="floor_11_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1390530963 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -4)
 
-[node name="floor_11_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=725198255 instance=ExtResource("4_nq8ik")]
+[node name="floor_11_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=725198255 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12, 0, 0)
 
 [node name="floor_11_9" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1340444588 instance=ExtResource("2_bo4p4")]
@@ -396,7 +402,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 16, 
 [node name="floor_12_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=1102615590 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 16, 0, -4)
 
-[node name="floor_12_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=771545113 instance=ExtResource("1_ix0xv")]
+[node name="floor_12_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=771545113 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0)
 
 [node name="floor_13_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=181733004 instance=ExtResource("2_bo4p4")]
@@ -411,13 +417,13 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 20, 
 [node name="floor_14_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=825078409 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -8)
 
-[node name="floor_14_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=817055402 instance=ExtResource("1_ix0xv")]
+[node name="floor_14_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=817055402 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -4)
 
-[node name="floor_14_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=808636184 instance=ExtResource("1_ix0xv")]
+[node name="floor_14_8" type="Node3D" parent="KayKitDungeon/Floors" unique_id=808636184 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 0)
 
-[node name="floor_15_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=968115110 instance=ExtResource("1_ix0xv")]
+[node name="floor_15_6" type="Node3D" parent="KayKitDungeon/Floors" unique_id=968115110 instance=ExtResource("2_bo4p4")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 28, 0, -8)
 
 [node name="floor_15_7" type="Node3D" parent="KayKitDungeon/Floors" unique_id=520230850 instance=ExtResource("2_bo4p4")]
@@ -695,132 +701,6 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 28, 
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 30, 0, 0)
 
 [node name="Pillars" type="Node3D" parent="KayKitDungeon" unique_id=1485335262]
-
-[node name="pillar_-30_-10" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1489123347 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -10)
-
-[node name="pillar_-30_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=168612210 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 2)
-
-[node name="pillar_-14_-14" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1867375604 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -14)
-
-[node name="pillar_-14_-10" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=172767929 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -10)
-
-[node name="pillar_-14_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=761562552 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 2)
-
-[node name="pillar_-14_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1225422723 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 6)
-
-[node name="pillar_-10_-26" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1469180904 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -26)
-
-[node name="pillar_-10_-18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1561478126 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -18)
-
-[node name="pillar_-6_-34" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1930004986 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -34)
-
-[node name="pillar_-6_-26" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1562496186 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -26)
-
-[node name="pillar_-6_-18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1688656507 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
-
-[node name="pillar_-6_-14" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1108903126 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -14)
-
-[node name="pillar_-6_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1550219332 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
-
-[node name="pillar_-6_18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1757165710 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 18)
-
-[node name="pillar_-6_30" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1889355110 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 30)
-
-[node name="pillar_6_-34" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=649751070 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -34)
-
-[node name="pillar_6_-26" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=706206589 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -26)
-
-[node name="pillar_6_-18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1019727811 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -18)
-
-[node name="pillar_6_-14" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1714138217 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -14)
-
-[node name="pillar_6_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1849601127 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)
-
-[node name="pillar_6_18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=748211154 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 18)
-
-[node name="pillar_6_30" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=693749609 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 30)
-
-[node name="pillar_10_-26" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=320309048 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -26)
-
-[node name="pillar_10_-18" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=94268869 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -18)
-
-[node name="pillar_14_-14" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=703330565 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -14)
-
-[node name="pillar_14_-10" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1112318664 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -10)
-
-[node name="pillar_14_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=345120847 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 2)
-
-[node name="pillar_14_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1765809614 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 6)
-
-[node name="pillar_30_-10" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1554612350 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -10)
-
-[node name="pillar_30_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1491521065 instance=ExtResource("12_pvn8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 2)
-
-[node name="corr_pillar_7_11" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1136535177 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 10)
-
-[node name="corr_pillar_9_11" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1397549717 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
-
-[node name="corr_pillar_7_12" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=138846368 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 14)
-
-[node name="corr_pillar_9_12" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1065806364 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
-
-[node name="hall_pillar_7_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=16186892 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10)
-
-[node name="hall_pillar_9_6" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1238678711 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -10)
-
-[node name="hall_pillar_7_8" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1255533887 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -2)
-
-[node name="hall_pillar_9_8" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1612991991 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
-
-[node name="ritual_pillar_7_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1176555849 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -26)
-
-[node name="ritual_pillar_9_2" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=427870098 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -26)
-
-[node name="ritual_pillar_7_4" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1182496814 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -18)
-
-[node name="ritual_pillar_9_4" type="Node3D" parent="KayKitDungeon/Pillars" unique_id=1905970680 instance=ExtResource("13_7s2kn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -18)
 
 [node name="Ceilings" type="Node3D" parent="KayKitDungeon" unique_id=1544197445]
 
@@ -1120,9 +1000,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0, 29.1)
 [node name="candle_lit_9_15" type="Node3D" parent="KayKitDungeon/Props" unique_id=1921655837 instance=ExtResource("15_5pwkl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, 29.1)
 
-[node name="rubble_half_7_13" type="Node3D" parent="KayKitDungeon/Props" unique_id=242499569 instance=ExtResource("16_jmtif")]
-transform = Transform3D(0.7047695, 0, 0.2565151, 0, 0.75, 0, -0.2565151, 0, 0.7047695, -4.5, 0, 19.4)
-
 [node name="barrier_half_9_13" type="Node3D" parent="KayKitDungeon/Props" unique_id=2038947495 instance=ExtResource("17_t61ur")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8, 0, 19.2)
 
@@ -1134,18 +1011,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.9,
 
 [node name="candle_lit_8_11" type="Node3D" parent="KayKitDungeon/Props" unique_id=25629864 instance=ExtResource("15_5pwkl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 12)
-
-[node name="rubble_half_7_10" type="Node3D" parent="KayKitDungeon/Props" unique_id=1370540573 instance=ExtResource("16_jmtif")]
-transform = Transform3D(0.67614806, 0, -0.18117332, 0, 0.7, 0, 0.18117332, 0, 0.67614806, -4.6, 0, 8.8)
-
-[node name="rubble_large_8_7" type="Node3D" parent="KayKitDungeon/Props" unique_id=928978014 instance=ExtResource("19_d0wqd")]
-transform = Transform3D(0.8863269, 0, 0.15628336, 0, 0.9, 0, -0.15628336, 0, 0.8863269, 0, 0, -4)
-
-[node name="rubble_half_6_9" type="Node3D" parent="KayKitDungeon/Props" unique_id=358535487 instance=ExtResource("16_jmtif")]
-transform = Transform3D(0.56568545, 0, 0.56568545, 0, 0.8, 0, -0.56568545, 0, 0.56568545, -8.5, 0, 4.5)
-
-[node name="rubble_half_10_9" type="Node3D" parent="KayKitDungeon/Props" unique_id=1913221761 instance=ExtResource("16_jmtif")]
-transform = Transform3D(0.65532166, 0, -0.45886117, 0, 0.8, 0, 0.45886117, 0, 0.65532166, 8.5, 0, 4.5)
 
 [node name="barrier_6_5" type="Node3D" parent="KayKitDungeon/Props" unique_id=1642406912 instance=ExtResource("20_8pyfp")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -8.8, 0, -12.8)
@@ -1726,199 +1591,11 @@ shape = SubResource("BoxShape3D_f1smp")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, 0)
 shape = SubResource("BoxShape3D_d4urd")
 
-[node name="col_pillar_-30_-10" type="CollisionShape3D" parent="StructureCollision" unique_id=855317857]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-30_2" type="CollisionShape3D" parent="StructureCollision" unique_id=2035265533]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2, 2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-14_-14" type="CollisionShape3D" parent="StructureCollision" unique_id=1043647823]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-14_-10" type="CollisionShape3D" parent="StructureCollision" unique_id=220012709]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-14_2" type="CollisionShape3D" parent="StructureCollision" unique_id=189987265]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-14_6" type="CollisionShape3D" parent="StructureCollision" unique_id=1492074501]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 2, 6)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-10_-26" type="CollisionShape3D" parent="StructureCollision" unique_id=64970412]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-10_-18" type="CollisionShape3D" parent="StructureCollision" unique_id=971904469]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_-34" type="CollisionShape3D" parent="StructureCollision" unique_id=1178076915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -34)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_-26" type="CollisionShape3D" parent="StructureCollision" unique_id=297072234]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_-18" type="CollisionShape3D" parent="StructureCollision" unique_id=1688470354]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_-14" type="CollisionShape3D" parent="StructureCollision" unique_id=1599382357]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_6" type="CollisionShape3D" parent="StructureCollision" unique_id=1262498838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 6)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_18" type="CollisionShape3D" parent="StructureCollision" unique_id=2061051490]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_-6_30" type="CollisionShape3D" parent="StructureCollision" unique_id=1740296321]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 30)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_-34" type="CollisionShape3D" parent="StructureCollision" unique_id=1703035120]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -34)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_-26" type="CollisionShape3D" parent="StructureCollision" unique_id=1892258786]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_-18" type="CollisionShape3D" parent="StructureCollision" unique_id=64276221]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_-14" type="CollisionShape3D" parent="StructureCollision" unique_id=1703039747]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_6" type="CollisionShape3D" parent="StructureCollision" unique_id=727266045]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 6)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_18" type="CollisionShape3D" parent="StructureCollision" unique_id=1546486267]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_6_30" type="CollisionShape3D" parent="StructureCollision" unique_id=1259430986]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 30)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_10_-26" type="CollisionShape3D" parent="StructureCollision" unique_id=1343375448]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_10_-18" type="CollisionShape3D" parent="StructureCollision" unique_id=1704429874]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_14_-14" type="CollisionShape3D" parent="StructureCollision" unique_id=573378265]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_14_-10" type="CollisionShape3D" parent="StructureCollision" unique_id=1112125841]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_14_2" type="CollisionShape3D" parent="StructureCollision" unique_id=211439342]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_14_6" type="CollisionShape3D" parent="StructureCollision" unique_id=1364470719]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, 6)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_30_-10" type="CollisionShape3D" parent="StructureCollision" unique_id=362708460]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_pillar_30_2" type="CollisionShape3D" parent="StructureCollision" unique_id=737781850]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2, 2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_corr_pillar_7_11" type="CollisionShape3D" parent="StructureCollision" unique_id=168935105]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_corr_pillar_9_11" type="CollisionShape3D" parent="StructureCollision" unique_id=1090150637]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_corr_pillar_7_12" type="CollisionShape3D" parent="StructureCollision" unique_id=266255415]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, 14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_corr_pillar_9_12" type="CollisionShape3D" parent="StructureCollision" unique_id=486484417]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 14)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_hall_pillar_7_6" type="CollisionShape3D" parent="StructureCollision" unique_id=309737204]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_hall_pillar_9_6" type="CollisionShape3D" parent="StructureCollision" unique_id=1473851308]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -10)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_hall_pillar_7_8" type="CollisionShape3D" parent="StructureCollision" unique_id=14905380]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_hall_pillar_9_8" type="CollisionShape3D" parent="StructureCollision" unique_id=426739513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -2)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_ritual_pillar_7_2" type="CollisionShape3D" parent="StructureCollision" unique_id=2022774639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_ritual_pillar_9_2" type="CollisionShape3D" parent="StructureCollision" unique_id=360745364]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -26)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_ritual_pillar_7_4" type="CollisionShape3D" parent="StructureCollision" unique_id=1626383297]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
-[node name="col_ritual_pillar_9_4" type="CollisionShape3D" parent="StructureCollision" unique_id=736091529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -18)
-shape = SubResource("BoxShape3D_6lu4j")
-
 [node name="PropCollision" type="StaticBody3D" parent="." unique_id=1972834315]
-
-[node name="col_rubble_half_7_13" type="CollisionShape3D" parent="PropCollision" unique_id=524419891]
-transform = Transform3D(0.9396926, 0, 0.34202012, 0, 1, 0, -0.34202012, 0, 0.9396926, -3.0947652, 1.3125, 18.875523)
-shape = SubResource("BoxShape3D_hchh8")
 
 [node name="col_barrier_half_9_13" type="CollisionShape3D" parent="PropCollision" unique_id=1736973060]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.8, 0.55, 18.2)
 shape = SubResource("BoxShape3D_vnrm0")
-
-[node name="col_rubble_half_7_10" type="CollisionShape3D" parent="PropCollision" unique_id=1830414046]
-transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -3.244867, 1.225, 9.151292)
-shape = SubResource("BoxShape3D_y2cpk")
-
-[node name="col_rubble_large_8_7" type="CollisionShape3D" parent="PropCollision" unique_id=1762232546]
-transform = Transform3D(0.9848077, 0, 0.17364818, 0, 1, 0, -0.17364818, 0, 0.9848077, -0.002817716, 1.5732396, -3.9941106)
-shape = SubResource("BoxShape3D_ws6de")
-
-[node name="col_rubble_half_6_9" type="CollisionShape3D" parent="PropCollision" unique_id=2132927695]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -7.3779497, 1.4, 3.3595042)
-shape = SubResource("BoxShape3D_7plr6")
-
-[node name="col_rubble_half_10_9" type="CollisionShape3D" parent="PropCollision" unique_id=1634912726]
-transform = Transform3D(0.81915206, 0, -0.57357645, 0, 1, 0, 0.57357645, 0, 0.81915206, 9.818011, 1.4, 5.4069586)
-shape = SubResource("BoxShape3D_7plr6")
 
 [node name="col_barrier_6_5" type="CollisionShape3D" parent="PropCollision" unique_id=903877715]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -8.8, 0.55, -12.8)

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://test_level1_sim_runner"]
-
-[ext_resource type="Script" path="res://scratch/test_level1_sim.gd" id="1_simrunner"]
-
-[node name="TestLevel1Sim" type="Node"]
-script = ExtResource("1_simrunner")

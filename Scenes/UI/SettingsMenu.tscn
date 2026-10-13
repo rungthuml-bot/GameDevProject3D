@@ -576,6 +576,19 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(240, 32)
 layout_mode = 2
 
+[node name="LanguageRow" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/LanguageRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Display Language (ภาษาที่แสดง)"
+
+[node name="LanguageOption" type="OptionButton" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox/TabContainer/Gameplay/GameplayVBox/LanguageRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+
 [node name="ButtonsContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer/ContentBox"]
 layout_mode = 2
 alignment = 1

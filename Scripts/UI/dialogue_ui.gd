@@ -28,6 +28,10 @@ var _arrow_tween: Tween = null
 var _last_type_sfx_time: float = 0.0
 
 
+func _get_ui() -> Node:
+	return get_node_or_null("/root/UIManager")
+
+
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("dialogue_ui")
@@ -39,10 +43,12 @@ func _ready() -> void:
 	continue_indicator.modulate.a = 0.0
 
 	# Connect with UIManager signals
-	UIManager.dialogue_started.connect(_on_dialogue_started)
-	UIManager.dialogue_line_displayed.connect(_on_dialogue_line_displayed)
-	UIManager.dialogue_ended.connect(_on_dialogue_ended)
-	UIManager.settings_updated.connect(_apply_accessibility_settings)
+	var ui = _get_ui()
+	if ui:
+		ui.dialogue_started.connect(_on_dialogue_started)
+		ui.dialogue_line_displayed.connect(_on_dialogue_line_displayed)
+		ui.dialogue_ended.connect(_on_dialogue_ended)
+		ui.settings_updated.connect(_apply_accessibility_settings)
 
 	_apply_accessibility_settings()
 	_start_indicator_pulse()
@@ -51,9 +57,10 @@ func _ready() -> void:
 func _apply_accessibility_settings() -> void:
 	if not is_instance_valid(dialogue_text):
 		return
-	if UIManager:
+	var ui = _get_ui()
+	if ui:
 		# Text size: 0: Normal (16px), 1: Large (19px)
-		var font_size := 16 if UIManager.text_size_index == 0 else 20
+		var font_size := 16 if ui.text_size_index == 0 else 20
 		dialogue_text.add_theme_font_size_override("font_size", font_size)
 
 
@@ -82,8 +89,9 @@ func _step_type_sfx() -> void:
 	var now := Time.get_ticks_msec() / 1000.0
 	if now - _last_type_sfx_time >= 0.065:
 		_last_type_sfx_time = now
-		if has_node("/root/AudioManager"):
-			AudioManager.play_dialogue_typing()
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_dialogue_typing()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -112,11 +120,15 @@ func _handle_advance_input() -> void:
 		_finish_typing_instant()
 	else:
 		# If finished typing, go to next line
-		UIManager.next_dialogue()
+		var ui = _get_ui()
+		if ui:
+			ui.next_dialogue()
 
 
 func _handle_skip_input() -> void:
-	UIManager.close_dialogue()
+	var ui = _get_ui()
+	if ui:
+		ui.close_dialogue()
 
 
 func _finish_typing_instant() -> void:

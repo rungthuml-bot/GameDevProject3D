@@ -4,6 +4,7 @@
 [ext_resource type="Theme" path="res://Scenes/UI/GameTheme.tres" id="2_theme"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/DialogueUI.tscn" id="3_dlg"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/InventoryUI.tscn" id="4_inv"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/QuestLogUI.tscn" id="5_questlog"]
 
 [sub_resource type="SystemFont" id="Font_serif"]
 font_names = PackedStringArray("Palatino Linotype", "Book Antiqua", "Georgia", "Times New Roman", "Serif")
@@ -791,3 +792,5 @@ visible = false
 [connection signal="pressed" from="WinScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_win_main_menu"]
 [connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/RetryButton" to="." method="_on_lose_retry"]
 [connection signal="pressed" from="LoseScreen/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ButtonsContainer/MainMenuButton" to="." method="_on_lose_main_menu"]
+
+[node name="QuestLogUI" parent="." instance=ExtResource("5_questlog")]

@@ -140,7 +140,6 @@ func _setup_scene_mappings() -> void:
 		"res://Scenes/UI/Credits.tscn": MUSIC_CREDITS,
 		"res://Scenes/UI/SplashScreen.tscn": MUSIC_MENU,
 		"res://Scenes/Level/level_0.tscn": MUSIC_LEVEL1,
-		"res://Scenes/Level/map_0.tscn": MUSIC_LEVEL1,
 		"res://Scenes/Level/level_1.tscn": MUSIC_LEVEL1,
 		"res://Scenes/Level/level_2.tscn": MUSIC_LEVEL2,
 		"res://Scenes/Level/level_3.tscn": MUSIC_LEVEL3,
@@ -154,7 +153,6 @@ func _setup_scene_mappings() -> void:
 
 	_scene_ambient_map = {
 		"res://Scenes/Level/level_0.tscn": AMBIENT_FOREST,
-		"res://Scenes/Level/map_0.tscn": AMBIENT_FOREST,
 		"res://Scenes/Level/level_3.tscn": AMBIENT_CAVE,
 		"res://Scenes/Level/level_6.tscn": AMBIENT_WATER,
 		"res://Scenes/Level/level_7.tscn": AMBIENT_CAVE,
@@ -327,6 +325,11 @@ func play_door_sfx() -> void:
 
 func play_lock_unlock_sfx() -> void:
 	play_sfx(SFX_LOCK_UNLOCK, 0.0)
+
+
+func play_chest_open_sfx() -> void:
+	play_sfx(SFX_LOCK_UNLOCK, 1.0, 1.05)
+	play_sfx(SFX_DOOR_OPEN, -2.0, 1.25)
 
 
 func play_button_sfx() -> void:

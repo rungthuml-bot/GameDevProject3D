@@ -37,6 +37,7 @@ const SELECT_TIME := 0.18
 # Gameplay & Accessibility
 @onready var subtitles_toggle: Button = %SubtitlesToggle
 @onready var text_size_opt: OptionButton = %TextSizeOption
+@onready var language_opt: OptionButton = %LanguageOption
 
 # Action Buttons
 @onready var apply_btn: Button = %ApplyButton
@@ -100,6 +101,11 @@ func _setup_options() -> void:
 	text_size_opt.add_item("Normal (ปกติ - 16px)", 0)
 	text_size_opt.add_item("Large (ขนาดใหญ่ - 20px)", 1)
 
+	if is_instance_valid(language_opt):
+		language_opt.clear()
+		language_opt.add_item("🇹🇭 ภาษาไทย (Thai)", 0)
+		language_opt.add_item("🇺🇸 English", 1)
+
 
 func _load_ui_from_manager() -> void:
 	if not UIManager:
@@ -125,6 +131,8 @@ func _load_ui_from_manager() -> void:
 	# Gameplay
 	_set_toggle_button(subtitles_toggle, UIManager.subtitles_enabled)
 	text_size_opt.select(UIManager.text_size_index)
+	if is_instance_valid(language_opt):
+		language_opt.select(0 if UIManager.current_language == "th" else 1)
 
 
 func _set_toggle_button(btn: Button, is_on: bool) -> void:
@@ -271,6 +279,9 @@ func _on_apply() -> void:
 
 	UIManager.subtitles_enabled = _is_toggle_on(subtitles_toggle)
 	UIManager.text_size_index = text_size_opt.selected
+	if is_instance_valid(language_opt):
+		var lang := "th" if language_opt.selected == 0 else "en"
+		UIManager.set_language(lang)
 
 	# Apply across all systems and persist
 	UIManager.apply_all_settings()

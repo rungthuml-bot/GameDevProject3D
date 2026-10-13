@@ -25,6 +25,22 @@ func _ready() -> void:
 	elif puzzle_ui.has_method("set_total_time"):
 		puzzle_ui.set_total_time(puzzle_time)
 
+	# Check persistent puzzle state
+	var gm = get_node_or_null("/root/GameManager")
+	var cur_lvl = ""
+	if get_tree().current_scene:
+		cur_lvl = get_tree().current_scene.scene_file_path
+	if gm != null and gm.is_puzzle_solved_saved(cur_lvl, "puzzle_dual_pedestal"):
+		puzzle_completed = true
+		red_pressed = true
+		blue_pressed = true
+		timer_active = false
+		if puzzle_ui != null:
+			puzzle_ui.show_completed()
+		var door = get_tree().current_scene.get_node_or_null("Door_To_Level3")
+		if door != null:
+			door.unlock_door()
+
 
 func press_red() -> void:
 	if puzzle_completed:
@@ -99,9 +115,10 @@ func _process(delta: float) -> void:
 		var current_sec: int = int(ceil(remaining_time))
 		if current_sec != _last_warned_second and current_sec > 0:
 			_last_warned_second = current_sec
-			if has_node("/root/AudioManager"):
+			var am = get_node_or_null("/root/AudioManager")
+			if am:
 				var pitch: float = 1.0 + (warn_threshold - remaining_time) / warn_threshold * 0.3
-				AudioManager.play_puzzle_warning_sfx(pitch)
+				am.play_puzzle_warning_sfx(pitch)
 
 	if puzzle_ui != null:
 		puzzle_ui.update_timer(remaining_time)
@@ -115,8 +132,16 @@ func check_puzzle() -> void:
 
 		print("PUZZLE COMPLETED!")
 
-		if has_node("/root/AudioManager"):
-			AudioManager.play_puzzle_solved_sfx()
+		var gm = get_node_or_null("/root/GameManager")
+		var cur_lvl = ""
+		if get_tree().current_scene:
+			cur_lvl = get_tree().current_scene.scene_file_path
+		if gm != null:
+			gm.record_puzzle_solved(cur_lvl, "puzzle_dual_pedestal")
+
+		var am = get_node_or_null("/root/AudioManager")
+		if am:
+			am.play_puzzle_solved_sfx()
 
 		if puzzle_ui != null:
 			puzzle_ui.show_completed()

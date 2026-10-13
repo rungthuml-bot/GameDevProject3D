@@ -38,14 +38,15 @@ func _process(_delta: float) -> void:
 
 
 func _update_state() -> void:
-	if GameManager and GameManager.relic_returned:
+	var gm = get_node_or_null("/root/GameManager")
+	if gm and gm.relic_returned:
 		if is_instance_valid(relic_visual):
 			relic_visual.visible = true
 		interaction_label.text = "[E] Inspect Altar"
 	else:
 		if is_instance_valid(relic_visual):
 			relic_visual.visible = false
-		if GameManager and GameManager.has_relic:
+		if gm and gm.has_relic:
 			interaction_label.text = "[E] Place Relic"
 		else:
 			interaction_label.text = "[E] Inspect Altar"
@@ -61,34 +62,37 @@ func hide_interaction_prompt() -> void:
 
 
 func interact() -> void:
-	if not GameManager:
+	var gm = get_node_or_null("/root/GameManager")
+	var am = get_node_or_null("/root/AudioManager")
+	var ui = get_node_or_null("/root/UIManager")
+	if gm == null:
 		return
 
-	if not GameManager.has_relic:
+	if not gm.has_relic:
 		# Player doesn't have relic yet
-		if is_inside_tree() and has_node("/root/AudioManager"):
-			AudioManager.play_interact_sfx()
-		if is_inside_tree() and has_node("/root/UIManager"):
-			UIManager.notify_warning("You do not possess the Sovereign Relic yet.")
+		if am:
+			am.play_interact_sfx()
+		if ui:
+			ui.notify_warning("You do not possess the Sovereign Relic yet.")
 		_show_message(interaction_title, description_empty)
 		return
 
-	if GameManager.relic_returned:
+	if gm.relic_returned:
 		# Already returned
-		if is_inside_tree() and has_node("/root/AudioManager"):
-			AudioManager.play_interact_sfx()
+		if am:
+			am.play_interact_sfx()
 		_show_message(interaction_title, description_returned)
 		return
 
 	# Player has relic and returns it now!
-	GameManager.set_relic_returned(true)
+	gm.set_relic_returned(true)
 	_update_state()
 
-	if is_inside_tree() and has_node("/root/AudioManager"):
-		AudioManager.play_lock_unlock_sfx()
+	if am:
+		am.play_lock_unlock_sfx()
 
-	if is_inside_tree() and has_node("/root/UIManager"):
-		UIManager.notify_success("Sovereign Relic returned! Sanctuary Gate is unsealed.")
+	if ui:
+		ui.notify_success("Sovereign Relic returned! Sanctuary Gate is unsealed.")
 
 	_show_message(interaction_title, "You gently rest the Sovereign Relic upon the stone dais. Radiant golden light bursts across the sanctuary, dissolving the ancient seal on the Sanctuary Gate!")
 

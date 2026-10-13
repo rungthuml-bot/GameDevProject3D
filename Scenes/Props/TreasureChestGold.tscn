@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8chestgold01"]
+
+[ext_resource type="Script" path="res://Scripts/treasure_chest.gd" id="1_script"]
+[ext_resource type="PackedScene" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/chest_gold.gltf" id="2_mesh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trigger"]
+size = Vector3(2.4, 1.8, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_col"]
+size = Vector3(1.3, 1.0, 1.0)
+
+[node name="KayKitGoldChest" type="Area3D"]
+script = ExtResource("1_script")
+chest_title = "Golden Relic Chest"
+is_golden = true
+reward_notification = "Unlocked Radiant Gold Chest!"
+
+[node name="Model" parent="." instance=ExtResource("2_mesh")]
+
+[node name="InteractionCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_trigger")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="BodyCollision" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_col")

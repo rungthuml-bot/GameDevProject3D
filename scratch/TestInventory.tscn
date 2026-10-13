@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://test_inventory_runner_v1"]
-
-[ext_resource type="Script" path="res://scratch/test_inventory.gd" id="1_testinv"]
-
-[node name="TestInventoryRunner" type="Node"]
-script = ExtResource("1_testinv")
