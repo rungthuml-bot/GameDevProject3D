@@ -9,20 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://dsowhj0fi7vvu" path="res://Assets/Forest/trees/spruce/Spruce_L_flat.glb" id="11_spruce"]
 [ext_resource type="PackedScene" uid="uid://djylq8p82iyo7" path="res://Assets/Forest/trees/birch/Birch_L_flat.glb" id="12_birch"]
 [ext_resource type="PackedScene" uid="uid://bfuts6elxn6e5" path="res://Assets/Forest/trees/other/Mistletoe_Tree_flat.glb" id="13_mistletoe"]
-[ext_resource type="PackedScene" uid="uid://bhut36ch1idt8" path="res://Assets/Forest/forest_floor/boulders/Boulder_01_flat.glb" id="14_boulder"]
-[ext_resource type="PackedScene" uid="uid://bf2oqd8r1l7wg" path="res://Assets/Forest/forest_floor/rocks/Rock_01_flat.glb" id="15_rock"]
 [ext_resource type="PackedScene" uid="uid://mmux6go43rqs" path="res://Assets/Forest/forest_floor/bushes/Bush_Clumps_L_flat.glb" id="16_bush"]
 [ext_resource type="PackedScene" uid="uid://dve6neabqec45" path="res://Assets/Forest/forest_floor/logs_and_stumps/Fallen_Log_flat.glb" id="17_log"]
 [ext_resource type="PackedScene" uid="uid://bt5bi4e2cr3yx" path="res://Assets/Forest/forest_floor/logs_and_stumps/Tree_Stump_flat.glb" id="18_stump"]
 [ext_resource type="PackedScene" uid="uid://cgmlx3vbj01le" path="res://Assets/Forest/forest_floor/shrooms/Mushroom_Red_L_flat.glb" id="19_shroom_red"]
 [ext_resource type="PackedScene" uid="uid://cpadqcq7hf1p4" path="res://Assets/Forest/forest_floor/shrooms/Mushroom_Brown_L_flat.glb" id="20_shroom_brown"]
-[ext_resource type="PackedScene" uid="uid://dbsvh0let58xc" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_dirt_large.gltf" id="21_dirt_large"]
-[ext_resource type="PackedScene" uid="uid://c0i0okdejswac" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_dirt_large_rocky.gltf" id="22_dirt_rocky"]
 [ext_resource type="PackedScene" uid="uid://bm6wyicih6dwo" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_large.gltf" id="23_tile_large"]
-[ext_resource type="PackedScene" uid="uid://dxsq4g2q5g76r" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_large_rocks.gltf" id="24_tile_rocky"]
-[ext_resource type="PackedScene" uid="uid://bbdjk4g6i62qd" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_small_weeds_A.gltf" id="25_tile_weeds"]
-[ext_resource type="PackedScene" uid="uid://oj2ypu76vb53" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_small_broken_A.gltf" id="26_tile_broken"]
-[ext_resource type="PackedScene" uid="uid://dnxgwl18w3nr1" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/stairs_wide.gltf" id="27_stairs_wide"]
 [ext_resource type="PackedScene" uid="uid://c5mc3n5jnngl0" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_doorway.gltf" id="28_wall_doorway"]
 [ext_resource type="PackedScene" uid="uid://4kpl2sl6hkbh" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_arched.gltf" id="29_wall_arched"]
 [ext_resource type="PackedScene" uid="uid://dsnlqtat330ix" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_pillar.gltf" id="30_wall_pillar"]
@@ -30,8 +22,6 @@
 [ext_resource type="PackedScene" uid="uid://16clisgps450" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_broken.gltf" id="32_wall_broken"]
 [ext_resource type="PackedScene" uid="uid://dg42j7i2d6vy2" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/pillar_decorated.gltf" id="35_pillar_decorated"]
 [ext_resource type="PackedScene" uid="uid://fbr7ah23r8r4" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/column.gltf" id="36_column"]
-[ext_resource type="PackedScene" uid="uid://c1mga3qovi1xx" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/rubble_large.gltf" id="37_rubble_large"]
-[ext_resource type="PackedScene" uid="uid://cvfal6kcsvxlk" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/rubble_half.gltf" id="38_rubble_half"]
 [ext_resource type="PackedScene" uid="uid://b0xt2n15gc3qi" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/torch_lit.gltf" id="39_torch_lit"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_level0"]
@@ -156,66 +146,48 @@ transform = Transform3D(0.9904222, 0, -0.13807163, 0, 1, 0, 0.13807163, 0, 0.990
 
 [node name="Zone_A_Trail" type="Node3D" parent="." unique_id=11000]
 
-[node name="trail_floor_0" parent="Zone_A_Trail" unique_id=20000 instance=ExtResource("21_dirt_large")]
+[node name="trail_floor_0" parent="Zone_A_Trail" unique_id=20000 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 26)
 
-[node name="trail_floor_1" parent="Zone_A_Trail" unique_id=20001 instance=ExtResource("22_dirt_rocky")]
+[node name="trail_floor_1" parent="Zone_A_Trail" unique_id=20001 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 26)
 
-[node name="trail_floor_2" parent="Zone_A_Trail" unique_id=20002 instance=ExtResource("22_dirt_rocky")]
+[node name="trail_floor_2" parent="Zone_A_Trail" unique_id=20002 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 22)
 
-[node name="trail_floor_3" parent="Zone_A_Trail" unique_id=20003 instance=ExtResource("21_dirt_large")]
+[node name="trail_floor_3" parent="Zone_A_Trail" unique_id=20003 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 22)
 
-[node name="trail_floor_4" parent="Zone_A_Trail" unique_id=20004 instance=ExtResource("24_tile_rocky")]
+[node name="trail_floor_4" parent="Zone_A_Trail" unique_id=20004 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 18)
 
-[node name="trail_floor_5" parent="Zone_A_Trail" unique_id=20005 instance=ExtResource("25_tile_weeds")]
+[node name="trail_floor_5" parent="Zone_A_Trail" unique_id=20005 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 18)
 
-[node name="trail_floor_6" parent="Zone_A_Trail" unique_id=20006 instance=ExtResource("25_tile_weeds")]
+[node name="trail_floor_6" parent="Zone_A_Trail" unique_id=20006 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 14)
 
-[node name="trail_floor_7" parent="Zone_A_Trail" unique_id=20007 instance=ExtResource("24_tile_rocky")]
+[node name="trail_floor_7" parent="Zone_A_Trail" unique_id=20007 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 14)
 
-[node name="trail_floor_8" parent="Zone_A_Trail" unique_id=20008 instance=ExtResource("25_tile_weeds")]
+[node name="trail_floor_8" parent="Zone_A_Trail" unique_id=20008 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 24)
 
-[node name="trail_floor_9" parent="Zone_A_Trail" unique_id=20009 instance=ExtResource("26_tile_broken")]
+[node name="trail_floor_9" parent="Zone_A_Trail" unique_id=20009 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 20)
 
-[node name="trail_floor_10" parent="Zone_A_Trail" unique_id=20010 instance=ExtResource("24_tile_rocky")]
+[node name="trail_floor_10" parent="Zone_A_Trail" unique_id=20010 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16)
-
-[node name="curb_rock_0" parent="Zone_A_Trail" unique_id=20011 instance=ExtResource("15_rock")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -4.2, 0, 26)
-
-[node name="curb_rock_1" parent="Zone_A_Trail" unique_id=20012 instance=ExtResource("15_rock")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 21)
-
-[node name="curb_rock_2" parent="Zone_A_Trail" unique_id=20013 instance=ExtResource("15_rock")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -4, 0, 16)
-
-[node name="curb_rock_3" parent="Zone_A_Trail" unique_id=20014 instance=ExtResource("15_rock")]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 4.2, 0, 25)
-
-[node name="curb_rock_4" parent="Zone_A_Trail" unique_id=20015 instance=ExtResource("15_rock")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 4.4, 0, 20)
-
-[node name="curb_rock_5" parent="Zone_A_Trail" unique_id=20016 instance=ExtResource("15_rock")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1, 0, 15)
 
 [node name="Zone_B_Ruins" type="Node3D" parent="." unique_id=12000]
 
 [node name="ruins_floor_0" parent="Zone_B_Ruins" unique_id=20017 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 10)
 
-[node name="ruins_floor_1" parent="Zone_B_Ruins" unique_id=20018 instance=ExtResource("24_tile_rocky")]
+[node name="ruins_floor_1" parent="Zone_B_Ruins" unique_id=20018 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 10)
 
-[node name="ruins_floor_2" parent="Zone_B_Ruins" unique_id=20019 instance=ExtResource("24_tile_rocky")]
+[node name="ruins_floor_2" parent="Zone_B_Ruins" unique_id=20019 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
 
 [node name="ruins_floor_3" parent="Zone_B_Ruins" unique_id=20020 instance=ExtResource("23_tile_large")]
@@ -224,13 +196,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 [node name="ruins_floor_4" parent="Zone_B_Ruins" unique_id=20021 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 2)
 
-[node name="ruins_floor_5" parent="Zone_B_Ruins" unique_id=20022 instance=ExtResource("24_tile_rocky")]
+[node name="ruins_floor_5" parent="Zone_B_Ruins" unique_id=20022 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
 
-[node name="ruins_floor_6" parent="Zone_B_Ruins" unique_id=20023 instance=ExtResource("25_tile_weeds")]
+[node name="ruins_floor_6" parent="Zone_B_Ruins" unique_id=20023 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
 
-[node name="ruins_floor_7" parent="Zone_B_Ruins" unique_id=20024 instance=ExtResource("26_tile_broken")]
+[node name="ruins_floor_7" parent="Zone_B_Ruins" unique_id=20024 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -2)
 
 [node name="ancient_arch_left" parent="Zone_B_Ruins" unique_id=20025 instance=ExtResource("30_wall_pillar")]
@@ -242,8 +214,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8, 0, 8)
 [node name="ancient_pillar_west" parent="Zone_B_Ruins" unique_id=20027 instance=ExtResource("35_pillar_decorated")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 3)
 
-[node name="ancient_rubble_west" parent="Zone_B_Ruins" unique_id=20028 instance=ExtResource("37_rubble_large")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -5.2, 0, 4.5)
+[node name="ruins_floor_8" parent="Zone_B_Ruins" unique_id=1042227426 instance=ExtResource("23_tile_large")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -5.9855366)
 
 [node name="Inspect_RuinsRelic" type="Area3D" parent="Zone_B_Ruins" unique_id=20029]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 0)
@@ -268,10 +240,10 @@ light_color = Color(0.45, 0.85, 0.7, 1)
 light_energy = 1.2
 omni_range = 4.5
 
-[node name="Zone_C_Gate" type="Node3D" parent="." unique_id=13000]
+[node name="ruins_floor_9" parent="Zone_B_Ruins" unique_id=753676742 instance=ExtResource("23_tile_large")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.987103, 0, -5.9855366)
 
-[node name="stairs_center" parent="Zone_C_Gate" unique_id=20034 instance=ExtResource("27_stairs_wide")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
+[node name="Zone_C_Gate" type="Node3D" parent="." unique_id=13000]
 
 [node name="stair_pillar_left" parent="Zone_C_Gate" unique_id=20035 instance=ExtResource("35_pillar_decorated")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -5.5)
@@ -279,52 +251,52 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, -5.5)
 [node name="stair_pillar_right" parent="Zone_C_Gate" unique_id=20036 instance=ExtResource("35_pillar_decorated")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -5.5)
 
-[node name="courtyard_tile_-6_-10" parent="Zone_C_Gate" unique_id=20037 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-6_-10" parent="Zone_C_Gate" unique_id=20037 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -10)
 
-[node name="courtyard_tile_-6_-14" parent="Zone_C_Gate" unique_id=20038 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-6_-14" parent="Zone_C_Gate" unique_id=20038 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -14)
 
-[node name="courtyard_tile_-6_-18" parent="Zone_C_Gate" unique_id=20039 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-6_-18" parent="Zone_C_Gate" unique_id=20039 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -18)
 
-[node name="courtyard_tile_-6_-22" parent="Zone_C_Gate" unique_id=20040 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-6_-22" parent="Zone_C_Gate" unique_id=20040 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -22)
 
-[node name="courtyard_tile_-2_-10" parent="Zone_C_Gate" unique_id=20041 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-2_-10" parent="Zone_C_Gate" unique_id=20041 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -10)
 
-[node name="courtyard_tile_-2_-14" parent="Zone_C_Gate" unique_id=20042 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-2_-14" parent="Zone_C_Gate" unique_id=20042 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -14)
 
-[node name="courtyard_tile_-2_-18" parent="Zone_C_Gate" unique_id=20043 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-2_-18" parent="Zone_C_Gate" unique_id=20043 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -18)
 
-[node name="courtyard_tile_-2_-22" parent="Zone_C_Gate" unique_id=20044 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_-2_-22" parent="Zone_C_Gate" unique_id=20044 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, -22)
 
-[node name="courtyard_tile_2_-10" parent="Zone_C_Gate" unique_id=20045 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_2_-10" parent="Zone_C_Gate" unique_id=20045 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -10)
 
-[node name="courtyard_tile_2_-14" parent="Zone_C_Gate" unique_id=20046 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_2_-14" parent="Zone_C_Gate" unique_id=20046 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -14)
 
-[node name="courtyard_tile_2_-18" parent="Zone_C_Gate" unique_id=20047 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_2_-18" parent="Zone_C_Gate" unique_id=20047 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -18)
 
-[node name="courtyard_tile_2_-22" parent="Zone_C_Gate" unique_id=20048 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_2_-22" parent="Zone_C_Gate" unique_id=20048 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -22)
 
-[node name="courtyard_tile_6_-10" parent="Zone_C_Gate" unique_id=20049 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_6_-10" parent="Zone_C_Gate" unique_id=20049 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -10)
 
-[node name="courtyard_tile_6_-14" parent="Zone_C_Gate" unique_id=20050 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_6_-14" parent="Zone_C_Gate" unique_id=20050 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -14)
 
-[node name="courtyard_tile_6_-18" parent="Zone_C_Gate" unique_id=20051 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_6_-18" parent="Zone_C_Gate" unique_id=20051 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -18)
 
-[node name="courtyard_tile_6_-22" parent="Zone_C_Gate" unique_id=20052 instance=ExtResource("24_tile_rocky")]
+[node name="courtyard_tile_6_-22" parent="Zone_C_Gate" unique_id=20052 instance=ExtResource("23_tile_large")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -22)
 
 [node name="colonnade_west_-10" parent="Zone_C_Gate" unique_id=20053 instance=ExtResource("36_column")]
@@ -385,12 +357,6 @@ light_color = Color(1, 0.72, 0.32, 1)
 light_energy = 2.4
 shadow_enabled = true
 omni_range = 6.0
-
-[node name="gate_rubble_left" parent="Zone_C_Gate" unique_id=20070 instance=ExtResource("37_rubble_large")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1, -21)
-
-[node name="gate_rubble_right" parent="Zone_C_Gate" unique_id=20071 instance=ExtResource("38_rubble_half")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -21)
 
 [node name="Door_To_Level1" type="Area3D" parent="Zone_C_Gate" unique_id=20072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -21.8)
@@ -483,30 +449,6 @@ transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 11, 0, -16)
 [node name="tree_e_9" parent="Forest_Foliage" unique_id=20096 instance=ExtResource("11_spruce")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 14, 0, -22)
 
-[node name="boulder_0" parent="Forest_Foliage" unique_id=20097 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -10.5, 0, 23)
-
-[node name="boulder_1" parent="Forest_Foliage" unique_id=20098 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 10, 0, 20)
-
-[node name="boulder_2" parent="Forest_Foliage" unique_id=20099 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -11.5, 0, 11)
-
-[node name="boulder_3" parent="Forest_Foliage" unique_id=20100 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 11.5, 0, 10)
-
-[node name="boulder_4" parent="Forest_Foliage" unique_id=20101 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -12, 0, -3)
-
-[node name="boulder_5" parent="Forest_Foliage" unique_id=20102 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 12, 0, -4)
-
-[node name="boulder_6" parent="Forest_Foliage" unique_id=20103 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -9.5, 0.5, -12)
-
-[node name="boulder_7" parent="Forest_Foliage" unique_id=20104 instance=ExtResource("14_boulder")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 9.5, 0.5, -12)
-
 [node name="log_0" parent="Forest_Foliage" unique_id=20105 instance=ExtResource("17_log")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.2, 19)
 
@@ -572,3 +514,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2, 0.5, -11)
 
 [node name="shroom_5" parent="Forest_Foliage" unique_id=20126 instance=ExtResource("20_shroom_brown")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.5, -11)
+
+[node name="StructureCollision" type="StaticBody3D" parent="." unique_id=10030]
+
+[node name="col_colonnade_w1" type="CollisionShape3D" parent="StructureCollision" unique_id=10031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -10)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_colonnade_w2" type="CollisionShape3D" parent="StructureCollision" unique_id=10032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -14)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_colonnade_w3" type="CollisionShape3D" parent="StructureCollision" unique_id=10033]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -18)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_colonnade_e1" type="CollisionShape3D" parent="StructureCollision" unique_id=10034]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -10)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_colonnade_e2" type="CollisionShape3D" parent="StructureCollision" unique_id=10035]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -14)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_colonnade_e3" type="CollisionShape3D" parent="StructureCollision" unique_id=10036]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -18)
+shape = SubResource("Shape_inspect_trigger")
+
+[node name="col_gate_facade_w" type="CollisionShape3D" parent="StructureCollision" unique_id=10037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2, -22)
+shape = SubResource("Shape_stairs_ramp")
+
+[node name="col_gate_facade_e" type="CollisionShape3D" parent="StructureCollision" unique_id=10038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2, -22)
+shape = SubResource("Shape_stairs_ramp")
