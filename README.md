@@ -103,7 +103,11 @@ graph TD
 ## ⚙️ ข้อมูลทางเทคนิคและสถาปัตยกรรม (Technical Architecture)
 
 ```
-DUNGEON-MYSTERY-MAZE/
+├── docs/                   # Web Build สำหรับเล่นบนเว็บเบราว์เซอร์ / GitHub Pages
+│   ├── index.html          # หน้าเว็บหลัก Web Game Loader
+│   ├── index.js            # Godot Web Engine JavaScript
+│   ├── index.pck           # แพ็กเกจข้อมูลเกม (Game Package Assets)
+│   └── index.wasm          # WebAssembly Binary
 ├── Assets/                 # ทรัพยากร 3D โมเดล, พื้นผิว, เสียง และแอนิเมชัน
 │   ├── Audio/              # ดนตรีประกอบ BGM, SFX และ Ambient soundscapes
 │   ├── Button/             # โมเดลและปุ่มสวิตช์กลไก
@@ -151,6 +155,14 @@ godot.exe --path .
 # หรือรันเข้าสู่หน้าเมนูหลักโดยตรง
 godot.exe --path . Scenes/UI/SplashScreen.tscn
 ```
+
+### วิธีที่ 3: เล่นบนเว็บเบราว์เซอร์ (Web / GitHub Pages)
+ตัวเกมได้รับการคอมไพล์และ Export สำหรับ WebAssembly ไว้ในโฟลเดอร์ `docs/` พร้อมสำหรับ GitHub Pages หรือการรัน Local Web Server:
+```powershell
+# รัน Local Web Server เพื่อเล่นผ่านเบราว์เซอร์
+python -m http.server 8000 --directory docs
+```
+จากนั้นเปิดเบราว์เซอร์ไปที่ `http://localhost:8000`
 
 ---
 
