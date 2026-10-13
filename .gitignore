@@ -7,3 +7,7 @@
 
 # Scratch and test workspace
 scratch/
+
+# OS and system junk
+.DS_Store
+Thumbs.db
