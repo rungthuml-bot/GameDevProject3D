@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://4ycs6aitdx7u"]
 
 [ext_resource type="PackedScene" uid="uid://bm6wyicih6dwo" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_large.gltf" id="1_ha5na"]
-[ext_resource type="PackedScene" uid="uid://dxsq4g2q5g76r" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_large_rocks.gltf" id="2_f3f1q"]
 [ext_resource type="PackedScene" uid="uid://c2c1uc4wlychv" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_big_grate.gltf" id="3_6jp6u"]
 [ext_resource type="PackedScene" uid="uid://i28bjoop0nwe" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall.gltf" id="5_4ptt3"]
 [ext_resource type="PackedScene" uid="uid://4kpl2sl6hkbh" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_arched.gltf" id="6_j4pl8"]
@@ -678,12 +677,6 @@ size = Vector3(1, 4, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_av6uh"]
 size = Vector3(1.5, 4, 1.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5dvm2"]
-size = Vector3(2, 1.1, 0.5000001)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_2httn"]
-size = Vector3(3.199723, 2.8, 2.4)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_lm6wc"]
 size = Vector3(2.0586429, 1.8857144, 4.0000005)
 
@@ -696,8 +689,9 @@ size = Vector3(2.0000005, 1.8857144, 2.0000005)
 [sub_resource type="BoxShape3D" id="BoxShape3D_3sdde"]
 size = Vector3(1.7, 1.3000003, 1.4458038)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vtsxa"]
-size = Vector3(2.9997401, 2.625, 2.25)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pedestal_col"]
+height = 1.0
+radius = 0.65
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8pn5m"]
 size = Vector3(0.935, 1.7, 0.935)
@@ -757,10 +751,6 @@ size = Vector3(0.65, 1.2, 0.45)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pedestal_trig"]
 size = Vector3(2.2, 2.5, 2.2)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_pedestal_col"]
-height = 1.0
-radius = 0.65
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pedestal_base"]
 bottom_radius = 0.6
@@ -2695,20 +2685,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_1nm8l")
 
 [node name="InteractionLabel" type="Label3D" parent="Inspect_GrandCrystalPinnacle" unique_id=912120400]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
-
-[node name="Inspect_RitualGlyphs" type="Area3D" parent="." unique_id=1007706779]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.2)
-script = ExtResource("34_h3x4w")
-interaction_text = "Read"
-interaction_title = "Sanctum Inscription"
-description = "Final warning glyphs: 'Beyond this gateway awaits the heart of the dungeon. Steel your resolve.'"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Inspect_RitualGlyphs" unique_id=130087033]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_1nm8l")
-
-[node name="InteractionLabel" type="Label3D" parent="Inspect_RitualGlyphs" unique_id=1217060249]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
 
 [node name="Door_To_Level8" type="Area3D" parent="." unique_id=1920402831]

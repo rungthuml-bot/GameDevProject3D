@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c64emwfoktsj"]
 
 [ext_resource type="PackedScene" uid="uid://bm6wyicih6dwo" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_tile_large.gltf" id="1_x3i8s"]
-[ext_resource type="PackedScene" uid="uid://dbsvh0let58xc" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/floor_dirt_large.gltf" id="2_m5v22"]
 [ext_resource type="PackedScene" uid="uid://i28bjoop0nwe" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall.gltf" id="3_4kpfr"]
 [ext_resource type="PackedScene" uid="uid://brggwex3uaev0" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_cracked.gltf" id="4_6wlv4"]
 [ext_resource type="PackedScene" uid="uid://ctotf3dqodxcl" path="res://Assets/ThirdParty/KayKitDungeon/Assets/gltf/wall_open_scaffold.gltf" id="5_usdub"]
@@ -67,15 +66,6 @@ size = Vector3(1, 4, 4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_kky88"]
 size = Vector3(1.5, 4, 1.5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_psvby"]
-size = Vector3(0.7, 1.4, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_t353m"]
-size = Vector3(4, 5.1, 4)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4sm4n"]
-size = Vector3(3.199723, 2.8, 2.4)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_yec2e"]
 size = Vector3(2.0891836, 2.1422958, 2.249401)
 
@@ -103,15 +93,6 @@ size = Vector3(1.8, 2.050724, 2)
 [sub_resource type="BoxShape3D" id="BoxShape3D_su2r7"]
 size = Vector3(1.5, 0.99999994, 1.3)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dbnnw"]
-size = Vector3(8.129274, 3.496088, 3.1831095)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1v82l"]
-size = Vector3(3.599688, 3.1499999, 2.6999998)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_d0m2c"]
-size = Vector3(2.7997575, 2.45, 2.1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_qaryn"]
 size = Vector3(4, 1.1, 0.5)
 
@@ -120,9 +101,6 @@ size = Vector3(2.2767158, 0.9717633, 2.4283924)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k4nuf"]
 size = Vector3(0.75000006, 0.49999997, 0.7500115)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ctiug"]
-size = Vector3(1.5998615, 1.4, 1.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vxnsy"]
 size = Vector3(1.4624285, 1.4996071, 1.5745808)
@@ -562,6 +540,39 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.0
 
 [node name="floor_7_12" parent="KayKitDungeon/Floors" unique_id=879308416 instance=ExtResource("1_x3i8s")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -7.9951696, 0, 8)
+
+[node name="floor_8_3" parent="KayKitDungeon/Floors" unique_id=123447909 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.9751346, 0, -24)
+
+[node name="floor_8_5" parent="KayKitDungeon/Floors" unique_id=1467017763 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 7.987399, 0, -24)
+
+[node name="floor_8_6" parent="KayKitDungeon/Floors" unique_id=552240504 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.008972, 0, -32)
+
+[node name="floor_7_3" parent="KayKitDungeon/Floors" unique_id=449333436 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.9688025, 0, -24)
+
+[node name="floor_10_8" parent="KayKitDungeon/Floors" unique_id=187811528 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 11.998834, 0, -8)
+
+[node name="floor_10_9" parent="KayKitDungeon/Floors" unique_id=1929330066 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 11.998834, 0, -4.0155406)
+
+[node name="floor_10_11" parent="KayKitDungeon/Floors" unique_id=264464610 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 11.998834, 0, -0.053610325)
+
+[node name="floor_10_12" parent="KayKitDungeon/Floors" unique_id=1829844008 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 0, 0.00036525726)
+
+[node name="floor_10_16" parent="KayKitDungeon/Floors" unique_id=523625330 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.0260334, 0, -4)
+
+[node name="floor_7_13" parent="KayKitDungeon/Floors" unique_id=1873120123 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(-1, 0, -8.810928e-08, 0, 1, 0, 8.742278e-08, 0, -1.0078527, -4, 0, -11.990337)
+
+[node name="floor_10_5" parent="KayKitDungeon/Floors" unique_id=303357081 instance=ExtResource("1_x3i8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -12.004592)
 
 [node name="Walls" type="Node3D" parent="KayKitDungeon" unique_id=1373548961]
 
@@ -1789,6 +1800,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4.25, -8)
 
 [node name="ceiling_add_28_0" parent="KayKitDungeon/Ceilings" unique_id=805000080 instance=ExtResource("11_x00gf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 4.25, 0)
+
+[node name="ceiling_add_-4_-17" parent="KayKitDungeon/Ceilings" unique_id=1760336892 instance=ExtResource("11_x00gf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0130005, -4, 4.25, -11.9968195)
+
+[node name="ceiling_add_8_-9" parent="KayKitDungeon/Ceilings" unique_id=1750035004 instance=ExtResource("11_x00gf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 4.25, -4.000056)
 
 [node name="Props" type="Node3D" parent="KayKitDungeon" unique_id=678984949]
 
